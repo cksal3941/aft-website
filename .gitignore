@@ -13,6 +13,9 @@
 # testing
 /coverage
 
+# media-use scratch (resolved-asset cache)
+/.media/
+
 # next.js
 /.next/
 /out/

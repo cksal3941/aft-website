@@ -1,26 +1,65 @@
 @import "tailwindcss";
 
+/*
+  AFT design tokens — derived from the HOME mockup (구현이미지.png):
+  deep navy for header/footer/hero, warm amber accent for primary CTAs,
+  light neutral surfaces, clean sans typography. Global nonprofit mood.
+*/
+@theme {
+  --color-navy: #0d2440;
+  --color-navy-deep: #081a30;
+  --color-navy-soft: #17365c;
+
+  --color-accent: #f5a524;
+  --color-accent-hover: #e0951a;
+  --color-accent-soft: #fef3dd;
+
+  --color-teal: #12878b;
+  --color-teal-hover: #0e6d70;
+  --color-teal-soft: #dff1f1;
+
+  --color-ink: #0f172a;
+  --color-muted: #374151;
+  --color-surface: #f4f6f9;
+  --color-line: #e3e8ef;
+
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+}
+
 :root {
   --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --foreground: #0f172a;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+}
+
+/* Body copy: heavier default weight (utilities like font-bold still override). */
+@layer base {
+  p {
+    font-weight: 500;
+  }
+}
+
+/* Reusable button hierarchy — Primary · Secondary · Text (기획서 §1.4, §12.1) */
+@utility btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 text-sm font-semibold uppercase tracking-wide transition-colors bg-accent text-ink hover:bg-accent-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2;
+}
+@utility btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 text-sm font-semibold uppercase tracking-wide transition-colors border border-white/40 bg-transparent text-white hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-navy;
+}
+@utility btn-secondary-dark {
+  @apply inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 text-sm font-semibold uppercase tracking-wide transition-colors border border-line bg-white text-ink hover:bg-surface focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2;
+}
+@utility btn-text {
+  @apply inline-flex items-center gap-1 text-[15px] font-bold uppercase tracking-wide text-navy hover:text-teal;
+}
+@utility eyebrow {
+  @apply text-base font-bold uppercase tracking-[0.18em] text-teal;
+}
+@utility container-aft {
+  @apply mx-auto w-full max-w-[1400px] px-5 sm:px-6 lg:px-8;
 }
