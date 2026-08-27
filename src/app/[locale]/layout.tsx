@@ -52,7 +52,8 @@ export default async function LocaleLayout({
       <body className="flex min-h-full flex-col bg-white text-ink">
         <NextIntlClientProvider>
           <Header />
-          <main className="flex-1">{children}</main>
+          {/* pt clears the fixed header; the home hero cancels it with -mt-20 */}
+          <main className="flex-1 pt-20">{children}</main>
           <Footer />
         </NextIntlClientProvider>
       </body>

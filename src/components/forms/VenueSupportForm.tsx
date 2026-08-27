@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useTranslations } from "next-intl";
 import { track } from "@/lib/analytics";
-import { Field, FormSection, SubmittedCard, inputClass } from "./fields";
+import { Field, FormSection, SubmittedCard, inputClass, makeRef } from "./fields";
 
 const SPACE_TYPES = ["gallery", "hall", "outdoor", "other"] as const;
 const EQUIPMENT = ["projector", "sound", "lighting", "wifi", "seating"] as const;
@@ -72,7 +72,7 @@ export function VenueSupportForm() {
   });
 
   function onSubmit() {
-    setRef(`VNU-${Math.floor(Math.random() * 900000 + 100000)}`);
+    setRef(makeRef("VNU"));
     track("venue_offer_submit", {});
   }
 

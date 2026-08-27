@@ -13,6 +13,23 @@ export type MediaSlot = {
   tone?: "default" | "ocean";
 };
 
+// HERO background video. Drop a file into public/videos/ and set `src`
+// (e.g. "/videos/home-hero.mp4"); `poster` is the still shown before/while it
+// loads or when no video exists yet (e.g. "/images/home-hero.jpg").
+// Both null → HeroVideo falls back to the navy gradient.
+export const homeHeroVideo: { src: string | null; poster: string | null } = {
+  src: null,
+  poster: null,
+};
+
+// AFT × WWF donation-ceremony clip (07 · DONATION & ECO ACTION). Same pattern
+// as the hero: drop a file into public/videos/ and set `src`; `poster` is the
+// ceremony still. Both null → a play badge sits over the placeholder image.
+export const homeDonationVideo: { src: string | null; poster: string | null } = {
+  src: null,
+  poster: null,
+};
+
 export const media = {
   // HOME — hero background + section images (map 1:1 to 구현이미지.png)
   homeHero: { src: null, alt: "AFT youth at an exhibition" },
@@ -38,12 +55,29 @@ export const media = {
   wwdAct: { src: null, alt: "Youth presenting a project" },
   wwdChange: { src: null, alt: "Youth-led change project" },
   homeCommunity: { src: null, alt: "Young creators collaborating at a table" },
+  joinYouth: { src: null, alt: "AFT youth members creating together" },
+  joinAdvisors: { src: null, alt: "A mentor guiding young creators" },
+  joinPartners: { src: null, alt: "Partners collaborating with AFT" },
   homeLab: { src: null, alt: "Youth in the creative lab with a mentor" },
   labImg1: { src: null, alt: "Youth product design" },
   labImg2: { src: null, alt: "Youth prototype" },
   homeStory1: { src: null, alt: "Youth creator portrait" },
   homeStory2: { src: null, alt: "Youth creator portrait" },
   homeStory3: { src: null, alt: "Youth creator portrait" },
+  // Story-began photo strip (04)
+  storyShot1: { src: null, alt: "Youth sketching ideas" },
+  storyShot2: { src: null, alt: "Youth in discussion" },
+  storyShot3: { src: null, alt: "Ocean-themed artwork", tone: "ocean" },
+  storyShot4: { src: null, alt: "Youth exhibition" },
+  storyShot5: { src: null, alt: "Youth eco activity outdoors" },
+  wwfCeremony: { src: null, alt: "AFT × WWF donation ceremony", tone: "ocean" },
+  // WWF follow-up eco action (05)
+  wwfFollow1: { src: null, alt: "Environmental education session" },
+  wwfFollow2: { src: null, alt: "Youth interviews" },
+  wwfFollow3: { src: null, alt: "Cheonggyecheon eco walk" },
+  // Dotted world map (CC BY 3.0 — sNowFleikuN, via Wikimedia Commons).
+  // Leave src null to fall back to the built-in dot-grid motif.
+  worldMap: { src: "/images/world-map-dots.svg", alt: "Dotted world map" },
   homeSupport: { src: null, alt: "A young creator sharing their work" },
   news1: { src: null, alt: "News thumbnail" },
   news2: { src: null, alt: "News thumbnail" },

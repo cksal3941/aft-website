@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
 import { Logo } from "@/components/ui/Logo";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { mainNav, mobileNav, routes } from "@/config/nav";
@@ -11,45 +11,55 @@ import { track } from "@/lib/analytics";
 export function Header() {
   const t = useTranslations("nav");
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
+  // Transparent over the hero at the very top (home only); solid navy on scroll.
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const transparent = isHome && !scrolled && !open;
 
   return (
-    <header className="sticky top-0 z-50 bg-navy text-white">
-      <div className="flex h-16 w-full items-center justify-between gap-4 px-6 lg:px-12">
+    <header
+      className={`fixed inset-x-0 top-0 z-50 text-white transition-colors duration-300 ${
+        transparent ? "bg-transparent" : "bg-navy shadow-sm"
+      }`}
+    >
+      <div className="container-aft flex h-20 items-center justify-between gap-4">
         <Logo variant="light" />
 
-        {/* Desktop nav (기획서 §1.1) */}
-        <nav className="hidden items-center gap-7 lg:flex">
-          {mainNav.map((item) => (
-            <Link
-              key={item.key}
-              href={item.href}
-              className="text-sm font-medium uppercase tracking-wide text-white/85 transition-colors hover:text-white"
-            >
-              {t(item.key)}
-            </Link>
-          ))}
-        </nav>
+        {/* Right-aligned nav + controls */}
+        <div className="flex items-center gap-8 lg:gap-12">
+          {/* Desktop nav (기획서 §1.1) */}
+          <nav className="hidden items-center gap-9 lg:flex xl:gap-12">
+            {mainNav.map((item) => (
+              <Link
+                key={item.key}
+                href={item.href}
+                className="text-sm font-medium uppercase tracking-wide text-white transition-opacity hover:opacity-80"
+              >
+                {t(item.key)}
+              </Link>
+            ))}
+          </nav>
 
-        <div className="flex items-center gap-3">
           <div className="hidden sm:block">
             <LanguageSwitcher tone="light" />
           </div>
 
-          {/* Join stays visible on mobile per 기획서 §1.2 */}
+          {/* JOIN AFT — flat black @ 70% opacity, no border, no radius */}
           <Link
             href={routes.join}
             onClick={() => track("join_click", { source: "header" })}
-            className="hidden rounded-md border border-white/40 px-4 py-2 text-sm font-semibold uppercase tracking-wide text-white hover:bg-white/10 sm:inline-flex"
+            className="hidden rounded-sm bg-black/70 px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-white transition-colors duration-200 hover:bg-white hover:text-ink sm:inline-flex"
           >
             {t("join")}
-          </Link>
-
-          <Link
-            href={routes.support}
-            onClick={() => track("donate_start", { source: "header" })}
-            className="btn-primary px-4 py-2"
-          >
-            {t("donate")}
           </Link>
 
           {/* Hamburger */}
@@ -84,7 +94,7 @@ export function Header() {
       {/* Mobile menu (기획서 §1.2 order) */}
       {open && (
         <div className="border-t border-white/10 bg-navy lg:hidden">
-          <nav className="flex w-full flex-col px-6 py-2 lg:px-12">
+          <nav className="container-aft flex flex-col py-2">
             {mobileNav.map((item) => (
               <Link
                 key={item.key}

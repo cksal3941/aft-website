@@ -9,11 +9,14 @@ export function Logo({ variant = "light" }: { variant?: "light" | "dark" }) {
       className={`flex items-center gap-2 ${color}`}
       aria-label="AFT — Arts For Tomorrow, home"
     >
-      <span className="text-xl font-extrabold tracking-tight">AFT</span>
-      <span className="hidden text-[10px] font-medium uppercase leading-tight tracking-[0.15em] opacity-70 sm:block">
-        Arts For
-        <br />
-        Tomorrow
+      <span className="text-3xl font-extrabold tracking-tight">AFT</span>
+      <span className="hidden leading-tight sm:block">
+        <span className="block text-xs font-bold uppercase tracking-[0.15em]">
+          Arts For Tomorrow
+        </span>
+        <span className="block text-[10px] font-medium tracking-tight">
+          Global Youth Arts &amp; Impact Network
+        </span>
       </span>
     </Link>
   );

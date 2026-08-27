@@ -175,9 +175,41 @@ export const expertConfig: InquiryConfig = {
   ],
 };
 
+export const advisorConfig: InquiryConfig = {
+  namespace: "advisorForm",
+  refPrefix: "ADV",
+  event: "join_submit",
+  sections: [
+    {
+      key: "person",
+      fields: [
+        { name: "name", type: "text", required: true },
+        { name: "email", type: "email", half: true },
+        { name: "country", type: "text", half: true },
+      ],
+    },
+    {
+      key: "advisor",
+      fields: [
+        {
+          name: "field",
+          type: "select",
+          optionsKey: "fieldOptions",
+          options: ["artist", "educator", "environment", "creativeLeader", "other"],
+          half: true,
+        },
+        { name: "availability", type: "text", half: true },
+        { name: "motivation", type: "textarea", required: true },
+        consent(),
+      ],
+    },
+  ],
+};
+
 export const inquiryConfigs = {
   partnership: partnershipConfig,
   sponsor: sponsorConfig,
   inkind: inkindConfig,
   expert: expertConfig,
+  advisor: advisorConfig,
 } as const;

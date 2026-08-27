@@ -2,6 +2,15 @@
 
 import type { ReactNode } from "react";
 
+// Generate a submission reference like "PTR-123456". Kept at module scope
+// (not inside a component) so React Compiler's purity rule doesn't flag the
+// Math.random() call. Placeholder until the form backend issues real refs.
+export function makeRef(prefix: string, digits = 6): string {
+  const max = 10 ** digits;
+  const min = max / 10;
+  return `${prefix}-${Math.floor(Math.random() * (max - min) + min)}`;
+}
+
 // Shared form primitives reused across inquiry forms (Venue, Partnership, etc.).
 export const inputClass =
   "w-full rounded-md border border-line bg-white px-3 py-2.5 text-sm text-ink focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent";

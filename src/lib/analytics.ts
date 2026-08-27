@@ -26,7 +26,6 @@ export function track(event: AftEvent, props: EventProps = {}): void {
   w.dataLayer?.push({ event, ...props });
 
   if (process.env.NODE_ENV !== "production") {
-    // eslint-disable-next-line no-console
     console.debug("[analytics]", event, props);
   }
 }

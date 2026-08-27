@@ -8,6 +8,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { routes } from "@/config/nav";
 import { track } from "@/lib/analytics";
+import { makeRef } from "./fields";
 
 const ROLES = ["artist", "author", "designer", "planner", "leader"] as const;
 const MODES = ["online", "offline", "either"] as const;
@@ -128,10 +129,8 @@ export function YouthApplicationForm() {
   }
 
   function onSubmit() {
-    const id = `AFT-${watch("birthYear") || "0000"}-${Math.floor(
-      Math.random() * 9000 + 1000
-    )}`;
-    setRef(id);
+    const birthYear = getValues("birthYear") || "0000";
+    setRef(makeRef(`AFT-${birthYear}`, 4));
     setSubmitted(true);
     track("join_submit", { role: getValues("role") });
     try {

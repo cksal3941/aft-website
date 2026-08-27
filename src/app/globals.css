@@ -10,9 +10,9 @@
   --color-navy-deep: #081a30;
   --color-navy-soft: #17365c;
 
-  --color-accent: #f5a524;
-  --color-accent-hover: #e0951a;
-  --color-accent-soft: #fef3dd;
+  --color-accent: #3e7035;
+  --color-accent-hover: #2f5a29;
+  --color-accent-soft: #e9f0e5;
 
   --color-teal: #12878b;
   --color-teal-hover: #0e6d70;
@@ -46,7 +46,7 @@ body {
 
 /* Reusable button hierarchy — Primary · Secondary · Text (기획서 §1.4, §12.1) */
 @utility btn-primary {
-  @apply inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 text-sm font-semibold uppercase tracking-wide transition-colors bg-accent text-ink hover:bg-accent-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2;
+  @apply inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 text-sm font-semibold uppercase tracking-wide transition-colors bg-accent text-white hover:bg-accent-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2;
 }
 @utility btn-secondary {
   @apply inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 text-sm font-semibold uppercase tracking-wide transition-colors border border-white/40 bg-transparent text-white hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-navy;
@@ -58,7 +58,7 @@ body {
   @apply inline-flex items-center gap-1 text-[15px] font-bold uppercase tracking-wide text-navy hover:text-teal;
 }
 @utility eyebrow {
-  @apply text-base font-bold uppercase tracking-[0.18em] text-teal;
+  @apply text-base font-bold uppercase tracking-[0.18em] text-accent;
 }
 @utility container-aft {
   @apply mx-auto w-full max-w-[1400px] px-5 sm:px-6 lg:px-8;

@@ -4,18 +4,20 @@
 
 export type NavItem = { key: string; href: string };
 
+// Header nav — redesign scroll narrative (구현이미지):
+// ABOUT · OUR STORY · PROJECTS · YOUTH · GLOBAL NETWORK · SUPPORT
 export const mainNav: NavItem[] = [
   { key: "about", href: "/about" },
+  { key: "ourStory", href: "/#story" },
   { key: "projects", href: "/projects" },
   { key: "youth", href: "/join" },
-  { key: "impact", href: "/impact" },
-  { key: "partners", href: "/partners" },
+  { key: "globalNetwork", href: "/global-network" },
+  { key: "support", href: "/support" },
 ];
 
-// Mobile menu adds News and Contact after the main items (기획서 §1.2).
+// Mobile menu adds Contact after the main items.
 export const mobileNav: NavItem[] = [
   ...mainNav,
-  { key: "news", href: "/stories" },
   { key: "contact", href: "/contact" },
 ];
 
@@ -25,7 +27,9 @@ export const routes = {
   projects: "/projects",
   join: "/join",
   apply: "/join/apply",
+  advisor: "/join/advisor",
   impact: "/impact",
+  globalNetwork: "/global-network",
   partners: "/partners",
   venue: "/partners/venue",
   partnership: "/partners/inquiry",

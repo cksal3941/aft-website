@@ -5,8 +5,11 @@
   },
   "nav": {
     "about": "소개",
+    "ourStory": "우리 이야기",
     "projects": "프로젝트",
-    "youth": "AFT 유스",
+    "youth": "유스",
+    "globalNetwork": "글로벌 네트워크",
+    "support": "서포트",
     "impact": "임팩트",
     "partners": "파트너",
     "news": "소식",
@@ -19,46 +22,169 @@
   },
   "home": {
     "hero": {
-      "title": "청소년 예술가, 세상을 바꾸다.",
-      "subtitle": "AFT는 청소년이 예술로 환경·사회 문제를 탐구하고, 그 아이디어를 전시·출판·캠페인·실제 사회참여로 발전시키도록 돕습니다.",
-      "ctaJoin": "AFT 유스 가입",
-      "ctaProjects": "프로젝트 둘러보기",
-      "ctaPartner": "AFT와 협력하기"
+      "title1": "YOUNG ARTISTS.",
+      "title2": "GLOBAL IMPACT.",
+      "subtitle": "창의성을 행동으로 바꾸는\n글로벌 청소년 커뮤니티.",
+      "tagline": "Founded in Seoul. Built for the World.",
+      "ctaDiscover": "AFT 알아보기",
+      "ctaJoin": "무브먼트 참여하기"
     },
-    "about": {
+    "who": {
       "eyebrow": "AFT 소개",
-      "lead": "AFT는 청소년의 창의력을 전시·출판·제품·공공 솔루션·사회참여로 연결합니다.",
-      "body": "우리는 청소년이 자신의 아이디어와 창의적 시선을 사람과 지구를 위한 실제 임팩트로 바꾸도록 돕습니다.",
-      "cta": "AFT 더 알아보기"
+      "title": "창의력은\n세상을 바꿀 수 있습니다.",
+      "body1": "Arts For Tomorrow(AFT)는 서울에서 시작해 글로벌 비전을 지향하는 청소년 예술·임팩트 네트워크입니다.",
+      "body2": "우리는 예술, 환경 행동, 전시, 출판, 협업 프로젝트를 통해 청소년 창작자를 연결하고, 창의적 아이디어를 의미 있는 임팩트로 바꿉니다.",
+      "cta": "자세히 보기",
+      "pillars": {
+        "art": {
+          "label": "예술",
+          "blurb": "의미를 담아\n창작합니다."
+        },
+        "youth": {
+          "label": "청소년",
+          "blurb": "청소년의\n목소리를 키웁니다."
+        },
+        "environment": {
+          "label": "환경",
+          "blurb": "함께\n지구를 지킵니다."
+        },
+        "social": {
+          "label": "사회적 임팩트",
+          "blurb": "아이디어를\n행동으로 바꿉니다."
+        }
+      }
     },
     "impact": {
       "eyebrow": "임팩트",
+      "title": "2026년 임팩트",
       "stats": {
-        "youth": { "value": "28", "label": "참여 청소년" },
-        "donated": { "value": "₩100만", "label": "WWF 기부금" },
-        "goods": { "value": "158", "label": "굿즈 판매" }
+        "creators": {
+          "value": "28",
+          "label": "참여 청소년"
+        },
+        "goods": {
+          "value": "158",
+          "label": "판매된 청소년 디자인 굿즈"
+        },
+        "donated": {
+          "value": "₩1,000,000",
+          "label": "자연을 위한 기부"
+        },
+        "project": {
+          "value": "1",
+          "label": "청소년 주도 임팩트 프로젝트"
+        }
       }
     },
-    "featured": {
-      "eyebrow": "대표 프로젝트",
-      "title": "Our Ocean, Our Tomorrow",
-      "body": "더 건강한 바다와 지구를 위한 행동을 이끄는 글로벌 청소년 예술 전시입니다.",
-      "cta": "프로젝트 보기"
+    "donation": {
+      "eyebrow": "AFT × WWF",
+      "title": "창의성이 실제 임팩트가 되었습니다.",
+      "amount": "₩1,000,000",
+      "amountLabel": "자연을 위한 기부",
+      "ceremony": "기부금 전달식 · 2026년 8월 26일",
+      "body": "AFT는 WWF와의 파트너십을 통해 전시와 청소년 디자인 굿즈의 수익을 자연을 위한 실제 기부로 전달했습니다 — 창의성이 행동이 될 수 있다는 증거입니다.",
+      "watch": "전달식 영상 보기",
+      "watchSoon": "영상 준비 중",
+      "followupTitle": "행동은 계속됩니다",
+      "followup": [
+        "환경 교육",
+        "청소년 인터뷰",
+        "청계천 에코 워크"
+      ],
+      "note": "AFT × WWF 공식 파트너십."
     },
-    "whatWeDo": {
-      "eyebrow": "우리의 활동",
-      "items": {
-        "create": { "title": "Create", "body": "청소년이 아이디어를 탐구하고 자신의 목소리로 의미 있는 작품을 만들도록 돕습니다.", "cta": "자세히" },
-        "connect": { "title": "Connect", "body": "청소년 창작자와 지역사회, 글로벌 관객을 연결합니다.", "cta": "자세히" },
-        "act": { "title": "Act", "body": "창의적 아이디어를 실제 사회문제를 해결하는 프로젝트로 만듭니다.", "cta": "자세히" },
-        "change": { "title": "Change", "body": "지역과 세계에 긍정적 변화를 만드는 청소년 주도 해법을 지원합니다.", "cta": "자세히" }
+    "beginning": {
+      "title": "이것은 시작에 불과합니다."
+    },
+    "global": {
+      "eyebrow": "서울에서 세계로",
+      "title1": "From Seoul",
+      "title2": "to the World.",
+      "body": "서울의 청소년 28명에서 시작된 이야기가 전 세계 청소년 예술가·사상가·체인지메이커의 커뮤니티로 자라나고 있습니다. 지도는 지금도 열리는 중이며, 그 위에 당신의 자리가 있습니다.",
+      "seoul": "Seoul · 2026 시작",
+      "cta": "글로벌 네트워크 보기",
+      "title": "서울에서 세계로.",
+      "body2": "청소년 창작자와 파트너의 글로벌 네트워크를 함께 만들어, 더 나은 내일을 만듭니다."
+    },
+    "story": {
+      "eyebrow": "우리 이야기가\n시작된 곳",
+      "place": "Seoul · 2026",
+      "title": "첫 번째 이야기",
+      "intro": "모든 글로벌 무브먼트에는 시작점이 있습니다. AFT는 서울의 청소년 28명이 던진 하나의 질문에서 시작했습니다 — 예술이 바다와 환경, 그리고 우리의 미래를 위해 무엇을 할 수 있을까?",
+      "project": {
+        "tag": "AFT의 첫 번째 청소년 임팩트 프로젝트",
+        "title": "Our Ocean, Our Tomorrow",
+        "body": "청소년 예술가들이 바다와 환경, 우리의 미래를 탐구하고 — 그 작업을 스케치북에서 전시로, 다시 실제 행동으로 이어갔습니다.",
+        "cta": "프로젝트 보기"
+      },
+      "tagline": "AFT의 첫 청소년 임팩트 프로젝트 — 창의성에서 실제 변화로.",
+      "viewAll": "전체 사진 보기"
+    },
+    "journey": {
+      "eyebrow": "여정",
+      "title": "Create → Exhibit → Share → Donate → Act",
+      "steps": {
+        "create": {
+          "no": "01",
+          "title": "Create",
+          "body": "청소년들이 바다·환경·공존을 예술로 탐구했습니다."
+        },
+        "exhibit": {
+          "no": "02",
+          "title": "Exhibit",
+          "body": "그 생각이 전시가 되어 지역사회와 나눴습니다."
+        },
+        "share": {
+          "no": "03",
+          "title": "Share",
+          "body": "작품이 굿즈와 캠페인으로 이어졌습니다."
+        },
+        "donate": {
+          "no": "04",
+          "title": "Donate",
+          "body": "창의성이 지구를 위한 실제 후원이 되었습니다."
+        },
+        "act": {
+          "no": "05",
+          "title": "Act",
+          "body": "배우고, 걷고, 환경을 위해 행동했습니다."
+        }
+      },
+      "action": {
+        "eyebrow": "예술에서 행동으로",
+        "title": "우리는 예술에서 멈추지 않습니다. 예술을 행동으로 바꿉니다.",
+        "chain": [
+          "Art",
+          "Exhibition",
+          "Campaign",
+          "Fundraising",
+          "Environmental Action"
+        ]
       }
     },
-    "youthCommunity": {
-      "eyebrow": "AFT 유스",
-      "title": "청소년 체인지메이커들의 글로벌 커뮤니티에 참여하세요",
-      "body": "예술가·작가·디자이너·큐레이터·기획자가 더 나은 내일을 함께 그려갑니다.",
-      "cta": "AFT 유스 가입"
+    "joinGlobal": {
+      "eyebrow": "글로벌 커뮤니티 참여",
+      "title": "다음 이야기는 글로벌입니다.",
+      "cards": {
+        "youth": {
+          "title": "유스",
+          "sub": "AFT 유스 멤버 되기",
+          "body": "청소년 예술가·디자이너·작가·창작자.",
+          "cta": "AFT 가입"
+        },
+        "advisors": {
+          "title": "글로벌 어드바이저",
+          "sub": "다음 세대에 영감을",
+          "body": "예술가·교육자·환경 전문가·크리에이티브 리더.",
+          "cta": "어드바이저 되기"
+        },
+        "partners": {
+          "title": "파트너",
+          "sub": "함께 임팩트를 만들다",
+          "body": "학교·NGO·미술관·갤러리·출판사·문화기관.",
+          "cta": "AFT와 협력"
+        }
+      }
     },
     "youthLab": {
       "eyebrow": "유스 크리에이티브 랩",
@@ -70,15 +196,28 @@
       "eyebrow": "청소년 이야기",
       "readStory": "이야기 보기",
       "items": {
-        "s1": { "name": "김서진", "role": "시각 예술가", "quote": "바다를 향한 애정을 행동을 이끄는 예술로 바꿉니다." },
-        "s2": { "name": "다니엘 오코로", "role": "디자이너", "quote": "사람들이 즐겨 쓰는 친환경 제품을 디자인합니다." },
-        "s3": { "name": "아이샤 라만", "role": "프로젝트 기획자", "quote": "실제 변화를 만드는 지역사회 프로젝트를 만듭니다." }
+        "s1": {
+          "name": "김서진",
+          "role": "시각 예술가",
+          "quote": "바다를 향한 애정을 행동을 이끄는 예술로 바꿉니다."
+        },
+        "s2": {
+          "name": "다니엘 오코로",
+          "role": "디자이너",
+          "quote": "사람들이 즐겨 쓰는 친환경 제품을 디자인합니다."
+        },
+        "s3": {
+          "name": "아이샤 라만",
+          "role": "프로젝트 기획자",
+          "quote": "실제 변화를 만드는 지역사회 프로젝트를 만듭니다."
+        }
       }
     },
     "support": {
-      "title": "청소년의 창의력을 응원해주세요",
-      "body": "당신의 후원은 청소년 예술가가 지역사회 안팎에서 창작하고, 이끌고, 의미 있는 변화를 만들도록 돕습니다.",
-      "ctaDonate": "후원하기",
+      "eyebrow": "AFT 후원",
+      "title": "후원을 임팩트로 바꾸세요.",
+      "body": "당신의 후원은 청소년이 창작하고, 나누고, 행동하도록 돕습니다.",
+      "ctaDonate": "지금 후원하기",
       "ctaSponsor": "프로젝트 후원",
       "ctaVenue": "공간 제공"
     },
@@ -89,9 +228,18 @@
       "eyebrow": "최신 소식",
       "readMore": "자세히",
       "items": {
-        "n1": { "date": "2026년 8월", "title": "서울에서 청소년 전시 개막" },
-        "n2": { "date": "2026년 7월", "title": "신간 출간: Our Ocean, Our Tomorrow" },
-        "n3": { "date": "2026년 6월", "title": "청소년 모금, WWF에 ₩100만 전달" }
+        "n1": {
+          "date": "2026년 8월",
+          "title": "서울에서 청소년 전시 개막"
+        },
+        "n2": {
+          "date": "2026년 7월",
+          "title": "신간 출간: Our Ocean, Our Tomorrow"
+        },
+        "n3": {
+          "date": "2026년 6월",
+          "title": "청소년 모금, WWF에 ₩100만 전달"
+        }
       },
       "newsletter": {
         "title": "소식 받기",
@@ -153,7 +301,10 @@
       "subtitle": "기관과 협력 목표를 알려주시면 함께 협력 방안을 설계하겠습니다.",
       "time": "약 5분 소요"
     },
-    "sections": { "org": "기관 정보", "partnership": "협력" },
+    "sections": {
+      "org": "기관 정보",
+      "partnership": "협력"
+    },
     "fields": {
       "orgName": "기관명",
       "contactName": "담당자",
@@ -199,7 +350,10 @@
       "subtitle": "사회문제를 주제로 한 청소년 챌린지를 후원하고 측정 가능한 성과를 확인하세요.",
       "time": "약 5분 소요"
     },
-    "sections": { "org": "기관 정보", "sponsorship": "후원" },
+    "sections": {
+      "org": "기관 정보",
+      "sponsorship": "후원"
+    },
     "fields": {
       "orgName": "기관명",
       "contactName": "담당자",
@@ -238,7 +392,10 @@
       "subtitle": "인쇄·재료·물류·미디어로 청소년 프로젝트를 지원해주세요.",
       "time": "약 3분 소요"
     },
-    "sections": { "org": "기관 정보", "inkind": "지원 가능 항목" },
+    "sections": {
+      "org": "기관 정보",
+      "inkind": "지원 가능 항목"
+    },
     "fields": {
       "orgName": "기관명",
       "contactName": "담당자",
@@ -276,7 +433,10 @@
       "subtitle": "전문성으로 청소년 창작자를 멘토링해주세요. 아동보호 동의가 필요합니다.",
       "time": "약 3분 소요"
     },
-    "sections": { "person": "지원자 정보", "expertise": "전문 분야" },
+    "sections": {
+      "person": "지원자 정보",
+      "expertise": "전문 분야"
+    },
     "fields": {
       "name": "이름",
       "email": "이메일",
@@ -306,6 +466,47 @@
       "ref": "접수번호",
       "note": "백엔드 전송은 아직 연동되지 않았습니다 — 지원 플로우 미리보기입니다.",
       "again": "다른 지원서 제출하기"
+    }
+  },
+  "advisorForm": {
+    "hero": {
+      "eyebrow": "AFT 참여",
+      "title": "글로벌 어드바이저 되기",
+      "subtitle": "당신의 경험을 나누어 다음 세대의 청소년 창작자와 체인지메이커를 함께 키워주세요.",
+      "time": "약 3분 소요"
+    },
+    "sections": {
+      "person": "본인 정보",
+      "advisor": "활동 안내"
+    },
+    "fields": {
+      "name": "이름",
+      "email": "이메일",
+      "country": "국가",
+      "field": "전문 분야",
+      "availability": "참여 가능 시간",
+      "motivation": "어떻게 돕고 싶으신가요",
+      "consent": "AFT 아동보호 지침과 연락에 동의합니다."
+    },
+    "fieldOptions": {
+      "artist": "예술가",
+      "educator": "교육자",
+      "environment": "환경 전문가",
+      "creativeLeader": "크리에이티브 리더",
+      "other": "기타"
+    },
+    "submit": "신청서 제출",
+    "validation": {
+      "required": "필수 입력 항목입니다.",
+      "email": "올바른 이메일을 입력하세요.",
+      "consent": "동의가 필요합니다."
+    },
+    "done": {
+      "title": "신청이 접수되었습니다",
+      "body": "감사합니다! 어드바이저 신청을 접수했습니다. 곧 연락드리겠습니다.",
+      "ref": "접수번호",
+      "note": "백엔드 전송은 아직 연동되지 않았습니다 — 신청 플로우 미리보기입니다.",
+      "again": "다른 신청서 제출"
     }
   },
   "venueForm": {
@@ -442,27 +643,55 @@
       "eyebrow": "청소년 주도 운영",
       "title": "청소년이 작품만이 아니라 프로젝트를 운영합니다.",
       "items": {
-        "media": { "title": "영상·미디어", "body": "소개영상 기획, 촬영 구성, 인터뷰와 홍보 콘텐츠 제작." },
-        "event": { "title": "이벤트·전시기획", "body": "전시 동선 설계, 관람객 프로그램·캠페인 운영, 현장 진행." },
-        "editing": { "title": "편집·출판", "body": "청소년 작품과 글 편집, 그림책 구성, 프로젝트 아카이빙." },
-        "host": { "title": "청소년 진행자·발표자", "body": "행사 사회를 맡고 작품의 의미를 관람객에게 설명." }
+        "media": {
+          "title": "영상·미디어",
+          "body": "소개영상 기획, 촬영 구성, 인터뷰와 홍보 콘텐츠 제작."
+        },
+        "event": {
+          "title": "이벤트·전시기획",
+          "body": "전시 동선 설계, 관람객 프로그램·캠페인 운영, 현장 진행."
+        },
+        "editing": {
+          "title": "편집·출판",
+          "body": "청소년 작품과 글 편집, 그림책 구성, 프로젝트 아카이빙."
+        },
+        "host": {
+          "title": "청소년 진행자·발표자",
+          "body": "행사 사회를 맡고 작품의 의미를 관람객에게 설명."
+        }
       }
     },
     "beyond": {
       "eyebrow": "회화를 넘어",
       "title": "하나의 작품이 여러 형태로 확장됩니다.",
       "items": {
-        "publishing": { "title": "출판", "body": "청소년 작가의 그림책을 국내 주요 온라인 서점을 통해 출판·유통." },
-        "campaign": { "title": "환경 캠페인", "body": "조사에서 출발한 포스터·모형·제품 아이디어·참여형 캠페인." },
-        "goods": { "title": "굿즈·기부", "body": "청소년 작품으로 만든 에코백·배지 — 판매가 실제 기부로." },
-        "performance": { "title": "공연", "body": "청소년 오케스트라와 사회 진행으로 음악과 시각예술을 결합." }
+        "publishing": {
+          "title": "출판",
+          "body": "청소년 작가의 그림책을 국내 주요 온라인 서점을 통해 출판·유통."
+        },
+        "campaign": {
+          "title": "환경 캠페인",
+          "body": "조사에서 출발한 포스터·모형·제품 아이디어·참여형 캠페인."
+        },
+        "goods": {
+          "title": "굿즈·기부",
+          "body": "청소년 작품으로 만든 에코백·배지 — 판매가 실제 기부로."
+        },
+        "performance": {
+          "title": "공연",
+          "body": "청소년 오케스트라와 사회 진행으로 음악과 시각예술을 결합."
+        }
       }
     },
     "books": {
       "eyebrow": "청소년 출판",
       "title": "청소년 작가의 실제 도서",
       "note": "대표 청소년 창작 도서",
-      "items": ["쌍둥이의 밤", "별이 된 스프", "아기새의 모험"]
+      "items": [
+        "쌍둥이의 밤",
+        "별이 된 스프",
+        "아기새의 모험"
+      ]
     },
     "values": {
       "eyebrow": "가치",
@@ -506,10 +735,26 @@
       "title": "산정근거가 있는 실적.",
       "baseYear": "기준연도 2026",
       "items": {
-        "youth": { "value": "28", "label": "참여 청소년", "note": "Our Ocean, Our Tomorrow" },
-        "raised": { "value": "₩1,434,000", "label": "예술로 조성한 모금액", "note": "에코백 1,152,000원 + 배지 282,000원" },
-        "donated": { "value": "₩1,000,000", "label": "WWF 기부금", "note": "2026년, 일시" },
-        "books": { "value": "3+", "label": "청소년 출판 도서", "note": "국내 주요 온라인 서점 유통" }
+        "youth": {
+          "value": "28",
+          "label": "참여 청소년",
+          "note": "Our Ocean, Our Tomorrow"
+        },
+        "raised": {
+          "value": "₩1,434,000",
+          "label": "예술로 조성한 모금액",
+          "note": "에코백 1,152,000원 + 배지 282,000원"
+        },
+        "donated": {
+          "value": "₩1,000,000",
+          "label": "WWF 기부금",
+          "note": "2026년, 일시"
+        },
+        "books": {
+          "value": "3+",
+          "label": "청소년 출판 도서",
+          "note": "국내 주요 온라인 서점 유통"
+        }
       }
     },
     "featured": {
@@ -522,10 +767,22 @@
       "eyebrow": "분야별 임팩트",
       "title": "창의력이 작동한 영역",
       "items": {
-        "art": { "title": "예술", "body": "환경을 주제로 한 회화·일러스트·입체 모형." },
-        "publishing": { "title": "출판", "body": "청소년이 직접 쓴 그림책과 스토리 콘텐츠." },
-        "environment": { "title": "환경", "body": "캠페인·포스터와 실제 WWF 기부." },
-        "public": { "title": "공공", "body": "사회문제를 위한 제품·공공디자인 아이디어." }
+        "art": {
+          "title": "예술",
+          "body": "환경을 주제로 한 회화·일러스트·입체 모형."
+        },
+        "publishing": {
+          "title": "출판",
+          "body": "청소년이 직접 쓴 그림책과 스토리 콘텐츠."
+        },
+        "environment": {
+          "title": "환경",
+          "body": "캠페인·포스터와 실제 WWF 기부."
+        },
+        "public": {
+          "title": "공공",
+          "body": "사회문제를 위한 제품·공공디자인 아이디어."
+        }
       }
     },
     "donation": {
@@ -533,11 +790,26 @@
       "title": "조성 · 사용 · 결과",
       "note": "기준연도 2026. Our Ocean, Our Tomorrow 캠페인 기준.",
       "rows": {
-        "ecobags": { "label": "에코백 판매 (64개)", "value": "₩1,152,000" },
-        "badges": { "label": "배지 판매 (94개)", "value": "₩282,000" },
-        "total": { "label": "총 조성액", "value": "₩1,434,000" },
-        "cost": { "label": "제작비", "value": "₩576,000" },
-        "donated": { "label": "WWF 기부 (부족분 보전)", "value": "₩1,000,000" }
+        "ecobags": {
+          "label": "에코백 판매 (64개)",
+          "value": "₩1,152,000"
+        },
+        "badges": {
+          "label": "배지 판매 (94개)",
+          "value": "₩282,000"
+        },
+        "total": {
+          "label": "총 조성액",
+          "value": "₩1,434,000"
+        },
+        "cost": {
+          "label": "제작비",
+          "value": "₩576,000"
+        },
+        "donated": {
+          "label": "WWF 기부 (부족분 보전)",
+          "value": "₩1,000,000"
+        }
       }
     },
     "transparency": {
@@ -562,19 +834,40 @@
       "eyebrow": "협력의 가치",
       "title": "청소년·사회·기관 모두를 위한 가치.",
       "items": {
-        "youth": { "title": "청소년에게", "body": "청소년 창작자를 위한 실제 무대·멘토·관객." },
-        "society": { "title": "사회에", "body": "측정 가능한 변화를 만드는 청소년 주도 캠페인." },
-        "org": { "title": "기관에", "body": "성과가 검증되는 진정성 있는 ESG·CSR 콘텐츠." }
+        "youth": {
+          "title": "청소년에게",
+          "body": "청소년 창작자를 위한 실제 무대·멘토·관객."
+        },
+        "society": {
+          "title": "사회에",
+          "body": "측정 가능한 변화를 만드는 청소년 주도 캠페인."
+        },
+        "org": {
+          "title": "기관에",
+          "body": "성과가 검증되는 진정성 있는 ESG·CSR 콘텐츠."
+        }
       }
     },
     "models": {
       "eyebrow": "협력 모델",
       "title": "함께하는 방법",
       "items": {
-        "corporate": { "title": "기업", "body": "프로젝트·챌린지·캠페인을 후원합니다." },
-        "public": { "title": "공공", "body": "공공기관과 프로그램을 공동 운영합니다." },
-        "venue": { "title": "공간", "body": "전시·워크숍·행사를 위한 공간을 제공합니다." },
-        "inkind": { "title": "현물", "body": "인쇄·재료·미디어·물류를 지원합니다." }
+        "corporate": {
+          "title": "기업",
+          "body": "프로젝트·챌린지·캠페인을 후원합니다."
+        },
+        "public": {
+          "title": "공공",
+          "body": "공공기관과 프로그램을 공동 운영합니다."
+        },
+        "venue": {
+          "title": "공간",
+          "body": "전시·워크숍·행사를 위한 공간을 제공합니다."
+        },
+        "inkind": {
+          "title": "현물",
+          "body": "인쇄·재료·미디어·물류를 지원합니다."
+        }
       }
     },
     "how": {
@@ -585,11 +878,26 @@
       "eyebrow": "시작하기",
       "title": "협력 방식을 선택하세요",
       "items": {
-        "partner": { "title": "파트너 되기", "body": "기관 · 목표 · 국가 · 일정" },
-        "venue": { "title": "공간 제공", "body": "주소 · 면적 · 수용인원 · 장비 · 가능일" },
-        "sponsor": { "title": "챌린지 후원", "body": "사회문제 · 예산 · 기간 · 성과목표" },
-        "inkind": { "title": "현물 지원", "body": "인쇄 · 재료 · 운송 · 미디어" },
-        "expert": { "title": "전문 봉사", "body": "전문분야 · 가능시간 · 아동보호 동의" }
+        "partner": {
+          "title": "파트너 되기",
+          "body": "기관 · 목표 · 국가 · 일정"
+        },
+        "venue": {
+          "title": "공간 제공",
+          "body": "주소 · 면적 · 수용인원 · 장비 · 가능일"
+        },
+        "sponsor": {
+          "title": "챌린지 후원",
+          "body": "사회문제 · 예산 · 기간 · 성과목표"
+        },
+        "inkind": {
+          "title": "현물 지원",
+          "body": "인쇄 · 재료 · 운송 · 미디어"
+        },
+        "expert": {
+          "title": "전문 봉사",
+          "body": "전문분야 · 가능시간 · 아동보호 동의"
+        }
       }
     }
   },
@@ -605,10 +913,22 @@
       "eyebrow": "후원 목적 선택",
       "title": "후원금이 쓰이는 곳",
       "items": {
-        "mission": { "title": "미션", "body": "AFT의 청소년 예술 프로그램 전반을 지원합니다." },
-        "project": { "title": "프로젝트", "body": "특정 청소년 프로젝트를 후원합니다." },
-        "scholarship": { "title": "장학", "body": "청소년 창작자의 참여를 돕습니다." },
-        "product": { "title": "제품", "body": "친환경 굿즈·캠페인 제작을 지원합니다." }
+        "mission": {
+          "title": "미션",
+          "body": "AFT의 청소년 예술 프로그램 전반을 지원합니다."
+        },
+        "project": {
+          "title": "프로젝트",
+          "body": "특정 청소년 프로젝트를 후원합니다."
+        },
+        "scholarship": {
+          "title": "장학",
+          "body": "청소년 창작자의 참여를 돕습니다."
+        },
+        "product": {
+          "title": "제품",
+          "body": "친환경 굿즈·캠페인 제작을 지원합니다."
+        }
       }
     },
     "amount": {
@@ -654,21 +974,48 @@
       "eyebrow": "회원 역할",
       "title": "어떻게 창작하고 싶은지 선택하세요.",
       "items": {
-        "artist": { "title": "예술가", "body": "회화·일러스트 등 시각 작품을 만듭니다." },
-        "author": { "title": "작가", "body": "이야기를 쓰고 그림책을 만듭니다." },
-        "designer": { "title": "디자이너", "body": "제품·포스터·공공디자인을 만듭니다." },
-        "planner": { "title": "기획자", "body": "전시·캠페인·행사를 기획합니다." },
-        "leader": { "title": "리더", "body": "사회·발표를 맡고 청소년 팀을 이끕니다." }
+        "artist": {
+          "title": "예술가",
+          "body": "회화·일러스트 등 시각 작품을 만듭니다."
+        },
+        "author": {
+          "title": "작가",
+          "body": "이야기를 쓰고 그림책을 만듭니다."
+        },
+        "designer": {
+          "title": "디자이너",
+          "body": "제품·포스터·공공디자인을 만듭니다."
+        },
+        "planner": {
+          "title": "기획자",
+          "body": "전시·캠페인·행사를 기획합니다."
+        },
+        "leader": {
+          "title": "리더",
+          "body": "사회·발표를 맡고 청소년 팀을 이끕니다."
+        }
       }
     },
     "how": {
       "eyebrow": "참여 방법",
       "title": "가입 → 선택 → 창작 → 공유",
       "steps": {
-        "join": { "title": "가입", "body": "보호자 동의와 함께 청소년 회원으로 가입합니다." },
-        "choose": { "title": "선택", "body": "관심에 맞는 프로젝트를 고릅니다." },
-        "create": { "title": "창작", "body": "청소년 팀과 함께 작품을 만듭니다." },
-        "share": { "title": "공유", "body": "전시·출판·캠페인으로 실제 변화를 만듭니다." }
+        "join": {
+          "title": "가입",
+          "body": "보호자 동의와 함께 청소년 회원으로 가입합니다."
+        },
+        "choose": {
+          "title": "선택",
+          "body": "관심에 맞는 프로젝트를 고릅니다."
+        },
+        "create": {
+          "title": "창작",
+          "body": "청소년 팀과 함께 작품을 만듭니다."
+        },
+        "share": {
+          "title": "공유",
+          "body": "전시·출판·캠페인으로 실제 변화를 만듭니다."
+        }
       }
     },
     "benefits": {
@@ -786,5 +1133,26 @@
     "social": "소셜",
     "rights": "AFT — Arts For Tomorrow. 모든 권리 보유.",
     "legalNote": "AFT는 글로벌 비영리 청소년 예술단체입니다."
+  },
+  "globalNetwork": {
+    "eyebrow": "글로벌 네트워크",
+    "title": "서울에서 세계로.",
+    "body": "서울의 청소년 28명에서 시작된 이야기가 전 세계 청소년 예술가·사상가·체인지메이커에게 열리고 있습니다. 이곳에서 네트워크가 — 진짜 이야기 하나하나씩 — 자라납니다.",
+    "cta": "무브먼트 참여하기",
+    "table": {
+      "title": "현재까지의 네트워크",
+      "country": "국가",
+      "city": "도시",
+      "members": "유스 멤버",
+      "projects": "프로젝트",
+      "partners": "파트너",
+      "founding": "창립 지부"
+    },
+    "status": {
+      "active": "활동 중",
+      "opening": "열리는 중"
+    },
+    "openNote": "새로운 도시는 실제 청소년·학교·파트너가 참여할 때에만 이곳에 표시됩니다 — 지도는 움직임과 함께 자랍니다.",
+    "mapLabel": "Seoul · 2026 시작"
   }
 }

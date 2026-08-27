@@ -7,17 +7,8 @@ import { CtaLink } from "@/components/ui/CtaLink";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { AftImage } from "@/components/ui/AftImage";
 import { media } from "@/config/media";
-
-// Partner logos — drop grayscale-friendly files (svg/png) into public/images/partners/
-// and set `logo` to the path. `logo: null` falls back to the text name.
-const PARTNERS: { name: string; logo: string | null }[] = [
-  { name: "WWF", logo: null },
-  { name: "Oceana", logo: null },
-  { name: "National Geographic", logo: null },
-  { name: "The Body Shop", logo: null },
-  { name: "Patagonia Foundation", logo: null },
-  { name: "Google.org", logo: "/images/partners/google-org.svg" },
-];
+import { HeroVideo } from "@/components/home/HeroVideo";
+import { DottedWorldMap } from "@/components/home/DottedWorldMap";
 
 export default function HomePage({
   params,
@@ -30,420 +21,399 @@ export default function HomePage({
 
   return (
     <>
-      {/* HERO — full-bleed background photo + left text overlay */}
-      <section className="relative isolate flex min-h-[620px] items-center overflow-hidden bg-navy text-white">
-        {media.homeHero.src ? (
-          <>
-            <AftImage
-              src={media.homeHero.src}
-              alt={media.homeHero.alt}
-              priority
-              sizes="100vw"
-              className="absolute inset-0 -z-10 h-full w-full rounded-none"
-            />
-            <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navy via-navy/85 to-navy/30" />
-          </>
-        ) : (
-          <div className="absolute inset-0 -z-10 bg-gradient-to-br from-navy-deep via-navy to-navy-soft" />
-        )}
+      {/* 01 · HERO — full-bleed activity video (runs under the transparent header) */}
+      <section className="relative isolate -mt-20 flex min-h-[720px] items-center overflow-hidden bg-navy text-white">
+        <HeroVideo />
+        {/* Decorative oversized AFT watermark, bottom-right */}
+        <span
+          aria-hidden
+          className="pointer-events-none absolute -bottom-6 right-2 select-none text-[24vw] font-extrabold leading-none tracking-[-0.03em] text-white/20 lg:right-6 lg:text-[16rem]"
+        >
+          AFT
+        </span>
         <div className="container-aft py-32 lg:py-40">
           <div className="max-w-2xl">
-            <span className="mb-6 block h-1 w-16 bg-accent" />
-            <h1 className="text-4xl font-extrabold leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
-              {t("hero.title")}
+            <h1 className="text-5xl font-extrabold leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl">
+              {t("hero.title1")}
+              <br />
+              {t("hero.title2")}
             </h1>
-            <p className="mt-7 max-w-xl text-lg text-white/80 lg:text-xl">
+            <p className="mt-7 max-w-xl whitespace-pre-line text-lg font-light text-white/85 lg:text-xl">
               {t("hero.subtitle")}
             </p>
             <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <CtaLink href={routes.join} variant="primary" event="join_click">
+              <Link
+                href={routes.about}
+                className="inline-flex items-center justify-center rounded-sm bg-white px-6 py-3 text-sm font-semibold uppercase tracking-wide text-ink transition-colors hover:bg-white/90"
+              >
+                {t("hero.ctaDiscover")}
+              </Link>
+              <Link
+                href={routes.join}
+                className="inline-flex items-center justify-center rounded-sm border border-white/50 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition-colors hover:bg-white/10"
+              >
                 {t("hero.ctaJoin")}
-              </CtaLink>
-              <CtaLink href={routes.projects} variant="secondary">
-                {t("hero.ctaProjects")}
-              </CtaLink>
-              <CtaLink href={routes.partners} variant="secondary">
-                {t("hero.ctaPartner")}
-              </CtaLink>
+              </Link>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ABOUT — text left + image grid right */}
-      <section className="bg-white py-24 md:py-32">
-        <div className="container-aft flex flex-col gap-12 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
-          <div className="lg:flex-1">
-            <p className="eyebrow">{t("about.eyebrow")}</p>
-            <p className="mt-4 text-2xl font-bold leading-snug text-ink sm:text-3xl">
-              {t("about.lead")}
+            <p className="mt-10 text-sm font-light tracking-wide text-white">
+              {t("hero.tagline")}
             </p>
-            <p className="mt-5 text-lg text-muted">{t("about.body")}</p>
-            <div className="mt-8">
-              <CtaLink href={routes.about} variant="text">
-                {t("about.cta")}
-              </CtaLink>
-            </div>
-          </div>
-          <div className="grid grid-cols-3 gap-4 lg:flex lg:flex-none">
-            <AftImage {...media.aboutGrid1} className="aspect-[3/4] w-full lg:w-[211px]" />
-            <AftImage {...media.aboutGrid2} className="aspect-[3/4] w-full lg:w-[211px]" />
-            <AftImage {...media.aboutGrid3} className="aspect-[3/4] w-full lg:w-[211px]" />
           </div>
         </div>
       </section>
 
-      {/* OUR IMPACT — compact stats strip */}
-      <section className="border-y border-line bg-surface py-14">
-        <div className="container-aft flex flex-col gap-10 md:flex-row md:items-center md:justify-between md:gap-8">
-          <p className="max-w-[6rem] text-2xl font-extrabold uppercase leading-[1.05] tracking-wide text-teal">
-            {t("impact.eyebrow")}
-          </p>
-          <div className="grid grid-cols-1 gap-10 sm:grid-cols-3 md:flex md:gap-[42px]">
-            {(["youth", "donated", "goods"] as const).map((k, i) => (
-              <div key={k} className="flex items-center gap-3">
-                <span className="mr-[5px] flex-none text-teal">
-                  <StatIcon i={i} />
-                </span>
-                <div>
-                  <div className="text-3xl font-extrabold text-teal">
-                    {t(`impact.stats.${k}.value`)}
+      {/* 02 · WHO WE ARE — text left · pillars (× separated) + image row right */}
+      <section id="who" className="bg-white py-24 md:py-32">
+        <div className="container-aft flex flex-col gap-12 lg:flex-row lg:gap-16">
+          {/* LEFT — heading + body + CTA */}
+          <div className="lg:w-[35%] lg:shrink-0">
+            <p className="eyebrow">{t("who.eyebrow")}</p>
+            <h2 className="mt-4 whitespace-pre-line text-3xl font-extrabold uppercase leading-[1.05] tracking-tight text-ink sm:text-4xl">
+              {t("who.title")}
+            </h2>
+            <p className="mt-6 text-muted">{t("who.body1")}</p>
+            <p className="mt-4 text-muted">{t("who.body2")}</p>
+            <div className="mt-6">
+              <CtaLink href={routes.about} variant="text">
+                {t("who.cta")}
+              </CtaLink>
+            </div>
+          </div>
+
+          {/* RIGHT — pillars row + 4-image row */}
+          <div className="lg:flex-1">
+            <div className="mt-[30px] flex flex-wrap items-start gap-x-10 gap-y-6">
+              {(["art", "youth", "environment", "social"] as const).map(
+                (k, i, arr) => (
+                  <div key={k} className="flex items-center gap-5">
+                    <div className="flex items-start gap-2">
+                      <span className="shrink-0 text-teal">
+                        <PillarIcon i={i} />
+                      </span>
+                      <div className="min-w-[100px] max-w-[150px]">
+                        <h3 className="text-sm font-bold uppercase tracking-wide text-ink">
+                          {t(`who.pillars.${k}.label`)}
+                        </h3>
+                        <p className="mt-2 whitespace-pre-line text-xs text-muted">
+                          {t(`who.pillars.${k}.blurb`)}
+                        </p>
+                      </div>
+                    </div>
+                    {i < arr.length - 1 && (
+                      <span
+                        aria-hidden
+                        className="hidden text-lg font-light text-black lg:block"
+                      >
+                        ×
+                      </span>
+                    )}
                   </div>
-                  <div className="max-w-[5.5rem] text-base font-semibold uppercase leading-[1.1] tracking-wide text-navy">
-                    {t(`impact.stats.${k}.label`)}
+                )
+              )}
+            </div>
+            <div className="mt-[60px] grid grid-cols-2 gap-4 sm:grid-cols-4">
+              <AftImage {...media.aboutGrid1} className="h-[168px] w-full" />
+              <AftImage {...media.aboutGrid2} className="h-[168px] w-full" />
+              <AftImage {...media.aboutGrid3} className="h-[168px] w-full" />
+              <AftImage {...media.aboutGrid4} className="h-[168px] w-full" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 03 · OUR IMPACT IN 2026 — horizontal stat strip */}
+      <section
+        id="impact"
+        className="relative overflow-hidden border-y border-line bg-surface py-14"
+      >
+        <div className="container-aft relative flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-10">
+          <p className="max-w-[7rem] text-xl font-extrabold uppercase leading-[1.05] tracking-wide text-[#3E7035]">
+            {t("impact.title")}
+          </p>
+          <ol className="flex flex-1 flex-wrap items-center gap-x-[54px] gap-y-8 lg:pr-[280px]">
+            {(["creators", "goods", "donated", "project"] as const).map(
+              (k, i, arr) => {
+                const color = [
+                  "text-navy",
+                  "text-[#57a83f]",
+                  "text-teal",
+                  "text-[#6741d9]",
+                ][i];
+                return (
+                  <li key={k} className="flex items-center gap-4">
+                    <div
+                      className={`flex min-w-[90px] flex-col items-center text-center ${color}`}
+                    >
+                      <div className="text-3xl font-extrabold">
+                        {t(`impact.stats.${k}.value`)}
+                      </div>
+                      <div className="mt-[14px] max-w-[145px] text-[14px] font-semibold uppercase leading-[1.15] tracking-wide">
+                        {t(`impact.stats.${k}.label`)}
+                      </div>
+                      <span className="mt-3 block">
+                        <StatIcon i={i} small />
+                      </span>
+                    </div>
+                    {i < arr.length - 1 && (
+                      <span aria-hidden className="hidden text-line lg:block">
+                        →
+                      </span>
+                    )}
+                  </li>
+                );
+              }
+            )}
+          </ol>
+          {/* Full-height image pinned to the right edge, flush (no left gap) */}
+          <div className="absolute right-0 hidden lg:block lg:-top-14 lg:h-[calc(100%+112px)] lg:w-[340px]">
+            <AftImage
+              {...media.impactImg1}
+              className="h-full w-full rounded-none"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* 04 · WHERE OUR STORY BEGAN + journey (Seoul · 2026) */}
+      <section id="story" className="bg-white py-24 md:py-32">
+        <div className="container-aft flex flex-col gap-10 lg:flex-row lg:gap-12">
+          {/* LEFT — intro + view all photos */}
+          <div className="lg:w-[24%] lg:shrink-0">
+            <h2 className="whitespace-pre-line text-2xl font-extrabold uppercase leading-[1.1] tracking-tight text-ink sm:text-3xl">
+              {t("story.eyebrow")}
+            </h2>
+            <p className="mt-3 text-base font-bold uppercase tracking-[0.2em] text-accent-hover">
+              {t("story.place")}
+            </p>
+            <p className="mt-4 text-base text-muted">{t("story.tagline")}</p>
+            <div className="mt-6">
+              <CtaLink
+                href={`${routes.projects}/our-ocean-our-tomorrow`}
+                variant="text"
+                event="project_view"
+              >
+                {t("story.viewAll")}
+              </CtaLink>
+            </div>
+          </div>
+
+          {/* RIGHT — photo strip + 01→05 steps */}
+          <div className="lg:flex-1">
+            <div className="grid grid-cols-3 gap-3 sm:grid-cols-5">
+              <AftImage {...media.storyShot1} className="aspect-[4/3] w-full" />
+              <AftImage {...media.storyShot2} className="aspect-[4/3] w-full" />
+              <AftImage {...media.storyShot3} className="aspect-[4/3] w-full" />
+              <AftImage {...media.storyShot4} className="aspect-[4/3] w-full" />
+              <AftImage {...media.storyShot5} className="aspect-[4/3] w-full" />
+            </div>
+            <ol className="mt-10 flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-2">
+              {(["create", "exhibit", "share", "donate", "act"] as const).map(
+                (k, i, arr) => (
+                  <li key={k} className="flex items-start gap-2 sm:flex-1">
+                    <div>
+                      <span className="text-lg font-extrabold text-accent">
+                        {t(`journey.steps.${k}.no`)}
+                      </span>
+                      <h3 className="mt-1 text-sm font-bold uppercase tracking-wide text-ink">
+                        {t(`journey.steps.${k}.title`)}
+                      </h3>
+                      <p className="mt-1 text-xs text-muted">
+                        {t(`journey.steps.${k}.body`)}
+                      </p>
+                    </div>
+                    {i < arr.length - 1 && (
+                      <span
+                        aria-hidden
+                        className="mt-6 hidden shrink-0 text-line sm:block"
+                      >
+                        →
+                      </span>
+                    )}
+                  </li>
+                )
+              )}
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      {/* 05 · CREATIVITY BECAME REAL IMPACT — AFT × WWF (light) */}
+      <section id="donation" className="bg-white py-24 md:py-32">
+        <div className="container-aft flex flex-col gap-12 lg:flex-row lg:gap-16">
+          {/* LEFT — headline + amount + watch */}
+          <div className="lg:w-[30%] lg:shrink-0">
+            <h2 className="text-2xl font-extrabold uppercase leading-[1.1] tracking-tight text-ink sm:text-3xl">
+              {t("donation.title")}
+            </h2>
+            <div className="mt-6 text-4xl font-extrabold text-teal sm:text-5xl">
+              {t("donation.amount")}
+            </div>
+            <p className="mt-1 text-sm font-semibold uppercase tracking-wide text-navy">
+              {t("donation.amountLabel")}
+            </p>
+            <p className="mt-4 text-sm text-muted">{t("donation.ceremony")}</p>
+            <p className="mt-6 inline-flex items-center gap-2 rounded-md bg-navy px-5 py-2.5 text-sm font-semibold uppercase tracking-wide text-white">
+              <PlayIcon />
+              {t("donation.watch")}
+              <span className="font-normal normal-case text-white/60">
+                · {t("donation.watchSoon")}
+              </span>
+            </p>
+          </div>
+
+          {/* RIGHT — ceremony image + captioned follow-ups */}
+          <div className="lg:flex-1">
+            <AftImage
+              {...media.wwfCeremony}
+              label="AFT × WWF · ₩1,000,000"
+              className="aspect-[16/7] w-full"
+            />
+            <div className="mt-4 grid grid-cols-3 gap-4">
+              {(t.raw("donation.followup") as string[]).map((c, i) => {
+                const slot = [
+                  media.wwfFollow1,
+                  media.wwfFollow2,
+                  media.wwfFollow3,
+                ][i];
+                return (
+                  <figure key={c}>
+                    <AftImage {...slot} className="aspect-[4/3] w-full" />
+                    <figcaption className="mt-2 text-xs font-bold uppercase leading-tight tracking-wide text-navy">
+                      {c}
+                    </figcaption>
+                  </figure>
+                );
+              })}
+            </div>
+            <p className="mt-4 text-xs uppercase tracking-wide text-muted/70">
+              {t("donation.note")}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 06 · THIS IS ONLY THE BEGINNING → FROM SEOUL TO THE WORLD */}
+      <section id="global" className="bg-surface py-24 md:py-32">
+        <div className="container-aft">
+          <h2 className="text-2xl font-extrabold uppercase tracking-tight text-ink sm:text-3xl">
+            {t("beginning.title")}
+          </h2>
+          <div className="mt-12 grid items-center gap-10 lg:grid-cols-[1fr_1.5fr_1fr]">
+            <p className="text-muted">{t("global.body")}</p>
+            <DottedWorldMap seoulLabel={t("global.seoul")} />
+            <div>
+              <h3 className="text-2xl font-extrabold uppercase leading-tight tracking-tight text-ink sm:text-3xl">
+                {t("global.title")}
+              </h3>
+              <p className="mt-4 text-muted">{t("global.body2")}</p>
+              <div className="mt-6">
+                <CtaLink href={routes.globalNetwork} variant="primary">
+                  {t("global.cta")} →
+                </CtaLink>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 07 · JOIN THE GLOBAL COMMUNITY — overlay photo cards */}
+      <section id="join-global" className="bg-white py-24 md:py-32">
+        <div className="container-aft">
+          <SectionHeading
+            eyebrow={t("joinGlobal.eyebrow")}
+            title={t("joinGlobal.title")}
+            centered
+          />
+          <div className="mt-16 grid gap-8 lg:grid-cols-3">
+            {(
+              [
+                { key: "youth", href: routes.join, event: "join_click", slot: media.joinYouth },
+                { key: "advisors", href: routes.advisor, event: undefined, slot: media.joinAdvisors },
+                { key: "partners", href: routes.partners, event: undefined, slot: media.joinPartners },
+              ] as const
+            ).map(({ key, href, event, slot }) => (
+              <div
+                key={key}
+                className="relative flex min-h-[360px] flex-col justify-end overflow-hidden rounded-xl"
+              >
+                <AftImage
+                  {...slot}
+                  className="absolute inset-0 h-full w-full rounded-none"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/70 to-navy/10" />
+                <div className="relative p-7 text-white">
+                  <p className="text-xs font-bold uppercase tracking-[0.2em] text-accent">
+                    {t(`joinGlobal.cards.${key}.sub`)}
+                  </p>
+                  <h3 className="mt-2 text-2xl font-extrabold">
+                    {t(`joinGlobal.cards.${key}.title`)}
+                  </h3>
+                  <p className="mt-2 text-sm text-white/80">
+                    {t(`joinGlobal.cards.${key}.body`)}
+                  </p>
+                  <div className="mt-5">
+                    <CtaLink href={href} variant="secondary" event={event}>
+                      {t(`joinGlobal.cards.${key}.cta`)} →
+                    </CtaLink>
                   </div>
                 </div>
               </div>
             ))}
           </div>
-          <div className="hidden flex-none gap-3 lg:flex">
-            <AftImage {...media.impactImg1} className="h-36 w-[165px]" />
-            <AftImage {...media.impactImg2} className="h-36 w-[165px]" />
-            <AftImage {...media.impactImg3} className="h-36 w-[165px]" />
-          </div>
         </div>
       </section>
 
-      {/* FEATURED PROJECT — collage within 1400px container */}
-      <section className="bg-white lg:pt-[30px]">
-        <div className="container-aft flex flex-col lg:flex-row">
-          {/* LEFT — ocean image, flush to left edge, ~20px top space from section */}
-          <AftImage
-            {...media.homeFeatured}
-            label="Our Ocean, Our Tomorrow"
-            className="h-72 w-full lg:h-[500px] lg:w-[410px] lg:shrink-0"
-          />
-
-          {/* RIGHT — text + wide image on top, thumbnails below the text */}
-          <div className="flex min-w-0 flex-1 flex-col">
-            {/* TOP: text (left) + wide gallery image (shorter, top+bottom space, flush right) */}
-            <div className="flex flex-col lg:flex-row lg:items-start">
-              <div className="flex flex-col justify-center px-8 py-10 lg:w-[450px] lg:shrink-0 lg:pl-[38px] lg:pr-2 lg:py-8">
-                <p className="eyebrow">{t("featured.eyebrow")}</p>
-                <h2 className="mt-3 text-3xl font-bold text-ink sm:text-4xl">
-                  {(() => {
-                    const title = t("featured.title");
-                    const i = title.indexOf(", ");
-                    return i === -1 ? (
-                      title
-                    ) : (
-                      <>
-                        {title.slice(0, i + 1)}
-                        <br />
-                        {title.slice(i + 2)}
-                      </>
-                    );
-                  })()}
-                </h2>
-                <p className="mt-4 text-lg text-muted">{t("featured.body")}</p>
-                <div className="mt-6">
-                  <CtaLink
-                    href={`${routes.projects}/our-ocean-our-tomorrow`}
-                    variant="text"
-                    event="project_view"
-                  >
-                    {t("featured.cta")}
-                  </CtaLink>
-                </div>
-              </div>
-              <AftImage
-                {...media.featWide}
-                className="h-64 w-full lg:mb-5 lg:h-[300px] lg:min-w-0 lg:flex-1"
-              />
-            </div>
-
-            {/* BOTTOM: thumbnails — pinned to the very bottom, fit within container */}
-            <div className="grid grid-cols-4 gap-[10px] px-8 lg:mt-auto lg:pl-[38px] lg:pr-0">
-              <AftImage {...media.featThumb1} tone="ocean" className="h-[174px] w-full" />
-              <AftImage {...media.featThumb2} className="h-[174px] w-full" />
-              <AftImage {...media.featThumb3} className="h-[174px] w-full" />
-              <AftImage {...media.featThumb4} className="h-[174px] w-full" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* WHAT WE DO — 4 photo-top cards */}
-      <section className="bg-surface py-24 md:py-32">
-        <div className="container-aft">
-          <SectionHeading eyebrow={t("whatWeDo.eyebrow")} title="Create · Connect · Act · Change" centered />
-          <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {(["create", "connect", "act", "change"] as const).map((k, i) => {
-              const slot = [
-                media.wwdCreate,
-                media.wwdConnect,
-                media.wwdAct,
-                media.wwdChange,
-              ][i];
-              return (
-                <div key={k} className="flex h-full flex-col bg-white">
-                  <AftImage {...slot} className="aspect-[4/3] w-full" />
-                  <div className="flex flex-1 flex-col p-6">
-                    <h3 className="text-lg font-bold uppercase text-ink">
-                      {t(`whatWeDo.items.${k}.title`)}
-                    </h3>
-                    <p className="mt-2 text-sm text-muted">
-                      {t(`whatWeDo.items.${k}.body`)}
-                    </p>
-                    <div className="mt-auto pt-4">
-                      <CtaLink href={routes.about} variant="text">
-                        {t(`whatWeDo.items.${k}.cta`)}
-                      </CtaLink>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* AFT YOUTH — text left + image right */}
-      <section className="bg-white py-24 md:py-32">
+      {/* 08 · SUPPORT AFT — light band, text left + earth/DONATE right */}
+      <section className="border-t border-line bg-white py-20 md:py-24">
         <div className="container-aft flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-16">
+          {/* LEFT — heading + body + support links */}
           <div className="lg:flex-1">
-            <SectionHeading
-              eyebrow={t("youthCommunity.eyebrow")}
-              title={(() => {
-                const title = t("youthCommunity.title");
-                const i = title.indexOf(" of ");
-                return i === -1 ? (
-                  title
-                ) : (
-                  <>
-                    {title.slice(0, i)}
-                    <br />
-                    {title.slice(i + 1)}
-                  </>
-                );
-              })()}
-            />
-            <p className="mt-5 text-lg text-muted">{t("youthCommunity.body")}</p>
-            <div className="mt-8">
-              <CtaLink href={routes.join} variant="primary" event="join_click">
-                {t("youthCommunity.cta")}
-              </CtaLink>
-            </div>
-          </div>
-          <AftImage
-            {...media.homeCommunity}
-            className="aspect-[4/3] w-full lg:aspect-auto lg:h-[360px] lg:w-[846px] lg:shrink-0"
-          />
-        </div>
-      </section>
-
-      {/* YOUTH CREATIVE LAB — big image left · text · two stacked images right */}
-      <section className="bg-surface py-24 md:py-32">
-        <div className="container-aft flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-12">
-          {/* LEFT big image */}
-          <AftImage
-            {...media.homeLab}
-            className="aspect-[4/3] w-full lg:aspect-auto lg:h-[400px] lg:w-[38%] lg:shrink-0"
-          />
-          {/* MIDDLE text */}
-          <div className="lg:flex-1">
-            <SectionHeading
-              eyebrow={t("youthLab.eyebrow")}
-              title={t("youthLab.title")}
-            />
-            <p className="mt-5 text-lg text-muted">{t("youthLab.body")}</p>
-            <div className="mt-8">
-              <CtaLink href={routes.projects} variant="text">
-                {t("youthLab.cta")}
-              </CtaLink>
-            </div>
-          </div>
-          {/* RIGHT two images stacked vertically */}
-          <div className="grid grid-cols-2 gap-4 lg:flex lg:w-[280px] lg:shrink-0 lg:flex-col">
-            <AftImage
-              {...media.labImg1}
-              className="aspect-[4/3] w-full lg:aspect-auto lg:h-[192px]"
-            />
-            <AftImage
-              {...media.labImg2}
-              className="aspect-[4/3] w-full lg:aspect-auto lg:h-[192px]"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* YOUTH STORIES — testimonial cards */}
-      <section className="bg-white py-24 md:py-32">
-        <div className="container-aft">
-          <SectionHeading eyebrow={t("stories.eyebrow")} title="" centered />
-          <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {(["s1", "s2", "s3"] as const).map((k, i) => {
-              const slot = [media.homeStory1, media.homeStory2, media.homeStory3][i];
-              return (
-                <div
-                  key={k}
-                  className="flex overflow-hidden rounded-md border border-line bg-white shadow-sm"
-                >
-                  {/* left 50% image */}
-                  <AftImage
-                    {...slot}
-                    className="w-1/2 shrink-0 self-stretch"
-                  />
-                  {/* right 50% text */}
-                  <div className="w-1/2 p-6">
-                    <h3 className="font-bold text-ink">
-                      {t(`stories.items.${k}.name`)}
-                    </h3>
-                    <p className="text-sm text-accent-hover">
-                      {t(`stories.items.${k}.role`)}
-                    </p>
-                    <blockquote className="mt-3 text-sm text-muted">
-                      “{t(`stories.items.${k}.quote`)}”
-                    </blockquote>
-                    <div className="mt-4">
-                      <CtaLink href={routes.stories} variant="text">
-                        {t("stories.readStory")}
-                      </CtaLink>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* SUPPORT — background image band with text + icon buttons overlaid */}
-      <section className="relative isolate flex items-center overflow-hidden bg-navy py-16 text-white lg:min-h-[440px]">
-        {media.homeSupport.src && (
-          <>
-            <AftImage
-              src={media.homeSupport.src}
-              alt={media.homeSupport.alt}
-              sizes="100vw"
-              className="absolute inset-0 -z-10 h-full w-full rounded-none"
-            />
-            <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navy via-navy/85 to-navy/30" />
-          </>
-        )}
-        <div className="container-aft">
-          <div className="max-w-xl">
-            <h2 className="text-3xl font-extrabold sm:text-4xl">
+            <p className="eyebrow">{t("support.eyebrow")}</p>
+            <h2 className="mt-3 text-3xl font-extrabold uppercase leading-[1.1] tracking-tight text-ink sm:text-4xl">
               {t("support.title")}
             </h2>
-            <p className="mt-4 max-w-lg text-white/80">{t("support.body")}</p>
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <CtaLink href={routes.support} variant="primary" event="donate_start">
+            <p className="mt-4 max-w-lg text-muted">{t("support.body")}</p>
+            <div className="mt-6 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm font-semibold text-navy">
+              <span className="inline-flex items-center gap-2 text-teal">
                 <HeartIcon />
-                {t("support.ctaDonate")}
-              </CtaLink>
-              <CtaLink href={routes.sponsor} variant="secondary">
+                <CtaLink href={routes.support} variant="text" event="donate_start">
+                  {t("support.ctaDonate")}
+                </CtaLink>
+              </span>
+              <span className="inline-flex items-center gap-2 text-teal">
                 <StarIcon />
-                {t("support.ctaSponsor")}
-              </CtaLink>
-              <CtaLink href={routes.venue} variant="secondary">
+                <CtaLink href={routes.sponsor} variant="text">
+                  {t("support.ctaSponsor")}
+                </CtaLink>
+              </span>
+              <span className="inline-flex items-center gap-2 text-teal">
                 <PinIcon />
-                {t("support.ctaVenue")}
-              </CtaLink>
+                <CtaLink href={routes.venue} variant="text">
+                  {t("support.ctaVenue")}
+                </CtaLink>
+              </span>
+            </div>
+          </div>
+
+          {/* RIGHT — earth image with green DONATE NOW */}
+          <div className="relative lg:w-[44%] lg:shrink-0">
+            <AftImage
+              {...media.homeSupport}
+              className="aspect-[16/9] w-full"
+            />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <Link
+                href={routes.support}
+                className="inline-flex items-center gap-2 rounded-md bg-accent px-6 py-3 text-sm font-bold uppercase tracking-wide text-white shadow-lg transition-colors hover:bg-accent-hover"
+              >
+                <HeartIcon />
+                {t("support.ctaDonate")} →
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* OUR PARTNERS — logo strip */}
-      <section className="bg-white py-14">
-        <div className="container-aft flex flex-col items-center gap-8 md:flex-row md:gap-12">
-          <p className="eyebrow whitespace-nowrap">{t("partners.eyebrow")}</p>
-          <div className="flex flex-1 flex-wrap items-center justify-center gap-x-10 gap-y-6 md:justify-between">
-            {PARTNERS.map((p) =>
-              p.logo ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  key={p.name}
-                  src={p.logo}
-                  alt={p.name}
-                  className="h-8 w-auto object-contain opacity-60 grayscale transition duration-200 hover:opacity-100 hover:grayscale-0"
-                />
-              ) : (
-                <span
-                  key={p.name}
-                  className="text-lg font-bold tracking-tight text-muted/60 grayscale"
-                >
-                  {p.name}
-                </span>
-              )
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* LATEST NEWS + newsletter */}
-      <section className="bg-surface py-24 md:py-28">
-        <div className="container-aft">
-          <SectionHeading eyebrow={t("news.eyebrow")} title="" />
-          <div className="mt-10 grid gap-8 lg:grid-cols-[2fr_1fr]">
-            <div className="grid gap-6 sm:grid-cols-3">
-              {(["n1", "n2", "n3"] as const).map((k, i) => {
-                const slot = [media.news1, media.news2, media.news3][i];
-                return (
-                  <article
-                    key={k}
-                    className="overflow-hidden rounded-xl border border-line bg-white shadow-sm"
-                  >
-                    <AftImage {...slot} className="aspect-[16/10] w-full rounded-none" />
-                    <div className="p-5">
-                      <p className="text-xs font-semibold uppercase tracking-wide text-accent-hover">
-                        {t(`news.items.${k}.date`)}
-                      </p>
-                      <h3 className="mt-2 font-bold leading-snug text-ink">
-                        {t(`news.items.${k}.title`)}
-                      </h3>
-                      <div className="mt-3">
-                        <CtaLink href={routes.stories} variant="text">
-                          {t("news.readMore")}
-                        </CtaLink>
-                      </div>
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
-
-            {/* Newsletter */}
-            <div className="flex flex-col justify-center rounded-2xl bg-navy p-8 text-white">
-              <h3 className="text-xl font-bold">{t("news.newsletter.title")}</h3>
-              <p className="mt-3 text-sm text-white/70">
-                {t("news.newsletter.body")}
-              </p>
-              <form className="mt-5 flex flex-col gap-3 sm:flex-row" action="#">
-                <input
-                  type="email"
-                  placeholder={t("news.newsletter.placeholder")}
-                  className="w-full rounded-md border border-white/20 bg-white/10 px-3 py-2.5 text-sm text-white placeholder:text-white/50 focus:border-accent focus:outline-none"
-                />
-                <button type="button" className="btn-primary whitespace-nowrap">
-                  {t("news.newsletter.subscribe")}
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
     </>
   );
 }
@@ -462,6 +432,13 @@ function StarIcon() {
     </svg>
   );
 }
+function PlayIcon() {
+  return (
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden>
+      <path d="M8 5v14l11-7z" />
+    </svg>
+  );
+}
 function PinIcon() {
   return (
     <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden>
@@ -470,10 +447,56 @@ function PinIcon() {
   );
 }
 
-function StatIcon({ i }: { i: number }) {
+function PillarIcon({ i }: { i: number }) {
   const common = {
-    width: 48,
-    height: 48,
+    width: 32,
+    height: 32,
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 1.75,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+  };
+  if (i === 0)
+    // Art — palette
+    return (
+      <svg viewBox="0 0 24 24" {...common} aria-hidden>
+        <path d="M12 3a9 9 0 1 0 0 18c1 0 1.5-.8 1.5-1.6 0-.5-.2-.9-.5-1.2-.3-.4-.5-.8-.5-1.2 0-.9.7-1.5 1.6-1.5H15a5 5 0 0 0 5-5c0-3.9-3.6-6.5-8-6.5z" />
+        <circle cx="7.5" cy="10.5" r="1" fill="currentColor" stroke="none" />
+        <circle cx="12" cy="7.5" r="1" fill="currentColor" stroke="none" />
+        <circle cx="16.5" cy="10.5" r="1" fill="currentColor" stroke="none" />
+      </svg>
+    );
+  if (i === 1)
+    // Youth — people
+    return (
+      <svg viewBox="0 0 24 24" {...common} aria-hidden>
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+      </svg>
+    );
+  if (i === 2)
+    // Environment — leaf
+    return (
+      <svg viewBox="0 0 24 24" {...common} aria-hidden>
+        <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z" />
+        <path d="M2 21c0-3 1.85-5.36 5.08-6" />
+      </svg>
+    );
+  // Social Impact — globe
+  return (
+    <svg viewBox="0 0 24 24" {...common} aria-hidden>
+      <circle cx="12" cy="12" r="10" />
+      <path d="M2 12h20M12 2a15.3 15.3 0 0 1 0 20 15.3 15.3 0 0 1 0-20z" />
+    </svg>
+  );
+}
+
+function StatIcon({ i, small = false }: { i: number; small?: boolean }) {
+  const common = {
+    width: small ? 28 : 48,
+    height: small ? 28 : 48,
     fill: "none",
     stroke: "currentColor",
     strokeWidth: 2,
@@ -481,7 +504,7 @@ function StatIcon({ i }: { i: number }) {
     strokeLinejoin: "round" as const,
   };
   if (i === 0)
-    // group of people
+    // Young Creators — group of people
     return (
       <svg viewBox="0 0 24 24" {...common} aria-hidden>
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
@@ -490,17 +513,26 @@ function StatIcon({ i }: { i: number }) {
       </svg>
     );
   if (i === 1)
-    // heart
+    // Goods Sold — shopping bag
+    return (
+      <svg viewBox="0 0 24 24" {...common} aria-hidden>
+        <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+        <path d="M3 6h18M16 10a4 4 0 0 1-8 0" />
+      </svg>
+    );
+  if (i === 2)
+    // Donated for Nature — heart
     return (
       <svg viewBox="0 0 24 24" {...common} aria-hidden>
         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z" />
       </svg>
     );
-  // shopping bag
+  // Youth-Led Impact Project — target
   return (
     <svg viewBox="0 0 24 24" {...common} aria-hidden>
-      <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
-      <path d="M3 6h18M16 10a4 4 0 0 1-8 0" />
+      <circle cx="12" cy="12" r="10" />
+      <circle cx="12" cy="12" r="6" />
+      <circle cx="12" cy="12" r="2" />
     </svg>
   );
 }

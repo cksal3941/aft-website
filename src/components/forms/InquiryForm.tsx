@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useTranslations } from "next-intl";
 import { track } from "@/lib/analytics";
-import { Field, FormSection, SubmittedCard, inputClass } from "./fields";
+import { Field, FormSection, SubmittedCard, inputClass, makeRef } from "./fields";
 import type { InquiryConfig, FieldConfig } from "./inquiryConfigs";
 
 // One engine renders every inquiry form from its config (기획서 §7.1, §9 폼 공통 구조).
@@ -69,7 +69,7 @@ export function InquiryForm({ config }: { config: InquiryConfig }) {
   });
 
   function onSubmit() {
-    setRef(`${config.refPrefix}-${Math.floor(Math.random() * 900000 + 100000)}`);
+    setRef(makeRef(config.refPrefix));
     track(config.event, { form: config.namespace });
   }
 

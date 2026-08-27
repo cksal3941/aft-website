@@ -5,8 +5,11 @@
   },
   "nav": {
     "about": "About",
+    "ourStory": "Our Story",
     "projects": "Projects",
-    "youth": "AFT Youth",
+    "youth": "Youth",
+    "globalNetwork": "Global Network",
+    "support": "Support",
     "impact": "Impact",
     "partners": "Partners",
     "news": "News",
@@ -19,46 +22,169 @@
   },
   "home": {
     "hero": {
-      "title": "Young Artists, Creating Global Change.",
-      "subtitle": "AFT empowers young creators to explore environmental and social issues through art — and turn ideas into exhibitions, publishing, campaigns and real-world action.",
-      "ctaJoin": "Join AFT Youth",
-      "ctaProjects": "Explore Projects",
-      "ctaPartner": "Partner With AFT"
+      "title1": "YOUNG ARTISTS.",
+      "title2": "GLOBAL IMPACT.",
+      "subtitle": "A global youth community\nturning creativity into action.",
+      "tagline": "Founded in Seoul. Built for the World.",
+      "ctaDiscover": "DISCOVER AFT",
+      "ctaJoin": "JOIN THE MOVEMENT"
     },
-    "about": {
-      "eyebrow": "About AFT",
-      "lead": "AFT connects young creativity to exhibitions, publishing, products, public solutions and social action.",
-      "body": "We empower young people to turn their ideas and creative vision into real-world impact for people and the planet.",
-      "cta": "Learn More About AFT"
+    "who": {
+      "eyebrow": "Who We Are",
+      "title": "Creativity Can\nChange the World.",
+      "body1": "Arts For Tomorrow (AFT) is a youth arts and impact network founded in Seoul with a global vision.",
+      "body2": "We connect young creators through art, environmental action, exhibitions, publishing and collaborative projects — turning creative ideas into meaningful impact.",
+      "cta": "Learn More",
+      "pillars": {
+        "art": {
+          "label": "Art",
+          "blurb": "We create\nwith meaning."
+        },
+        "youth": {
+          "label": "Youth",
+          "blurb": "We empower\nyoung voices."
+        },
+        "environment": {
+          "label": "Environment",
+          "blurb": "We protect our\nplanet together."
+        },
+        "social": {
+          "label": "Social Impact",
+          "blurb": "We turn ideas\ninto action."
+        }
+      }
     },
     "impact": {
       "eyebrow": "Our Impact",
+      "title": "Our Impact in 2026",
       "stats": {
-        "youth": { "value": "28", "label": "Young Creators" },
-        "donated": { "value": "₩1M", "label": "Donated to WWF" },
-        "goods": { "value": "158", "label": "Goods Sold" }
+        "creators": {
+          "value": "28",
+          "label": "Young Creators"
+        },
+        "goods": {
+          "value": "158",
+          "label": "Youth-Designed Goods Sold"
+        },
+        "donated": {
+          "value": "₩1,000,000",
+          "label": "Donated for Nature"
+        },
+        "project": {
+          "value": "1",
+          "label": "Youth-Led Impact Project"
+        }
       }
     },
-    "featured": {
-      "eyebrow": "Featured Project",
-      "title": "Our Ocean, Our Tomorrow",
-      "body": "A global youth art exhibition inspiring action for a healthier ocean and planet.",
-      "cta": "Explore the Project"
+    "donation": {
+      "eyebrow": "AFT × WWF",
+      "title": "Creativity Became Real Impact.",
+      "amount": "₩1,000,000",
+      "amountLabel": "Donated for Nature",
+      "ceremony": "Donation Ceremony · August 26, 2026",
+      "body": "In partnership with WWF, AFT youth turned proceeds from their exhibition and youth-designed goods into a real donation for nature — proof that creativity can become action.",
+      "watch": "Watch the Moment",
+      "watchSoon": "Video coming soon",
+      "followupTitle": "The Action Continued",
+      "followup": [
+        "Environmental Education",
+        "Youth Interviews",
+        "Cheonggyecheon ECO WALK"
+      ],
+      "note": "AFT × WWF official partnership."
     },
-    "whatWeDo": {
-      "eyebrow": "What We Do",
-      "items": {
-        "create": { "title": "Create", "body": "We nurture young artists to explore ideas, express their voices and create meaningful work.", "cta": "Learn More" },
-        "connect": { "title": "Connect", "body": "We build bridges between young creators, communities and global audiences.", "cta": "Learn More" },
-        "act": { "title": "Act", "body": "We turn creative ideas into projects that address real-world challenges.", "cta": "Learn More" },
-        "change": { "title": "Change", "body": "We empower youth-led solutions that drive positive change locally and globally.", "cta": "Learn More" }
+    "beginning": {
+      "title": "This is only the beginning."
+    },
+    "global": {
+      "eyebrow": "From Seoul to the World",
+      "title1": "From Seoul",
+      "title2": "to the World.",
+      "body": "What began with 28 young creators in Seoul is growing into a global community of young artists, thinkers and changemakers. The map is still opening — and there's a place on it for you.",
+      "seoul": "Seoul · Founded 2026",
+      "cta": "Explore Global Network",
+      "title": "From Seoul to the World.",
+      "body2": "We are building a global network of young creators and partners to create a better tomorrow together."
+    },
+    "story": {
+      "eyebrow": "Where Our\nStory Began",
+      "place": "Seoul · 2026",
+      "title": "Our First Chapter",
+      "intro": "Every global movement starts somewhere. Ours began with 28 young creators in Seoul, asking a simple question — what can art do for the ocean, the environment and our shared future?",
+      "project": {
+        "tag": "AFT's First Youth Impact Project",
+        "title": "Our Ocean, Our Tomorrow",
+        "body": "Young artists explored the ocean, the environment and our shared future — then carried their work from sketchbook to exhibition to real-world action.",
+        "cta": "Explore the Project"
+      },
+      "tagline": "Our first youth impact project — from creativity to real-world change.",
+      "viewAll": "View All Photos"
+    },
+    "journey": {
+      "eyebrow": "The Journey",
+      "title": "Create → Exhibit → Share → Donate → Act",
+      "steps": {
+        "create": {
+          "no": "01",
+          "title": "Create",
+          "body": "Young artists explored the ocean, environment and coexistence through art."
+        },
+        "exhibit": {
+          "no": "02",
+          "title": "Exhibit",
+          "body": "Their ideas became an exhibition, shared with the community."
+        },
+        "share": {
+          "no": "03",
+          "title": "Share",
+          "body": "Artworks were turned into goods and a campaign by young creators."
+        },
+        "donate": {
+          "no": "04",
+          "title": "Donate",
+          "body": "Creativity created real support for our planet."
+        },
+        "act": {
+          "no": "05",
+          "title": "Act",
+          "body": "We learned, walked and took action for the environment."
+        }
+      },
+      "action": {
+        "eyebrow": "From Art to Action",
+        "title": "We don't stop at art. We turn art into action.",
+        "chain": [
+          "Art",
+          "Exhibition",
+          "Campaign",
+          "Fundraising",
+          "Environmental Action"
+        ]
       }
     },
-    "youthCommunity": {
-      "eyebrow": "AFT Youth",
-      "title": "Join a Global Community of Young Changemakers",
-      "body": "Artists, authors, designers, curators and project planners — working together to imagine a better tomorrow.",
-      "cta": "Join AFT Youth"
+    "joinGlobal": {
+      "eyebrow": "Join the Global Community",
+      "title": "The Next Chapter is Global.",
+      "cards": {
+        "youth": {
+          "title": "Youth",
+          "sub": "Become an AFT Youth Member",
+          "body": "Young artists, designers, writers and creators.",
+          "cta": "Join AFT"
+        },
+        "advisors": {
+          "title": "Global Advisors",
+          "sub": "Inspire the Next Generation",
+          "body": "Artists, educators, environmentalists and creative leaders.",
+          "cta": "Become an Advisor"
+        },
+        "partners": {
+          "title": "Partners",
+          "sub": "Create Impact Together",
+          "body": "Schools, NGOs, museums, galleries, publishers and cultural organizations.",
+          "cta": "Partner with AFT"
+        }
+      }
     },
     "youthLab": {
       "eyebrow": "Youth Creative Lab",
@@ -70,15 +196,28 @@
       "eyebrow": "Youth Stories",
       "readStory": "Read Story",
       "items": {
-        "s1": { "name": "Seojin Kim", "role": "Visual Artist", "quote": "Turning my love for the ocean into art that inspires action." },
-        "s2": { "name": "Daniel Okoro", "role": "Designer", "quote": "Designing eco-products that people love to use." },
-        "s3": { "name": "Aisha Rahman", "role": "Project Planner", "quote": "Creating community projects that make a real difference." }
+        "s1": {
+          "name": "Seojin Kim",
+          "role": "Visual Artist",
+          "quote": "Turning my love for the ocean into art that inspires action."
+        },
+        "s2": {
+          "name": "Daniel Okoro",
+          "role": "Designer",
+          "quote": "Designing eco-products that people love to use."
+        },
+        "s3": {
+          "name": "Aisha Rahman",
+          "role": "Project Planner",
+          "quote": "Creating community projects that make a real difference."
+        }
       }
     },
     "support": {
-      "title": "Support Young Creativity",
-      "body": "Your support empowers young artists to create, lead and drive meaningful change in their communities and beyond.",
-      "ctaDonate": "Donate",
+      "eyebrow": "Support AFT",
+      "title": "Turn Support into Impact.",
+      "body": "Your support helps young creators create, share and act for a better tomorrow.",
+      "ctaDonate": "Donate Now",
       "ctaSponsor": "Sponsor a Project",
       "ctaVenue": "Offer a Venue"
     },
@@ -89,9 +228,18 @@
       "eyebrow": "Latest News",
       "readMore": "Read More",
       "items": {
-        "n1": { "date": "Aug 2026", "title": "Youth Exhibition Opens in Seoul" },
-        "n2": { "date": "Jul 2026", "title": "New Book Release: Our Ocean, Our Tomorrow" },
-        "n3": { "date": "Jun 2026", "title": "AFT Youth Spend ₩1M Given to WWF" }
+        "n1": {
+          "date": "Aug 2026",
+          "title": "Youth Exhibition Opens in Seoul"
+        },
+        "n2": {
+          "date": "Jul 2026",
+          "title": "New Book Release: Our Ocean, Our Tomorrow"
+        },
+        "n3": {
+          "date": "Jun 2026",
+          "title": "AFT Youth Spend ₩1M Given to WWF"
+        }
       },
       "newsletter": {
         "title": "Stay Connected",
@@ -153,7 +301,10 @@
       "subtitle": "Tell us about your organization and goals, and we'll design a partnership together.",
       "time": "Takes about 5 minutes"
     },
-    "sections": { "org": "Your organization", "partnership": "Partnership" },
+    "sections": {
+      "org": "Your organization",
+      "partnership": "Partnership"
+    },
     "fields": {
       "orgName": "Organization name",
       "contactName": "Contact person",
@@ -199,7 +350,10 @@
       "subtitle": "Fund a youth challenge around a social issue and see measurable outcomes.",
       "time": "Takes about 5 minutes"
     },
-    "sections": { "org": "Your organization", "sponsorship": "Sponsorship" },
+    "sections": {
+      "org": "Your organization",
+      "sponsorship": "Sponsorship"
+    },
     "fields": {
       "orgName": "Organization name",
       "contactName": "Contact person",
@@ -238,7 +392,10 @@
       "subtitle": "Support youth projects with printing, materials, logistics or media.",
       "time": "Takes about 3 minutes"
     },
-    "sections": { "org": "Your organization", "inkind": "What you can provide" },
+    "sections": {
+      "org": "Your organization",
+      "inkind": "What you can provide"
+    },
     "fields": {
       "orgName": "Organization name",
       "contactName": "Contact person",
@@ -276,7 +433,10 @@
       "subtitle": "Mentor young creators with your expertise. Child-safety consent is required.",
       "time": "Takes about 3 minutes"
     },
-    "sections": { "person": "About you", "expertise": "Your expertise" },
+    "sections": {
+      "person": "About you",
+      "expertise": "Your expertise"
+    },
     "fields": {
       "name": "Full name",
       "email": "Email",
@@ -303,6 +463,47 @@
     "done": {
       "title": "Application received",
       "body": "Thank you! We've received your expert volunteer application and will be in touch.",
+      "ref": "Reference",
+      "note": "Backend delivery is not yet connected — this is a preview of the application flow.",
+      "again": "Submit another application"
+    }
+  },
+  "advisorForm": {
+    "hero": {
+      "eyebrow": "Join AFT",
+      "title": "Become a Global Advisor",
+      "subtitle": "Share your experience and help shape the next generation of young creators and changemakers.",
+      "time": "Takes about 3 minutes"
+    },
+    "sections": {
+      "person": "About you",
+      "advisor": "Your guidance"
+    },
+    "fields": {
+      "name": "Full name",
+      "email": "Email",
+      "country": "Country",
+      "field": "Area of expertise",
+      "availability": "Availability",
+      "motivation": "How you'd like to help",
+      "consent": "I agree to AFT's child-safety guidelines and to being contacted."
+    },
+    "fieldOptions": {
+      "artist": "Artist",
+      "educator": "Educator",
+      "environment": "Environmental Expert",
+      "creativeLeader": "Creative Leader",
+      "other": "Other"
+    },
+    "submit": "Submit Application",
+    "validation": {
+      "required": "This field is required.",
+      "email": "Enter a valid email.",
+      "consent": "Please agree to continue."
+    },
+    "done": {
+      "title": "Application received",
+      "body": "Thank you! We've received your advisor application and will be in touch.",
       "ref": "Reference",
       "note": "Backend delivery is not yet connected — this is a preview of the application flow.",
       "again": "Submit another application"
@@ -442,27 +643,55 @@
       "eyebrow": "Youth-Led Operation",
       "title": "Youth run the projects, not just make the art.",
       "items": {
-        "media": { "title": "Film & Media", "body": "Plan intro films, shoot scenes, produce interviews and promo content." },
-        "event": { "title": "Event & Exhibition", "body": "Design exhibition flow, run visitor programs and campaigns, host on-site." },
-        "editing": { "title": "Editing & Publishing", "body": "Edit youth work and writing, build picture books, archive the project." },
-        "host": { "title": "Youth Hosts & Speakers", "body": "MC events and present the meaning of the work to visitors." }
+        "media": {
+          "title": "Film & Media",
+          "body": "Plan intro films, shoot scenes, produce interviews and promo content."
+        },
+        "event": {
+          "title": "Event & Exhibition",
+          "body": "Design exhibition flow, run visitor programs and campaigns, host on-site."
+        },
+        "editing": {
+          "title": "Editing & Publishing",
+          "body": "Edit youth work and writing, build picture books, archive the project."
+        },
+        "host": {
+          "title": "Youth Hosts & Speakers",
+          "body": "MC events and present the meaning of the work to visitors."
+        }
       }
     },
     "beyond": {
       "eyebrow": "Beyond the Canvas",
       "title": "One artwork becomes many things.",
       "items": {
-        "publishing": { "title": "Publishing", "body": "Youth-authored picture books published and distributed via major online bookstores." },
-        "campaign": { "title": "Environmental Campaigns", "body": "Posters, models, product ideas and participatory campaigns from youth research." },
-        "goods": { "title": "Goods & Donation", "body": "Eco-bags and badges made from youth artwork — sales become real donations." },
-        "performance": { "title": "Performance", "body": "Youth orchestra and hosting combine music with visual art." }
+        "publishing": {
+          "title": "Publishing",
+          "body": "Youth-authored picture books published and distributed via major online bookstores."
+        },
+        "campaign": {
+          "title": "Environmental Campaigns",
+          "body": "Posters, models, product ideas and participatory campaigns from youth research."
+        },
+        "goods": {
+          "title": "Goods & Donation",
+          "body": "Eco-bags and badges made from youth artwork — sales become real donations."
+        },
+        "performance": {
+          "title": "Performance",
+          "body": "Youth orchestra and hosting combine music with visual art."
+        }
       }
     },
     "books": {
       "eyebrow": "Youth Publishing",
       "title": "Real books by young authors",
       "note": "Selected youth-created titles",
-      "items": ["The Twins' Night", "The Soup That Became a Star", "The Baby Bird's Adventure"]
+      "items": [
+        "The Twins' Night",
+        "The Soup That Became a Star",
+        "The Baby Bird's Adventure"
+      ]
     },
     "values": {
       "eyebrow": "Why It Matters",
@@ -506,10 +735,26 @@
       "title": "The results, with sources.",
       "baseYear": "Base year 2026",
       "items": {
-        "youth": { "value": "28", "label": "Youth participants", "note": "Our Ocean, Our Tomorrow" },
-        "raised": { "value": "₩1,434,000", "label": "Raised through art", "note": "Eco-bags ₩1,152,000 + badges ₩282,000" },
-        "donated": { "value": "₩1,000,000", "label": "Donated to WWF", "note": "2026, one-time" },
-        "books": { "value": "3+", "label": "Youth books published", "note": "Distributed via major online bookstores" }
+        "youth": {
+          "value": "28",
+          "label": "Youth participants",
+          "note": "Our Ocean, Our Tomorrow"
+        },
+        "raised": {
+          "value": "₩1,434,000",
+          "label": "Raised through art",
+          "note": "Eco-bags ₩1,152,000 + badges ₩282,000"
+        },
+        "donated": {
+          "value": "₩1,000,000",
+          "label": "Donated to WWF",
+          "note": "2026, one-time"
+        },
+        "books": {
+          "value": "3+",
+          "label": "Youth books published",
+          "note": "Distributed via major online bookstores"
+        }
       }
     },
     "featured": {
@@ -522,10 +767,22 @@
       "eyebrow": "Impact by Area",
       "title": "Where creativity took effect",
       "items": {
-        "art": { "title": "Art", "body": "Paintings, illustrations and 3D models on the environment." },
-        "publishing": { "title": "Publishing", "body": "Picture books and story content authored by youth." },
-        "environment": { "title": "Environment", "body": "Campaigns, posters and a real WWF donation." },
-        "public": { "title": "Public", "body": "Product and public-design ideas for social issues." }
+        "art": {
+          "title": "Art",
+          "body": "Paintings, illustrations and 3D models on the environment."
+        },
+        "publishing": {
+          "title": "Publishing",
+          "body": "Picture books and story content authored by youth."
+        },
+        "environment": {
+          "title": "Environment",
+          "body": "Campaigns, posters and a real WWF donation."
+        },
+        "public": {
+          "title": "Public",
+          "body": "Product and public-design ideas for social issues."
+        }
       }
     },
     "donation": {
@@ -533,11 +790,26 @@
       "title": "Raised · used · result",
       "note": "Base year 2026. Figures are for the Our Ocean, Our Tomorrow campaign.",
       "rows": {
-        "ecobags": { "label": "Eco-bags sold (64)", "value": "₩1,152,000" },
-        "badges": { "label": "Badges sold (94)", "value": "₩282,000" },
-        "total": { "label": "Total raised", "value": "₩1,434,000" },
-        "cost": { "label": "Production cost", "value": "₩576,000" },
-        "donated": { "label": "Donated to WWF (topped up)", "value": "₩1,000,000" }
+        "ecobags": {
+          "label": "Eco-bags sold (64)",
+          "value": "₩1,152,000"
+        },
+        "badges": {
+          "label": "Badges sold (94)",
+          "value": "₩282,000"
+        },
+        "total": {
+          "label": "Total raised",
+          "value": "₩1,434,000"
+        },
+        "cost": {
+          "label": "Production cost",
+          "value": "₩576,000"
+        },
+        "donated": {
+          "label": "Donated to WWF (topped up)",
+          "value": "₩1,000,000"
+        }
       }
     },
     "transparency": {
@@ -562,19 +834,40 @@
       "eyebrow": "Why Partner",
       "title": "Value for youth, society and your organization.",
       "items": {
-        "youth": { "title": "For Youth", "body": "Real platforms, mentors and audiences for young creators." },
-        "society": { "title": "For Society", "body": "Youth-led campaigns that drive measurable social change." },
-        "org": { "title": "For You", "body": "Authentic ESG / CSR content with verifiable outcomes." }
+        "youth": {
+          "title": "For Youth",
+          "body": "Real platforms, mentors and audiences for young creators."
+        },
+        "society": {
+          "title": "For Society",
+          "body": "Youth-led campaigns that drive measurable social change."
+        },
+        "org": {
+          "title": "For You",
+          "body": "Authentic ESG / CSR content with verifiable outcomes."
+        }
       }
     },
     "models": {
       "eyebrow": "Partnership Models",
       "title": "Ways to work together",
       "items": {
-        "corporate": { "title": "Corporate", "body": "Sponsor projects, challenges and campaigns." },
-        "public": { "title": "Public", "body": "Co-run programs with public institutions." },
-        "venue": { "title": "Venue", "body": "Host exhibitions, workshops and events." },
-        "inkind": { "title": "In-kind", "body": "Provide printing, materials, media or logistics." }
+        "corporate": {
+          "title": "Corporate",
+          "body": "Sponsor projects, challenges and campaigns."
+        },
+        "public": {
+          "title": "Public",
+          "body": "Co-run programs with public institutions."
+        },
+        "venue": {
+          "title": "Venue",
+          "body": "Host exhibitions, workshops and events."
+        },
+        "inkind": {
+          "title": "In-kind",
+          "body": "Provide printing, materials, media or logistics."
+        }
       }
     },
     "how": {
@@ -585,11 +878,26 @@
       "eyebrow": "Get Started",
       "title": "Choose how you'd like to partner",
       "items": {
-        "partner": { "title": "Become a Partner", "body": "Organization · goals · country · timeline" },
-        "venue": { "title": "Offer a Venue", "body": "Address · size · capacity · equipment · dates" },
-        "sponsor": { "title": "Sponsor a Challenge", "body": "Issue · budget · period · outcome goals" },
-        "inkind": { "title": "In-kind Support", "body": "Printing · materials · shipping · media" },
-        "expert": { "title": "Expert Volunteer", "body": "Field · availability · child-safety consent" }
+        "partner": {
+          "title": "Become a Partner",
+          "body": "Organization · goals · country · timeline"
+        },
+        "venue": {
+          "title": "Offer a Venue",
+          "body": "Address · size · capacity · equipment · dates"
+        },
+        "sponsor": {
+          "title": "Sponsor a Challenge",
+          "body": "Issue · budget · period · outcome goals"
+        },
+        "inkind": {
+          "title": "In-kind Support",
+          "body": "Printing · materials · shipping · media"
+        },
+        "expert": {
+          "title": "Expert Volunteer",
+          "body": "Field · availability · child-safety consent"
+        }
       }
     }
   },
@@ -605,10 +913,22 @@
       "eyebrow": "Choose Purpose",
       "title": "Where your support goes",
       "items": {
-        "mission": { "title": "Mission", "body": "Support AFT's overall youth arts programs." },
-        "project": { "title": "Project", "body": "Fund a specific youth project." },
-        "scholarship": { "title": "Scholarship", "body": "Help a young creator take part." },
-        "product": { "title": "Product", "body": "Back eco-goods and campaign production." }
+        "mission": {
+          "title": "Mission",
+          "body": "Support AFT's overall youth arts programs."
+        },
+        "project": {
+          "title": "Project",
+          "body": "Fund a specific youth project."
+        },
+        "scholarship": {
+          "title": "Scholarship",
+          "body": "Help a young creator take part."
+        },
+        "product": {
+          "title": "Product",
+          "body": "Back eco-goods and campaign production."
+        }
       }
     },
     "amount": {
@@ -654,21 +974,48 @@
       "eyebrow": "Member Roles",
       "title": "Choose how you want to create.",
       "items": {
-        "artist": { "title": "Artist", "body": "Create paintings, illustrations and visual works." },
-        "author": { "title": "Author", "body": "Write stories and make picture books." },
-        "designer": { "title": "Designer", "body": "Design products, posters and public design." },
-        "planner": { "title": "Planner", "body": "Plan exhibitions, campaigns and events." },
-        "leader": { "title": "Leader", "body": "Host, present and lead youth teams." }
+        "artist": {
+          "title": "Artist",
+          "body": "Create paintings, illustrations and visual works."
+        },
+        "author": {
+          "title": "Author",
+          "body": "Write stories and make picture books."
+        },
+        "designer": {
+          "title": "Designer",
+          "body": "Design products, posters and public design."
+        },
+        "planner": {
+          "title": "Planner",
+          "body": "Plan exhibitions, campaigns and events."
+        },
+        "leader": {
+          "title": "Leader",
+          "body": "Host, present and lead youth teams."
+        }
       }
     },
     "how": {
       "eyebrow": "How It Works",
       "title": "Join → Choose → Create → Share",
       "steps": {
-        "join": { "title": "Join", "body": "Sign up as a youth member with parental consent." },
-        "choose": { "title": "Choose", "body": "Pick a project that matches your interests." },
-        "create": { "title": "Create", "body": "Make work with a team of young creators." },
-        "share": { "title": "Share", "body": "Exhibit, publish and campaign for real change." }
+        "join": {
+          "title": "Join",
+          "body": "Sign up as a youth member with parental consent."
+        },
+        "choose": {
+          "title": "Choose",
+          "body": "Pick a project that matches your interests."
+        },
+        "create": {
+          "title": "Create",
+          "body": "Make work with a team of young creators."
+        },
+        "share": {
+          "title": "Share",
+          "body": "Exhibit, publish and campaign for real change."
+        }
       }
     },
     "benefits": {
@@ -786,5 +1133,26 @@
     "social": "Social",
     "rights": "AFT — Arts For Tomorrow. All rights reserved.",
     "legalNote": "AFT is a nonprofit global youth arts organization."
+  },
+  "globalNetwork": {
+    "eyebrow": "Global Network",
+    "title": "From Seoul to the World.",
+    "body": "What began with 28 young creators in Seoul is opening up to young artists, thinkers and changemakers everywhere. This is where the network grows — one real chapter at a time.",
+    "cta": "Join the Movement",
+    "table": {
+      "title": "The Network So Far",
+      "country": "Country",
+      "city": "City",
+      "members": "Youth Members",
+      "projects": "Projects",
+      "partners": "Partners",
+      "founding": "Founding Chapter"
+    },
+    "status": {
+      "active": "Active",
+      "opening": "Opening"
+    },
+    "openNote": "New cities appear here only when real youth, schools and partners join — the map grows with the movement, not before it.",
+    "mapLabel": "Seoul · Founded 2026"
   }
 }
