@@ -73,7 +73,7 @@ export const media = {
   storyShot2: { src: "/images/story-shot-2.jpg", alt: "Exhibition gallery" },
   storyShot3: { src: "/images/story-shot-3.jpg", alt: "Exhibition reception" },
   storyShot4: { src: "/images/story-shot-4.jpg", alt: "Award ceremony on stage" },
-  storyShot5: { src: null, alt: "Youth eco activity outdoors" },
+  storyShot5: { src: "/images/story-shot-5.jpg", alt: "Youth orchestra performance" },
   wwfCeremony: { src: "/images/wwf-ceremony.jpg", alt: "WWF Korea representative at the AFT × WWF youth art charity project", tone: "ocean" },
   // WWF follow-up eco action (05)
   wwfFollow1: { src: null, alt: "Environmental education session" },

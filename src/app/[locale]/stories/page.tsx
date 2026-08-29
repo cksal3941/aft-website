@@ -23,7 +23,7 @@ export default function StoriesPage({
       <section className="bg-navy py-24 md:py-32 text-white">
         <div className="container-aft">
           <p className="eyebrow">{t("hero.eyebrow")}</p>
-          <h1 className="mt-3 max-w-3xl text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
+          <h1 className="mt-3 max-w-3xl text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl">
             {t("hero.title")}
           </h1>
           <p className="mt-4 max-w-2xl text-white/75">{t("hero.subtitle")}</p>

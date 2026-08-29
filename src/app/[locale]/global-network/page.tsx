@@ -24,7 +24,7 @@ export default function GlobalNetworkPage({
         <div className="container-aft">
           <div className="max-w-3xl">
             <p className="eyebrow text-accent">{t("eyebrow")}</p>
-            <h1 className="mt-4 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
+            <h1 className="mt-4 text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl">
               {t("title")}
             </h1>
             <p className="mt-6 text-lg text-white/80">{t("body")}</p>

@@ -28,7 +28,7 @@ export default function AboutPage({
         <div className="container-aft grid gap-10 py-24 md:py-32 lg:grid-cols-2 lg:items-center">
           <div>
             <p className="eyebrow">{t("hero.eyebrow")}</p>
-            <h1 className="mt-3 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
+            <h1 className="mt-3 text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl">
               {t("hero.title")}
             </h1>
             <p className="mt-5 max-w-xl text-lg text-white/75">

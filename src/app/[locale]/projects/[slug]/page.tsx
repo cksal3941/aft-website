@@ -61,7 +61,7 @@ function DetailView({
             <div className="mb-4">
               <StatusBadge status={project.status} />
             </div>
-            <h1 className="text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
+            <h1 className="text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl">
               {project.title}
             </h1>
             <p className="mt-4 max-w-xl text-lg text-white/75">

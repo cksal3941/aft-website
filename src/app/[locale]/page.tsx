@@ -33,7 +33,7 @@ export default function HomePage({
         </span>
         <div className="container-aft py-32 lg:py-40">
           <div className="max-w-2xl">
-            <h1 className="text-5xl font-extrabold leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl">
+            <h1 className="text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
               {t("hero.title1")}
               <br />
               {t("hero.title2")}
@@ -68,7 +68,7 @@ export default function HomePage({
           {/* LEFT — heading + body + CTA */}
           <div className="lg:w-[35%] lg:shrink-0">
             <p className="eyebrow">{t("who.eyebrow")}</p>
-            <h2 className="mt-4 whitespace-pre-line text-3xl font-extrabold uppercase leading-[1.05] tracking-tight text-ink sm:text-4xl">
+            <h2 className="mt-4 whitespace-pre-line text-2xl font-extrabold uppercase leading-[1.1] tracking-tight text-ink sm:text-4xl">
               {t("who.title")}
             </h2>
             <p className="mt-6 text-muted">{t("who.body1")}</p>
@@ -130,7 +130,7 @@ export default function HomePage({
           <p className="max-w-[7rem] text-xl font-extrabold uppercase leading-[1.05] tracking-wide text-[#3E7035]">
             {t("impact.title")}
           </p>
-          <ol className="flex flex-1 flex-wrap items-center gap-x-[54px] gap-y-8 lg:pr-[280px]">
+          <ol className="grid grid-cols-2 gap-x-4 gap-y-10 sm:flex sm:flex-1 sm:flex-wrap sm:items-center sm:gap-x-[54px] sm:gap-y-8 lg:pr-[280px]">
             {(["creators", "goods", "donated", "project"] as const).map(
               (k, i, arr) => {
                 const color = [
@@ -140,11 +140,11 @@ export default function HomePage({
                   "text-[#6741d9]",
                 ][i];
                 return (
-                  <li key={k} className="flex items-center gap-4">
+                  <li key={k} className="flex items-center justify-center gap-4 sm:justify-start">
                     <div
                       className={`flex min-w-[90px] flex-col items-center text-center ${color}`}
                     >
-                      <div className="text-3xl font-extrabold">
+                      <div className="text-2xl font-extrabold sm:text-3xl">
                         {t(`impact.stats.${k}.value`)}
                       </div>
                       <div className="mt-[14px] max-w-[145px] text-[14px] font-semibold uppercase leading-[1.15] tracking-wide">
@@ -199,12 +199,12 @@ export default function HomePage({
 
           {/* RIGHT — photo strip + 01→05 steps */}
           <div className="lg:flex-1">
-            <div className="grid grid-cols-3 gap-3 sm:grid-cols-5">
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-5">
               <AftImage {...media.storyShot1} className="aspect-[4/3] w-full" />
               <AftImage {...media.storyShot2} className="aspect-[4/3] w-full" />
               <AftImage {...media.storyShot3} className="aspect-[4/3] w-full" />
               <AftImage {...media.storyShot4} className="aspect-[4/3] w-full" />
-              <AftImage {...media.storyShot5} className="aspect-[4/3] w-full" />
+              <AftImage {...media.storyShot5} className="aspect-[4/3] w-full hidden sm:block" />
             </div>
             <ol className="mt-10 flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-2">
               {(["create", "exhibit", "share", "donate", "act"] as const).map(
@@ -360,7 +360,7 @@ export default function HomePage({
               {t("support.title")}
             </h2>
             <p className="mt-4 max-w-lg text-muted">{t("support.body")}</p>
-            <div className="mt-8 grid grid-cols-4 gap-x-1 gap-y-6">
+            <div className="mt-8 grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-4 sm:gap-x-1">
               {(["youth", "exhibitions", "environment", "publishing"] as const).map(
                 (k, i) => (
                   <div
