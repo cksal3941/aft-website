@@ -27,7 +27,7 @@ export default function HomePage({
         {/* Decorative oversized AFT watermark, bottom-right */}
         <span
           aria-hidden
-          className="pointer-events-none absolute -bottom-6 right-2 select-none text-[24vw] font-extrabold leading-none tracking-[-0.03em] text-white/20 lg:right-6 lg:text-[16rem]"
+          className="pointer-events-none absolute -bottom-6 right-2 select-none text-[24vw] font-extrabold leading-none tracking-[-0.03em] text-white/10 lg:right-6 lg:text-[16rem]"
         >
           AFT
         </span>
@@ -208,27 +208,17 @@ export default function HomePage({
             </div>
             <ol className="mt-10 flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-2">
               {(["create", "exhibit", "share", "donate", "act"] as const).map(
-                (k, i, arr) => (
-                  <li key={k} className="flex items-start gap-2 sm:flex-1">
-                    <div>
-                      <span className="text-lg font-extrabold text-accent">
-                        {t(`journey.steps.${k}.no`)}
-                      </span>
-                      <h3 className="mt-1 text-sm font-bold uppercase tracking-wide text-ink">
-                        {t(`journey.steps.${k}.title`)}
-                      </h3>
-                      <p className="mt-1 text-xs text-muted">
-                        {t(`journey.steps.${k}.body`)}
-                      </p>
-                    </div>
-                    {i < arr.length - 1 && (
-                      <span
-                        aria-hidden
-                        className="mt-6 hidden shrink-0 text-line sm:block"
-                      >
-                        →
-                      </span>
-                    )}
+                (k) => (
+                  <li key={k} className="sm:flex-1">
+                    <span className="text-lg font-extrabold text-accent">
+                      {t(`journey.steps.${k}.no`)}
+                    </span>
+                    <h3 className="mt-1 text-sm font-bold uppercase tracking-wide text-ink">
+                      {t(`journey.steps.${k}.title`)}
+                    </h3>
+                    <p className="mt-1 text-xs text-muted">
+                      {t(`journey.steps.${k}.body`)}
+                    </p>
                   </li>
                 )
               )}
@@ -242,22 +232,19 @@ export default function HomePage({
         <div className="container-aft flex flex-col gap-12 lg:flex-row lg:gap-16">
           {/* LEFT — headline + amount + watch */}
           <div className="lg:w-[30%] lg:shrink-0">
-            <h2 className="text-2xl font-extrabold uppercase leading-[1.1] tracking-tight text-ink sm:text-3xl">
+            <h2 className="whitespace-pre-line text-2xl font-extrabold uppercase leading-[1.1] tracking-tight text-ink sm:text-3xl">
               {t("donation.title")}
             </h2>
             <div className="mt-6 text-4xl font-extrabold text-teal sm:text-5xl">
               {t("donation.amount")}
             </div>
-            <p className="mt-1 text-sm font-semibold uppercase tracking-wide text-navy">
+            <p className="mt-2.5 text-2xl font-semibold uppercase tracking-wide text-teal">
               {t("donation.amountLabel")}
             </p>
             <p className="mt-4 text-sm text-muted">{t("donation.ceremony")}</p>
-            <p className="mt-6 inline-flex items-center gap-2 rounded-md bg-navy px-5 py-2.5 text-sm font-semibold uppercase tracking-wide text-white">
+            <p className="mt-6 inline-flex items-center gap-2 rounded-sm bg-navy px-5 py-2.5 text-sm font-semibold uppercase tracking-wide text-white">
               <PlayIcon />
               {t("donation.watch")}
-              <span className="font-normal normal-case text-white/60">
-                · {t("donation.watchSoon")}
-              </span>
             </p>
           </div>
 
@@ -295,14 +282,14 @@ export default function HomePage({
       {/* 06 · THIS IS ONLY THE BEGINNING → FROM SEOUL TO THE WORLD */}
       <section id="global" className="bg-surface py-24 md:py-32">
         <div className="container-aft">
-          <h2 className="text-2xl font-extrabold uppercase tracking-tight text-ink sm:text-3xl">
+          <h2 className="whitespace-pre-line text-2xl font-extrabold uppercase tracking-tight text-ink sm:text-3xl">
             {t("beginning.title")}
           </h2>
-          <div className="mt-12 grid items-center gap-10 lg:grid-cols-[1fr_1.5fr_1fr]">
-            <p className="text-muted">{t("global.body")}</p>
+          <div className="mt-4 grid items-start gap-10 lg:grid-cols-[1fr_2fr_1fr]">
+            <p className="max-w-[280px] text-muted">{t("global.body")}</p>
             <DottedWorldMap seoulLabel={t("global.seoul")} />
             <div>
-              <h3 className="text-2xl font-extrabold uppercase leading-tight tracking-tight text-ink sm:text-3xl">
+              <h3 className="whitespace-pre-line text-2xl font-extrabold uppercase leading-tight tracking-tight text-ink sm:text-3xl">
                 {t("global.title")}
               </h3>
               <p className="mt-4 text-muted">{t("global.body2")}</p>
@@ -334,15 +321,15 @@ export default function HomePage({
             ).map(({ key, href, event, slot }) => (
               <div
                 key={key}
-                className="relative flex min-h-[360px] flex-col justify-end overflow-hidden rounded-xl"
+                className="relative flex min-h-[360px] flex-col justify-end overflow-hidden rounded-sm"
               >
                 <AftImage
                   {...slot}
-                  className="absolute inset-0 h-full w-full rounded-none"
+                  className="absolute inset-x-0 bottom-0 h-[135%] w-full rounded-none"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/70 to-navy/10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/85 to-transparent" />
                 <div className="relative p-7 text-white">
-                  <p className="text-xs font-bold uppercase tracking-[0.2em] text-accent">
+                  <p className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-300">
                     {t(`joinGlobal.cards.${key}.sub`)}
                   </p>
                   <h3 className="mt-2 text-2xl font-extrabold">
@@ -364,8 +351,8 @@ export default function HomePage({
       </section>
 
       {/* 08 · SUPPORT AFT — light band, text left + earth/DONATE right */}
-      <section className="border-t border-line bg-white py-20 md:py-24">
-        <div className="container-aft flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-16">
+      <section className="border-t border-line bg-white py-10 md:py-12">
+        <div className="container-aft flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-8">
           {/* LEFT — heading + body + support links */}
           <div className="lg:flex-1">
             <p className="eyebrow">{t("support.eyebrow")}</p>
@@ -373,42 +360,42 @@ export default function HomePage({
               {t("support.title")}
             </h2>
             <p className="mt-4 max-w-lg text-muted">{t("support.body")}</p>
-            <div className="mt-6 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm font-semibold text-navy">
-              <span className="inline-flex items-center gap-2 text-teal">
-                <HeartIcon />
-                <CtaLink href={routes.support} variant="text" event="donate_start">
-                  {t("support.ctaDonate")}
-                </CtaLink>
-              </span>
-              <span className="inline-flex items-center gap-2 text-teal">
-                <StarIcon />
-                <CtaLink href={routes.sponsor} variant="text">
-                  {t("support.ctaSponsor")}
-                </CtaLink>
-              </span>
-              <span className="inline-flex items-center gap-2 text-teal">
-                <PinIcon />
-                <CtaLink href={routes.venue} variant="text">
-                  {t("support.ctaVenue")}
-                </CtaLink>
-              </span>
+            <div className="mt-8 grid grid-cols-4 gap-x-1 gap-y-6">
+              {(["youth", "exhibitions", "environment", "publishing"] as const).map(
+                (k, i) => (
+                  <div
+                    key={k}
+                    className="flex flex-col items-center gap-2 text-center"
+                  >
+                    <span className="text-teal">
+                      <SupportIcon i={i} />
+                    </span>
+                    <span className="whitespace-pre-line text-sm font-semibold leading-tight text-ink">
+                      {t(`support.areas.${k}`)}
+                    </span>
+                  </div>
+                )
+              )}
             </div>
           </div>
 
-          {/* RIGHT — earth image with green DONATE NOW */}
-          <div className="relative lg:w-[44%] lg:shrink-0">
+          {/* RIGHT — image fills the box, DONATE + caption overlaid left */}
+          <div className="relative lg:w-[56%] lg:shrink-0">
             <AftImage
               {...media.homeSupport}
-              className="aspect-[16/9] w-full"
+              className="aspect-[5/3] w-full"
+              objectPosition="30% 50%"
             />
-            <div className="absolute inset-0 flex items-center justify-center">
+            <div className="absolute inset-0 flex flex-col items-start justify-center gap-3 bg-gradient-to-r from-white via-white/70 to-transparent p-8">
               <Link
                 href={routes.support}
-                className="inline-flex items-center gap-2 rounded-md bg-accent px-6 py-3 text-sm font-bold uppercase tracking-wide text-white shadow-lg transition-colors hover:bg-accent-hover"
+                className="inline-flex items-center gap-2 rounded-sm bg-accent px-6 py-3 text-sm font-bold uppercase tracking-wide text-white shadow-lg transition-colors hover:bg-accent-hover"
               >
-                <HeartIcon />
                 {t("support.ctaDonate")} →
               </Link>
+              <p className="whitespace-pre-line text-base font-bold text-muted">
+                {t("support.caption")}
+              </p>
             </div>
           </div>
         </div>
@@ -418,20 +405,6 @@ export default function HomePage({
   );
 }
 
-function HeartIcon() {
-  return (
-    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden>
-      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-    </svg>
-  );
-}
-function StarIcon() {
-  return (
-    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden>
-      <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-    </svg>
-  );
-}
 function PlayIcon() {
   return (
     <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden>
@@ -439,10 +412,47 @@ function PlayIcon() {
     </svg>
   );
 }
-function PinIcon() {
+function SupportIcon({ i }: { i: number }) {
+  const common = {
+    width: 26,
+    height: 26,
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 1.75,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+  };
+  if (i === 0)
+    // Youth Projects — people
+    return (
+      <svg viewBox="0 0 24 24" {...common} aria-hidden>
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+        <circle cx="9" cy="7" r="4" />
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+      </svg>
+    );
+  if (i === 1)
+    // Exhibitions — framed image
+    return (
+      <svg viewBox="0 0 24 24" {...common} aria-hidden>
+        <rect x="3" y="3" width="18" height="18" rx="2" />
+        <circle cx="8.5" cy="8.5" r="1.5" />
+        <path d="M21 15l-5-5L5 21" />
+      </svg>
+    );
+  if (i === 2)
+    // Environmental Action — leaf
+    return (
+      <svg viewBox="0 0 24 24" {...common} aria-hidden>
+        <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z" />
+        <path d="M2 21c0-3 1.85-5.36 5.08-6" />
+      </svg>
+    );
+  // Publishing & Creative Programs — book
   return (
-    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden>
-      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" />
+    <svg viewBox="0 0 24 24" {...common} aria-hidden>
+      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
     </svg>
   );
 }

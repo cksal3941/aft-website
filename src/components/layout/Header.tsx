@@ -31,21 +31,38 @@ export function Header() {
         transparent ? "bg-transparent" : "bg-navy shadow-sm"
       }`}
     >
-      <div className="container-aft flex h-20 items-center justify-between gap-4">
+      <div className="mx-auto flex h-20 w-full items-center justify-between gap-4 px-5 sm:px-6 lg:px-8">
         <Logo variant="light" />
 
         {/* Right-aligned nav + controls */}
         <div className="flex items-center gap-8 lg:gap-12">
-          {/* Desktop nav (기획서 §1.1) */}
+          {/* Desktop nav (기획서 §1.1) — hover dropdown submenus */}
           <nav className="hidden items-center gap-9 lg:flex xl:gap-12">
             {mainNav.map((item) => (
-              <Link
-                key={item.key}
-                href={item.href}
-                className="text-sm font-medium uppercase tracking-wide text-white transition-opacity hover:opacity-80"
-              >
-                {t(item.key)}
-              </Link>
+              <div key={item.key} className="group relative">
+                <Link
+                  href={item.href}
+                  className="text-sm font-medium uppercase tracking-wide text-white transition-opacity hover:opacity-80"
+                >
+                  {t(item.key)}
+                </Link>
+                {item.children && (
+                  <div className="invisible absolute left-0 top-full z-50 pt-4 opacity-0 transition-all duration-150 group-hover:visible group-hover:opacity-100">
+                    <ul className="min-w-[224px] overflow-hidden rounded-md bg-white py-2 text-ink shadow-xl ring-1 ring-black/5">
+                      {item.children.map((c) => (
+                        <li key={c.key}>
+                          <Link
+                            href={c.href}
+                            className="block whitespace-nowrap px-4 py-2 text-sm font-medium text-ink/70 transition-colors hover:bg-surface hover:text-ink"
+                          >
+                            {t(`sub.${c.key}`)}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
             ))}
           </nav>
 
@@ -96,14 +113,29 @@ export function Header() {
         <div className="border-t border-white/10 bg-navy lg:hidden">
           <nav className="container-aft flex flex-col py-2">
             {mobileNav.map((item) => (
-              <Link
-                key={item.key}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className="border-b border-white/5 py-3 text-sm font-medium uppercase tracking-wide text-white/90"
-              >
-                {t(item.key)}
-              </Link>
+              <div key={item.key} className="border-b border-white/5">
+                <Link
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className="block py-3 text-sm font-medium uppercase tracking-wide text-white/90"
+                >
+                  {t(item.key)}
+                </Link>
+                {item.children && (
+                  <div className="flex flex-col gap-1 pb-2 pl-4">
+                    {item.children.map((c) => (
+                      <Link
+                        key={c.key}
+                        href={c.href}
+                        onClick={() => setOpen(false)}
+                        className="py-1.5 text-xs font-medium text-white/55"
+                      >
+                        {t(`sub.${c.key}`)}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
             <div className="py-3">
               <LanguageSwitcher tone="light" />

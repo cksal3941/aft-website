@@ -31,8 +31,8 @@ export default function PartnersPage({
     <>
       {/* HERO */}
       <section className="bg-navy text-white">
-        <div className="container-aft py-20">
-          <h1 className="max-w-3xl text-4xl font-extrabold leading-tight sm:text-5xl">
+        <div className="container-aft py-24 md:py-32">
+          <h1 className="max-w-3xl text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
             {t("hero.title")}
           </h1>
           <p className="mt-5 max-w-2xl text-lg text-white/75">
@@ -53,7 +53,7 @@ export default function PartnersPage({
       </section>
 
       {/* WHY PARTNER */}
-      <section className="bg-white py-20">
+      <section className="bg-white py-24 md:py-32">
         <div className="container-aft">
           <SectionHeading eyebrow={t("why.eyebrow")} title={t("why.title")} centered />
           <div className="mt-12 grid gap-6 md:grid-cols-3">
@@ -70,7 +70,7 @@ export default function PartnersPage({
       </section>
 
       {/* PARTNERSHIP MODELS */}
-      <section className="bg-surface py-20">
+      <section className="bg-surface py-24 md:py-32">
         <div className="container-aft">
           <SectionHeading
             eyebrow={t("models.eyebrow")}
@@ -91,20 +91,20 @@ export default function PartnersPage({
       </section>
 
       {/* HOW IT WORKS */}
-      <section className="bg-white py-16">
+      <section className="bg-white py-24 md:py-32">
         <div className="container-aft text-center">
           <p className="eyebrow">{t("how.eyebrow")}</p>
-          <h2 className="mx-auto mt-3 max-w-3xl text-2xl font-bold text-ink sm:text-3xl">
+          <h2 className="mx-auto mt-3 max-w-3xl text-2xl font-bold tracking-tight text-ink sm:text-3xl">
             {t("how.title")}
           </h2>
         </div>
       </section>
 
       {/* PARTNERSHIP TYPES → forms (§7.1) */}
-      <section className="bg-navy py-20 text-white">
+      <section className="bg-navy py-24 md:py-32 text-white">
         <div className="container-aft">
           <p className="eyebrow">{t("types.eyebrow")}</p>
-          <h2 className="mt-3 text-2xl font-bold sm:text-3xl">{t("types.title")}</h2>
+          <h2 className="mt-3 text-2xl font-bold tracking-tight sm:text-3xl">{t("types.title")}</h2>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {typeKeys.map((k) => (
               <Link

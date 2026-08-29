@@ -51,6 +51,7 @@ export const projects: Project[] = [
     cost: null,
     featured: true,
     coverTone: "ocean",
+    cover: "/images/project-our-ocean-our-tomorrow.jpg",
   },
   {
     slug: "plastic-free-plates",
@@ -71,6 +72,7 @@ export const projects: Project[] = [
     language: "KR",
     deadline: "2026-10-15",
     cost: null,
+    cover: "/images/project-plastic-free-plates.jpg",
   },
   {
     slug: "city-heat-island-app",

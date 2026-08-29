@@ -7,7 +7,7 @@
     "about": "About",
     "ourStory": "Our Story",
     "projects": "Projects",
-    "youth": "Youth",
+    "youth": "AFT Youth",
     "globalNetwork": "Global Network",
     "support": "Support",
     "impact": "Impact",
@@ -18,7 +18,26 @@
     "join": "Join AFT",
     "language": "EN",
     "menu": "Menu",
-    "close": "Close"
+    "close": "Close",
+    "sub": {
+      "aboutAft": "About AFT",
+      "ourStory": "Our Story",
+      "allProjects": "All Projects",
+      "ourOcean": "Our Ocean, Our Tomorrow",
+      "newsStories": "News & Stories",
+      "joinYouth": "Join AFT Youth",
+      "youthApply": "Youth Application",
+      "advisor": "Become an Advisor",
+      "ourImpact": "Our Impact",
+      "ecoAction": "Donation & Eco Action",
+      "globalNetwork": "Global Network",
+      "seoulWorld": "From Seoul to the World",
+      "partnerWith": "Partner With Us",
+      "sponsor": "Sponsor a Project",
+      "venue": "Offer a Venue",
+      "inkind": "In-Kind Support",
+      "expert": "Expert & Mentor"
+    }
   },
   "home": {
     "hero": {
@@ -78,13 +97,12 @@
     },
     "donation": {
       "eyebrow": "AFT × WWF",
-      "title": "Creativity Became Real Impact.",
+      "title": "Creativity Became\nReal Impact.",
       "amount": "₩1,000,000",
       "amountLabel": "Donated for Nature",
       "ceremony": "Donation Ceremony · August 26, 2026",
       "body": "In partnership with WWF, AFT youth turned proceeds from their exhibition and youth-designed goods into a real donation for nature — proof that creativity can become action.",
       "watch": "Watch the Moment",
-      "watchSoon": "Video coming soon",
       "followupTitle": "The Action Continued",
       "followup": [
         "Environmental Education",
@@ -94,16 +112,16 @@
       "note": "AFT × WWF official partnership."
     },
     "beginning": {
-      "title": "This is only the beginning."
+      "title": "This is only\nthe beginning."
     },
     "global": {
       "eyebrow": "From Seoul to the World",
       "title1": "From Seoul",
       "title2": "to the World.",
-      "body": "What began with 28 young creators in Seoul is growing into a global community of young artists, thinkers and changemakers. The map is still opening — and there's a place on it for you.",
+      "body": "What began with 28 young creators in Seoul is growing into a global community of young artists, thinkers and changemakers.",
       "seoul": "Seoul · Founded 2026",
       "cta": "Explore Global Network",
-      "title": "From Seoul to the World.",
+      "title": "From Seoul\nto the World.",
       "body2": "We are building a global network of young creators and partners to create a better tomorrow together."
     },
     "story": {
@@ -217,9 +235,14 @@
       "eyebrow": "Support AFT",
       "title": "Turn Support into Impact.",
       "body": "Your support helps young creators create, share and act for a better tomorrow.",
+      "areas": {
+        "youth": "Youth Projects",
+        "exhibitions": "Exhibitions",
+        "environment": "Environmental Action",
+        "publishing": "Publishing &\nCreative Programs"
+      },
       "ctaDonate": "Donate Now",
-      "ctaSponsor": "Sponsor a Project",
-      "ctaVenue": "Offer a Venue"
+      "caption": "Every contribution makes a\nreal difference."
     },
     "partners": {
       "eyebrow": "Our Partners"

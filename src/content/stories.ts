@@ -32,6 +32,7 @@ export const stories: Story[] = [
       ko: "플라스틱 문제를 조사한 뒤 그림을 제품 디자인으로 발전시켰고, WWF에 1,000,000원을 전달한 기부 캠페인 운영에도 참여했습니다.",
     },
     coverTone: "ocean",
+    cover: "/images/story-from-drawing-to-donation.jpg",
   },
   {
     slug: "becoming-a-published-author",
@@ -46,6 +47,7 @@ export const stories: Story[] = [
       en: "From planning the story to designing the cover, this member became a published author whose book carries an environmental message.",
       ko: "이야기 기획부터 표지 구성까지 맡아, 환경 메시지를 담은 책을 출판한 작가가 되었습니다.",
     },
+    cover: "/images/story-becoming-a-published-author.jpg",
   },
   {
     slug: "leading-the-exhibition",
@@ -60,6 +62,7 @@ export const stories: Story[] = [
       en: "Planning the exhibition flow and presenting on stage, this member led visitor programs and grew into a confident youth leader.",
       ko: "전시 동선을 기획하고 무대에서 발표하며 관람객 프로그램을 이끌었고, 자신감 있는 청소년 리더로 성장했습니다.",
     },
+    cover: "/images/story-leading-the-exhibition.jpg",
   },
 ];
 

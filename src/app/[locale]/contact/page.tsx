@@ -17,10 +17,10 @@ export default function ContactPage({
   return (
     <>
       {/* HERO */}
-      <section className="bg-navy py-16 text-white">
+      <section className="bg-navy py-24 md:py-32 text-white">
         <div className="container-aft">
           <p className="eyebrow">{t("hero.eyebrow")}</p>
-          <h1 className="mt-3 text-3xl font-extrabold sm:text-4xl">
+          <h1 className="mt-3 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
             {t("hero.title")}
           </h1>
           <p className="mt-4 max-w-2xl text-white/75">{t("hero.subtitle")}</p>
@@ -28,7 +28,7 @@ export default function ContactPage({
       </section>
 
       {/* FORM + INFO */}
-      <section className="bg-surface py-14">
+      <section className="bg-surface py-24 md:py-32">
         <div className="container-aft grid gap-10 lg:grid-cols-[1.6fr_1fr]">
           <ContactForm />
 

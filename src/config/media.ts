@@ -13,12 +13,16 @@ export type MediaSlot = {
   tone?: "default" | "ocean";
 };
 
-// HERO background video. Drop a file into public/videos/ and set `src`
-// (e.g. "/videos/home-hero.mp4"); `poster` is the still shown before/while it
-// loads or when no video exists yet (e.g. "/images/home-hero.jpg").
-// Both null → HeroVideo falls back to the navy gradient.
-export const homeHeroVideo: { src: string | null; poster: string | null } = {
-  src: null,
+// HERO background video. `src` is the landscape (16:9) clip for tablet/desktop;
+// `srcMobile` is the optional portrait (9:16) clip shown on phones. `poster` is
+// the still shown before/while the video loads. All null → navy gradient.
+export const homeHeroVideo: {
+  src: string | null;
+  srcMobile?: string | null;
+  poster: string | null;
+} = {
+  src: "/videos/hongik-hero-16x9.mp4",
+  srcMobile: "/videos/hongik-hero-9x16.mp4",
   poster: null,
 };
 
@@ -33,15 +37,15 @@ export const homeDonationVideo: { src: string | null; poster: string | null } = 
 export const media = {
   // HOME — hero background + section images (map 1:1 to 구현이미지.png)
   homeHero: { src: null, alt: "AFT youth at an exhibition" },
-  aboutGrid1: { src: null, alt: "Youth creating artwork" },
-  aboutGrid2: { src: null, alt: "Youth exhibition" },
-  aboutGrid3: { src: null, alt: "Youth presenting" },
-  aboutGrid4: { src: null, alt: "Youth activity" },
-  impactImg1: { src: null, alt: "Youth presenting" },
-  impactImg2: { src: null, alt: "Youth artwork" },
-  impactImg3: { src: null, alt: "Eco-goods" },
+  aboutGrid1: { src: "/images/about-grid-1.jpg", alt: "Young artist with their artwork" },
+  aboutGrid2: { src: "/images/about-grid-2.jpg", alt: "Youth presenting on stage" },
+  aboutGrid3: { src: "/images/about-grid-3.jpg", alt: "Youth with ocean-themed artwork" },
+  aboutGrid4: { src: "/images/about-grid-4.jpg", alt: "Youth award ceremony" },
+  impactImg1: { src: "/images/impact-img-1.jpg", alt: "Youth orchestra performing" },
+  impactImg2: { src: "/images/impact-img-2.jpg", alt: "Exhibition reception" },
+  impactImg3: { src: "/images/impact-img-3.jpg", alt: "Gallery of youth ocean artworks" },
   homeFeatured: {
-    src: null,
+    src: "/images/home-featured.jpg",
     alt: "Our Ocean, Our Tomorrow project artwork",
     tone: "ocean",
   },
@@ -54,47 +58,47 @@ export const media = {
   wwdConnect: { src: null, alt: "Youth exhibition audience" },
   wwdAct: { src: null, alt: "Youth presenting a project" },
   wwdChange: { src: null, alt: "Youth-led change project" },
-  homeCommunity: { src: null, alt: "Young creators collaborating at a table" },
-  joinYouth: { src: null, alt: "AFT youth members creating together" },
-  joinAdvisors: { src: null, alt: "A mentor guiding young creators" },
-  joinPartners: { src: null, alt: "Partners collaborating with AFT" },
+  homeCommunity: { src: "/images/home-community.jpg", alt: "AFT youth creators together" },
+  joinYouth: { src: "/images/join-youth.jpg", alt: "AFT youth presenting on stage" },
+  joinAdvisors: { src: "/images/join-advisors.jpg", alt: "WWF Korea leader speaking at the AFT project" },
+  joinPartners: { src: "/images/join-partners.jpg", alt: "Guests and partners at the AFT exhibition" },
   homeLab: { src: null, alt: "Youth in the creative lab with a mentor" },
   labImg1: { src: null, alt: "Youth product design" },
   labImg2: { src: null, alt: "Youth prototype" },
-  homeStory1: { src: null, alt: "Youth creator portrait" },
-  homeStory2: { src: null, alt: "Youth creator portrait" },
-  homeStory3: { src: null, alt: "Youth creator portrait" },
+  homeStory1: { src: "/images/home-story-1.jpg", alt: "Youth creator with their artwork" },
+  homeStory2: { src: "/images/home-story-2.jpg", alt: "Youth creator with their artwork" },
+  homeStory3: { src: "/images/home-story-3.jpg", alt: "Youth creator with their artwork" },
   // Story-began photo strip (04)
-  storyShot1: { src: null, alt: "Youth sketching ideas" },
-  storyShot2: { src: null, alt: "Youth in discussion" },
-  storyShot3: { src: null, alt: "Ocean-themed artwork", tone: "ocean" },
-  storyShot4: { src: null, alt: "Youth exhibition" },
+  storyShot1: { src: "/images/story-shot-1.jpg", alt: "Young artist with their artwork" },
+  storyShot2: { src: "/images/story-shot-2.jpg", alt: "Exhibition gallery" },
+  storyShot3: { src: "/images/story-shot-3.jpg", alt: "Exhibition reception" },
+  storyShot4: { src: "/images/story-shot-4.jpg", alt: "Award ceremony on stage" },
   storyShot5: { src: null, alt: "Youth eco activity outdoors" },
-  wwfCeremony: { src: null, alt: "AFT × WWF donation ceremony", tone: "ocean" },
+  wwfCeremony: { src: "/images/wwf-ceremony.jpg", alt: "WWF Korea representative at the AFT × WWF youth art charity project", tone: "ocean" },
   // WWF follow-up eco action (05)
   wwfFollow1: { src: null, alt: "Environmental education session" },
   wwfFollow2: { src: null, alt: "Youth interviews" },
   wwfFollow3: { src: null, alt: "Cheonggyecheon eco walk" },
-  // Dotted world map (CC BY 3.0 — sNowFleikuN, via Wikimedia Commons).
+  // Dotted world map (Pixabay Content License — GDJ; free, no attribution required).
   // Leave src null to fall back to the built-in dot-grid motif.
-  worldMap: { src: "/images/world-map-dots.svg", alt: "Dotted world map" },
-  homeSupport: { src: null, alt: "A young creator sharing their work" },
+  worldMap: { src: "/images/world-map-nopoles.png", alt: "Dotted world map" },
+  homeSupport: { src: "/images/support-earth-2.jpg", alt: "A hand holding a green planet Earth" },
   news1: { src: null, alt: "News thumbnail" },
   news2: { src: null, alt: "News thumbnail" },
   news3: { src: null, alt: "News thumbnail" },
 
-  aboutHero: { src: null, alt: "AFT youth presenting their work" },
-  aboutBook1: { src: null, alt: "Youth picture book cover" },
-  aboutBook2: { src: null, alt: "Youth picture book cover" },
-  aboutBook3: { src: null, alt: "Youth picture book cover" },
+  aboutHero: { src: "/images/about-hero.jpg", alt: "AFT youth presenting their work" },
+  aboutBook1: { src: "/images/about-book-1.jpg", alt: "Youth picture book cover" },
+  aboutBook2: { src: "/images/about-book-2.jpg", alt: "Youth picture book cover" },
+  aboutBook3: { src: "/images/about-book-3.jpg", alt: "Youth picture book cover" },
 
   impactFeatured: {
-    src: null,
+    src: "/images/impact-featured.jpg",
     alt: "Our Ocean, Our Tomorrow exhibition",
     tone: "ocean",
   },
 
-  joinHero: { src: null, alt: "Young creators at an AFT workshop" },
+  joinHero: { src: "/images/join-hero.jpg", alt: "Young creators at an AFT workshop" },
 } satisfies Record<string, MediaSlot>;
 
 export type MediaKey = keyof typeof media;

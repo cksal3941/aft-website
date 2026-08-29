@@ -25,10 +25,10 @@ export default function AboutPage({
     <>
       {/* HERO */}
       <section className="bg-navy text-white">
-        <div className="container-aft grid gap-10 py-20 lg:grid-cols-2 lg:items-center">
+        <div className="container-aft grid gap-10 py-24 md:py-32 lg:grid-cols-2 lg:items-center">
           <div>
             <p className="eyebrow">{t("hero.eyebrow")}</p>
-            <h1 className="mt-3 text-3xl font-extrabold leading-tight sm:text-4xl">
+            <h1 className="mt-3 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
               {t("hero.title")}
             </h1>
             <p className="mt-5 max-w-xl text-lg text-white/75">
@@ -48,7 +48,7 @@ export default function AboutPage({
       </section>
 
       {/* MISSION */}
-      <section className="bg-white py-20">
+      <section className="bg-white py-24 md:py-32">
         <div className="container-aft max-w-3xl">
           <SectionHeading eyebrow={t("mission.eyebrow")} title={t("mission.title")} />
           <p className="mt-4 text-lg text-muted">{t("mission.body")}</p>
@@ -56,7 +56,7 @@ export default function AboutPage({
       </section>
 
       {/* YOUTH-LED TEAMS */}
-      <section className="bg-surface py-20">
+      <section className="bg-surface py-24 md:py-32">
         <div className="container-aft">
           <SectionHeading eyebrow={t("teams.eyebrow")} title={t("teams.title")} centered />
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -73,7 +73,7 @@ export default function AboutPage({
       </section>
 
       {/* BEYOND THE CANVAS */}
-      <section className="bg-white py-20">
+      <section className="bg-white py-24 md:py-32">
         <div className="container-aft">
           <SectionHeading eyebrow={t("beyond.eyebrow")} title={t("beyond.title")} centered />
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -111,7 +111,7 @@ export default function AboutPage({
       </section>
 
       {/* VALUES */}
-      <section className="bg-navy py-20 text-white">
+      <section className="bg-navy py-24 md:py-32 text-white">
         <div className="container-aft">
           <SectionHeading eyebrow={t("values.eyebrow")} title={t("values.title")} centered />
           <div className="mt-12 grid gap-6 md:grid-cols-3">

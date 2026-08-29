@@ -56,12 +56,12 @@ function DetailView({
     <>
       {/* HERO */}
       <section className="bg-navy text-white">
-        <div className="container-aft grid gap-10 py-16 lg:grid-cols-2 lg:items-center">
+        <div className="container-aft grid gap-10 py-24 md:py-32 lg:grid-cols-2 lg:items-center">
           <div>
             <div className="mb-4">
               <StatusBadge status={project.status} />
             </div>
-            <h1 className="text-3xl font-extrabold sm:text-4xl">
+            <h1 className="text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
               {project.title}
             </h1>
             <p className="mt-4 max-w-xl text-lg text-white/75">
@@ -93,7 +93,7 @@ function DetailView({
       {detail && (
         <>
           {/* THE CHALLENGE */}
-          <section className="bg-white py-16">
+          <section className="bg-white py-24 md:py-32">
             <div className="container-aft max-w-3xl">
               <SectionHeading eyebrow="01" title={t("sections.challenge")} />
               <p className="mt-4 text-lg text-muted">{detail.challenge}</p>
@@ -101,7 +101,7 @@ function DetailView({
           </section>
 
           {/* YOUNG IDEAS */}
-          <section className="bg-surface py-16">
+          <section className="bg-surface py-24 md:py-32">
             <div className="container-aft max-w-3xl">
               <SectionHeading eyebrow="02" title={t("sections.youngIdeas")} />
               <ul className="mt-6 space-y-3">
@@ -118,7 +118,7 @@ function DetailView({
           </section>
 
           {/* CREATIVE ACTION */}
-          <section className="bg-white py-16">
+          <section className="bg-white py-24 md:py-32">
             <div className="container-aft">
               <SectionHeading eyebrow="03" title={t("sections.creativeAction")} />
               <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -135,7 +135,7 @@ function DetailView({
           </section>
 
           {/* GALLERY */}
-          <section className="bg-surface py-16">
+          <section className="bg-surface py-24 md:py-32">
             <div className="container-aft">
               <SectionHeading eyebrow="04" title={t("sections.gallery")} />
               <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -151,7 +151,7 @@ function DetailView({
           </section>
 
           {/* THE IMPACT */}
-          <section id="impact" className="scroll-mt-20 bg-navy py-16 text-white">
+          <section id="impact" className="scroll-mt-20 bg-navy py-24 md:py-32 text-white">
             <div className="container-aft">
               <SectionHeading eyebrow="05" title={t("sections.impact")} />
               <p className="mt-4 max-w-2xl text-white/75">{detail.impactSummary}</p>
@@ -177,7 +177,7 @@ function DetailView({
 
       {/* RELATED PROJECTS */}
       {related.length > 0 && (
-        <section id="related" className="scroll-mt-20 bg-white py-16">
+        <section id="related" className="scroll-mt-20 bg-white py-24 md:py-32">
           <div className="container-aft">
             <SectionHeading title={t("sections.related")} />
             <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

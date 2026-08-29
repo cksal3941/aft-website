@@ -2,22 +2,72 @@
 // `key` matches a messages `nav.*` entry; `href` is a locale-agnostic path
 // (the next-intl <Link> prepends the active locale).
 
-export type NavItem = { key: string; href: string };
+export type NavChild = { key: string; href: string };
+export type NavItem = { key: string; href: string; children?: NavChild[] };
 
-// Header nav — redesign scroll narrative (구현이미지):
-// ABOUT · OUR STORY · PROJECTS · YOUTH · GLOBAL NETWORK · SUPPORT
+// Header nav — flat top level (기획서 §1.1) + Global Network (수정 방향 §12),
+// each with a hover dropdown of real sub-pages / home anchors.
+// Sub-item labels live under messages `nav.sub.*`.
 export const mainNav: NavItem[] = [
-  { key: "about", href: "/about" },
-  { key: "ourStory", href: "/#story" },
-  { key: "projects", href: "/projects" },
-  { key: "youth", href: "/join" },
-  { key: "globalNetwork", href: "/global-network" },
-  { key: "support", href: "/support" },
+  {
+    key: "about",
+    href: "/about",
+    children: [
+      { key: "aboutAft", href: "/about" },
+      { key: "ourStory", href: "/#story" },
+    ],
+  },
+  {
+    key: "projects",
+    href: "/projects",
+    children: [
+      { key: "allProjects", href: "/projects" },
+      { key: "ourOcean", href: "/projects/our-ocean-our-tomorrow" },
+      { key: "newsStories", href: "/stories" },
+    ],
+  },
+  {
+    key: "youth",
+    href: "/join",
+    children: [
+      { key: "joinYouth", href: "/join" },
+      { key: "youthApply", href: "/join/apply" },
+      { key: "advisor", href: "/join/advisor" },
+    ],
+  },
+  {
+    key: "impact",
+    href: "/impact",
+    children: [
+      { key: "ourImpact", href: "/impact" },
+      { key: "ecoAction", href: "/#donation" },
+    ],
+  },
+  {
+    key: "globalNetwork",
+    href: "/global-network",
+    children: [
+      { key: "globalNetwork", href: "/global-network" },
+      { key: "seoulWorld", href: "/#global" },
+    ],
+  },
+  {
+    key: "partners",
+    href: "/partners",
+    children: [
+      { key: "partnerWith", href: "/partners" },
+      { key: "sponsor", href: "/partners/sponsor" },
+      { key: "venue", href: "/partners/venue" },
+      { key: "inkind", href: "/partners/in-kind" },
+      { key: "expert", href: "/partners/expert" },
+    ],
+  },
 ];
 
-// Mobile menu adds Contact after the main items.
+// Mobile hamburger order per 기획서 §1.2: main items + News + Contact.
 export const mobileNav: NavItem[] = [
   ...mainNav,
+  { key: "news", href: "/stories" },
   { key: "contact", href: "/contact" },
 ];
 

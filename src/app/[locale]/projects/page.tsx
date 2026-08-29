@@ -17,16 +17,16 @@ export default function ProjectsPage({
 
   return (
     <>
-      <section className="bg-navy py-16 text-white">
+      <section className="bg-navy py-24 md:py-32 text-white">
         <div className="container-aft">
-          <h1 className="max-w-3xl text-3xl font-extrabold sm:text-4xl">
+          <h1 className="max-w-3xl text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
             {t("title")}
           </h1>
           <p className="mt-4 max-w-2xl text-white/75">{t("subtitle")}</p>
         </div>
       </section>
 
-      <section className="bg-white py-14">
+      <section className="bg-white py-24 md:py-32">
         <div className="container-aft">
           <ProjectsExplorer items={items} />
         </div>

@@ -20,11 +20,11 @@ export default function GlobalNetworkPage({
   return (
     <>
       {/* Hero + open network map */}
-      <section className="bg-navy py-20 text-white md:py-24">
+      <section className="bg-navy py-24 text-white md:py-32">
         <div className="container-aft">
           <div className="max-w-3xl">
             <p className="eyebrow text-accent">{t("eyebrow")}</p>
-            <h1 className="mt-4 text-4xl font-extrabold leading-tight sm:text-5xl">
+            <h1 className="mt-4 text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
               {t("title")}
             </h1>
             <p className="mt-6 text-lg text-white/80">{t("body")}</p>
@@ -41,9 +41,9 @@ export default function GlobalNetworkPage({
       </section>
 
       {/* The network so far — real nodes only */}
-      <section className="bg-surface py-20 md:py-24">
+      <section className="bg-surface py-24 md:py-32">
         <div className="container-aft">
-          <h2 className="text-2xl font-bold text-ink sm:text-3xl">
+          <h2 className="text-2xl font-bold tracking-tight text-ink sm:text-3xl">
             {t("table.title")}
           </h2>
           <div className="mt-8 overflow-x-auto rounded-xl border border-line bg-white">

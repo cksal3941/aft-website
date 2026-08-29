@@ -7,7 +7,7 @@
     "about": "소개",
     "ourStory": "우리 이야기",
     "projects": "프로젝트",
-    "youth": "유스",
+    "youth": "AFT 유스",
     "globalNetwork": "글로벌 네트워크",
     "support": "서포트",
     "impact": "임팩트",
@@ -18,7 +18,26 @@
     "join": "가입하기",
     "language": "KR",
     "menu": "메뉴",
-    "close": "닫기"
+    "close": "닫기",
+    "sub": {
+      "aboutAft": "AFT 소개",
+      "ourStory": "우리 이야기",
+      "allProjects": "전체 프로젝트",
+      "ourOcean": "Our Ocean, Our Tomorrow",
+      "newsStories": "소식 & 스토리",
+      "joinYouth": "AFT 유스 가입",
+      "youthApply": "유스 지원",
+      "advisor": "어드바이저 되기",
+      "ourImpact": "우리의 임팩트",
+      "ecoAction": "기부 & 환경 행동",
+      "globalNetwork": "글로벌 네트워크",
+      "seoulWorld": "서울에서 세계로",
+      "partnerWith": "파트너 되기",
+      "sponsor": "프로젝트 후원",
+      "venue": "공간 제공",
+      "inkind": "물품·현물 후원",
+      "expert": "전문가·멘토"
+    }
   },
   "home": {
     "hero": {
@@ -84,7 +103,6 @@
       "ceremony": "기부금 전달식 · 2026년 8월 26일",
       "body": "AFT는 WWF와의 파트너십을 통해 전시와 청소년 디자인 굿즈의 수익을 자연을 위한 실제 기부로 전달했습니다 — 창의성이 행동이 될 수 있다는 증거입니다.",
       "watch": "전달식 영상 보기",
-      "watchSoon": "영상 준비 중",
       "followupTitle": "행동은 계속됩니다",
       "followup": [
         "환경 교육",
@@ -217,9 +235,14 @@
       "eyebrow": "AFT 후원",
       "title": "후원을 임팩트로 바꾸세요.",
       "body": "당신의 후원은 청소년이 창작하고, 나누고, 행동하도록 돕습니다.",
+      "areas": {
+        "youth": "청소년 프로젝트",
+        "exhibitions": "전시",
+        "environment": "환경 행동",
+        "publishing": "출판·창작 프로그램"
+      },
       "ctaDonate": "지금 후원하기",
-      "ctaSponsor": "프로젝트 후원",
-      "ctaVenue": "공간 제공"
+      "caption": "작은 후원 하나하나가\n실제 변화를 만듭니다."
     },
     "partners": {
       "eyebrow": "파트너"

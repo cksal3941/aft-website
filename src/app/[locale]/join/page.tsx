@@ -24,9 +24,9 @@ export default function JoinPage({
     <>
       {/* HERO */}
       <section className="bg-navy text-white">
-        <div className="container-aft grid gap-10 py-20 lg:grid-cols-2 lg:items-center">
+        <div className="container-aft grid gap-10 py-24 md:py-32 lg:grid-cols-2 lg:items-center">
           <div>
-            <h1 className="text-4xl font-extrabold leading-tight sm:text-5xl">
+            <h1 className="text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
               {t("hero.title")}
             </h1>
             <p className="mt-5 max-w-xl text-lg text-white/75">
@@ -49,7 +49,7 @@ export default function JoinPage({
       </section>
 
       {/* MEMBER ROLES */}
-      <section className="bg-white py-20">
+      <section className="bg-white py-24 md:py-32">
         <div className="container-aft">
           <SectionHeading
             eyebrow={t("roles.eyebrow")}
@@ -76,7 +76,7 @@ export default function JoinPage({
       </section>
 
       {/* HOW IT WORKS */}
-      <section className="bg-surface py-20">
+      <section className="bg-surface py-24 md:py-32">
         <div className="container-aft">
           <SectionHeading
             eyebrow={t("how.eyebrow")}
@@ -100,7 +100,7 @@ export default function JoinPage({
       </section>
 
       {/* BENEFITS + SAFETY */}
-      <section className="bg-white py-20">
+      <section className="bg-white py-24 md:py-32">
         <div className="container-aft grid gap-12 lg:grid-cols-2">
           <div>
             <SectionHeading
@@ -127,9 +127,9 @@ export default function JoinPage({
       </section>
 
       {/* FINAL CTA */}
-      <section className="bg-navy py-16 text-white">
+      <section className="bg-navy py-24 md:py-32 text-white">
         <div className="container-aft flex flex-col items-center gap-6 text-center">
-          <h2 className="text-2xl font-bold sm:text-3xl">{t("hero.title")}</h2>
+          <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">{t("hero.title")}</h2>
           <CtaLink href={routes.apply} variant="primary" event="join_start">
             {t("hero.ctaStart")}
           </CtaLink>

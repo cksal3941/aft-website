@@ -20,10 +20,10 @@ export default function StoriesPage({
   return (
     <>
       {/* HERO */}
-      <section className="bg-navy py-16 text-white">
+      <section className="bg-navy py-24 md:py-32 text-white">
         <div className="container-aft">
           <p className="eyebrow">{t("hero.eyebrow")}</p>
-          <h1 className="mt-3 max-w-3xl text-3xl font-extrabold sm:text-4xl">
+          <h1 className="mt-3 max-w-3xl text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl">
             {t("hero.title")}
           </h1>
           <p className="mt-4 max-w-2xl text-white/75">{t("hero.subtitle")}</p>
@@ -31,7 +31,7 @@ export default function StoriesPage({
       </section>
 
       {/* STORY CARDS */}
-      <section className="bg-white py-16">
+      <section className="bg-white py-24 md:py-32">
         <div className="container-aft space-y-16">
           {items.map((s, i) => (
             <article
@@ -69,9 +69,9 @@ export default function StoriesPage({
       </section>
 
       {/* CTA */}
-      <section className="bg-surface py-16">
+      <section className="bg-surface py-24 md:py-32">
         <div className="container-aft flex flex-col items-center gap-5 text-center">
-          <h2 className="text-2xl font-bold text-ink sm:text-3xl">
+          <h2 className="text-2xl font-bold tracking-tight text-ink sm:text-3xl">
             {t("hero.title")}
           </h2>
           <div className="flex flex-col gap-3 sm:flex-row">

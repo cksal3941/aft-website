@@ -11,6 +11,7 @@ export function AftImage({
   tone = "default",
   priority = false,
   sizes = "(max-width: 768px) 100vw, 50vw",
+  objectPosition,
 }: {
   src?: string | null;
   alt?: string;
@@ -19,18 +20,26 @@ export function AftImage({
   tone?: "default" | "ocean";
   priority?: boolean;
   sizes?: string;
+  objectPosition?: string;
 }) {
   const alternative = alt ?? label ?? "AFT";
 
   if (src) {
+    // `fill` needs a positioned ancestor. Default to `relative`, but if the
+    // caller already positions the box (e.g. `absolute inset-0` background),
+    // don't add `relative` — it would override the absolute and break the fill.
+    const positioned = /\b(absolute|fixed)\b/.test(className);
     return (
-      <div className={`relative overflow-hidden ${className}`}>
+      <div
+        className={`${positioned ? "" : "relative"} overflow-hidden ${className}`}
+      >
         <Image
           src={src}
           alt={alternative}
           fill
           sizes={sizes}
           className="object-cover"
+          style={objectPosition ? { objectPosition } : undefined}
           priority={priority}
         />
       </div>

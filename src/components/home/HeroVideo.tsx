@@ -6,14 +6,31 @@ import { homeHeroVideo } from "@/config/media";
 // looks intact until the edited video is dropped into public/videos/.
 export function HeroVideo() {
   const overlay = (
-    <div className="absolute inset-0 -z-10 bg-gradient-to-r from-navy via-navy/85 to-navy/40" />
+    <div className="absolute inset-0 -z-10 bg-gradient-to-r from-black via-black/85 to-black/40" />
   );
 
   if (homeHeroVideo.src) {
+    const mobileSrc = homeHeroVideo.srcMobile;
     return (
       <>
+        {/* Portrait (9:16) on phones */}
+        {mobileSrc && (
+          <video
+            className="absolute inset-0 -z-10 h-full w-full object-cover sm:hidden"
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster={homeHeroVideo.poster ?? undefined}
+          >
+            <source src={mobileSrc} type="video/mp4" />
+          </video>
+        )}
+        {/* Landscape (16:9) on tablet/desktop */}
         <video
-          className="absolute inset-0 -z-10 h-full w-full object-cover"
+          className={`absolute inset-0 -z-10 h-full w-full object-cover ${
+            mobileSrc ? "hidden sm:block" : ""
+          }`}
           autoPlay
           muted
           loop
