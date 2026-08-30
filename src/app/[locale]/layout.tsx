@@ -27,9 +27,15 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "meta" });
   return {
-    // TODO: replace with the real production domain once live — this resolves
-    // the OG image and other relative URLs to absolute for link previews.
-    metadataBase: new URL("https://aft.org"),
+    // Resolve OG image / relative URLs to absolute. Uses the Vercel production
+    // domain automatically (falls back to localhost in dev). If a custom domain
+    // is added later, set NEXT_PUBLIC_SITE_URL to override.
+    metadataBase: new URL(
+      process.env.NEXT_PUBLIC_SITE_URL ??
+        (process.env.VERCEL_PROJECT_PRODUCTION_URL
+          ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+          : "http://localhost:3000")
+    ),
     title: {
       default: t("siteName"),
       template: `%s · AFT`,
