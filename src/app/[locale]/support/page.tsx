@@ -35,7 +35,7 @@ export default function SupportPage({
       </section>
 
       {/* IMPACT EXAMPLES */}
-      <section className="bg-white py-24 md:py-32">
+      <section className="bg-[#f8fafc] py-24 md:py-32">
         <div className="container-aft">
           <SectionHeading
             eyebrow={t("impact.eyebrow")}

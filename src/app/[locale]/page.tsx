@@ -9,6 +9,7 @@ import { AftImage } from "@/components/ui/AftImage";
 import { media } from "@/config/media";
 import { HeroVideo } from "@/components/home/HeroVideo";
 import { DottedWorldMap } from "@/components/home/DottedWorldMap";
+import { StoryCarousel } from "@/components/home/StoryCarousel";
 
 export default function HomePage({
   params,
@@ -63,7 +64,7 @@ export default function HomePage({
       </section>
 
       {/* 02 · WHO WE ARE — text left · pillars (× separated) + image row right */}
-      <section id="who" className="bg-white py-24 md:py-32">
+      <section id="who" className="bg-[#f8fafc] py-24 md:py-32">
         <div className="container-aft flex flex-col gap-12 lg:flex-row lg:gap-16">
           {/* LEFT — heading + body + CTA */}
           <div className="lg:w-[35%] lg:shrink-0">
@@ -71,8 +72,8 @@ export default function HomePage({
             <h2 className="mt-4 whitespace-pre-line text-2xl font-extrabold uppercase leading-[1.1] tracking-tight text-ink sm:text-4xl">
               {t("who.title")}
             </h2>
-            <p className="mt-6 text-muted">{t("who.body1")}</p>
-            <p className="mt-4 text-muted">{t("who.body2")}</p>
+            <p className="mt-6 whitespace-pre-line text-muted">{t("who.body1")}</p>
+            <p className="mt-4 text-balance text-muted">{t("who.body2")}</p>
             <div className="mt-6">
               <CtaLink href={routes.about} variant="text">
                 {t("who.cta")}
@@ -82,31 +83,21 @@ export default function HomePage({
 
           {/* RIGHT — pillars row + 4-image row */}
           <div className="lg:flex-1">
-            <div className="mt-[30px] flex flex-wrap items-start gap-x-10 gap-y-6">
+            <div className="mt-[30px] grid grid-cols-2 gap-x-10 gap-y-8">
               {(["art", "youth", "environment", "social"] as const).map(
-                (k, i, arr) => (
-                  <div key={k} className="flex items-center gap-5">
-                    <div className="flex items-start gap-2">
-                      <span className="shrink-0 text-teal">
-                        <PillarIcon i={i} />
-                      </span>
-                      <div className="min-w-[100px] max-w-[150px]">
-                        <h3 className="text-sm font-bold uppercase tracking-wide text-ink">
-                          {t(`who.pillars.${k}.label`)}
-                        </h3>
-                        <p className="mt-2 whitespace-pre-line text-xs text-muted">
-                          {t(`who.pillars.${k}.blurb`)}
-                        </p>
-                      </div>
+                (k, i) => (
+                  <div key={k} className="flex items-start gap-3">
+                    <span className="shrink-0 text-teal">
+                      <PillarIcon i={i} />
+                    </span>
+                    <div className="max-w-[300px]">
+                      <h3 className="text-base font-bold uppercase tracking-wide text-ink">
+                        {t(`who.pillars.${k}.label`)}
+                      </h3>
+                      <p className="mt-2 whitespace-pre-line text-sm text-muted">
+                        {t(`who.pillars.${k}.blurb`)}
+                      </p>
                     </div>
-                    {i < arr.length - 1 && (
-                      <span
-                        aria-hidden
-                        className="hidden text-lg font-light text-black lg:block"
-                      >
-                        ×
-                      </span>
-                    )}
                   </div>
                 )
               )}
@@ -124,13 +115,13 @@ export default function HomePage({
       {/* 03 · OUR IMPACT IN 2026 — horizontal stat strip */}
       <section
         id="impact"
-        className="relative overflow-hidden border-y border-line bg-surface py-14"
+        className="relative overflow-hidden border-y border-[#e2e8ef] bg-[#f2f5f9] py-14"
       >
         <div className="container-aft relative flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-10">
-          <p className="max-w-[7rem] text-xl font-extrabold uppercase leading-[1.05] tracking-wide text-[#3E7035]">
+          <p className="max-w-[7rem] whitespace-pre-line text-xl font-extrabold uppercase leading-[1.05] tracking-wide text-[#3E7035]">
             {t("impact.title")}
           </p>
-          <ol className="grid grid-cols-2 gap-x-4 gap-y-10 sm:flex sm:flex-1 sm:flex-wrap sm:items-center sm:gap-x-[54px] sm:gap-y-8 lg:pr-[280px]">
+          <ol className="grid grid-cols-2 gap-x-[6px] gap-y-[30px] sm:flex sm:flex-1 sm:flex-wrap sm:items-center sm:gap-x-[44px] sm:gap-y-[22px] lg:pr-[280px]">
             {(["creators", "goods", "donated", "project"] as const).map(
               (k, i, arr) => {
                 const color = [
@@ -164,18 +155,22 @@ export default function HomePage({
               }
             )}
           </ol>
-          {/* Full-height image pinned to the right edge, flush (no left gap) */}
-          <div className="absolute right-0 hidden lg:block lg:-top-14 lg:h-[calc(100%+112px)] lg:w-[340px]">
+          {/* Full-height image; bleeds past the 1400px container to the right
+              viewport edge (no cream gap). Width grows by the same amount so the
+              left start position stays put. */}
+          <div className="absolute right-0 hidden lg:block lg:-top-14 lg:right-[calc(50%_-_50vw)] lg:h-[calc(100%+112px)] lg:w-[calc(340px_+_50vw_-_50%)]">
             <AftImage
               {...media.impactImg1}
               className="h-full w-full rounded-none"
             />
+            {/* Left-edge fade into the section background so the photo blends in */}
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#f2f5f9] via-[#f2f5f9]/60 via-30% to-transparent to-70%" />
           </div>
         </div>
       </section>
 
       {/* 04 · WHERE OUR STORY BEGAN + journey (Seoul · 2026) */}
-      <section id="story" className="bg-white py-24 md:py-32">
+      <section id="story" className="bg-[#f8fafc] py-24 md:py-32">
         <div className="container-aft flex flex-col gap-10 lg:flex-row lg:gap-12">
           {/* LEFT — intro + view all photos */}
           <div className="lg:w-[24%] lg:shrink-0">
@@ -197,38 +192,30 @@ export default function HomePage({
             </div>
           </div>
 
-          {/* RIGHT — photo strip + 01→05 steps */}
+          {/* RIGHT — auto-sliding carousel: each photo bound to its journey step */}
           <div className="lg:flex-1">
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-5">
-              <AftImage {...media.storyShot1} className="aspect-[4/3] w-full" />
-              <AftImage {...media.storyShot2} className="aspect-[4/3] w-full" />
-              <AftImage {...media.storyShot3} className="aspect-[4/3] w-full" />
-              <AftImage {...media.storyShot4} className="aspect-[4/3] w-full" />
-              <AftImage {...media.storyShot5} className="aspect-[4/3] w-full hidden sm:block" />
-            </div>
-            <ol className="mt-10 flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-2">
-              {(["create", "exhibit", "share", "donate", "act"] as const).map(
-                (k) => (
-                  <li key={k} className="sm:flex-1">
-                    <span className="text-lg font-extrabold text-accent">
-                      {t(`journey.steps.${k}.no`)}
-                    </span>
-                    <h3 className="mt-1 text-sm font-bold uppercase tracking-wide text-ink">
-                      {t(`journey.steps.${k}.title`)}
-                    </h3>
-                    <p className="mt-1 text-xs text-muted">
-                      {t(`journey.steps.${k}.body`)}
-                    </p>
-                  </li>
-                )
-              )}
-            </ol>
+            <StoryCarousel
+              slides={(
+                [
+                  { k: "create", img: media.storyShot1 },
+                  { k: "exhibit", img: media.storyShot2 },
+                  { k: "share", img: media.storyShot3 },
+                  { k: "donate", img: media.storyShot4 },
+                  { k: "act", img: media.storyShot5 },
+                ] as const
+              ).map(({ k, img }) => ({
+                ...img,
+                no: t(`journey.steps.${k}.no`),
+                title: t(`journey.steps.${k}.title`),
+                body: t(`journey.steps.${k}.body`),
+              }))}
+            />
           </div>
         </div>
       </section>
 
       {/* 05 · CREATIVITY BECAME REAL IMPACT — AFT × WWF (light) */}
-      <section id="donation" className="bg-white py-24 md:py-32">
+      <section id="donation" className="bg-[#f8fafc] py-24 md:py-32">
         <div className="container-aft flex flex-col gap-12 lg:flex-row lg:gap-16">
           {/* LEFT — headline + amount + watch */}
           <div className="lg:w-[30%] lg:shrink-0">
@@ -285,8 +272,8 @@ export default function HomePage({
           <h2 className="whitespace-pre-line text-2xl font-extrabold uppercase tracking-tight text-ink sm:text-3xl">
             {t("beginning.title")}
           </h2>
-          <div className="mt-4 grid items-start gap-10 lg:grid-cols-[1fr_2fr_1fr]">
-            <p className="max-w-[280px] text-muted">{t("global.body")}</p>
+          <div className="mt-4 grid items-start gap-10 lg:grid-cols-[0.85fr_2.3fr_0.85fr]">
+            <p className="max-w-[320px] text-muted">{t("global.body")}</p>
             <DottedWorldMap seoulLabel={t("global.seoul")} />
             <div>
               <h3 className="whitespace-pre-line text-2xl font-extrabold uppercase leading-tight tracking-tight text-ink sm:text-3xl">
@@ -304,14 +291,14 @@ export default function HomePage({
       </section>
 
       {/* 07 · JOIN THE GLOBAL COMMUNITY — overlay photo cards */}
-      <section id="join-global" className="bg-white py-24 md:py-32">
+      <section id="join-global" className="bg-[#f8fafc] py-24 md:py-32">
         <div className="container-aft">
           <SectionHeading
             eyebrow={t("joinGlobal.eyebrow")}
             title={t("joinGlobal.title")}
             centered
           />
-          <div className="mt-16 grid gap-8 lg:grid-cols-3">
+          <div className="mt-16 grid gap-8 md:grid-cols-3">
             {(
               [
                 { key: "youth", href: routes.join, event: "join_click", slot: media.joinYouth },
@@ -351,27 +338,31 @@ export default function HomePage({
       </section>
 
       {/* 08 · SUPPORT AFT — light band, text left + earth/DONATE right */}
-      <section className="border-t border-line bg-white py-10 md:py-12">
+      <section className="overflow-hidden border-t border-line bg-white py-10 md:py-12 lg:py-0">
+        {/* Text stays inside the 1400px container (aligned with other sections);
+            only the image column bleeds out to the right viewport edge (right:0). */}
         <div className="container-aft flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-8">
           {/* LEFT — heading + body + support links */}
-          <div className="lg:flex-1">
+          <div className="lg:w-[44%] lg:shrink-0">
             <p className="eyebrow">{t("support.eyebrow")}</p>
-            <h2 className="mt-3 text-3xl font-extrabold uppercase leading-[1.1] tracking-tight text-ink sm:text-4xl">
+            <h2 className="mt-3 whitespace-pre-line text-3xl font-extrabold uppercase leading-[1.1] tracking-tight text-ink sm:text-4xl">
               {t("support.title")}
             </h2>
-            <p className="mt-4 max-w-lg text-muted">{t("support.body")}</p>
+            <p className="mt-4 max-w-lg whitespace-pre-line text-muted">
+              {t("support.body")}
+            </p>
             <div className="mt-8 grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-4 sm:gap-x-1">
               {(["youth", "exhibitions", "environment", "publishing"] as const).map(
                 (k, i) => (
                   <div
                     key={k}
-                    className="flex flex-col items-center gap-2 text-center"
+                    className="flex h-full flex-col items-center gap-2 text-center"
                   >
-                    <span className="text-teal">
-                      <SupportIcon i={i} />
-                    </span>
                     <span className="whitespace-pre-line text-sm font-semibold leading-tight text-ink">
                       {t(`support.areas.${k}`)}
+                    </span>
+                    <span className="mt-auto text-teal">
+                      <SupportIcon i={i} />
                     </span>
                   </div>
                 )
@@ -379,23 +370,30 @@ export default function HomePage({
             </div>
           </div>
 
-          {/* RIGHT — image fills the box, DONATE + caption overlaid left */}
-          <div className="relative lg:w-[56%] lg:shrink-0">
+          {/* RIGHT — full-bleed image with DONATE overlay, right-aligned
+              (caption on top, button below) */}
+          <div className="relative lg:flex-1 lg:mr-[calc(50%-50vw)]">
             <AftImage
               {...media.homeSupport}
-              className="aspect-[5/3] w-full"
-              objectPosition="30% 50%"
+              className="aspect-[5/2] w-full"
+              objectPosition="100% 50%"
             />
-            <div className="absolute inset-0 flex flex-col items-start justify-center gap-3 bg-gradient-to-r from-white via-white/70 to-transparent p-8">
+            {/* White gradient for legibility */}
+            <div className="absolute inset-0 bg-gradient-to-r from-white via-white/70 to-transparent" />
+            {/* CTA — right-aligned, lifted to sit level with the left icon row.
+                bottom-[28%] tracks the icon height proportionally as the image scales.
+                Right padding keeps it inside the 1400px container (668px = half of
+                container content width: 1400 − 2×32px lg padding). */}
+            <div className="absolute inset-x-0 bottom-[17%] flex flex-col items-start gap-3 px-8 text-left lg:items-end lg:pr-[max(2rem,calc(50vw_-_668px))] lg:text-right">
+              <p className="text-lg font-bold text-muted lg:text-xl">
+                {t("support.caption")}
+              </p>
               <Link
                 href={routes.support}
-                className="inline-flex items-center gap-2 rounded-sm bg-accent px-6 py-3 text-sm font-bold uppercase tracking-wide text-white shadow-lg transition-colors hover:bg-accent-hover"
+                className="inline-flex items-center gap-2 rounded-sm bg-accent px-8 py-4 text-base font-bold uppercase tracking-wide text-white shadow-lg transition-colors hover:bg-accent-hover"
               >
                 {t("support.ctaDonate")} →
               </Link>
-              <p className="whitespace-pre-line text-base font-bold text-muted">
-                {t("support.caption")}
-              </p>
             </div>
           </div>
         </div>

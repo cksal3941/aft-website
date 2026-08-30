@@ -48,7 +48,7 @@ export default function AboutPage({
       </section>
 
       {/* MISSION */}
-      <section className="bg-white py-24 md:py-32">
+      <section className="bg-[#f8fafc] py-24 md:py-32">
         <div className="container-aft max-w-3xl">
           <SectionHeading eyebrow={t("mission.eyebrow")} title={t("mission.title")} />
           <p className="mt-4 text-lg text-muted">{t("mission.body")}</p>
@@ -73,7 +73,7 @@ export default function AboutPage({
       </section>
 
       {/* BEYOND THE CANVAS */}
-      <section className="bg-white py-24 md:py-32">
+      <section className="bg-[#f8fafc] py-24 md:py-32">
         <div className="container-aft">
           <SectionHeading eyebrow={t("beyond.eyebrow")} title={t("beyond.title")} centered />
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">

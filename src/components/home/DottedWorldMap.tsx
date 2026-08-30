@@ -7,8 +7,8 @@ import { media } from "@/config/media";
 export function DottedWorldMap({ seoulLabel }: { seoulLabel: string }) {
   if (media.worldMap.src) {
     return (
-      <div className="w-full">
-        <div className="relative aspect-[128/53] w-full">
+      <div className="w-full overflow-hidden">
+        <div className="relative aspect-[128/53] w-full -my-5">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={media.worldMap.src}
@@ -21,7 +21,7 @@ export function DottedWorldMap({ seoulLabel }: { seoulLabel: string }) {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent/50" />
               <span className="relative inline-flex h-3.5 w-3.5 rounded-full bg-accent ring-2 ring-white" />
             </span>
-            <span className="absolute right-5 -top-1 whitespace-nowrap text-right text-[11px] font-bold uppercase tracking-wide text-accent-hover">
+            <span className="absolute right-5 -top-2 whitespace-nowrap rounded bg-white/95 px-2 py-0.5 text-right text-xs font-bold uppercase tracking-wide text-accent-hover shadow-sm ring-1 ring-black/5">
               {seoulLabel}
             </span>
           </span>

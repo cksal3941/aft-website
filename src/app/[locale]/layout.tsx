@@ -6,6 +6,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { FloatingQuickMenu } from "@/components/layout/FloatingQuickMenu";
 import "../globals.css";
 
 const inter = Inter({
@@ -26,11 +27,26 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "meta" });
   return {
+    // TODO: replace with the real production domain once live — this resolves
+    // the OG image and other relative URLs to absolute for link previews.
+    metadataBase: new URL("https://aft.org"),
     title: {
       default: t("siteName"),
       template: `%s · AFT`,
     },
     description: t("tagline"),
+    openGraph: {
+      type: "website",
+      siteName: t("siteName"),
+      title: t("siteName"),
+      description: t("tagline"),
+      locale: locale === "ko" ? "ko_KR" : "en_US",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("siteName"),
+      description: t("tagline"),
+    },
   };
 }
 
@@ -49,12 +65,13 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} className={`${inter.variable} h-full antialiased`}>
-      <body className="flex min-h-full flex-col bg-white text-ink">
+      <body className="flex min-h-full flex-col bg-[#f8fafc] text-ink">
         <NextIntlClientProvider>
           <Header />
           {/* pt clears the fixed header; the home hero cancels it with -mt-20 */}
           <main className="flex-1 pt-20">{children}</main>
           <Footer />
+          <FloatingQuickMenu />
         </NextIntlClientProvider>
       </body>
     </html>

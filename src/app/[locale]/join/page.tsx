@@ -49,7 +49,7 @@ export default function JoinPage({
       </section>
 
       {/* MEMBER ROLES */}
-      <section className="bg-white py-24 md:py-32">
+      <section className="bg-[#f8fafc] py-24 md:py-32">
         <div className="container-aft">
           <SectionHeading
             eyebrow={t("roles.eyebrow")}
@@ -100,7 +100,7 @@ export default function JoinPage({
       </section>
 
       {/* BENEFITS + SAFETY */}
-      <section className="bg-white py-24 md:py-32">
+      <section className="bg-[#f8fafc] py-24 md:py-32">
         <div className="container-aft grid gap-12 lg:grid-cols-2">
           <div>
             <SectionHeading

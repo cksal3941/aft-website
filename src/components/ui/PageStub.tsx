@@ -15,7 +15,7 @@ export function PageStub({
   children?: ReactNode;
 }) {
   return (
-    <div className="bg-white">
+    <div className="bg-[#f8fafc]">
       <section className="bg-navy py-16 text-white">
         <div className="container-aft">
           {eyebrow && <p className="eyebrow">{eyebrow}</p>}

@@ -31,7 +31,7 @@ export default function StoriesPage({
       </section>
 
       {/* STORY CARDS */}
-      <section className="bg-white py-24 md:py-32">
+      <section className="bg-[#f8fafc] py-24 md:py-32">
         <div className="container-aft space-y-16">
           {items.map((s, i) => (
             <article

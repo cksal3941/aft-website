@@ -44,7 +44,7 @@ export default function ImpactPage({
       </section>
 
       {/* IMPACT NUMBERS (with base year + basis) */}
-      <section className="bg-white py-24 md:py-32">
+      <section className="bg-[#f8fafc] py-24 md:py-32">
         <div className="container-aft">
           <div className="flex flex-col items-center gap-2 text-center">
             <SectionHeading eyebrow={t("numbers.eyebrow")} title={t("numbers.title")} centered />
@@ -98,7 +98,7 @@ export default function ImpactPage({
       </section>
 
       {/* IMPACT BY AREA */}
-      <section className="bg-white py-24 md:py-32">
+      <section className="bg-[#f8fafc] py-24 md:py-32">
         <div className="container-aft">
           <SectionHeading eyebrow={t("areas.eyebrow")} title={t("areas.title")} centered />
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -147,7 +147,7 @@ export default function ImpactPage({
       </section>
 
       {/* TRANSPARENCY */}
-      <section className="bg-white py-24 md:py-32">
+      <section className="bg-[#f8fafc] py-24 md:py-32">
         <div className="container-aft max-w-3xl">
           <SectionHeading
             eyebrow={t("transparency.eyebrow")}

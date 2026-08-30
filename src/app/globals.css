@@ -27,7 +27,7 @@
 }
 
 :root {
-  --background: #ffffff;
+  --background: #f8fafc;
   --foreground: #0f172a;
 }
 
@@ -41,6 +41,17 @@ body {
 @layer base {
   p {
     font-weight: 500;
+  }
+
+  /*
+    Korean typography: browsers treat Hangul as CJK and break lines between any
+    two characters (word-break: normal), producing awkward mid-word wraps like
+    "2026년 임/팩트" or "되었습/니다" in layouts sized for English. keep-all breaks
+    only at spaces (어절 단위); overflow-wrap keeps long Latin tokens/URLs contained.
+  */
+  :lang(ko) {
+    word-break: keep-all;
+    overflow-wrap: break-word;
   }
 }
 
@@ -62,4 +73,98 @@ body {
 }
 @utility container-aft {
   @apply mx-auto w-full max-w-[1400px] px-5 sm:px-6 lg:px-8;
+}
+
+/* ── Floating quick menu (contact · phone · SNS · TOP), ported from CnA ── */
+.footer-quick {
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.fq-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 6px;
+  padding: 0;
+}
+.fq-item {
+  position: relative;
+}
+.fq-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #fff;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  transition: opacity 0.2s;
+  cursor: pointer;
+}
+.fq-circle:hover {
+  opacity: 0.85;
+}
+.fq-top {
+  background: #556478;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.42px;
+}
+.fq-sns-toggle {
+  flex-direction: column;
+  gap: 3px;
+}
+.fq-sns-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-ink);
+  line-height: 1;
+  letter-spacing: -0.3px;
+}
+.fq-sns-arrow {
+  transition: transform 0.3s ease;
+}
+.fq-sns-arrow.open {
+  transform: rotate(180deg);
+}
+.fq-sns-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+}
+.fq-sns-panel.open {
+  grid-template-rows: 1fr;
+}
+.fq-sns-inner {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+}
+@media (max-width: 640px) {
+  .footer-quick {
+    right: 16px;
+    bottom: 24px;
+  }
+  .fq-circle {
+    width: 46px;
+    height: 46px;
+  }
 }

@@ -53,7 +53,7 @@ export default function PartnersPage({
       </section>
 
       {/* WHY PARTNER */}
-      <section className="bg-white py-24 md:py-32">
+      <section className="bg-[#f8fafc] py-24 md:py-32">
         <div className="container-aft">
           <SectionHeading eyebrow={t("why.eyebrow")} title={t("why.title")} centered />
           <div className="mt-12 grid gap-6 md:grid-cols-3">
@@ -91,7 +91,7 @@ export default function PartnersPage({
       </section>
 
       {/* HOW IT WORKS */}
-      <section className="bg-white py-24 md:py-32">
+      <section className="bg-[#f8fafc] py-24 md:py-32">
         <div className="container-aft text-center">
           <p className="eyebrow">{t("how.eyebrow")}</p>
           <h2 className="mx-auto mt-3 max-w-3xl text-2xl font-bold tracking-tight text-ink sm:text-3xl">

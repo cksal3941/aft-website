@@ -89,4 +89,6 @@ export const routes = {
   support: "/support",
   stories: "/stories",
   contact: "/contact",
+  privacy: "/privacy",
+  terms: "/terms",
 } as const;

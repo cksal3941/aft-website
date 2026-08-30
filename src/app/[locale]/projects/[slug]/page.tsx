@@ -81,7 +81,7 @@ function DetailView({
       </section>
 
       {/* PROJECT FACTS */}
-      <section className="border-b border-line bg-white py-10">
+      <section className="border-b border-line bg-[#f8fafc] py-10">
         <div className="container-aft grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           <Fact label={t("facts.status")} value={tStatus(project.status)} />
           <Fact label={t("facts.duration")} value={detail?.facts.duration ?? "—"} />
@@ -93,7 +93,7 @@ function DetailView({
       {detail && (
         <>
           {/* THE CHALLENGE */}
-          <section className="bg-white py-24 md:py-32">
+          <section className="bg-[#f8fafc] py-24 md:py-32">
             <div className="container-aft max-w-3xl">
               <SectionHeading eyebrow="01" title={t("sections.challenge")} />
               <p className="mt-4 text-lg text-muted">{detail.challenge}</p>
@@ -118,7 +118,7 @@ function DetailView({
           </section>
 
           {/* CREATIVE ACTION */}
-          <section className="bg-white py-24 md:py-32">
+          <section className="bg-[#f8fafc] py-24 md:py-32">
             <div className="container-aft">
               <SectionHeading eyebrow="03" title={t("sections.creativeAction")} />
               <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -177,7 +177,7 @@ function DetailView({
 
       {/* RELATED PROJECTS */}
       {related.length > 0 && (
-        <section id="related" className="scroll-mt-20 bg-white py-24 md:py-32">
+        <section id="related" className="scroll-mt-20 bg-[#f8fafc] py-24 md:py-32">
           <div className="container-aft">
             <SectionHeading title={t("sections.related")} />
             <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

@@ -23,7 +23,7 @@ export const homeHeroVideo: {
 } = {
   src: "/videos/hongik-hero-16x9.mp4",
   srcMobile: "/videos/hongik-hero-9x16.mp4",
-  poster: null,
+  poster: "/images/about-hero.jpg",
 };
 
 // AFT × WWF donation-ceremony clip (07 · DONATION & ECO ACTION). Same pattern
@@ -60,7 +60,7 @@ export const media = {
   wwdChange: { src: null, alt: "Youth-led change project" },
   homeCommunity: { src: "/images/home-community.jpg", alt: "AFT youth creators together" },
   joinYouth: { src: "/images/join-youth.jpg", alt: "AFT youth presenting on stage" },
-  joinAdvisors: { src: "/images/join-advisors.jpg", alt: "WWF Korea leader speaking at the AFT project" },
+  joinAdvisors: { src: "/images/story-shot-5.jpg", alt: "A presenter speaking at an AFT project" },
   joinPartners: { src: "/images/join-partners.jpg", alt: "Guests and partners at the AFT exhibition" },
   homeLab: { src: null, alt: "Youth in the creative lab with a mentor" },
   labImg1: { src: null, alt: "Youth product design" },

@@ -43,33 +43,33 @@
     "hero": {
       "title1": "YOUNG ARTISTS.",
       "title2": "GLOBAL IMPACT.",
-      "subtitle": "A global youth community\nturning creativity into action.",
+      "subtitle": "A global youth community turning creativity into action.",
       "tagline": "Founded in Seoul. Built for the World.",
       "ctaDiscover": "DISCOVER AFT",
-      "ctaJoin": "JOIN THE MOVEMENT"
+      "ctaJoin": "JOIN AFT"
     },
     "who": {
       "eyebrow": "Who We Are",
       "title": "Creativity Can\nChange the World.",
-      "body1": "Arts For Tomorrow (AFT) is a youth arts and impact network founded in Seoul with a global vision.",
-      "body2": "We connect young creators through art, environmental action, exhibitions, publishing and collaborative projects — turning creative ideas into meaningful impact.",
+      "body1": "Arts For Tomorrow (AFT) is a youth arts network that\nstarted in Seoul and is expanding to the world.",
+      "body2": "We connect young creators around the world through art, environmental action, exhibitions, publishing and collaborative projects — helping creative ideas grow into meaningful impact.",
       "cta": "Learn More",
       "pillars": {
         "art": {
           "label": "Art",
-          "blurb": "We create\nwith meaning."
+          "blurb": "We express ideas and values through art."
         },
         "youth": {
           "label": "Youth",
-          "blurb": "We empower\nyoung voices."
+          "blurb": "We help young voices reach further."
         },
         "environment": {
           "label": "Environment",
-          "blurb": "We protect our\nplanet together."
+          "blurb": "We protect the planet's tomorrow through creative action."
         },
         "social": {
           "label": "Social Impact",
-          "blurb": "We turn ideas\ninto action."
+          "blurb": "We turn ideas into action."
         }
       }
     },
@@ -109,7 +109,7 @@
         "Youth Interviews",
         "Cheonggyecheon ECO WALK"
       ],
-      "note": "AFT × WWF official partnership."
+      "note": "AFT × WWF official partnership"
     },
     "beginning": {
       "title": "This is only\nthe beginning."
@@ -118,11 +118,11 @@
       "eyebrow": "From Seoul to the World",
       "title1": "From Seoul",
       "title2": "to the World.",
-      "body": "What began with 28 young creators in Seoul is growing into a global community of young artists, thinkers and changemakers.",
+      "body": "The story AFT began with 28 young creators in Seoul is now growing into a community that connects young artists, creators, thinkers and changemakers around the world. Our world map has only just begun to fill in — and you could be next on it.",
       "seoul": "Seoul · Founded 2026",
       "cta": "Explore Global Network",
       "title": "From Seoul\nto the World.",
-      "body2": "We are building a global network of young creators and partners to create a better tomorrow together."
+      "body2": "We are building a global network that connects young creators and partners, moving toward a better tomorrow."
     },
     "story": {
       "eyebrow": "Where Our\nStory Began",
@@ -135,7 +135,7 @@
         "body": "Young artists explored the ocean, the environment and our shared future — then carried their work from sketchbook to exhibition to real-world action.",
         "cta": "Explore the Project"
       },
-      "tagline": "Our first youth impact project — from creativity to real-world change.",
+      "tagline": "AFT's first youth-led project — from creativity to real-world change.",
       "viewAll": "View All Photos"
     },
     "journey": {
@@ -145,27 +145,27 @@
         "create": {
           "no": "01",
           "title": "Create",
-          "body": "Young artists explored the ocean, environment and coexistence through art."
+          "body": "Young artists expressed their ideas about the ocean, the environment and coexistence through art."
         },
         "exhibit": {
           "no": "02",
           "title": "Exhibit",
-          "body": "Their ideas became an exhibition, shared with the community."
+          "body": "Their finished works were exhibited, sharing their ideas with the community."
         },
         "share": {
           "no": "03",
           "title": "Share",
-          "body": "Artworks were turned into goods and a campaign by young creators."
+          "body": "The artworks expanded into goods and a campaign."
         },
         "donate": {
           "no": "04",
           "title": "Donate",
-          "body": "Creativity created real support for our planet."
+          "body": "The results of their creative work turned into real support for the environment."
         },
         "act": {
           "no": "05",
           "title": "Act",
-          "body": "We learned, walked and took action for the environment."
+          "body": "Together we learned, walked and took part in action for the environment."
         }
       },
       "action": {
@@ -182,24 +182,24 @@
     },
     "joinGlobal": {
       "eyebrow": "Join the Global Community",
-      "title": "The Next Chapter is Global.",
+      "title": "The Next Chapter Reaches the World.",
       "cards": {
         "youth": {
           "title": "Youth",
           "sub": "Become an AFT Youth Member",
-          "body": "Young artists, designers, writers and creators.",
+          "body": "Join young artists, designers, writers and creators.",
           "cta": "Join AFT"
         },
         "advisors": {
           "title": "Global Advisors",
           "sub": "Inspire the Next Generation",
-          "body": "Artists, educators, environmentalists and creative leaders.",
+          "body": "Join artists, educators, environmentalists and creative leaders.",
           "cta": "Become an Advisor"
         },
         "partners": {
           "title": "Partners",
           "sub": "Create Impact Together",
-          "body": "Schools, NGOs, museums, galleries, publishers and cultural organizations.",
+          "body": "Partner with schools, NGOs, museums, galleries, publishers and cultural organizations.",
           "cta": "Partner with AFT"
         }
       }
@@ -233,8 +233,8 @@
     },
     "support": {
       "eyebrow": "Support AFT",
-      "title": "Turn Support into Impact.",
-      "body": "Your support helps young creators create, share and act for a better tomorrow.",
+      "title": "Make a Meaningful Impact\nThrough Your Support.",
+      "body": "Your support gives young people the chance to create,\nshare with the world, and take action themselves.",
       "areas": {
         "youth": "Youth Projects",
         "exhibitions": "Exhibitions",
@@ -242,7 +242,7 @@
         "publishing": "Publishing &\nCreative Programs"
       },
       "ctaDonate": "Donate Now",
-      "caption": "Every contribution makes a\nreal difference."
+      "caption": "Every contribution makes a real difference."
     },
     "partners": {
       "eyebrow": "Our Partners"
@@ -1150,12 +1150,84 @@
     "notFound": "Project not found."
   },
   "footer": {
-    "about": "About",
-    "contact": "Contact",
-    "privacy": "Privacy",
-    "social": "Social",
+    "explore": "Explore",
+    "getInvolved": "Get Involved",
+    "emailLabel": "Email",
+    "email": "hello@aft.org",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use",
     "rights": "AFT — Arts For Tomorrow. All rights reserved.",
-    "legalNote": "AFT is a nonprofit global youth arts organization."
+    "legalNote": "AFT is a global nonprofit that connects youth creativity and action through art."
+  },
+  "privacy": {
+    "eyebrow": "Legal",
+    "title": "Privacy Policy",
+    "subtitle": "AFT values your privacy and complies with applicable data protection laws.",
+    "note": "This policy is currently being finalized. Until then, please reach out by email for any privacy-related questions.",
+    "updated": "Last updated: In preparation",
+    "sections": {
+      "collect": {
+        "title": "Information We Collect",
+        "body": "We collect the minimum information needed to provide our services — such as name, email, and contact details — during sign-up, inquiries, and donations. For minors, information is collected with guardian consent."
+      },
+      "use": {
+        "title": "How We Use It",
+        "body": "Collected information is used only to provide services, respond to inquiries, run and communicate about programs, and process donations. We do not use it for any other purpose."
+      },
+      "retention": {
+        "title": "Retention & Deletion",
+        "body": "Personal data is securely deleted once its purpose has been fulfilled, in accordance with the periods required by applicable law."
+      },
+      "sharing": {
+        "title": "Sharing With Third Parties",
+        "body": "We do not share your personal data with third parties without your consent, except where required by law."
+      },
+      "rights": {
+        "title": "Your Rights",
+        "body": "You may request access to, correction of, deletion of, or suspension of the processing of your personal data at any time."
+      },
+      "contact": {
+        "title": "Contact",
+        "body": "For privacy-related questions, please contact hello@aft.org."
+      }
+    }
+  },
+  "terms": {
+    "eyebrow": "Legal",
+    "title": "Terms of Use",
+    "subtitle": "The basic terms that apply to your use of the AFT website and programs.",
+    "note": "These terms are currently being finalized. Until then, please reach out by email for any related questions.",
+    "updated": "Last updated: In preparation",
+    "sections": {
+      "acceptance": {
+        "title": "Acceptance of Terms",
+        "body": "By using this website and the services AFT provides, you are deemed to have agreed to these terms."
+      },
+      "use": {
+        "title": "Use of Services",
+        "body": "You must use our services in compliance with applicable law and these terms, and must not infringe the rights of others or interfere with the operation of the services."
+      },
+      "accounts": {
+        "title": "Membership & Participation",
+        "body": "Some services, such as participation in youth programs, require registration, and minors require guardian consent. Information you provide must be accurate."
+      },
+      "content": {
+        "title": "Content & Intellectual Property",
+        "body": "Rights to website content — including text, images, and logos — belong to AFT or the respective rights holders, and unauthorized reproduction or distribution is prohibited. Use of youth creative works is governed by separate consent."
+      },
+      "liability": {
+        "title": "Limitation of Liability",
+        "body": "To the extent permitted by applicable law, AFT is not liable for indirect or incidental damages arising from use of the services."
+      },
+      "changes": {
+        "title": "Changes to These Terms",
+        "body": "AFT may update these terms as needed, and any changes will be announced on this page."
+      },
+      "contact": {
+        "title": "Contact",
+        "body": "For questions about these terms, please contact hello@aft.org."
+      }
+    }
   },
   "globalNetwork": {
     "eyebrow": "Global Network",
