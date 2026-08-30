@@ -68,8 +68,8 @@ export default function HomePage({
         <div className="container-aft flex flex-col gap-12 lg:flex-row lg:gap-16">
           {/* LEFT — heading + body + CTA */}
           <div className="lg:w-[35%] lg:shrink-0">
-            <p className="eyebrow">{t("who.eyebrow")}</p>
-            <h2 className="mt-4 whitespace-pre-line text-2xl font-extrabold uppercase leading-[1.1] tracking-tight text-ink sm:text-4xl">
+            <p className="eyebrow text-center lg:text-left">{t("who.eyebrow")}</p>
+            <h2 className="mt-4 whitespace-pre-line text-center text-2xl font-extrabold uppercase leading-[1.1] tracking-tight text-ink sm:text-4xl lg:text-left">
               {t("who.title")}
             </h2>
             <p className="mt-6 whitespace-pre-line text-muted">{t("who.body1")}</p>
@@ -118,7 +118,7 @@ export default function HomePage({
         className="relative overflow-hidden border-y border-[#e2e8ef] bg-[#f2f5f9] py-14"
       >
         <div className="container-aft relative flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-10">
-          <p className="max-w-[7rem] whitespace-pre-line text-xl font-extrabold uppercase leading-[1.05] tracking-wide text-[#3E7035]">
+          <p className="mx-auto max-w-[7rem] whitespace-pre-line text-center text-xl font-extrabold uppercase leading-[1.05] tracking-wide text-[#3E7035] lg:mx-0 lg:text-left">
             {t("impact.title")}
           </p>
           <ol className="grid grid-cols-2 gap-x-[6px] gap-y-[30px] sm:flex sm:flex-1 sm:flex-wrap sm:items-center sm:gap-x-[44px] sm:gap-y-[22px] lg:pr-[280px]">
@@ -174,7 +174,7 @@ export default function HomePage({
         <div className="container-aft flex flex-col gap-10 lg:flex-row lg:gap-12">
           {/* LEFT — intro + view all photos */}
           <div className="lg:w-[24%] lg:shrink-0">
-            <h2 className="whitespace-pre-line text-2xl font-extrabold uppercase leading-[1.1] tracking-tight text-ink sm:text-3xl">
+            <h2 className="whitespace-pre-line text-center text-2xl font-extrabold uppercase leading-[1.1] tracking-tight text-ink sm:text-3xl lg:text-left">
               {t("story.eyebrow")}
             </h2>
             <p className="mt-3 text-base font-bold uppercase tracking-[0.2em] text-accent-hover">
@@ -219,7 +219,7 @@ export default function HomePage({
         <div className="container-aft flex flex-col gap-12 lg:flex-row lg:gap-16">
           {/* LEFT — headline + amount + watch */}
           <div className="lg:w-[30%] lg:shrink-0">
-            <h2 className="whitespace-pre-line text-2xl font-extrabold uppercase leading-[1.1] tracking-tight text-ink sm:text-3xl">
+            <h2 className="whitespace-pre-line text-center text-2xl font-extrabold uppercase leading-[1.1] tracking-tight text-ink sm:text-3xl lg:text-left">
               {t("donation.title")}
             </h2>
             <div className="mt-6 text-4xl font-extrabold text-teal sm:text-5xl">
@@ -269,14 +269,14 @@ export default function HomePage({
       {/* 06 · THIS IS ONLY THE BEGINNING → FROM SEOUL TO THE WORLD */}
       <section id="global" className="bg-surface py-24 md:py-32">
         <div className="container-aft">
-          <h2 className="whitespace-pre-line text-2xl font-extrabold uppercase tracking-tight text-ink sm:text-3xl">
+          <h2 className="whitespace-pre-line text-center text-2xl font-extrabold uppercase tracking-tight text-ink sm:text-3xl lg:text-left">
             {t("beginning.title")}
           </h2>
           <div className="mt-4 grid items-start gap-10 lg:grid-cols-[0.85fr_2.3fr_0.85fr]">
             <p className="max-w-[320px] text-muted">{t("global.body")}</p>
             <DottedWorldMap seoulLabel={t("global.seoul")} />
             <div>
-              <h3 className="whitespace-pre-line text-2xl font-extrabold uppercase leading-tight tracking-tight text-ink sm:text-3xl">
+              <h3 className="whitespace-pre-line text-center text-2xl font-extrabold uppercase leading-tight tracking-tight text-ink sm:text-3xl lg:text-left">
                 {t("global.title")}
               </h3>
               <p className="mt-4 text-muted">{t("global.body2")}</p>
@@ -344,8 +344,8 @@ export default function HomePage({
         <div className="container-aft flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-8">
           {/* LEFT — heading + body + support links */}
           <div className="lg:w-[44%] lg:shrink-0">
-            <p className="eyebrow">{t("support.eyebrow")}</p>
-            <h2 className="mt-3 whitespace-pre-line text-3xl font-extrabold uppercase leading-[1.1] tracking-tight text-ink sm:text-4xl">
+            <p className="eyebrow text-center lg:text-left">{t("support.eyebrow")}</p>
+            <h2 className="mt-3 whitespace-pre-line text-center text-3xl font-extrabold uppercase leading-[1.1] tracking-tight text-ink sm:text-4xl lg:text-left">
               {t("support.title")}
             </h2>
             <p className="mt-4 max-w-lg whitespace-pre-line text-muted">
