@@ -33,8 +33,8 @@ export function Footer() {
 
   return (
     <footer className="bg-navy-deep text-white/80">
-      <div className="container-aft grid gap-10 py-14 md:grid-cols-[1.5fr_1fr_1fr]">
-        <div>
+      <div className="container-aft grid grid-cols-2 gap-x-6 gap-y-10 py-14 md:grid-cols-[1.5fr_1fr_1fr] md:gap-10">
+        <div className="col-span-2 md:col-span-1">
           <Logo variant="light" />
           <p className="mt-4 max-w-xs text-sm text-white/60">{t("legalNote")}</p>
           <a

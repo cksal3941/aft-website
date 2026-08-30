@@ -28,7 +28,7 @@ export default function HomePage({
         {/* Decorative oversized AFT watermark, bottom-right */}
         <span
           aria-hidden
-          className="pointer-events-none absolute -bottom-6 right-2 select-none text-[24vw] font-extrabold leading-none tracking-[-0.03em] text-white/10 lg:right-6 lg:text-[16rem]"
+          className="pointer-events-none absolute bottom-2 right-2 select-none text-[20vw] font-extrabold leading-none tracking-[-0.03em] text-white/10 lg:-bottom-6 lg:right-6 lg:text-[16rem]"
         >
           AFT
         </span>
@@ -39,19 +39,19 @@ export default function HomePage({
               <br />
               {t("hero.title2")}
             </h1>
-            <p className="mt-7 mx-auto max-w-xl whitespace-pre-line text-lg font-light text-white/85 lg:mx-0 lg:text-xl">
+            <p className="mt-7 mx-auto max-w-xl whitespace-normal lg:whitespace-pre-line text-lg font-light text-white/85 lg:mx-0 lg:text-xl">
               {t("hero.subtitle")}
             </p>
-            <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:justify-center lg:justify-start">
+            <div className="mt-10 flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap sm:justify-center lg:items-stretch lg:justify-start">
               <Link
                 href={routes.about}
-                className="inline-flex items-center justify-center rounded-sm bg-white px-6 py-3 text-sm font-semibold uppercase tracking-wide text-ink transition-colors hover:bg-white/90"
+                className="inline-flex min-w-[12rem] items-center justify-center rounded-sm bg-white px-6 py-3 text-sm font-semibold uppercase tracking-wide text-ink transition-colors hover:bg-white/90"
               >
                 {t("hero.ctaDiscover")}
               </Link>
               <Link
                 href={routes.join}
-                className="inline-flex items-center justify-center rounded-sm border border-white/50 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition-colors hover:bg-white/10"
+                className="inline-flex min-w-[12rem] items-center justify-center rounded-sm border border-white/50 px-6 py-3 text-sm font-semibold uppercase tracking-wide text-white transition-colors hover:bg-white/10"
               >
                 {t("hero.ctaJoin")}
               </Link>
@@ -67,12 +67,12 @@ export default function HomePage({
       <section id="who" className="bg-[#f8fafc] py-24 md:py-32">
         <div className="container-aft flex flex-col gap-12 lg:flex-row lg:gap-16">
           {/* LEFT — heading + body + CTA */}
-          <div className="lg:w-[35%] lg:shrink-0">
+          <div className="text-center lg:w-[35%] lg:shrink-0 lg:text-left">
             <p className="eyebrow text-center lg:text-left">{t("who.eyebrow")}</p>
-            <h2 className="mt-4 whitespace-pre-line text-center text-2xl font-extrabold uppercase leading-[1.1] tracking-tight text-ink sm:text-4xl lg:text-left">
+            <h2 className="mt-4 whitespace-normal lg:whitespace-pre-line text-center text-2xl font-extrabold uppercase leading-[1.1] tracking-tight text-ink sm:text-4xl lg:text-left">
               {t("who.title")}
             </h2>
-            <p className="mt-6 whitespace-pre-line text-muted">{t("who.body1")}</p>
+            <p className="mt-6 whitespace-normal lg:whitespace-pre-line text-muted">{t("who.body1")}</p>
             <p className="mt-4 text-balance text-muted">{t("who.body2")}</p>
             <div className="mt-6">
               <CtaLink href={routes.about} variant="text">
@@ -94,7 +94,7 @@ export default function HomePage({
                       <h3 className="text-base font-bold uppercase tracking-wide text-ink">
                         {t(`who.pillars.${k}.label`)}
                       </h3>
-                      <p className="mt-2 whitespace-pre-line text-sm text-muted">
+                      <p className="mt-2 whitespace-normal lg:whitespace-pre-line text-sm text-muted">
                         {t(`who.pillars.${k}.blurb`)}
                       </p>
                     </div>
@@ -118,7 +118,7 @@ export default function HomePage({
         className="relative overflow-hidden border-y border-[#e2e8ef] bg-[#f2f5f9] py-14"
       >
         <div className="container-aft relative flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-10">
-          <p className="mx-auto max-w-[7rem] whitespace-pre-line text-center text-xl font-extrabold uppercase leading-[1.05] tracking-wide text-[#3E7035] lg:mx-0 lg:text-left">
+          <p className="mx-auto whitespace-normal lg:whitespace-pre-line text-center text-xl font-extrabold uppercase leading-[1.05] tracking-wide text-[#3E7035] lg:mx-0 lg:max-w-[7rem] lg:text-left">
             {t("impact.title")}
           </p>
           <ol className="grid grid-cols-2 gap-x-[6px] gap-y-[30px] sm:flex sm:flex-1 sm:flex-wrap sm:items-center sm:gap-x-[44px] sm:gap-y-[22px] lg:pr-[280px]">
@@ -138,7 +138,7 @@ export default function HomePage({
                       <div className="text-2xl font-extrabold sm:text-3xl">
                         {t(`impact.stats.${k}.value`)}
                       </div>
-                      <div className="mt-[14px] max-w-[145px] text-[14px] font-semibold uppercase leading-[1.15] tracking-wide">
+                      <div className="mt-[14px] max-w-[145px] whitespace-pre-line text-[14px] font-semibold uppercase leading-[1.15] tracking-wide lg:whitespace-normal">
                         {t(`impact.stats.${k}.label`)}
                       </div>
                       <span className="mt-3 block">
@@ -173,14 +173,14 @@ export default function HomePage({
       <section id="story" className="bg-[#f8fafc] py-24 md:py-32">
         <div className="container-aft flex flex-col gap-10 lg:flex-row lg:gap-12">
           {/* LEFT — intro + view all photos */}
-          <div className="lg:w-[24%] lg:shrink-0">
-            <h2 className="whitespace-pre-line text-center text-2xl font-extrabold uppercase leading-[1.1] tracking-tight text-ink sm:text-3xl lg:text-left">
+          <div className="text-center lg:w-[24%] lg:shrink-0 lg:text-left">
+            <h2 className="whitespace-normal lg:whitespace-pre-line text-center text-2xl font-extrabold uppercase leading-[1.1] tracking-tight text-ink sm:text-3xl lg:text-left">
               {t("story.eyebrow")}
             </h2>
             <p className="mt-3 text-base font-bold uppercase tracking-[0.2em] text-accent-hover">
               {t("story.place")}
             </p>
-            <p className="mt-4 text-base text-muted">{t("story.tagline")}</p>
+            <p className="mt-4 whitespace-pre-line text-base text-muted lg:whitespace-normal">{t("story.tagline")}</p>
             <div className="mt-6">
               <CtaLink
                 href={`${routes.projects}/our-ocean-our-tomorrow`}
@@ -218,8 +218,8 @@ export default function HomePage({
       <section id="donation" className="bg-[#f8fafc] py-24 md:py-32">
         <div className="container-aft flex flex-col gap-12 lg:flex-row lg:gap-16">
           {/* LEFT — headline + amount + watch */}
-          <div className="lg:w-[30%] lg:shrink-0">
-            <h2 className="whitespace-pre-line text-center text-2xl font-extrabold uppercase leading-[1.1] tracking-tight text-ink sm:text-3xl lg:text-left">
+          <div className="text-center lg:w-[30%] lg:shrink-0 lg:text-left">
+            <h2 className="whitespace-normal lg:whitespace-pre-line text-center text-2xl font-extrabold uppercase leading-[1.1] tracking-tight text-ink sm:text-3xl lg:text-left">
               {t("donation.title")}
             </h2>
             <div className="mt-6 text-4xl font-extrabold text-teal sm:text-5xl">
@@ -269,14 +269,14 @@ export default function HomePage({
       {/* 06 · THIS IS ONLY THE BEGINNING → FROM SEOUL TO THE WORLD */}
       <section id="global" className="bg-surface py-24 md:py-32">
         <div className="container-aft">
-          <h2 className="whitespace-pre-line text-center text-2xl font-extrabold uppercase tracking-tight text-ink sm:text-3xl lg:text-left">
+          <h2 className="whitespace-normal lg:whitespace-pre-line text-center text-2xl font-extrabold uppercase tracking-tight text-ink sm:text-3xl lg:text-left">
             {t("beginning.title")}
           </h2>
           <div className="mt-4 grid items-start gap-10 lg:grid-cols-[0.85fr_2.3fr_0.85fr]">
-            <p className="max-w-[320px] text-muted">{t("global.body")}</p>
+            <p className="whitespace-pre-line text-center text-muted lg:max-w-[320px] lg:whitespace-normal lg:text-left">{t("global.body")}</p>
             <DottedWorldMap seoulLabel={t("global.seoul")} />
-            <div>
-              <h3 className="whitespace-pre-line text-center text-2xl font-extrabold uppercase leading-tight tracking-tight text-ink sm:text-3xl lg:text-left">
+            <div className="text-center lg:text-left">
+              <h3 className="whitespace-normal lg:whitespace-pre-line text-center text-2xl font-extrabold uppercase leading-tight tracking-tight text-ink sm:text-3xl lg:text-left">
                 {t("global.title")}
               </h3>
               <p className="mt-4 text-muted">{t("global.body2")}</p>
@@ -338,17 +338,17 @@ export default function HomePage({
       </section>
 
       {/* 08 · SUPPORT AFT — light band, text left + earth/DONATE right */}
-      <section className="overflow-hidden border-t border-line bg-white py-10 md:py-12 lg:py-0">
+      <section className="overflow-hidden border-t border-line bg-white pt-10 pb-0 md:pt-12 lg:pt-0">
         {/* Text stays inside the 1400px container (aligned with other sections);
             only the image column bleeds out to the right viewport edge (right:0). */}
         <div className="container-aft flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-8">
           {/* LEFT — heading + body + support links */}
-          <div className="lg:w-[44%] lg:shrink-0">
+          <div className="text-center lg:w-[44%] lg:shrink-0 lg:text-left">
             <p className="eyebrow text-center lg:text-left">{t("support.eyebrow")}</p>
-            <h2 className="mt-3 whitespace-pre-line text-center text-3xl font-extrabold uppercase leading-[1.1] tracking-tight text-ink sm:text-4xl lg:text-left">
+            <h2 className="mt-3 whitespace-normal lg:whitespace-pre-line text-center text-2xl font-extrabold uppercase leading-[1.1] tracking-tight text-ink sm:text-4xl lg:text-left">
               {t("support.title")}
             </h2>
-            <p className="mt-4 max-w-lg whitespace-pre-line text-muted">
+            <p className="mt-4 mx-auto max-w-lg whitespace-pre-line text-muted lg:mx-0 lg:whitespace-normal">
               {t("support.body")}
             </p>
             <div className="mt-8 grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-4 sm:gap-x-1">
@@ -358,7 +358,7 @@ export default function HomePage({
                     key={k}
                     className="flex h-full flex-col items-center gap-2 text-center"
                   >
-                    <span className="whitespace-pre-line text-sm font-semibold leading-tight text-ink">
+                    <span className="whitespace-normal lg:whitespace-pre-line text-sm font-semibold leading-tight text-ink">
                       {t(`support.areas.${k}`)}
                     </span>
                     <span className="mt-auto text-teal">
@@ -384,13 +384,13 @@ export default function HomePage({
                 bottom-[28%] tracks the icon height proportionally as the image scales.
                 Right padding keeps it inside the 1400px container (668px = half of
                 container content width: 1400 − 2×32px lg padding). */}
-            <div className="absolute inset-x-0 bottom-[17%] flex flex-col items-start gap-3 px-8 text-left lg:items-end lg:pr-[max(2rem,calc(50vw_-_668px))] lg:text-right">
-              <p className="text-lg font-bold text-muted lg:text-xl">
+            <div className="absolute inset-x-0 bottom-[17%] flex flex-col items-center gap-3 px-8 text-center lg:items-end lg:pr-[max(2rem,calc(50vw_-_668px))] lg:text-right">
+              <p className="text-sm font-bold text-muted lg:text-xl">
                 {t("support.caption")}
               </p>
               <Link
                 href={routes.support}
-                className="inline-flex items-center gap-2 rounded-sm bg-accent px-8 py-4 text-base font-bold uppercase tracking-wide text-white shadow-lg transition-colors hover:bg-accent-hover"
+                className="inline-flex items-center gap-2 rounded-sm bg-accent px-5 py-2.5 text-sm font-bold uppercase tracking-wide text-white shadow-lg transition-colors hover:bg-accent-hover lg:px-8 lg:py-4 lg:text-base"
               >
                 {t("support.ctaDonate")} →
               </Link>

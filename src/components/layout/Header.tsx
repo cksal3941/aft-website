@@ -11,6 +11,7 @@ import { track } from "@/lib/analytics";
 export function Header() {
   const t = useTranslations("nav");
   const [open, setOpen] = useState(false);
+  const [openKey, setOpenKey] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const isHome = pathname === "/";
@@ -108,41 +109,83 @@ export function Header() {
         </div>
       </div>
 
-      {/* Mobile menu (기획서 §1.2 order) */}
-      {open && (
-        <div className="border-t border-white/10 bg-navy lg:hidden">
-          <nav className="container-aft flex flex-col py-2">
-            {mobileNav.map((item) => (
-              <div key={item.key} className="border-b border-white/5">
-                <Link
-                  href={item.href}
-                  onClick={() => setOpen(false)}
-                  className="block py-3 text-sm font-medium uppercase tracking-wide text-white/90"
-                >
-                  {t(item.key)}
-                </Link>
-                {item.children && (
-                  <div className="flex flex-col gap-1 pb-2 pl-4">
-                    {item.children.map((c) => (
-                      <Link
-                        key={c.key}
-                        href={c.href}
-                        onClick={() => setOpen(false)}
-                        className="py-1.5 text-xs font-medium text-white/55"
-                      >
-                        {t(`sub.${c.key}`)}
-                      </Link>
-                    ))}
+      {/* Mobile menu — slides open/closed; accordion sections inside */}
+      <div
+        className={`grid overflow-hidden bg-navy transition-all duration-300 ease-out lg:hidden ${
+          open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+        }`}
+      >
+        <div className="min-h-0 overflow-hidden">
+          <div className="max-h-[calc(100vh-5rem)] overflow-y-auto border-t border-white/10">
+            <nav className="container-aft flex flex-col py-2">
+            {mobileNav.map((item) => {
+              const isOpen = openKey === item.key;
+              if (!item.children) {
+                return (
+                  <Link
+                    key={item.key}
+                    href={item.href}
+                    onClick={() => setOpen(false)}
+                    className="border-b border-white/5 py-3 text-sm font-medium uppercase tracking-wide text-white/90"
+                  >
+                    {t(item.key)}
+                  </Link>
+                );
+              }
+              return (
+                <div key={item.key} className="border-b border-white/5">
+                  <button
+                    type="button"
+                    onClick={() => setOpenKey(isOpen ? null : item.key)}
+                    aria-expanded={isOpen}
+                    className="flex w-full items-center justify-between py-3 text-sm font-medium uppercase tracking-wide text-white/90"
+                  >
+                    <span>{t(item.key)}</span>
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className={`h-4 w-4 text-white/60 transition-transform ${
+                        isOpen ? "rotate-180" : ""
+                      }`}
+                      aria-hidden
+                    >
+                      <path d="m6 9 6 6 6-6" />
+                    </svg>
+                  </button>
+                  <div
+                    className={`grid transition-[grid-template-rows] duration-300 ease-out ${
+                      isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                    }`}
+                  >
+                    <div className="overflow-hidden">
+                      <div className="flex flex-col gap-1 pb-2 pl-4">
+                        {item.children.map((c) => (
+                          <Link
+                            key={c.key}
+                            href={c.href}
+                            onClick={() => setOpen(false)}
+                            className="py-1.5 text-xs font-medium text-white/55"
+                          >
+                            {t(`sub.${c.key}`)}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                )}
-              </div>
-            ))}
+                </div>
+              );
+            })}
             <div className="py-3">
               <LanguageSwitcher tone="light" />
             </div>
-          </nav>
+            </nav>
+          </div>
         </div>
-      )}
+      </div>
     </header>
   );
 }
