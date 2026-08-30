@@ -6,7 +6,7 @@ import { homeHeroVideo } from "@/config/media";
 // looks intact until the edited video is dropped into public/videos/.
 export function HeroVideo() {
   const overlay = (
-    <div className="absolute inset-0 -z-10 bg-gradient-to-r from-black via-black/85 to-black/40" />
+    <div className="absolute inset-0 -z-10 bg-gradient-to-r from-black/60 via-black/50 to-black/40 lg:from-black lg:via-black/85 lg:to-black/40" />
   );
 
   if (homeHeroVideo.src) {

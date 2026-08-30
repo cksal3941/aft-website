@@ -33,16 +33,16 @@ export default function HomePage({
           AFT
         </span>
         <div className="container-aft py-32 lg:py-40">
-          <div className="max-w-2xl">
+          <div className="mx-auto max-w-2xl text-center lg:mx-0 lg:text-left">
             <h1 className="text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
               {t("hero.title1")}
               <br />
               {t("hero.title2")}
             </h1>
-            <p className="mt-7 max-w-xl whitespace-pre-line text-lg font-light text-white/85 lg:text-xl">
+            <p className="mt-7 mx-auto max-w-xl whitespace-pre-line text-lg font-light text-white/85 lg:mx-0 lg:text-xl">
               {t("hero.subtitle")}
             </p>
-            <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:justify-center lg:justify-start">
               <Link
                 href={routes.about}
                 className="inline-flex items-center justify-center rounded-sm bg-white px-6 py-3 text-sm font-semibold uppercase tracking-wide text-ink transition-colors hover:bg-white/90"
