@@ -14,7 +14,7 @@ export function ProjectCard({ project }: { project: LocalizedProject }) {
   const href = `${routes.projects}/${project.slug}`;
 
   return (
-    <article className="group flex flex-col overflow-hidden rounded-xl border border-line bg-white shadow-sm transition-shadow hover:shadow-md">
+    <article className="group flex flex-col overflow-hidden rounded-sm border border-line bg-white shadow-sm transition-shadow hover:shadow-md">
       <Link
         href={href}
         className="relative block"
@@ -72,11 +72,11 @@ export function ProjectCard({ project }: { project: LocalizedProject }) {
           )}
           {project.status === "completed" ? (
             <Link href={`${href}#impact`} className="btn-text">
-              {t("viewResults")} <span aria-hidden>→</span>
+              {t("viewResults")} <span className="cta-arrow" aria-hidden>→</span>
             </Link>
           ) : (
             <Link href={href} className="btn-text">
-              {t("viewProject")} <span aria-hidden>→</span>
+              {t("viewProject")} <span className="cta-arrow" aria-hidden>→</span>
             </Link>
           )}
         </div>

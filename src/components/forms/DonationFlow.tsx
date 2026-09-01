@@ -26,7 +26,7 @@ export function DonationFlow() {
   }
 
   return (
-    <div className="mx-auto max-w-3xl rounded-2xl border border-line bg-white p-6 shadow-sm sm:p-8">
+    <div className="mx-auto max-w-3xl rounded-sm border border-line bg-white p-6 shadow-sm sm:p-8">
       {/* PURPOSE */}
       <p className="eyebrow">{t("purpose.eyebrow")}</p>
       <h2 className="mt-1 text-xl font-bold text-ink">{t("purpose.title")}</h2>
@@ -36,7 +36,7 @@ export function DonationFlow() {
             key={p}
             type="button"
             onClick={() => setPurpose(p)}
-            className={`rounded-lg border p-4 text-left transition-colors ${
+            className={`rounded-md border p-4 text-left transition-colors ${
               purpose === p
                 ? "border-accent bg-accent-soft"
                 : "border-line hover:border-accent"
@@ -56,7 +56,7 @@ export function DonationFlow() {
       <p className="eyebrow mt-8">{t("amount.eyebrow")}</p>
       <h2 className="mt-1 text-xl font-bold text-ink">{t("amount.title")}</h2>
 
-      <div className="mt-4 inline-flex rounded-lg border border-line p-1">
+      <div className="mt-4 inline-flex rounded-md border border-line p-1">
         {(["once", "monthly"] as const).map((f) => (
           <button
             key={f}
@@ -80,7 +80,7 @@ export function DonationFlow() {
               setAmount(v);
               setCustom("");
             }}
-            className={`rounded-lg border px-4 py-3 text-sm font-semibold transition-colors ${
+            className={`rounded-md border px-4 py-3 text-sm font-semibold transition-colors ${
               !custom && amount === v
                 ? "border-accent bg-accent-soft text-ink"
                 : "border-line text-muted hover:border-accent"

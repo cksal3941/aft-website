@@ -54,34 +54,44 @@ function DetailView({
 
   return (
     <>
-      {/* HERO */}
+      {/* HERO BANNER — clean cover image, sitting behind the transparent header
+          (kept separate from the title) */}
+      <section className="relative -mt-20 bg-navy">
+        <AftImage
+          src={project.cover}
+          alt={project.title}
+          tone={project.coverTone}
+          priority
+          sizes="100vw"
+          className="h-[46vh] min-h-[360px] w-full rounded-none md:h-[56vh]"
+        />
+        {/* Top gradient keeps the transparent header legible over the photo */}
+        <div
+          className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/55 to-transparent"
+          aria-hidden
+        />
+      </section>
+
+      {/* TITLE — separate block, same centered type scale as the other sub-page heroes */}
       <section className="bg-navy text-white">
-        <div className="container-aft grid gap-10 py-24 md:py-32 lg:grid-cols-2 lg:items-center">
-          <div>
-            <div className="mb-4">
-              <StatusBadge status={project.status} />
-            </div>
+        <div className="container-aft py-14 md:py-20">
+          <div className="mx-auto max-w-3xl text-center">
             <h1 className="text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl">
               {project.title}
             </h1>
-            <p className="mt-4 max-w-xl text-lg text-white/75">
+            <p className="mt-4 text-lg font-light leading-snug text-white/85">
               {project.oneLiner}
             </p>
-            <ProjectActions status={project.status} slug={project.slug} />
+            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <StatusBadge status={project.status} />
+              <ProjectActions status={project.status} slug={project.slug} />
+            </div>
           </div>
-          <AftImage
-            src={project.cover}
-            alt={project.title}
-            label={project.title}
-            tone={project.coverTone}
-            className="aspect-[16/10] w-full"
-            priority
-          />
         </div>
       </section>
 
       {/* PROJECT FACTS */}
-      <section className="border-b border-line bg-[#f8fafc] py-10">
+      <section className="border-b border-line bg-white py-10">
         <div className="container-aft grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           <Fact label={t("facts.status")} value={tStatus(project.status)} />
           <Fact label={t("facts.duration")} value={detail?.facts.duration ?? "—"} />
@@ -93,7 +103,7 @@ function DetailView({
       {detail && (
         <>
           {/* THE CHALLENGE */}
-          <section className="bg-[#f8fafc] py-24 md:py-32">
+          <section className="bg-white py-24 md:py-32">
             <div className="container-aft max-w-3xl">
               <SectionHeading eyebrow="01" title={t("sections.challenge")} />
               <p className="mt-4 text-lg text-muted">{detail.challenge}</p>
@@ -118,14 +128,14 @@ function DetailView({
           </section>
 
           {/* CREATIVE ACTION */}
-          <section className="bg-[#f8fafc] py-24 md:py-32">
+          <section className="bg-white py-24 md:py-32">
             <div className="container-aft">
               <SectionHeading eyebrow="03" title={t("sections.creativeAction")} />
               <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {detail.creativeAction.map((item, i) => (
                   <div
                     key={i}
-                    className="rounded-lg border border-line bg-white p-5 text-sm font-semibold text-ink"
+                    className="rounded-md border border-line bg-white p-5 text-sm font-semibold text-ink"
                   >
                     {item}
                   </div>
@@ -153,19 +163,19 @@ function DetailView({
           {/* THE IMPACT */}
           <section id="impact" className="scroll-mt-20 bg-navy py-24 md:py-32 text-white">
             <div className="container-aft">
-              <SectionHeading eyebrow="05" title={t("sections.impact")} />
-              <p className="mt-4 max-w-2xl text-white/75">{detail.impactSummary}</p>
+              <SectionHeading eyebrow="05" title={t("sections.impact")} onDark />
+              <p className="mt-4 max-w-2xl text-white/80">{detail.impactSummary}</p>
               <div className="mt-10 grid gap-8 sm:grid-cols-3">
                 {detail.impactStats.map((s, i) => (
                   <div key={i}>
-                    <div className="text-4xl font-extrabold text-accent">
+                    <div className="text-4xl font-extrabold text-emerald-300">
                       {s.value}
                     </div>
                     <div className="mt-1 text-sm font-semibold uppercase tracking-wide text-white/80">
                       {s.label}
                     </div>
                     {s.note && (
-                      <div className="mt-1 text-xs text-white/50">{s.note}</div>
+                      <div className="mt-1 text-xs text-white/70">{s.note}</div>
                     )}
                   </div>
                 ))}
@@ -177,7 +187,7 @@ function DetailView({
 
       {/* RELATED PROJECTS */}
       {related.length > 0 && (
-        <section id="related" className="scroll-mt-20 bg-[#f8fafc] py-24 md:py-32">
+        <section id="related" className="scroll-mt-20 bg-white py-24 md:py-32">
           <div className="container-aft">
             <SectionHeading title={t("sections.related")} />
             <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

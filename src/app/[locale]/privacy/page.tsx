@@ -29,7 +29,7 @@ export default function PrivacyPage({
       description={t("subtitle")}
     >
       <div className="mx-auto max-w-3xl">
-        <div className="rounded-xl border border-dashed border-line bg-surface p-5 text-sm text-muted">
+        <div className="rounded-sm border border-dashed border-line bg-surface p-5 text-sm text-muted">
           {t("note")}
         </div>
         <p className="mt-6 text-sm text-muted">{t("updated")}</p>

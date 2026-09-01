@@ -14,6 +14,7 @@ const SUPPORT_TYPES = ["free", "discounted", "partnership"] as const;
 
 export function VenueSupportForm() {
   const t = useTranslations("venueForm");
+  const tForms = useTranslations("forms");
   const [ref, setRef] = useState("");
 
   const schema = useMemo(
@@ -46,7 +47,7 @@ export function VenueSupportForm() {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
     mode: "onTouched",
@@ -71,7 +72,8 @@ export function VenueSupportForm() {
     },
   });
 
-  function onSubmit() {
+  async function onSubmit() {
+    await new Promise((r) => setTimeout(r, 600));
     setRef(makeRef("VNU"));
     track("venue_offer_submit", {});
   }
@@ -97,7 +99,7 @@ export function VenueSupportForm() {
     <form
       onSubmit={handleSubmit(onSubmit)}
       noValidate
-      className="mx-auto max-w-2xl space-y-10 rounded-2xl border border-line bg-white p-6 shadow-sm sm:p-8"
+      className="mx-auto max-w-2xl space-y-10 rounded-sm border border-line bg-white p-6 shadow-sm sm:p-8"
     >
       {/* 1. ORGANIZATION */}
       <FormSection step="1" title={t("sections.org")}>
@@ -154,7 +156,7 @@ export function VenueSupportForm() {
             {EQUIPMENT.map((e) => (
               <label
                 key={e}
-                className="flex cursor-pointer items-center gap-3 rounded-lg border border-line p-3 hover:border-accent has-[:checked]:border-accent has-[:checked]:bg-accent-soft"
+                className="flex cursor-pointer items-center gap-3 rounded-md border border-line p-3 hover:border-accent has-[:checked]:border-accent has-[:checked]:bg-accent-soft"
               >
                 <input
                   type="checkbox"
@@ -202,7 +204,7 @@ export function VenueSupportForm() {
             {SUPPORT_TYPES.map((s) => (
               <label
                 key={s}
-                className="flex cursor-pointer items-center gap-2 rounded-lg border border-line px-4 py-2 hover:border-accent has-[:checked]:border-accent has-[:checked]:bg-accent-soft"
+                className="flex cursor-pointer items-center gap-2 rounded-md border border-line px-4 py-2 hover:border-accent has-[:checked]:border-accent has-[:checked]:bg-accent-soft"
               >
                 <input
                   type="radio"
@@ -218,7 +220,7 @@ export function VenueSupportForm() {
         <Field label={t("fields.message")}>
           <textarea rows={3} className={inputClass} {...register("message")} />
         </Field>
-        <div className="rounded-lg border border-line bg-surface p-4">
+        <div className="rounded-md border border-line bg-surface p-4">
           <label className="flex items-start gap-3 text-sm text-ink">
             <input
               type="checkbox"
@@ -236,8 +238,13 @@ export function VenueSupportForm() {
         </div>
       </FormSection>
 
-      <button type="submit" className="btn-primary w-full sm:w-auto">
-        {t("submit")}
+      <button
+        type="submit"
+        disabled={isSubmitting}
+        aria-busy={isSubmitting}
+        className="btn-primary w-full sm:w-auto disabled:cursor-not-allowed disabled:opacity-60"
+      >
+        {isSubmitting ? tForms("submitting") : t("submit")}
       </button>
     </form>
   );

@@ -1,6 +1,12 @@
 "use client";
 
-import type { ReactNode } from "react";
+import {
+  useId,
+  isValidElement,
+  cloneElement,
+  type ReactNode,
+  type ReactElement,
+} from "react";
 
 // Generate a submission reference like "PTR-123456". Kept at module scope
 // (not inside a component) so React Compiler's purity rule doesn't flag the
@@ -19,21 +25,54 @@ export function Field({
   label,
   error,
   hint,
+  required,
   children,
 }: {
   label: string;
   error?: string;
   hint?: string;
+  required?: boolean;
   children: ReactNode;
 }) {
+  const id = useId();
+  const hintId = `${id}-hint`;
+  const errorId = `${id}-error`;
+  // Tie the hint/error text to the control so screen readers announce it with
+  // the field, and mark the field invalid/required programmatically.
+  const describedBy =
+    [error ? errorId : null, hint && !error ? hintId : null]
+      .filter(Boolean)
+      .join(" ") || undefined;
+  const control = isValidElement(children)
+    ? cloneElement(children as ReactElement<Record<string, unknown>>, {
+        "aria-invalid": error ? true : undefined,
+        "aria-describedby": describedBy,
+        "aria-required": required || undefined,
+      })
+    : children;
+
   return (
     <label className="block">
-      <span className="mb-1.5 block text-sm font-semibold text-ink">{label}</span>
-      {children}
+      <span className="mb-1.5 block text-sm font-semibold text-ink">
+        {label}
+        {required && (
+          <span aria-hidden className="text-accent-hover">
+            {" "}
+            *
+          </span>
+        )}
+      </span>
+      {control}
       {hint && !error && (
-        <span className="mt-1 block text-xs text-muted">{hint}</span>
+        <span id={hintId} className="mt-1 block text-xs text-muted">
+          {hint}
+        </span>
       )}
-      {error && <span className="mt-1 block text-sm text-red-600">{error}</span>}
+      {error && (
+        <span id={errorId} role="alert" className="mt-1 block text-sm text-red-600">
+          {error}
+        </span>
+      )}
     </label>
   );
 }
@@ -79,7 +118,7 @@ export function SubmittedCard({
   resetLabel?: string;
 }) {
   return (
-    <div className="mx-auto max-w-xl rounded-2xl border border-line bg-white p-10 text-center shadow-sm">
+    <div className="mx-auto max-w-xl rounded-sm border border-line bg-white p-10 text-center shadow-sm">
       <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-accent-soft text-2xl">
         ✓
       </div>

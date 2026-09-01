@@ -12,6 +12,7 @@ export function AftImage({
   priority = false,
   sizes = "(max-width: 768px) 100vw, 50vw",
   objectPosition,
+  noZoom = false,
 }: {
   src?: string | null;
   alt?: string;
@@ -21,6 +22,8 @@ export function AftImage({
   priority?: boolean;
   sizes?: string;
   objectPosition?: string;
+  /** Opt out of the default hover zoom (e.g. maps, diagrams). */
+  noZoom?: boolean;
 }) {
   const alternative = alt ?? label ?? "AFT";
 
@@ -29,6 +32,12 @@ export function AftImage({
     // caller already positions the box (e.g. `absolute inset-0` background),
     // don't add `relative` — it would override the absolute and break the fill.
     const positioned = /\b(absolute|fixed)\b/.test(className);
+    // Content images get a subtle zoom on hover (the wrapper's overflow-hidden
+    // clips the growth). Title/hero images are marked `priority` and stay put.
+    const hoverZoom =
+      priority || noZoom
+        ? ""
+        : " transition-transform duration-500 ease-out hover:scale-105";
     return (
       <div
         className={`${positioned ? "" : "relative"} overflow-hidden ${className}`}
@@ -38,7 +47,7 @@ export function AftImage({
           alt={alternative}
           fill
           sizes={sizes}
-          className="object-cover"
+          className={`object-cover${hoverZoom}`}
           style={objectPosition ? { objectPosition } : undefined}
           priority={priority}
         />

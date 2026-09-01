@@ -1,11 +1,27 @@
+import type { Metadata } from "next";
 import { use } from "react";
 import { useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CtaLink } from "@/components/ui/CtaLink";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { AftImage } from "@/components/ui/AftImage";
+import { PageHero } from "@/components/ui/PageHero";
+import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { media } from "@/config/media";
 import { routes } from "@/config/nav";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "join" });
+  return {
+    title: t("hero.eyebrow"),
+    description: t("hero.subtitle"),
+  };
+}
 
 export default function JoinPage({
   params,
@@ -23,33 +39,27 @@ export default function JoinPage({
   return (
     <>
       {/* HERO */}
-      <section className="bg-navy text-white">
-        <div className="container-aft grid gap-10 py-24 md:py-32 lg:grid-cols-2 lg:items-center">
-          <div>
-            <h1 className="text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl">
-              {t("hero.title")}
-            </h1>
-            <p className="mt-5 max-w-xl text-lg text-white/75">
-              {t("hero.subtitle")}
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <CtaLink href={routes.apply} variant="primary" event="join_start">
-                {t("hero.ctaStart")}
-              </CtaLink>
-              <CtaLink href={routes.projects} variant="secondary">
-                {t("hero.ctaProjects")}
-              </CtaLink>
-              <CtaLink href={routes.about} variant="secondary">
-                {t("hero.ctaParents")}
-              </CtaLink>
-            </div>
-          </div>
-          <AftImage {...media.joinHero} label="Young creators" className="aspect-[4/3] w-full" priority />
-        </div>
-      </section>
+      <PageHero
+        image={media.joinHero}
+        eyebrow={t("hero.eyebrow")}
+        title={t("hero.title")}
+        subtitle={t("hero.subtitle")}
+      >
+        <CtaLink href={routes.apply} variant="primary" event="join_start">
+          {t("hero.ctaStart")}
+        </CtaLink>
+        <CtaLink href={routes.projects} variant="secondary">
+          {t("hero.ctaProjects")}
+        </CtaLink>
+        <CtaLink href={routes.about} variant="secondary">
+          {t("hero.ctaParents")}
+        </CtaLink>
+      </PageHero>
+
+      <Breadcrumb />
 
       {/* MEMBER ROLES */}
-      <section className="bg-[#f8fafc] py-24 md:py-32">
+      <section className="bg-white py-24 md:py-32">
         <div className="container-aft">
           <SectionHeading
             eyebrow={t("roles.eyebrow")}
@@ -60,7 +70,7 @@ export default function JoinPage({
             {roleKeys.map((k) => (
               <div
                 key={k}
-                className="rounded-xl border border-line bg-white p-5 text-center shadow-sm"
+                className="rounded-sm border border-line bg-white p-5 text-center shadow-sm"
               >
                 <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-accent-soft text-lg font-bold text-accent-hover">
                   {t(`roles.items.${k}.title`).charAt(0)}
@@ -85,7 +95,7 @@ export default function JoinPage({
           />
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {stepKeys.map((k, i) => (
-              <div key={k} className="rounded-xl bg-white p-6 shadow-sm">
+              <div key={k} className="rounded-sm bg-white p-6 shadow-sm">
                 <div className="text-3xl font-extrabold text-accent">{i + 1}</div>
                 <h3 className="mt-2 font-bold text-ink">
                   {t(`how.steps.${k}.title`)}
@@ -100,7 +110,7 @@ export default function JoinPage({
       </section>
 
       {/* BENEFITS + SAFETY */}
-      <section className="bg-[#f8fafc] py-24 md:py-32">
+      <section className="bg-white py-24 md:py-32">
         <div className="container-aft grid gap-12 lg:grid-cols-2">
           <div>
             <SectionHeading
@@ -116,7 +126,7 @@ export default function JoinPage({
               ))}
             </ul>
           </div>
-          <div className="rounded-xl border border-line bg-surface p-8">
+          <div className="rounded-sm border border-line bg-surface p-8">
             <SectionHeading
               eyebrow={t("safety.eyebrow")}
               title={t("safety.title")}

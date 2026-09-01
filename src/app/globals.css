@@ -19,15 +19,30 @@
   --color-teal-soft: #dff1f1;
 
   --color-ink: #0f172a;
-  --color-muted: #374151;
-  --color-surface: #f4f6f9;
+  /* Body copy is black (was a mid gray #374151). Keeping the `muted` token name
+     so existing `text-muted` usages flip to black in one place. */
+  --color-muted: #0f172a;
+  --color-surface: #ffffff;
   --color-line: #e3e8ef;
 
-  --font-sans: var(--font-inter), system-ui, sans-serif;
+  /* English/Latin → Neue Haas Grotesk (Adobe Fonts). Loaded via the Typekit
+     kit in the layout (NEXT_PUBLIC_TYPEKIT_ID). Inter/system-ui remain as the
+     fallback for Korean glyphs and while the kit is loading. */
+  --font-sans: "neue-haas-grotesk-text", var(--font-inter), system-ui, sans-serif;
+
+  /* Minimum readable body size: text below 16px is hard to read, so raise the
+     two sub-16px scale steps (text-xs 12px, text-sm 14px) up to 16px. This flows
+     through every `text-sm`/`text-xs` utility AND every `@apply text-sm` (buttons)
+     across all pages in one place. Decorative/brand text set with explicit
+     arbitrary sizes (logo tagline, map pin labels) is intentionally left small. */
+  --text-xs: 1rem;
+  --text-xs--line-height: 1.5;
+  --text-sm: 1rem;
+  --text-sm--line-height: 1.5;
 }
 
 :root {
-  --background: #f8fafc;
+  --background: #ffffff;
   --foreground: #0f172a;
 }
 
@@ -66,13 +81,42 @@ body {
   @apply inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 text-sm font-semibold uppercase tracking-wide transition-colors border border-line bg-white text-ink hover:bg-surface focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2;
 }
 @utility btn-text {
-  @apply inline-flex items-center gap-1 text-[15px] font-bold uppercase tracking-wide text-navy hover:text-teal;
+  @apply inline-flex items-center gap-1 text-base font-bold uppercase tracking-wide text-navy hover:text-teal;
 }
 @utility eyebrow {
   @apply text-base font-bold uppercase tracking-[0.18em] text-accent;
 }
 @utility container-aft {
   @apply mx-auto w-full max-w-[1400px] px-5 sm:px-6 lg:px-8;
+}
+
+/* ── CTA arrows: gentle left-right nudge while the link/button is hovered ── */
+.cta-arrow {
+  display: inline-block;
+  transition: transform 0.2s ease;
+  will-change: transform;
+}
+a:hover .cta-arrow,
+button:hover .cta-arrow,
+.group:hover .cta-arrow {
+  animation: cta-arrow-nudge 0.65s ease-in-out infinite;
+}
+@keyframes cta-arrow-nudge {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(0.3rem);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  a:hover .cta-arrow,
+  button:hover .cta-arrow,
+  .group:hover .cta-arrow {
+    animation: none;
+    transform: translateX(0.25rem);
+  }
 }
 
 /* ── Floating quick menu (contact · phone · SNS · TOP), ported from CnA ── */

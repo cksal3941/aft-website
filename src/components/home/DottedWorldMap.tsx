@@ -33,7 +33,7 @@ export function DottedWorldMap({ seoulLabel }: { seoulLabel: string }) {
   return (
     <div className="relative aspect-[2/1] w-full">
       <div
-        className="absolute inset-0 rounded-xl"
+        className="absolute inset-0 rounded-sm"
         style={{
           backgroundImage:
             "radial-gradient(currentColor 1.3px, transparent 1.6px)",

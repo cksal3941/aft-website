@@ -14,22 +14,24 @@ export function Header() {
   const [openKey, setOpenKey] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
-  const isHome = pathname === "/";
 
-  // Transparent over the hero at the very top (home only); solid navy on scroll.
+  // Transparent over the hero at the very top of every page (home + sub-pages
+  // all open with a dark hero image); solid navy once scrolled or menu open.
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [pathname]);
 
-  const transparent = isHome && !scrolled && !open;
+  const transparent = !scrolled && !open;
 
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 text-white transition-colors duration-300 ${
-        transparent ? "bg-transparent" : "bg-navy shadow-sm"
+        transparent
+          ? "bg-gradient-to-b from-black/45 to-transparent"
+          : "bg-navy shadow-sm"
       }`}
     >
       <div className="mx-auto flex h-20 w-full items-center justify-between gap-4 px-5 sm:px-6 lg:px-8">
@@ -39,16 +41,26 @@ export function Header() {
         <div className="flex items-center gap-8 lg:gap-12">
           {/* Desktop nav (기획서 §1.1) — hover dropdown submenus */}
           <nav className="hidden items-center gap-9 lg:flex xl:gap-12">
-            {mainNav.map((item) => (
+            {mainNav.map((item) => {
+              // Active when on the section's landing page or any page beneath it.
+              const active =
+                pathname === item.href ||
+                pathname.startsWith(`${item.href}/`);
+              return (
               <div key={item.key} className="group relative">
                 <Link
                   href={item.href}
-                  className="text-sm font-medium uppercase tracking-wide text-white transition-opacity hover:opacity-80"
+                  aria-current={active ? "page" : undefined}
+                  className={`relative text-sm font-medium uppercase tracking-wide text-white transition-opacity hover:opacity-80 ${
+                    active
+                      ? "after:absolute after:-bottom-2 after:left-0 after:h-0.5 after:w-full after:bg-white"
+                      : ""
+                  }`}
                 >
                   {t(item.key)}
                 </Link>
                 {item.children && (
-                  <div className="invisible absolute left-0 top-full z-50 pt-4 opacity-0 transition-all duration-150 group-hover:visible group-hover:opacity-100">
+                  <div className="invisible absolute left-0 top-full z-50 pt-4 opacity-0 transition-all duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
                     <ul className="min-w-[224px] overflow-hidden rounded-md bg-white py-2 text-ink shadow-xl ring-1 ring-black/5">
                       {item.children.map((c) => (
                         <li key={c.key}>
@@ -64,7 +76,8 @@ export function Header() {
                   </div>
                 )}
               </div>
-            ))}
+              );
+            })}
           </nav>
 
           <div className="hidden sm:block">
@@ -168,7 +181,7 @@ export function Header() {
                             key={c.key}
                             href={c.href}
                             onClick={() => setOpen(false)}
-                            className="py-1.5 text-xs font-medium text-white/55"
+                            className="py-2 text-xs font-medium text-white/75"
                           >
                             {t(`sub.${c.key}`)}
                           </Link>

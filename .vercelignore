@@ -1,0 +1,11 @@
+# Exclude the unused raw photo-shoot originals (~5.7GB) from the Vercel deploy.
+# The site references only ~39 images in public/images; the bulk GIL*/GILL*/
+# KakaoTalk_* camera originals are never served, so shipping them would bloat
+# the deployment. The two originals actually used are re-included below.
+# Keep this in sync with .gitignore.
+public/images/GIL00*
+public/images/GILL0*
+public/images/GILL1*
+public/images/KakaoTalk_*
+!public/images/GILL1409.jpg
+!public/images/GILL1502.jpg

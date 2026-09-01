@@ -1,10 +1,27 @@
+import type { Metadata } from "next";
 import { use } from "react";
 import { useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CtaLink } from "@/components/ui/CtaLink";
+import { PageHero } from "@/components/ui/PageHero";
+import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { WorldMap } from "@/components/home/WorldMap";
+import { media } from "@/config/media";
 import { routes } from "@/config/nav";
 import { networkNodes } from "@/content/globalNetwork";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "globalNetwork" });
+  return {
+    title: t("eyebrow"),
+    description: t("body"),
+  };
+}
 
 // GLOBAL NETWORK — expandable structure (Country · City · Youth Members ·
 // Projects · Partners). Only REAL nodes are listed (see src/content/globalNetwork.ts).
@@ -19,24 +36,24 @@ export default function GlobalNetworkPage({
 
   return (
     <>
-      {/* Hero + open network map */}
-      <section className="bg-navy py-24 text-white md:py-32">
+      {/* Hero */}
+      <PageHero
+        image={media.homeCommunity}
+        eyebrow={t("eyebrow")}
+        title={t("title")}
+        subtitle={t("body")}
+      >
+        <CtaLink href={routes.join} variant="primary" event="join_click">
+          {t("cta")} <span className="cta-arrow" aria-hidden>→</span>
+        </CtaLink>
+      </PageHero>
+
+      <Breadcrumb />
+
+      {/* Open network map */}
+      <section className="bg-white py-16 md:py-20">
         <div className="container-aft">
-          <div className="max-w-3xl">
-            <p className="eyebrow text-accent">{t("eyebrow")}</p>
-            <h1 className="mt-4 text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl">
-              {t("title")}
-            </h1>
-            <p className="mt-6 text-lg text-white/80">{t("body")}</p>
-            <div className="mt-8">
-              <CtaLink href={routes.join} variant="primary" event="join_click">
-                {t("cta")} →
-              </CtaLink>
-            </div>
-          </div>
-          <div className="mt-14">
-            <WorldMap seoulLabel={t("mapLabel")} />
-          </div>
+          <WorldMap seoulLabel={t("mapLabel")} />
         </div>
       </section>
 
@@ -46,7 +63,7 @@ export default function GlobalNetworkPage({
           <h2 className="text-2xl font-bold tracking-tight text-ink sm:text-3xl">
             {t("table.title")}
           </h2>
-          <div className="mt-8 overflow-x-auto rounded-xl border border-line bg-white">
+          <div className="mt-8 overflow-x-auto rounded-sm border border-line bg-white">
             <table className="w-full min-w-[680px] text-left text-sm">
               <thead>
                 <tr className="border-b border-line text-xs font-bold uppercase tracking-wide text-muted">

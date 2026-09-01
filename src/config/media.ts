@@ -29,19 +29,26 @@ export const homeHeroVideo: {
 // AFT × WWF donation-ceremony clip (07 · DONATION & ECO ACTION). Same pattern
 // as the hero: drop a file into public/videos/ and set `src`; `poster` is the
 // ceremony still. Both null → a play badge sits over the placeholder image.
+// Donation-ceremony (기부금 전달식) clip. No ceremony footage exists yet — the
+// available clips are exhibition / goods / eco-walk, not the ₩1,000,000 handover.
+// Drop the real ceremony file into public/videos/ and set `src` to swap the
+// section's still image for a playable video (the "전달식 영상 보기" button wires
+// up automatically). Until then `src` stays null and the WWF still is shown.
 export const homeDonationVideo: { src: string | null; poster: string | null } = {
   src: null,
-  poster: null,
+  poster: "/images/wwf-ceremony.jpg",
 };
 
 export const media = {
   // HOME — hero background + section images (map 1:1 to 구현이미지.png)
   homeHero: { src: null, alt: "AFT youth at an exhibition" },
-  aboutGrid1: { src: "/images/about-grid-1.jpg", alt: "Young artist with their artwork" },
+  aboutGrid1: { src: "/images/GILL1502.jpg", alt: "Young artist beside their ocean-themed artwork" },
   aboutGrid2: { src: "/images/about-grid-2.jpg", alt: "Youth presenting on stage" },
   aboutGrid3: { src: "/images/about-grid-3.jpg", alt: "Youth with ocean-themed artwork" },
   aboutGrid4: { src: "/images/about-grid-4.jpg", alt: "Youth award ceremony" },
   impactImg1: { src: "/images/impact-img-1.jpg", alt: "Youth orchestra performing" },
+  // Home "2026 주요 성과" right-side bleed image (home only — impact page keeps impactImg1).
+  impactHomeImg: { src: "/images/GILL1409.jpg", alt: "AFT young artists group photo at the exhibition" },
   impactImg2: { src: "/images/impact-img-2.jpg", alt: "Exhibition reception" },
   impactImg3: { src: "/images/impact-img-3.jpg", alt: "Gallery of youth ocean artworks" },
   homeFeatured: {
@@ -61,7 +68,7 @@ export const media = {
   homeCommunity: { src: "/images/home-community.jpg", alt: "AFT youth creators together" },
   joinYouth: { src: "/images/join-youth.jpg", alt: "AFT youth presenting on stage" },
   joinAdvisors: { src: "/images/story-shot-5.jpg", alt: "A presenter speaking at an AFT project" },
-  joinPartners: { src: "/images/join-partners.jpg", alt: "Guests and partners at the AFT exhibition" },
+  joinPartners: { src: "/images/story-from-drawing-to-donation.jpg", alt: "A WWF Korea partner speaking at the AFT charity project" },
   homeLab: { src: null, alt: "Youth in the creative lab with a mentor" },
   labImg1: { src: null, alt: "Youth product design" },
   labImg2: { src: null, alt: "Youth prototype" },
@@ -76,9 +83,9 @@ export const media = {
   storyShot5: { src: "/images/story-shot-5.jpg", alt: "Youth orchestra performance" },
   wwfCeremony: { src: "/images/wwf-ceremony.jpg", alt: "WWF Korea representative at the AFT × WWF youth art charity project", tone: "ocean" },
   // WWF follow-up eco action (05)
-  wwfFollow1: { src: null, alt: "Environmental education session" },
-  wwfFollow2: { src: null, alt: "Youth interviews" },
-  wwfFollow3: { src: null, alt: "Cheonggyecheon eco walk" },
+  wwfFollow1: { src: "/images/wwf-follow-1.jpg", alt: "Environmental education session" },
+  wwfFollow2: { src: "/images/wwf-follow-2.jpg", alt: "Youth interviews" },
+  wwfFollow3: { src: "/images/wwf-follow-3.jpg", alt: "Cheonggyecheon eco walk" },
   // Dotted world map (Pixabay Content License — GDJ; free, no attribution required).
   // Leave src null to fall back to the built-in dot-grid motif.
   worldMap: { src: "/images/world-map-nopoles.png", alt: "Dotted world map" },

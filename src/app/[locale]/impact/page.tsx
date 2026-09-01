@@ -1,11 +1,27 @@
+import type { Metadata } from "next";
 import { use } from "react";
 import { useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CtaLink } from "@/components/ui/CtaLink";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { AftImage } from "@/components/ui/AftImage";
+import { PageHero } from "@/components/ui/PageHero";
+import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { media } from "@/config/media";
 import { routes } from "@/config/nav";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "impact" });
+  return {
+    title: t("hero.eyebrow"),
+    description: t("hero.subtitle"),
+  };
+}
 
 export default function ImpactPage({
   params,
@@ -23,28 +39,24 @@ export default function ImpactPage({
   return (
     <>
       {/* HERO */}
-      <section className="bg-navy text-white">
-        <div className="container-aft py-24 md:py-32">
-          <p className="eyebrow">{t("hero.eyebrow")}</p>
-          <h1 className="mt-3 max-w-3xl text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl">
-            {t("hero.title")}
-          </h1>
-          <p className="mt-5 max-w-2xl text-lg text-white/75">
-            {t("hero.subtitle")}
-          </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <CtaLink href={routes.support} variant="primary" event="donate_start">
-              {t("hero.ctaSupport")}
-            </CtaLink>
-            <CtaLink href={routes.projects} variant="secondary">
-              {t("hero.ctaReport")}
-            </CtaLink>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        image={media.impactImg1}
+        eyebrow={t("hero.eyebrow")}
+        title={t("hero.title")}
+        subtitle={t("hero.subtitle")}
+      >
+        <CtaLink href={routes.support} variant="primary" event="donate_start">
+          {t("hero.ctaSupport")}
+        </CtaLink>
+        <CtaLink href={routes.projects} variant="secondary">
+          {t("hero.ctaReport")}
+        </CtaLink>
+      </PageHero>
+
+      <Breadcrumb />
 
       {/* IMPACT NUMBERS (with base year + basis) */}
-      <section className="bg-[#f8fafc] py-24 md:py-32">
+      <section className="bg-white py-24 md:py-32">
         <div className="container-aft">
           <div className="flex flex-col items-center gap-2 text-center">
             <SectionHeading eyebrow={t("numbers.eyebrow")} title={t("numbers.title")} centered />
@@ -56,7 +68,7 @@ export default function ImpactPage({
             {numberKeys.map((k) => (
               <div
                 key={k}
-                className="rounded-xl border border-line bg-white p-6 text-center shadow-sm"
+                className="rounded-sm border border-line bg-white p-6 text-center shadow-sm"
               >
                 <div className="text-4xl font-extrabold text-accent">
                   {t(`numbers.items.${k}.value`)}
@@ -98,12 +110,12 @@ export default function ImpactPage({
       </section>
 
       {/* IMPACT BY AREA */}
-      <section className="bg-[#f8fafc] py-24 md:py-32">
+      <section className="bg-white py-24 md:py-32">
         <div className="container-aft">
           <SectionHeading eyebrow={t("areas.eyebrow")} title={t("areas.title")} centered />
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {areaKeys.map((k) => (
-              <div key={k} className="rounded-xl bg-surface p-6">
+              <div key={k} className="rounded-sm bg-surface p-6">
                 <h3 className="font-bold text-ink">{t(`areas.items.${k}.title`)}</h3>
                 <p className="mt-2 text-sm text-muted">
                   {t(`areas.items.${k}.body`)}
@@ -119,7 +131,7 @@ export default function ImpactPage({
         <div className="container-aft max-w-2xl">
           <SectionHeading eyebrow={t("donation.eyebrow")} title={t("donation.title")} />
           <p className="mt-2 text-sm text-muted">{t("donation.note")}</p>
-          <dl className="mt-6 overflow-hidden rounded-xl border border-line bg-white">
+          <dl className="mt-6 overflow-hidden rounded-sm border border-line bg-white">
             {donationRows.map((r) => {
               const emphasize = r === "total" || r === "donated";
               return (
@@ -147,7 +159,7 @@ export default function ImpactPage({
       </section>
 
       {/* TRANSPARENCY */}
-      <section className="bg-[#f8fafc] py-24 md:py-32">
+      <section className="bg-white py-24 md:py-32">
         <div className="container-aft max-w-3xl">
           <SectionHeading
             eyebrow={t("transparency.eyebrow")}

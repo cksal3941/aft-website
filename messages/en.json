@@ -3,6 +3,32 @@
     "siteName": "AFT — Arts For Tomorrow",
     "tagline": "A global nonprofit youth arts organization"
   },
+  "forms": {
+    "submitting": "Submitting…"
+  },
+  "carousel": {
+    "pause": "Pause slideshow",
+    "play": "Play slideshow",
+    "slide": "Go to slide {n}"
+  },
+  "breadcrumb": {
+    "home": "Home",
+    "about": "About AFT",
+    "projects": "Projects",
+    "impact": "Impact",
+    "stories": "News",
+    "join": "AFT Youth",
+    "apply": "Youth Application",
+    "advisor": "Become an Advisor",
+    "globalNetwork": "Global Network",
+    "partners": "Partners",
+    "venue": "Venue",
+    "sponsor": "Sponsor a Project",
+    "inkind": "In-kind Support",
+    "expert": "Experts & Mentors",
+    "support": "Support",
+    "contact": "Contact"
+  },
   "nav": {
     "about": "About",
     "ourStory": "Our Story",
@@ -274,6 +300,7 @@
   },
   "projects": {
     "hero": {
+      "eyebrow": "Projects",
       "title": "Explore Projects Led by Young Creativity.",
       "subtitle": "Discover how young artists turn social and environmental issues into real-world action.",
       "ctaOpen": "View Open Projects",
@@ -629,6 +656,7 @@
       "org": "Organization (optional)",
       "message": "Message",
       "submit": "Send Message",
+      "submitting": "Sending…",
       "types": {
         "general": "General",
         "youth": "Youth membership",
@@ -847,6 +875,7 @@
   },
   "partners": {
     "hero": {
+      "eyebrow": "Partners",
       "title": "Turn Young Ideas into Real-World Impact.",
       "subtitle": "Partner with AFT to connect youth creativity with corporate, public and community resources.",
       "ctaPartner": "Become a Partner",
@@ -895,7 +924,29 @@
     },
     "how": {
       "eyebrow": "How It Works",
-      "title": "Inquiry → Meeting → Plan → Action → Report"
+      "title": "How a partnership unfolds",
+      "steps": {
+        "inquiry": {
+          "title": "Inquiry",
+          "body": "Tell us how you'd like to partner."
+        },
+        "meeting": {
+          "title": "Meeting",
+          "body": "Align goals and scope with our team."
+        },
+        "plan": {
+          "title": "Planning",
+          "body": "Design the project plan together."
+        },
+        "action": {
+          "title": "Action",
+          "body": "Run the project alongside the youth."
+        },
+        "report": {
+          "title": "Report",
+          "body": "Share outcomes and results transparently."
+        }
+      }
     },
     "types": {
       "eyebrow": "Get Started",
@@ -926,6 +977,7 @@
   },
   "support": {
     "hero": {
+      "eyebrow": "Support",
       "title": "Help Young Creativity Reach the World.",
       "subtitle": "Your support turns youth artwork into exhibitions, publishing, campaigns and real donations.",
       "once": "Donate Once",
@@ -987,6 +1039,7 @@
   },
   "join": {
     "hero": {
+      "eyebrow": "AFT Youth",
       "title": "Join a Global Community of Young Creators.",
       "subtitle": "Become an AFT youth member and turn your ideas into exhibitions, publishing, campaigns and real-world impact.",
       "ctaStart": "Start Application",

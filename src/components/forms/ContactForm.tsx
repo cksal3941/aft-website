@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useTranslations } from "next-intl";
+import { Field, inputClass } from "./fields";
 
 const TYPES = [
   "general",
@@ -37,7 +38,7 @@ export function ContactForm() {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
     mode: "onTouched",
@@ -51,13 +52,16 @@ export function ContactForm() {
   });
 
   // No backend yet — show a confirmation preview (기획서 §9.2 제출 후 화면).
-  function onSubmit() {
+  // Keep the handler async so react-hook-form drives `isSubmitting`; the short
+  // delay stands in for the real API call and lets the loading state show.
+  async function onSubmit() {
+    await new Promise((r) => setTimeout(r, 600));
     setSent(true);
   }
 
   if (sent) {
     return (
-      <div className="rounded-2xl border border-line bg-white p-8 text-center shadow-sm">
+      <div className="rounded-sm border border-line bg-white p-8 text-center shadow-sm">
         <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-accent-soft text-2xl">
           ✓
         </div>
@@ -82,7 +86,7 @@ export function ContactForm() {
     <form
       onSubmit={handleSubmit(onSubmit)}
       noValidate
-      className="space-y-5 rounded-2xl border border-line bg-white p-6 shadow-sm sm:p-8"
+      className="space-y-5 rounded-sm border border-line bg-white p-6 shadow-sm sm:p-8"
     >
       <Field label={t("form.type")}>
         <select className={inputClass} {...register("type")}>
@@ -95,46 +99,36 @@ export function ContactForm() {
       </Field>
 
       <div className="grid gap-5 sm:grid-cols-2">
-        <Field label={t("form.name")} error={errors.name?.message}>
-          <input className={inputClass} {...register("name")} />
+        <Field label={t("form.name")} error={errors.name?.message} required>
+          <input className={inputClass} autoComplete="name" {...register("name")} />
         </Field>
-        <Field label={t("form.email")} error={errors.email?.message}>
-          <input className={inputClass} type="email" {...register("email")} />
+        <Field label={t("form.email")} error={errors.email?.message} required>
+          <input
+            className={inputClass}
+            type="email"
+            inputMode="email"
+            autoComplete="email"
+            {...register("email")}
+          />
         </Field>
       </div>
 
       <Field label={t("form.org")}>
-        <input className={inputClass} {...register("org")} />
+        <input className={inputClass} autoComplete="organization" {...register("org")} />
       </Field>
 
-      <Field label={t("form.message")} error={errors.message?.message}>
+      <Field label={t("form.message")} error={errors.message?.message} required>
         <textarea rows={5} className={inputClass} {...register("message")} />
       </Field>
 
-      <button type="submit" className="btn-primary w-full sm:w-auto">
-        {t("form.submit")}
+      <button
+        type="submit"
+        disabled={isSubmitting}
+        aria-busy={isSubmitting}
+        className="btn-primary w-full disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+      >
+        {isSubmitting ? t("form.submitting") : t("form.submit")}
       </button>
     </form>
-  );
-}
-
-const inputClass =
-  "w-full rounded-md border border-line bg-white px-3 py-2.5 text-sm text-ink focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent";
-
-function Field({
-  label,
-  error,
-  children,
-}: {
-  label: string;
-  error?: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <label className="block">
-      <span className="mb-1.5 block text-sm font-semibold text-ink">{label}</span>
-      {children}
-      {error && <span className="mt-1 block text-sm text-red-600">{error}</span>}
-    </label>
   );
 }

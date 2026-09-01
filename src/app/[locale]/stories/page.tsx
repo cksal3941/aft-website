@@ -1,11 +1,28 @@
+import type { Metadata } from "next";
 import { use } from "react";
 import { useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CtaLink } from "@/components/ui/CtaLink";
 import { AftImage } from "@/components/ui/AftImage";
+import { PageHero } from "@/components/ui/PageHero";
+import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { media } from "@/config/media";
 import { getStories } from "@/content/stories";
 import { routes } from "@/config/nav";
 import type { Locale } from "@/i18n/routing";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "stories" });
+  return {
+    title: t("hero.eyebrow"),
+    description: t("hero.subtitle"),
+  };
+}
 
 export default function StoriesPage({
   params,
@@ -20,18 +37,17 @@ export default function StoriesPage({
   return (
     <>
       {/* HERO */}
-      <section className="bg-navy py-24 md:py-32 text-white">
-        <div className="container-aft">
-          <p className="eyebrow">{t("hero.eyebrow")}</p>
-          <h1 className="mt-3 max-w-3xl text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl">
-            {t("hero.title")}
-          </h1>
-          <p className="mt-4 max-w-2xl text-white/75">{t("hero.subtitle")}</p>
-        </div>
-      </section>
+      <PageHero
+        image={media.storyShot1}
+        eyebrow={t("hero.eyebrow")}
+        title={t("hero.title")}
+        subtitle={t("hero.subtitle")}
+      />
+
+      <Breadcrumb />
 
       {/* STORY CARDS */}
-      <section className="bg-[#f8fafc] py-24 md:py-32">
+      <section className="bg-white py-24 md:py-32">
         <div className="container-aft space-y-16">
           {items.map((s, i) => (
             <article

@@ -6,8 +6,10 @@ import { routes } from "@/config/nav";
 import { CtaLink } from "@/components/ui/CtaLink";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { AftImage } from "@/components/ui/AftImage";
-import { media } from "@/config/media";
+import { CountUp } from "@/components/ui/CountUp";
+import { media, homeDonationVideo } from "@/config/media";
 import { HeroVideo } from "@/components/home/HeroVideo";
+import { DonationWatchButton } from "@/components/home/DonationWatchButton";
 import { DottedWorldMap } from "@/components/home/DottedWorldMap";
 import { StoryCarousel } from "@/components/home/StoryCarousel";
 
@@ -64,7 +66,7 @@ export default function HomePage({
       </section>
 
       {/* 02 · WHO WE ARE — text left · pillars (× separated) + image row right */}
-      <section id="who" className="bg-[#f8fafc] py-24 md:py-32">
+      <section id="who" className="bg-white py-24 md:py-32">
         <div className="container-aft flex flex-col gap-12 lg:flex-row lg:gap-16">
           {/* LEFT — heading + body + CTA */}
           <div className="text-center lg:w-[35%] lg:shrink-0 lg:text-left">
@@ -115,7 +117,7 @@ export default function HomePage({
       {/* 03 · OUR IMPACT IN 2026 — horizontal stat strip */}
       <section
         id="impact"
-        className="relative overflow-hidden border-y border-[#e2e8ef] bg-[#f2f5f9] py-14"
+        className="relative overflow-hidden border-y border-[#e2e8ef] bg-white py-14"
       >
         <div className="container-aft relative flex flex-col gap-10 lg:flex-row lg:items-center lg:gap-10">
           <p className="mx-auto whitespace-normal lg:whitespace-pre-line text-center text-xl font-extrabold uppercase leading-[1.05] tracking-wide text-[#3E7035] lg:mx-0 lg:max-w-[7rem] lg:text-left">
@@ -135,10 +137,11 @@ export default function HomePage({
                     <div
                       className={`flex min-w-[90px] flex-col items-center text-center ${color}`}
                     >
-                      <div className="text-2xl font-extrabold sm:text-3xl">
-                        {t(`impact.stats.${k}.value`)}
-                      </div>
-                      <div className="mt-[14px] max-w-[145px] whitespace-pre-line text-[14px] font-semibold uppercase leading-[1.15] tracking-wide lg:whitespace-normal">
+                      <CountUp
+                        value={t(`impact.stats.${k}.value`)}
+                        className="text-2xl font-extrabold sm:text-3xl"
+                      />
+                      <div className="mt-[14px] max-w-[145px] whitespace-pre-line text-base font-semibold uppercase leading-[1.15] tracking-wide lg:whitespace-normal">
                         {t(`impact.stats.${k}.label`)}
                       </div>
                       <span className="mt-3 block">
@@ -160,17 +163,17 @@ export default function HomePage({
               left start position stays put. */}
           <div className="absolute right-0 hidden lg:block lg:-top-14 lg:right-[calc(50%_-_50vw)] lg:h-[calc(100%+112px)] lg:w-[calc(340px_+_50vw_-_50%)]">
             <AftImage
-              {...media.impactImg1}
+              {...media.impactHomeImg}
               className="h-full w-full rounded-none"
             />
             {/* Left-edge fade into the section background so the photo blends in */}
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#f2f5f9] via-[#f2f5f9]/60 via-30% to-transparent to-70%" />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-white via-white/60 via-30% to-transparent to-70%" />
           </div>
         </div>
       </section>
 
       {/* 04 · WHERE OUR STORY BEGAN + journey (Seoul · 2026) */}
-      <section id="story" className="bg-[#f8fafc] py-24 md:py-32">
+      <section id="story" className="bg-white py-24 md:py-32">
         <div className="container-aft flex flex-col gap-10 lg:flex-row lg:gap-12">
           {/* LEFT — intro + view all photos */}
           <div className="text-center lg:w-[24%] lg:shrink-0 lg:text-left">
@@ -197,14 +200,15 @@ export default function HomePage({
             <StoryCarousel
               slides={(
                 [
-                  { k: "create", img: media.storyShot1 },
-                  { k: "exhibit", img: media.storyShot2 },
-                  { k: "share", img: media.storyShot3 },
-                  { k: "donate", img: media.storyShot4 },
-                  { k: "act", img: media.storyShot5 },
+                  { k: "create", img: media.homeFeatured, objectPosition: undefined },
+                  { k: "exhibit", img: media.storyShot2, objectPosition: undefined },
+                  { k: "share", img: media.storyShot3, objectPosition: undefined },
+                  { k: "donate", img: media.storyShot4, objectPosition: undefined },
+                  { k: "act", img: media.storyShot5, objectPosition: undefined },
                 ] as const
-              ).map(({ k, img }) => ({
+              ).map(({ k, img, objectPosition }) => ({
                 ...img,
+                objectPosition,
                 no: t(`journey.steps.${k}.no`),
                 title: t(`journey.steps.${k}.title`),
                 body: t(`journey.steps.${k}.body`),
@@ -215,7 +219,7 @@ export default function HomePage({
       </section>
 
       {/* 05 · CREATIVITY BECAME REAL IMPACT — AFT × WWF (light) */}
-      <section id="donation" className="bg-[#f8fafc] py-24 md:py-32">
+      <section id="donation" className="bg-white py-24 md:py-32">
         <div className="container-aft flex flex-col gap-12 lg:flex-row lg:gap-16">
           {/* LEFT — headline + amount + watch */}
           <div className="text-center lg:w-[30%] lg:shrink-0 lg:text-left">
@@ -223,25 +227,48 @@ export default function HomePage({
               {t("donation.title")}
             </h2>
             <div className="mt-6 text-4xl font-extrabold text-teal sm:text-5xl">
-              {t("donation.amount")}
+              <CountUp value={t("donation.amount")} />
             </div>
             <p className="mt-2.5 text-2xl font-semibold uppercase tracking-wide text-teal">
               {t("donation.amountLabel")}
             </p>
             <p className="mt-4 text-sm text-muted">{t("donation.ceremony")}</p>
-            <p className="mt-6 inline-flex items-center gap-2 rounded-sm bg-navy px-5 py-2.5 text-sm font-semibold uppercase tracking-wide text-white">
-              <PlayIcon />
-              {t("donation.watch")}
-            </p>
+            {homeDonationVideo.src ? (
+              <DonationWatchButton
+                videoId="donation-video"
+                className="mt-6 inline-flex items-center gap-2 rounded-sm bg-navy px-5 py-2.5 text-sm font-semibold uppercase tracking-wide text-white transition-colors hover:bg-navy-soft"
+              >
+                <PlayIcon />
+                {t("donation.watch")}
+              </DonationWatchButton>
+            ) : (
+              <p className="mt-6 inline-flex items-center gap-2 rounded-sm bg-navy px-5 py-2.5 text-sm font-semibold uppercase tracking-wide text-white">
+                <PlayIcon />
+                {t("donation.watch")}
+              </p>
+            )}
           </div>
 
           {/* RIGHT — ceremony image + captioned follow-ups */}
           <div className="lg:flex-1">
-            <AftImage
-              {...media.wwfCeremony}
-              label="AFT × WWF · ₩1,000,000"
-              className="aspect-[16/7] w-full"
-            />
+            {homeDonationVideo.src ? (
+              <video
+                id="donation-video"
+                poster={homeDonationVideo.poster ?? undefined}
+                controls
+                playsInline
+                preload="metadata"
+                className="aspect-[16/7] w-full rounded-sm bg-navy object-cover"
+              >
+                <source src={homeDonationVideo.src} type="video/mp4" />
+              </video>
+            ) : (
+              <AftImage
+                {...media.wwfCeremony}
+                label="AFT × WWF · ₩1,000,000"
+                className="aspect-[16/7] w-full"
+              />
+            )}
             <div className="mt-4 grid grid-cols-3 gap-4">
               {(t.raw("donation.followup") as string[]).map((c, i) => {
                 const slot = [
@@ -282,7 +309,7 @@ export default function HomePage({
               <p className="mt-4 text-muted">{t("global.body2")}</p>
               <div className="mt-6">
                 <CtaLink href={routes.globalNetwork} variant="primary">
-                  {t("global.cta")} →
+                  {t("global.cta")} <span className="cta-arrow" aria-hidden>→</span>
                 </CtaLink>
               </div>
             </div>
@@ -291,7 +318,7 @@ export default function HomePage({
       </section>
 
       {/* 07 · JOIN THE GLOBAL COMMUNITY — overlay photo cards */}
-      <section id="join-global" className="bg-[#f8fafc] py-24 md:py-32">
+      <section id="join-global" className="bg-white py-24 md:py-32">
         <div className="container-aft">
           <SectionHeading
             eyebrow={t("joinGlobal.eyebrow")}
@@ -327,7 +354,7 @@ export default function HomePage({
                   </p>
                   <div className="mt-5">
                     <CtaLink href={href} variant="secondary" event={event}>
-                      {t(`joinGlobal.cards.${key}.cta`)} →
+                      {t(`joinGlobal.cards.${key}.cta`)} <span className="cta-arrow" aria-hidden>→</span>
                     </CtaLink>
                   </div>
                 </div>
@@ -349,13 +376,30 @@ export default function HomePage({
               {t("support.title")}
             </h2>
             <p className="mt-4 mx-auto max-w-lg whitespace-pre-line text-muted lg:mx-0 lg:whitespace-normal">
-              {t("support.body")}
+              {/* Keep the \n break on mobile (whitespace-pre-line). On desktop the
+                  \n collapses (lg:whitespace-normal); for Korean only, force the
+                  break back in with a desktop-only <br>. English desktop keeps its
+                  natural wrap. */}
+              {t("support.body")
+                .split("\n")
+                .map((line, i, arr) => (
+                  <span key={i}>
+                    {line}
+                    {i < arr.length - 1 && (
+                      <>
+                        {"\n"}
+                        {locale === "ko" && <br className="hidden lg:inline" />}
+                      </>
+                    )}
+                  </span>
+                ))}
             </p>
             <div className="mt-8 grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-4 sm:gap-x-1">
               {(["youth", "exhibitions", "environment", "publishing"] as const).map(
                 (k, i) => (
                   <div
                     key={k}
+                    data-reveal
                     className="flex h-full flex-col items-center gap-2 text-center"
                   >
                     <span className="whitespace-normal lg:whitespace-pre-line text-sm font-semibold leading-tight text-ink">
@@ -385,14 +429,14 @@ export default function HomePage({
                 Right padding keeps it inside the 1400px container (668px = half of
                 container content width: 1400 − 2×32px lg padding). */}
             <div className="absolute inset-x-0 bottom-[17%] flex flex-col items-center gap-3 px-8 text-center lg:items-end lg:pr-[max(2rem,calc(50vw_-_668px))] lg:text-right">
-              <p className="text-sm font-bold text-muted lg:text-xl">
+              <p className="text-sm font-bold text-ink lg:text-xl">
                 {t("support.caption")}
               </p>
               <Link
                 href={routes.support}
                 className="inline-flex items-center gap-2 rounded-sm bg-accent px-5 py-2.5 text-sm font-bold uppercase tracking-wide text-white shadow-lg transition-colors hover:bg-accent-hover lg:px-8 lg:py-4 lg:text-base"
               >
-                {t("support.ctaDonate")} →
+                {t("support.ctaDonate")} <span className="cta-arrow" aria-hidden>→</span>
               </Link>
             </div>
           </div>

@@ -64,7 +64,7 @@ export function ProjectsExplorer({ items }: { items: LocalizedProject[] }) {
   return (
     <div>
       {/* FILTER BAR */}
-      <div className="flex flex-wrap items-end gap-4 rounded-xl border border-line bg-surface p-4">
+      <div className="flex flex-wrap items-end gap-4 rounded-sm border border-line bg-surface p-4">
         <Select
           label={t("filter.field")}
           value={filters.field}

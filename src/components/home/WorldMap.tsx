@@ -12,7 +12,8 @@ export function WorldMap({ seoulLabel }: { seoulLabel: string }) {
         src={media.worldMap.src}
         alt={media.worldMap.alt}
         sizes="100vw"
-        className="aspect-[16/7] w-full rounded-xl"
+        className="aspect-[16/7] w-full rounded-sm"
+        noZoom
       />
     );
   }
@@ -31,7 +32,7 @@ export function WorldMap({ seoulLabel }: { seoulLabel: string }) {
   ];
 
   return (
-    <div className="relative aspect-[16/7] w-full overflow-hidden rounded-xl bg-navy-deep/60 ring-1 ring-white/10">
+    <div className="relative aspect-[16/7] w-full overflow-hidden rounded-sm bg-white ring-1 ring-line">
       <svg
         viewBox="0 0 100 44"
         preserveAspectRatio="none"
@@ -45,12 +46,12 @@ export function WorldMap({ seoulLabel }: { seoulLabel: string }) {
             y1={seoul.y}
             x2={n.x}
             y2={n.y}
-            className="stroke-white/10"
+            className="stroke-navy/15"
             strokeWidth="0.2"
           />
         ))}
         {nodes.map((n, i) => (
-          <circle key={`n${i}`} cx={n.x} cy={n.y} r="0.7" className="fill-white/25" />
+          <circle key={`n${i}`} cx={n.x} cy={n.y} r="0.7" className="fill-navy/30" />
         ))}
         <circle cx={seoul.x} cy={seoul.y} r="2.6" className="fill-accent/25" />
         <circle cx={seoul.x} cy={seoul.y} r="1.1" className="fill-accent" />

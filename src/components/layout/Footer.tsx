@@ -46,7 +46,7 @@ export function Footer() {
         </div>
         {columns.map((col) => (
           <div key={col.title}>
-            <h3 className="text-xs font-bold uppercase tracking-wider text-white/50">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-white/70">
               {col.title}
             </h3>
             <ul className="mt-4 space-y-2 text-sm">
@@ -62,7 +62,7 @@ export function Footer() {
         ))}
       </div>
       <div className="border-t border-white/10">
-        <div className="container-aft flex flex-col gap-2 py-5 text-xs text-white/50 sm:flex-row sm:items-center sm:justify-between">
+        <div className="container-aft flex flex-col gap-2 py-5 text-xs text-white/70 sm:flex-row sm:items-center sm:justify-between">
           <span>© 2026 {t("rights")}</span>
           <div className="flex gap-5">
             <Link href={routes.privacy} className="hover:text-white">

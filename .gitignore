@@ -42,3 +42,13 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Unused raw photo-shoot originals (~5.7GB) — kept locally for picking future
+# photos, but excluded from git + deploy. The two originals the site actually
+# references are re-included below. Keep this in sync with .vercelignore.
+public/images/GIL00*
+public/images/GILL0*
+public/images/GILL1*
+public/images/KakaoTalk_*
+!public/images/GILL1409.jpg
+!public/images/GILL1502.jpg

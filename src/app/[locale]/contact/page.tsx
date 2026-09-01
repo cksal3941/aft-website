@@ -1,9 +1,26 @@
+import type { Metadata } from "next";
 import { use } from "react";
 import { useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { ContactForm } from "@/components/forms/ContactForm";
+import { PageHero } from "@/components/ui/PageHero";
+import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { media } from "@/config/media";
 import { routes } from "@/config/nav";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "contact" });
+  return {
+    title: t("hero.eyebrow"),
+    description: t("hero.subtitle"),
+  };
+}
 
 export default function ContactPage({
   params,
@@ -17,22 +34,21 @@ export default function ContactPage({
   return (
     <>
       {/* HERO */}
-      <section className="bg-navy py-24 md:py-32 text-white">
-        <div className="container-aft">
-          <p className="eyebrow">{t("hero.eyebrow")}</p>
-          <h1 className="mt-3 text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl">
-            {t("hero.title")}
-          </h1>
-          <p className="mt-4 max-w-2xl text-white/75">{t("hero.subtitle")}</p>
-        </div>
-      </section>
+      <PageHero
+        image={media.impactImg2}
+        eyebrow={t("hero.eyebrow")}
+        title={t("hero.title")}
+        subtitle={t("hero.subtitle")}
+      />
+
+      <Breadcrumb />
 
       {/* FORM + INFO */}
       <section className="bg-surface py-24 md:py-32">
         <div className="container-aft grid gap-10 lg:grid-cols-[1.6fr_1fr]">
           <ContactForm />
 
-          <aside className="rounded-2xl border border-line bg-white p-6 shadow-sm">
+          <aside className="rounded-sm border border-line bg-white p-6 shadow-sm">
             <h2 className="text-lg font-bold text-ink">{t("info.title")}</h2>
             <dl className="mt-5 space-y-5 text-sm">
               <div>
@@ -54,7 +70,7 @@ export default function ContactPage({
                 </dt>
                 <dd className="mt-1">
                   <Link href={routes.apply} className="btn-text">
-                    {t("info.join")} <span aria-hidden>→</span>
+                    {t("info.join")} <span className="cta-arrow" aria-hidden>→</span>
                   </Link>
                 </dd>
               </div>
@@ -64,7 +80,7 @@ export default function ContactPage({
                 </dt>
                 <dd className="mt-1">
                   <Link href={routes.partners} className="btn-text">
-                    {t("info.partner")} <span aria-hidden>→</span>
+                    {t("info.partner")} <span className="cta-arrow" aria-hidden>→</span>
                   </Link>
                 </dd>
               </div>

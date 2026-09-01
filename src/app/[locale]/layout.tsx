@@ -70,13 +70,36 @@ export default async function LocaleLayout({
   }
   setRequestLocale(locale);
 
+  // Neue Haas Grotesk lives on Adobe Fonts. Set NEXT_PUBLIC_TYPEKIT_ID to your
+  // Web Project kit id to load it; until then the stack falls back to Inter.
+  const typekitId = process.env.NEXT_PUBLIC_TYPEKIT_ID;
+
   return (
     <html lang={locale} className={`${inter.variable} h-full antialiased`}>
-      <body className="flex min-h-full flex-col bg-[#f8fafc] text-ink">
+      {typekitId && (
+        <>
+          <link rel="preconnect" href="https://use.typekit.net" crossOrigin="" />
+          <link
+            rel="stylesheet"
+            href={`https://use.typekit.net/${typekitId}.css`}
+          />
+        </>
+      )}
+      <body className="flex min-h-full flex-col bg-white text-ink">
         <NextIntlClientProvider>
+          {/* Skip link — first focusable element, visually hidden until focused,
+              lets keyboard users jump past the nav to the page content. */}
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-ink focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-accent"
+          >
+            {locale === "ko" ? "본문 바로가기" : "Skip to content"}
+          </a>
           <Header />
           {/* pt clears the fixed header; the home hero cancels it with -mt-20 */}
-          <main className="flex-1 pt-20">{children}</main>
+          <main id="main-content" className="flex-1 pt-20">
+            {children}
+          </main>
           <Footer />
           <FloatingQuickMenu />
           <ScrollReveal />

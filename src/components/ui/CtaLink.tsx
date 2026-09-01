@@ -32,7 +32,7 @@ export function CtaLink({
       onClick={event ? () => track(event, { source: "cta" }) : undefined}
     >
       {children}
-      {variant === "text" && <span aria-hidden>→</span>}
+      {variant === "text" && <span className="cta-arrow" aria-hidden>→</span>}
     </Link>
   );
 }

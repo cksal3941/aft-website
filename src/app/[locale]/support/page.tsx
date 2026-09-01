@@ -1,8 +1,25 @@
+import type { Metadata } from "next";
 import { use } from "react";
 import { useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { PageHero } from "@/components/ui/PageHero";
+import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { DonationFlow } from "@/components/forms/DonationFlow";
+import { media } from "@/config/media";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "support" });
+  return {
+    title: t("hero.eyebrow"),
+    description: t("hero.subtitle"),
+  };
+}
 
 export default function SupportPage({
   params,
@@ -18,14 +35,14 @@ export default function SupportPage({
   return (
     <>
       {/* HERO */}
-      <section className="bg-navy py-24 md:py-32 text-white">
-        <div className="container-aft">
-          <h1 className="max-w-3xl text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl">
-            {t("hero.title")}
-          </h1>
-          <p className="mt-4 max-w-2xl text-white/75">{t("hero.subtitle")}</p>
-        </div>
-      </section>
+      <PageHero
+        image={media.homeSupport}
+        eyebrow={t("hero.eyebrow")}
+        title={t("hero.title")}
+        subtitle={t("hero.subtitle")}
+      />
+
+      <Breadcrumb />
 
       {/* DONATION FLOW */}
       <section className="bg-surface py-24 md:py-32">
@@ -35,7 +52,7 @@ export default function SupportPage({
       </section>
 
       {/* IMPACT EXAMPLES */}
-      <section className="bg-[#f8fafc] py-24 md:py-32">
+      <section className="bg-white py-24 md:py-32">
         <div className="container-aft">
           <SectionHeading
             eyebrow={t("impact.eyebrow")}
@@ -46,7 +63,7 @@ export default function SupportPage({
             {impactKeys.map((k) => (
               <div
                 key={k}
-                className="rounded-xl border border-line bg-white p-6 text-center shadow-sm"
+                className="rounded-sm border border-line bg-white p-6 text-center shadow-sm"
               >
                 <p className="font-semibold text-ink">{t(`impact.items.${k}`)}</p>
               </div>

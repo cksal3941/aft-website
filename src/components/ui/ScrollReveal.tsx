@@ -43,6 +43,20 @@ function revealTargets(section: HTMLElement): HTMLElement[] {
       set.add(wrapper);
     }
   });
+  // Reveal groups: an element explicitly marked [data-reveal] animates as ONE
+  // unit. Drop any of its descendants (headings, text, image boxes) from the
+  // set so the whole box — icon + title + body — fades up together instead of
+  // the text animating inside an otherwise-static box.
+  const groups = Array.from(
+    section.querySelectorAll<HTMLElement>("[data-reveal]")
+  );
+  if (groups.length) {
+    for (const el of Array.from(set)) {
+      if (groups.some((g) => g !== el && g.contains(el))) {
+        set.delete(el);
+      }
+    }
+  }
   const targets = Array.from(set);
   targets.sort((a, b) =>
     a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1
@@ -62,11 +76,13 @@ export function ScrollReveal() {
     const tweens: gsap.core.Tween[] = [];
     const sections = gsap.utils.toArray<HTMLElement>("main section");
 
-    sections.forEach((section) => {
-      // Leave the first screen as-is — animating it would flash on load.
-      if (section.getBoundingClientRect().top < window.innerHeight * 0.85) {
-        return;
-      }
+    sections.forEach((section, i) => {
+      // Skip only the hero — the first section, and/or any section running its
+      // own entrance ([data-hero], e.g. PageHero). Every other section fades up
+      // on scroll, including the first content section directly below a short
+      // sub-page hero (it enters as it comes into view, not with a flash).
+      const isHero = i === 0 || section.querySelector("[data-hero]") !== null;
+      if (isHero) return;
 
       const targets = revealTargets(section);
 

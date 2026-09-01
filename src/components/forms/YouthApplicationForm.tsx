@@ -34,6 +34,7 @@ const STEP_FIELDS = [
 
 export function YouthApplicationForm() {
   const t = useTranslations("apply");
+  const tForms = useTranslations("forms");
   const tRoles = useTranslations("join.roles.items");
   const [step, setStep] = useState(0);
   const [submitted, setSubmitted] = useState(false);
@@ -74,7 +75,7 @@ export function YouthApplicationForm() {
     watch,
     reset,
     getValues,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
     mode: "onTouched",
@@ -128,7 +129,8 @@ export function YouthApplicationForm() {
     setStep((s) => Math.max(s - 1, 0));
   }
 
-  function onSubmit() {
+  async function onSubmit() {
+    await new Promise((r) => setTimeout(r, 600));
     const birthYear = getValues("birthYear") || "0000";
     setRef(makeRef(`AFT-${birthYear}`, 4));
     setSubmitted(true);
@@ -142,7 +144,7 @@ export function YouthApplicationForm() {
 
   if (submitted) {
     return (
-      <div className="mx-auto max-w-xl rounded-2xl border border-line bg-white p-10 text-center shadow-sm">
+      <div className="mx-auto max-w-xl rounded-sm border border-line bg-white p-10 text-center shadow-sm">
         <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-accent-soft text-2xl">
           ✓
         </div>
@@ -187,7 +189,7 @@ export function YouthApplicationForm() {
               {ROLES.map((r) => (
                 <label
                   key={r}
-                  className="flex cursor-pointer items-start gap-3 rounded-lg border border-line p-4 hover:border-accent has-[:checked]:border-accent has-[:checked]:bg-accent-soft"
+                  className="flex cursor-pointer items-start gap-3 rounded-md border border-line p-4 hover:border-accent has-[:checked]:border-accent has-[:checked]:bg-accent-soft"
                 >
                   <input
                     type="radio"
@@ -251,7 +253,7 @@ export function YouthApplicationForm() {
                 {INTERESTS.map((i) => (
                   <label
                     key={i}
-                    className="flex cursor-pointer items-center gap-3 rounded-lg border border-line p-3 hover:border-accent has-[:checked]:border-accent has-[:checked]:bg-accent-soft"
+                    className="flex cursor-pointer items-center gap-3 rounded-md border border-line p-3 hover:border-accent has-[:checked]:border-accent has-[:checked]:bg-accent-soft"
                   >
                     <input
                       type="checkbox"
@@ -272,7 +274,7 @@ export function YouthApplicationForm() {
                 {MODES.map((m) => (
                   <label
                     key={m}
-                    className="flex cursor-pointer items-center gap-2 rounded-lg border border-line px-4 py-2 hover:border-accent has-[:checked]:border-accent has-[:checked]:bg-accent-soft"
+                    className="flex cursor-pointer items-center gap-2 rounded-md border border-line px-4 py-2 hover:border-accent has-[:checked]:border-accent has-[:checked]:bg-accent-soft"
                   >
                     <input
                       type="radio"
@@ -316,7 +318,7 @@ export function YouthApplicationForm() {
                 />
               </Field>
             </div>
-            <div className="space-y-3 rounded-lg border border-line bg-surface p-4">
+            <div className="space-y-3 rounded-md border border-line bg-surface p-4">
               <label className="flex items-start gap-3 text-sm text-ink">
                 <input
                   type="checkbox"
@@ -349,7 +351,7 @@ export function YouthApplicationForm() {
         {step === 4 && (
           <div>
             <h2 className="text-xl font-bold text-ink">{t("review.title")}</h2>
-            <dl className="mt-6 divide-y divide-line rounded-lg border border-line">
+            <dl className="mt-6 divide-y divide-line rounded-md border border-line">
               <ReviewRow label={t("fields.name")} value={watch("name")} />
               <ReviewRow label={t("fields.birthYear")} value={watch("birthYear")} />
               <ReviewRow
@@ -383,8 +385,13 @@ export function YouthApplicationForm() {
               {t("nav.saveContinue")}
             </button>
           ) : (
-            <button type="submit" className="btn-primary">
-              {t("nav.submit")}
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              aria-busy={isSubmitting}
+              className="btn-primary disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              {isSubmitting ? tForms("submitting") : t("nav.submit")}
             </button>
           )}
         </div>

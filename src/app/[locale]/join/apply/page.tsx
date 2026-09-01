@@ -1,7 +1,24 @@
+import type { Metadata } from "next";
 import { use } from "react";
 import { useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { YouthApplicationForm } from "@/components/forms/YouthApplicationForm";
+import { PageHero } from "@/components/ui/PageHero";
+import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { media } from "@/config/media";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "apply" });
+  return {
+    title: t("title"),
+    description: t("intro"),
+  };
+}
 
 export default function YouthApplyPage({
   params,
@@ -14,16 +31,16 @@ export default function YouthApplyPage({
 
   return (
     <>
-      <section className="bg-navy py-16 md:py-24 text-white">
-        <div className="container-aft">
-          <p className="eyebrow">Join AFT</p>
-          <h1 className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">
-            {t("title")}
-          </h1>
-          <p className="mt-3 max-w-2xl text-white/75">{t("intro")}</p>
-          <p className="mt-1 text-sm text-white/50">{t("privacy")}</p>
-        </div>
-      </section>
+      <PageHero
+        image={media.joinYouth}
+        eyebrow="Join AFT"
+        title={t("title")}
+        subtitle={t("intro")}
+      >
+        <p className="text-sm text-white/60">{t("privacy")}</p>
+      </PageHero>
+
+      <Breadcrumb />
 
       <section className="bg-surface py-16 md:py-24">
         <div className="container-aft">
