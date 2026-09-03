@@ -2,7 +2,7 @@ import { useTranslations } from "next-intl";
 import type { ProjectStatus } from "@/content/projects";
 
 const styles: Record<ProjectStatus, string> = {
-  open: "bg-accent text-ink",
+  open: "bg-accent text-white",
   ongoing: "bg-navy text-white",
   completed: "bg-white/90 text-navy",
 };

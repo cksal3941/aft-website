@@ -49,7 +49,6 @@
       "aboutAft": "AFT 소개",
       "ourStory": "우리의 이야기",
       "allProjects": "전체 프로젝트",
-      "ourOcean": "Our Ocean, Our Tomorrow",
       "newsStories": "소식 & 스토리",
       "joinYouth": "AFT 유스 가입",
       "youthApply": "유스 지원",
@@ -327,15 +326,8 @@
       "hybrid": "온·오프라인"
     },
     "card": {
-      "deadline": "모집 마감",
-      "age": "대상 연령",
-      "cost": "참가비",
-      "free": "무료",
-      "viewProject": "프로젝트 보기",
-      "applyNow": "지원하기",
-      "viewResults": "결과 보기",
-      "sponsor": "후원",
-      "share": "공유"
+      "closed": "마감",
+      "dday": "D-DAY"
     },
     "groups": {
       "open": "모집 중 프로젝트",
@@ -726,7 +718,7 @@
         },
         "goods": {
           "title": "굿즈·기부",
-          "body": "청소년 작품으로 만든 에코백·배지 — 판매가 실제 기부로."
+          "body": "청소년 작품으로 만든 에코백·배지 판매가 실제 기부로."
         },
         "performance": {
           "title": "공연",
@@ -1074,7 +1066,7 @@
     },
     "how": {
       "eyebrow": "참여 방법",
-      "title": "가입 → 선택 → 창작 → 공유",
+      "title": "생각이 작품이 되기까지",
       "steps": {
         "join": {
           "title": "가입",
@@ -1176,6 +1168,8 @@
   "projectDetail": {
     "sections": {
       "facts": "프로젝트 개요",
+      "overview": "공모전 소개",
+      "howToApply": "참여 방법",
       "challenge": "도전 과제",
       "youngIdeas": "청소년의 아이디어",
       "creativeAction": "창작 활동",
@@ -1187,7 +1181,10 @@
       "duration": "기간",
       "location": "장소",
       "audience": "참여 대상",
-      "status": "상태"
+      "status": "상태",
+      "cost": "참가비",
+      "deadline": "모집 마감",
+      "free": "무료"
     },
     "actions": {
       "apply": "지원하기",

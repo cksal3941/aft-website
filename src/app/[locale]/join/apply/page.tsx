@@ -42,7 +42,7 @@ export default function YouthApplyPage({
 
       <Breadcrumb />
 
-      <section className="bg-surface py-16 md:py-24">
+      <section className="bg-surface section-sm">
         <div className="container-aft">
           <YouthApplicationForm />
         </div>

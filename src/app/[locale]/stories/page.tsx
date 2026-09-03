@@ -47,7 +47,7 @@ export default function StoriesPage({
       <Breadcrumb />
 
       {/* STORY CARDS */}
-      <section className="bg-white py-24 md:py-32">
+      <section className="bg-white section">
         <div className="container-aft space-y-16">
           {items.map((s, i) => (
             <article
@@ -85,7 +85,7 @@ export default function StoriesPage({
       </section>
 
       {/* CTA */}
-      <section className="bg-surface py-24 md:py-32">
+      <section className="bg-surface section">
         <div className="container-aft flex flex-col items-center gap-5 text-center">
           <h2 className="text-2xl font-bold tracking-tight text-ink sm:text-3xl">
             {t("hero.title")}

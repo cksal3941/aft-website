@@ -45,14 +45,14 @@ export default function SupportPage({
       <Breadcrumb />
 
       {/* DONATION FLOW */}
-      <section className="bg-surface py-24 md:py-32">
+      <section className="bg-surface section">
         <div className="container-aft">
           <DonationFlow />
         </div>
       </section>
 
       {/* IMPACT EXAMPLES */}
-      <section className="bg-white py-24 md:py-32">
+      <section className="bg-white section">
         <div className="container-aft">
           <SectionHeading
             eyebrow={t("impact.eyebrow")}
@@ -63,7 +63,7 @@ export default function SupportPage({
             {impactKeys.map((k) => (
               <div
                 key={k}
-                className="rounded-sm border border-line bg-white p-6 text-center shadow-sm"
+                className="card text-center"
               >
                 <p className="font-semibold text-ink">{t(`impact.items.${k}`)}</p>
               </div>
@@ -73,7 +73,7 @@ export default function SupportPage({
       </section>
 
       {/* TRANSPARENCY */}
-      <section className="bg-surface py-24 md:py-32">
+      <section className="bg-surface section">
         <div className="container-aft max-w-3xl">
           <SectionHeading
             eyebrow={t("transparency.eyebrow")}

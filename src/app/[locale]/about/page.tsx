@@ -7,6 +7,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { AftImage } from "@/components/ui/AftImage";
 import { PageHero } from "@/components/ui/PageHero";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { CheckIcon } from "@/components/ui/CheckIcon";
 import { media } from "@/config/media";
 import { routes } from "@/config/nav";
 
@@ -56,7 +57,7 @@ export default function AboutPage({
       <Breadcrumb />
 
       {/* MISSION — text left, image right (aligned to the section container) */}
-      <section className="bg-white py-24 md:py-32">
+      <section className="section bg-white">
         <div className="container-aft flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-16">
           <div className="lg:flex-1">
             <SectionHeading eyebrow={t("mission.eyebrow")} title={t("mission.title")} />
@@ -88,7 +89,7 @@ export default function AboutPage({
       </section>
 
       {/* YOUTH-LED TEAMS */}
-      <section className="bg-white py-24 md:py-32">
+      <section className="section surface-mist">
         <div className="container-aft">
           <SectionHeading eyebrow={t("teams.eyebrow")} title={t("teams.title")} centered />
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -96,7 +97,7 @@ export default function AboutPage({
               <div
                 key={k}
                 data-reveal
-                className="flex flex-col items-center rounded-sm bg-white p-6 text-center shadow-sm"
+                className="card flex flex-col items-center text-center"
               >
                 <span className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-full bg-teal/10 text-teal">
                   <AboutIcon name={k} />
@@ -112,7 +113,7 @@ export default function AboutPage({
       </section>
 
       {/* BEYOND THE CANVAS */}
-      <section className="bg-white py-24 md:py-32">
+      <section className="section bg-white">
         <div className="container-aft">
           <SectionHeading eyebrow={t("beyond.eyebrow")} title={t("beyond.title")} centered />
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -120,7 +121,7 @@ export default function AboutPage({
               <div
                 key={k}
                 data-reveal
-                className="flex flex-col items-center rounded-sm border border-line bg-white p-6 text-center shadow-sm"
+                className="card flex flex-col items-center text-center"
               >
                 <span className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-full bg-teal/10 text-teal">
                   <AboutIcon name={k} />
@@ -137,12 +138,12 @@ export default function AboutPage({
           <div className="mt-14">
             <p className="eyebrow">{t("books.eyebrow")}</p>
             <h3 className="mt-2 text-xl font-bold text-ink">{t("books.title")}</h3>
-            <div className="mt-6 grid gap-6 sm:grid-cols-3">
+            <div className="mt-6 grid grid-cols-3 gap-3 sm:gap-6">
               {[media.aboutBook1, media.aboutBook2, media.aboutBook3].map(
                 (img, i) => (
                   <div
                     key={i}
-                    className="overflow-hidden rounded-sm bg-white shadow-sm"
+                    className="card overflow-hidden !p-0"
                   >
                     <AftImage
                       {...img}
@@ -157,7 +158,7 @@ export default function AboutPage({
       </section>
 
       {/* VALUES */}
-      <section className="bg-white py-24 md:py-32">
+      <section className="section surface-mist">
         <div className="container-aft">
           <SectionHeading
             eyebrow={t("values.eyebrow")}
@@ -167,18 +168,26 @@ export default function AboutPage({
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {valueGroups.map((g) => {
               const items = t.raw(`values.${g}.items`) as string[];
+              // Colour-code each card (no icons — the two sections above already
+              // use them): coloured title, divider and checks.
+              const s = {
+                youth: { text: "text-accent", rule: "bg-accent" },
+                society: { text: "text-teal", rule: "bg-teal" },
+                partners: { text: "text-navy", rule: "bg-navy" },
+              }[g];
               return (
                 <div
                   key={g}
-                  className="rounded-sm border border-line bg-white p-6 shadow-sm"
+                  className="card text-center !px-8 !py-10"
                 >
-                  <h3 className="text-lg font-bold text-accent">
+                  <h3 className={`text-xl font-bold ${s.text}`}>
                     {t(`values.${g}.title`)}
                   </h3>
-                  <ul className="mt-4 space-y-2 text-sm text-muted">
+                  <div className={`mx-auto mt-3 h-0.5 w-10 rounded-full ${s.rule}`} />
+                  <ul className="mt-6 inline-block space-y-3 text-left text-sm text-muted">
                     {items.map((item, i) => (
                       <li key={i} className="flex gap-2">
-                        <span className="mt-0.5 text-accent">✓</span>
+                        <CheckIcon className={`mt-1 h-4 w-4 flex-none ${s.text}`} />
                         {item}
                       </li>
                     ))}

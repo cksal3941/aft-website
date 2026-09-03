@@ -22,8 +22,14 @@
   /* Body copy is black (was a mid gray #374151). Keeping the `muted` token name
      so existing `text-muted` usages flip to black in one place. */
   --color-muted: #0f172a;
-  --color-surface: #ffffff;
+  /* Subtle cool tint (was #ffffff). Pages already alternate `bg-white` /
+     `bg-surface` bands for rhythm, but an all-white surface made the alternation
+     invisible — tinting `surface` activates that rhythm site-wide in one place.
+     White cards/tables placed on these bands now read against the tint. */
+  --color-surface: #f5f7fa;
   --color-line: #e3e8ef;
+  /* Alias kept so the `surface-mist` utility and `bg-surface` stay in lockstep. */
+  --color-mist: #f5f7fa;
 
   /* English/Latin → Neue Haas Grotesk (Adobe Fonts). Loaded via the Typekit
      kit in the layout (NEXT_PUBLIC_TYPEKIT_ID). Inter/system-ui remain as the
@@ -88,6 +94,44 @@ body {
 }
 @utility container-aft {
   @apply mx-auto w-full max-w-[1400px] px-5 sm:px-6 lg:px-8;
+}
+
+/* ── Section rhythm ─────────────────────────────────────────────────────────
+   One vertical-spacing scale for every content band, replacing the repeated
+   `py-24 md:py-32` magic value. Pair with `surface-mist` on alternating
+   sections so consecutive bands separate visually and white cards read. */
+@utility section {
+  @apply py-16 md:py-32;
+}
+@utility section-sm {
+  @apply py-12 md:py-20;
+}
+@utility surface-mist {
+  background-color: var(--color-mist);
+}
+
+/* ── Cards ──────────────────────────────────────────────────────────────────
+   Single elevation language site-wide. `card` is a flat resting surface with a
+   soft static shadow — no hover lift or hover shadow (removed by request). The
+   layered shadow stays visible on both white and `surface-mist` bands. */
+@utility card {
+  @apply rounded-lg border border-line bg-white p-6;
+  box-shadow:
+    0 1px 2px rgba(13, 36, 64, 0.04),
+    0 4px 16px rgba(13, 36, 64, 0.06);
+}
+
+/* ── Display type scale ─────────────────────────────────────────────────────
+   Consistent headline sizes for heroes and section intros so pages stop
+   hand-rolling `text-3xl sm:text-4xl` per instance. */
+@utility display-1 {
+  @apply text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl;
+}
+@utility display-2 {
+  @apply text-3xl font-extrabold leading-[1.1] tracking-tight sm:text-4xl;
+}
+@utility lead {
+  @apply text-lg leading-relaxed text-muted sm:text-xl;
 }
 
 /* ── CTA arrows: gentle left-right nudge while the link/button is hovered ── */

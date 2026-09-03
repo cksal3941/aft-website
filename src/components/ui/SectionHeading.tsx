@@ -26,7 +26,7 @@ export function SectionHeading({
         </p>
       )}
       <h2
-        className={`mt-2 text-2xl font-bold tracking-tight sm:text-3xl ${
+        className={`mt-3 text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl ${
           onDark ? "text-white" : "text-ink"
         }`}
       >

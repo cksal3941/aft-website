@@ -28,6 +28,11 @@ export type Project = {
   coverTone?: "ocean" | "default";
   /** path to a real cover photo, e.g. "/images/project-our-ocean.jpg"; null = placeholder */
   cover?: string | null;
+  /** Description shown on the detail page for open calls / competitions
+      (공모전 소개). Use "\n" to split paragraphs. */
+  overview?: LocalizedText;
+  /** Step-by-step "how to take part" list for open calls. */
+  howToApply?: LocalizedText[];
 };
 
 export const projects: Project[] = [
@@ -73,6 +78,24 @@ export const projects: Project[] = [
     deadline: "2026-10-15",
     cost: null,
     cover: "/images/project-plastic-free-plates.jpg",
+    overview: {
+      en: "Plastic-Free Plates is an online competition where young people use the power of design to spotlight an everyday environmental problem. Design a children's plate that makes the amount of plastic we use — and throw away — every day something you can actually see and feel.\nThere is no single right answer. What matters is a clear idea and a design that helps others notice the problem. Standout entries grow into real product concepts and are featured in AFT's exhibitions and campaigns.",
+      ko: "플라스틱 프리 식판은 청소년이 디자인의 힘으로 일상 속 환경 문제를 알리는 온라인 공모전입니다. 우리가 매일 쓰고 버리는 플라스틱의 양을 눈으로 보고 체감할 수 있는 '어린이 식판'을 직접 디자인해 보세요.\n정답은 없습니다. 문제를 또렷하게 드러내는 아이디어와 디자인이면 충분합니다. 우수작은 실제 제품 시안으로 발전하고, AFT 전시와 캠페인을 통해 소개됩니다.",
+    },
+    howToApply: [
+      {
+        en: "Click Apply and fill out the short entry form.",
+        ko: "‘지원하기’를 눌러 간단한 참가 신청서를 작성합니다.",
+      },
+      {
+        en: "Submit your plate idea as a sketch with a short note on how it visualizes plastic use.",
+        ko: "플라스틱 사용량을 시각화하는 식판 아이디어를 스케치와 짧은 설명으로 제출합니다.",
+      },
+      {
+        en: "Selected entries move on to product prototyping and are shown in the exhibition.",
+        ko: "심사를 거쳐 선정된 작품은 제품 시안 제작과 전시로 이어집니다.",
+      },
+    ],
   },
   {
     slug: "city-heat-island-app",
@@ -92,6 +115,9 @@ export const projects: Project[] = [
     ageRange: "15–19",
     language: "KR / EN",
     cost: null,
+    // Temporary placeholder from Unsplash (LA at dusk) until a real project photo
+    // is available. Photo: unsplash.com/photos/QTdjjOGEDMA
+    cover: "/images/project-city-heat-island-app.jpg",
   },
 ];
 
@@ -111,6 +137,8 @@ export type LocalizedProject = {
   featured?: boolean;
   coverTone?: "ocean" | "default";
   cover?: string | null;
+  overview?: string;
+  howToApply?: string[];
 };
 
 export function localizeProject(p: Project, locale: Locale): LocalizedProject {
@@ -130,6 +158,8 @@ export function localizeProject(p: Project, locale: Locale): LocalizedProject {
     featured: p.featured,
     coverTone: p.coverTone,
     cover: p.cover ?? null,
+    overview: p.overview?.[locale],
+    howToApply: p.howToApply?.map((x) => x[locale]),
   };
 }
 
@@ -167,6 +197,9 @@ export type ProjectDetail = {
   impactSummary: LocalizedText;
   impactStats: Stat[];
   galleryCount: number;
+  /** Real exhibition photos. When present, the detail page renders these
+      instead of the `galleryCount` placeholder tiles. */
+  gallery?: { src: string; alt: LocalizedText }[];
 };
 
 const details: Record<string, ProjectDetail> = {
@@ -228,6 +261,50 @@ const details: Record<string, ProjectDetail> = {
       },
     ],
     galleryCount: 6,
+    gallery: [
+      {
+        src: "/images/GILL1409.jpg",
+        alt: {
+          en: "The 28 young artists together at the exhibition",
+          ko: "전시 현장에 모인 참여 청소년 28명",
+        },
+      },
+      {
+        src: "/images/GILL1502.jpg",
+        alt: {
+          en: "A young artist beside her ocean paintings",
+          ko: "자신의 해양 회화 작품 옆에 선 청소년 작가",
+        },
+      },
+      {
+        src: "/images/GILL1194.jpg",
+        alt: {
+          en: "A young artist presenting their artwork to the audience",
+          ko: "관람객에게 자신의 작품을 발표하는 청소년 작가",
+        },
+      },
+      {
+        src: "/images/GILL0864.jpg",
+        alt: {
+          en: "Eco-goods made from the youth artwork at the entrance",
+          ko: "청소년 작품으로 만든 친환경 굿즈 전시",
+        },
+      },
+      {
+        src: "/images/GILL1357.jpg",
+        alt: {
+          en: "Introducing an ocean artwork on stage",
+          ko: "무대에서 해양 작품을 소개하는 청소년",
+        },
+      },
+      {
+        src: "/images/GILL1035.jpg",
+        alt: {
+          en: "The exhibition opening ceremony",
+          ko: "전시 개막식 현장",
+        },
+      },
+    ],
   },
 };
 
@@ -240,6 +317,7 @@ export type LocalizedDetail = {
   impactSummary: string;
   impactStats: LocalizedStat[];
   galleryCount: number;
+  gallery: { src: string; alt: string }[];
 };
 
 export function getProjectDetail(
@@ -264,6 +342,7 @@ export function getProjectDetail(
       note: s.note?.[locale],
     })),
     galleryCount: d.galleryCount,
+    gallery: (d.gallery ?? []).map((g) => ({ src: g.src, alt: g.alt[locale] })),
   };
 }
 

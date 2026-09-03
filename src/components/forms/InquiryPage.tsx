@@ -17,7 +17,7 @@ export function InquiryPage({ config }: { config: InquiryConfig }) {
       >
         <p className="text-sm text-white/60">{t("hero.time")}</p>
       </PageHero>
-      <section className="bg-surface py-16 md:py-24">
+      <section className="bg-surface section-sm">
         <div className="container-aft">
           <InquiryForm config={config} />
         </div>

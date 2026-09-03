@@ -68,12 +68,12 @@ export default function PartnersPage({
       <Breadcrumb />
 
       {/* WHY PARTNER */}
-      <section className="bg-white py-24 md:py-32">
+      <section className="bg-white section">
         <div className="container-aft">
           <SectionHeading eyebrow={t("why.eyebrow")} title={t("why.title")} centered />
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {whyKeys.map((k) => (
-              <div key={k} className="rounded-sm border border-line bg-white p-6 shadow-sm">
+              <div key={k} className="card">
                 <h3 className="text-lg font-bold text-ink">
                   {t(`why.items.${k}.title`)}
                 </h3>
@@ -85,7 +85,7 @@ export default function PartnersPage({
       </section>
 
       {/* PARTNERSHIP MODELS */}
-      <section className="bg-surface py-24 md:py-32">
+      <section className="bg-surface section">
         <div className="container-aft">
           <SectionHeading
             eyebrow={t("models.eyebrow")}
@@ -94,7 +94,7 @@ export default function PartnersPage({
           />
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {modelKeys.map((k) => (
-              <div key={k} className="rounded-sm bg-white p-6 shadow-sm">
+              <div key={k} className="card">
                 <h3 className="font-bold text-ink">{t(`models.items.${k}.title`)}</h3>
                 <p className="mt-2 text-sm text-muted">
                   {t(`models.items.${k}.body`)}
@@ -106,7 +106,7 @@ export default function PartnersPage({
       </section>
 
       {/* HOW IT WORKS — 5-step process infographic */}
-      <section className="bg-white py-24 md:py-32">
+      <section className="bg-white section">
         <div className="container-aft">
           <div className="text-center">
             <p className="eyebrow">{t("how.eyebrow")}</p>
@@ -147,7 +147,7 @@ export default function PartnersPage({
       </section>
 
       {/* PARTNERSHIP TYPES → forms (§7.1) */}
-      <section className="bg-white py-24 md:py-32">
+      <section className="bg-white section">
         <div className="container-aft">
           <p className="eyebrow">{t("types.eyebrow")}</p>
           <h2 className="mt-3 text-2xl font-bold tracking-tight text-ink sm:text-3xl">{t("types.title")}</h2>
@@ -156,7 +156,7 @@ export default function PartnersPage({
               <Link
                 key={k}
                 href={typeHref[k]}
-                className="group flex flex-col rounded-sm border border-line bg-white p-6 shadow-sm transition-all duration-300 ease-out hover:border-accent hover:shadow-md"
+                className="card group flex flex-col hover:border-accent"
               >
                 <div className="flex items-center justify-between gap-3">
                   <h3 className="font-bold text-ink">{t(`types.items.${k}.title`)}</h3>

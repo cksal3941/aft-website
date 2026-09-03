@@ -22,7 +22,6 @@ export const mainNav: NavItem[] = [
     href: "/projects",
     children: [
       { key: "allProjects", href: "/projects" },
-      { key: "ourOcean", href: "/projects/our-ocean-our-tomorrow" },
       { key: "newsStories", href: "/stories" },
     ],
   },

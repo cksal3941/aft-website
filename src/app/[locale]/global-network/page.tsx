@@ -51,14 +51,14 @@ export default function GlobalNetworkPage({
       <Breadcrumb />
 
       {/* Open network map */}
-      <section className="bg-white py-16 md:py-20">
+      <section className="bg-white section-sm">
         <div className="container-aft">
           <WorldMap seoulLabel={t("mapLabel")} />
         </div>
       </section>
 
       {/* The network so far — real nodes only */}
-      <section className="bg-surface py-24 md:py-32">
+      <section className="bg-surface section">
         <div className="container-aft">
           <h2 className="text-2xl font-bold tracking-tight text-ink sm:text-3xl">
             {t("table.title")}

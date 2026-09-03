@@ -7,6 +7,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { AftImage } from "@/components/ui/AftImage";
 import { PageHero } from "@/components/ui/PageHero";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import { CheckIcon } from "@/components/ui/CheckIcon";
 import { media } from "@/config/media";
 import { routes } from "@/config/nav";
 
@@ -59,7 +60,7 @@ export default function JoinPage({
       <Breadcrumb />
 
       {/* MEMBER ROLES */}
-      <section className="bg-white py-24 md:py-32">
+      <section className="bg-white section">
         <div className="container-aft">
           <SectionHeading
             eyebrow={t("roles.eyebrow")}
@@ -70,7 +71,7 @@ export default function JoinPage({
             {roleKeys.map((k) => (
               <div
                 key={k}
-                className="rounded-sm border border-line bg-white p-5 text-center shadow-sm"
+                className="card !p-5 text-center"
               >
                 <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-accent-soft text-lg font-bold text-accent-hover">
                   {t(`roles.items.${k}.title`).charAt(0)}
@@ -86,21 +87,25 @@ export default function JoinPage({
       </section>
 
       {/* HOW IT WORKS */}
-      <section className="bg-surface py-24 md:py-32">
+      <section className="bg-surface section">
         <div className="container-aft">
           <SectionHeading
             eyebrow={t("how.eyebrow")}
             title={t("how.title")}
             centered
           />
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mx-auto mt-12 grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {stepKeys.map((k, i) => (
-              <div key={k} className="rounded-sm bg-white p-6 shadow-sm">
-                <div className="text-3xl font-extrabold text-accent">{i + 1}</div>
-                <h3 className="mt-2 font-bold text-ink">
-                  {t(`how.steps.${k}.title`)}
-                </h3>
-                <p className="mt-1 text-sm text-muted">
+              <div key={k} className="card text-center">
+                {/* Number + title on one line, centered — hierarchy comes from
+                    colour: accent number, dark-ink title. */}
+                <div className="flex items-baseline justify-center gap-2 text-2xl">
+                  <span className="font-extrabold text-accent">{i + 1}</span>
+                  <h3 className="text-xl font-bold text-slate-700">
+                    {t(`how.steps.${k}.title`)}
+                  </h3>
+                </div>
+                <p className="mt-3 text-sm text-muted">
                   {t(`how.steps.${k}.body`)}
                 </p>
               </div>
@@ -110,7 +115,7 @@ export default function JoinPage({
       </section>
 
       {/* BENEFITS + SAFETY */}
-      <section className="bg-white py-24 md:py-32">
+      <section className="bg-white section">
         <div className="container-aft grid gap-12 lg:grid-cols-2">
           <div>
             <SectionHeading
@@ -120,13 +125,13 @@ export default function JoinPage({
             <ul className="mt-6 space-y-3">
               {benefitKeys.map((k) => (
                 <li key={k} className="flex gap-3 text-muted">
-                  <span className="mt-1 text-accent">✓</span>
+                  <CheckIcon className="mt-1 h-4 w-4 flex-none text-accent" />
                   {t(`benefits.items.${k}`)}
                 </li>
               ))}
             </ul>
           </div>
-          <div className="rounded-sm border border-line bg-surface p-8">
+          <div className="card !p-8">
             <SectionHeading
               eyebrow={t("safety.eyebrow")}
               title={t("safety.title")}
@@ -137,7 +142,7 @@ export default function JoinPage({
       </section>
 
       {/* FINAL CTA */}
-      <section className="bg-navy py-24 md:py-32 text-white">
+      <section className="bg-navy section text-white">
         <div className="container-aft flex flex-col items-center gap-6 text-center">
           <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">{t("hero.title")}</h2>
           <CtaLink href={routes.apply} variant="primary" event="join_start">

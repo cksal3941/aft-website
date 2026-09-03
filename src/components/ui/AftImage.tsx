@@ -13,6 +13,7 @@ export function AftImage({
   sizes = "(max-width: 768px) 100vw, 50vw",
   objectPosition,
   noZoom = false,
+  zoomOnGroupHover = false,
 }: {
   src?: string | null;
   alt?: string;
@@ -24,6 +25,9 @@ export function AftImage({
   objectPosition?: string;
   /** Opt out of the default hover zoom (e.g. maps, diagrams). */
   noZoom?: boolean;
+  /** Zoom when the nearest `group` ancestor is hovered (whole card), rather
+      than only when the image itself is hovered. */
+  zoomOnGroupHover?: boolean;
 }) {
   const alternative = alt ?? label ?? "AFT";
 
@@ -37,7 +41,9 @@ export function AftImage({
     const hoverZoom =
       priority || noZoom
         ? ""
-        : " transition-transform duration-500 ease-out hover:scale-105";
+        : ` transition-transform duration-500 ease-out ${
+            zoomOnGroupHover ? "group-hover:scale-105" : "hover:scale-105"
+          }`;
     return (
       <div
         className={`${positioned ? "" : "relative"} overflow-hidden ${className}`}

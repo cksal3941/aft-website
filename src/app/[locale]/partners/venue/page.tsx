@@ -42,7 +42,7 @@ export default function VenuePage({
 
       <Breadcrumb />
 
-      <section className="bg-surface py-16 md:py-24">
+      <section className="bg-surface section-sm">
         <div className="container-aft">
           <VenueSupportForm />
         </div>

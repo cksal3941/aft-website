@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useTranslations } from "next-intl";
 import { Field, inputClass } from "./fields";
+import { CheckIcon } from "@/components/ui/CheckIcon";
 
 const TYPES = [
   "general",
@@ -62,8 +63,8 @@ export function ContactForm() {
   if (sent) {
     return (
       <div className="rounded-sm border border-line bg-white p-8 text-center shadow-sm">
-        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-accent-soft text-2xl">
-          ✓
+        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-accent-soft text-accent">
+          <CheckIcon className="h-7 w-7" />
         </div>
         <h2 className="mt-5 text-2xl font-bold text-ink">{t("done.title")}</h2>
         <p className="mt-3 text-muted">{t("done.body")}</p>

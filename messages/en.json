@@ -49,7 +49,6 @@
       "aboutAft": "About AFT",
       "ourStory": "Our Story",
       "allProjects": "All Projects",
-      "ourOcean": "Our Ocean, Our Tomorrow",
       "newsStories": "News & Stories",
       "joinYouth": "Join AFT Youth",
       "youthApply": "Youth Application",
@@ -327,15 +326,8 @@
       "hybrid": "Hybrid"
     },
     "card": {
-      "deadline": "Apply by",
-      "age": "Ages",
-      "cost": "Cost",
-      "free": "Free",
-      "viewProject": "View Project",
-      "applyNow": "Apply Now",
-      "viewResults": "View Results",
-      "sponsor": "Sponsor",
-      "share": "Share"
+      "closed": "Closed",
+      "dday": "D-DAY"
     },
     "groups": {
       "open": "Open Projects",
@@ -726,7 +718,7 @@
         },
         "goods": {
           "title": "Goods & Donation",
-          "body": "Eco-bags and badges made from youth artwork — sales become real donations."
+          "body": "Eco-bags and badges made from youth artwork, with sales becoming real donations."
         },
         "performance": {
           "title": "Performance",
@@ -1074,7 +1066,7 @@
     },
     "how": {
       "eyebrow": "How It Works",
-      "title": "Join → Choose → Create → Share",
+      "title": "Where an idea becomes a work",
       "steps": {
         "join": {
           "title": "Join",
@@ -1176,6 +1168,8 @@
   "projectDetail": {
     "sections": {
       "facts": "Project Facts",
+      "overview": "About the Competition",
+      "howToApply": "How to Take Part",
       "challenge": "The Challenge",
       "youngIdeas": "Young Ideas",
       "creativeAction": "Creative Action",
@@ -1187,7 +1181,10 @@
       "duration": "Duration",
       "location": "Location",
       "audience": "Participants",
-      "status": "Status"
+      "status": "Status",
+      "cost": "Cost",
+      "deadline": "Apply by",
+      "free": "Free"
     },
     "actions": {
       "apply": "Apply Now",

@@ -43,7 +43,7 @@ export default function ProjectsPage({
 
       <Breadcrumb />
 
-      <section className="bg-white py-24 md:py-32">
+      <section className="bg-white section">
         <div className="container-aft">
           <ProjectsExplorer items={items} />
         </div>

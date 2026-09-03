@@ -56,7 +56,7 @@ export default function ImpactPage({
       <Breadcrumb />
 
       {/* IMPACT NUMBERS (with base year + basis) */}
-      <section className="bg-white py-24 md:py-32">
+      <section className="bg-white section">
         <div className="container-aft">
           <div className="flex flex-col items-center gap-2 text-center">
             <SectionHeading eyebrow={t("numbers.eyebrow")} title={t("numbers.title")} centered />
@@ -68,7 +68,7 @@ export default function ImpactPage({
             {numberKeys.map((k) => (
               <div
                 key={k}
-                className="rounded-sm border border-line bg-white p-6 text-center shadow-sm"
+                className="card text-center"
               >
                 <div className="text-4xl font-extrabold text-accent">
                   {t(`numbers.items.${k}.value`)}
@@ -86,7 +86,7 @@ export default function ImpactPage({
       </section>
 
       {/* FEATURED IMPACT */}
-      <section className="bg-surface py-24 md:py-32">
+      <section className="bg-surface section">
         <div className="container-aft grid items-center gap-10 lg:grid-cols-2">
           <AftImage
             {...media.impactFeatured}
@@ -110,12 +110,12 @@ export default function ImpactPage({
       </section>
 
       {/* IMPACT BY AREA */}
-      <section className="bg-white py-24 md:py-32">
+      <section className="bg-white section">
         <div className="container-aft">
           <SectionHeading eyebrow={t("areas.eyebrow")} title={t("areas.title")} centered />
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {areaKeys.map((k) => (
-              <div key={k} className="rounded-sm bg-surface p-6">
+              <div key={k} className="card">
                 <h3 className="font-bold text-ink">{t(`areas.items.${k}.title`)}</h3>
                 <p className="mt-2 text-sm text-muted">
                   {t(`areas.items.${k}.body`)}
@@ -127,7 +127,7 @@ export default function ImpactPage({
       </section>
 
       {/* DONATION OUTCOMES */}
-      <section className="bg-surface py-24 md:py-32">
+      <section className="bg-surface section">
         <div className="container-aft max-w-2xl">
           <SectionHeading eyebrow={t("donation.eyebrow")} title={t("donation.title")} />
           <p className="mt-2 text-sm text-muted">{t("donation.note")}</p>
@@ -159,7 +159,7 @@ export default function ImpactPage({
       </section>
 
       {/* TRANSPARENCY */}
-      <section className="bg-white py-24 md:py-32">
+      <section className="bg-white section">
         <div className="container-aft max-w-3xl">
           <SectionHeading
             eyebrow={t("transparency.eyebrow")}
@@ -170,7 +170,7 @@ export default function ImpactPage({
       </section>
 
       {/* FINAL CTA */}
-      <section className="bg-navy py-24 md:py-32 text-white">
+      <section className="bg-navy section text-white">
         <div className="container-aft flex flex-col items-center gap-6 text-center">
           <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">{t("finalCta.title")}</h2>
           <CtaLink href={routes.support} variant="primary" event="donate_start">

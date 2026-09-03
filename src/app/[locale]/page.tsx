@@ -66,7 +66,7 @@ export default function HomePage({
       </section>
 
       {/* 02 · WHO WE ARE — text left · pillars (× separated) + image row right */}
-      <section id="who" className="bg-white py-24 md:py-32">
+      <section id="who" className="bg-white section">
         <div className="container-aft flex flex-col gap-12 lg:flex-row lg:gap-16">
           {/* LEFT — heading + body + CTA */}
           <div className="text-center lg:w-[35%] lg:shrink-0 lg:text-left">
@@ -173,7 +173,7 @@ export default function HomePage({
       </section>
 
       {/* 04 · WHERE OUR STORY BEGAN + journey (Seoul · 2026) */}
-      <section id="story" className="bg-white py-24 md:py-32">
+      <section id="story" className="bg-white section">
         <div className="container-aft flex flex-col gap-10 lg:flex-row lg:gap-12">
           {/* LEFT — intro + view all photos */}
           <div className="text-center lg:w-[24%] lg:shrink-0 lg:text-left">
@@ -219,7 +219,7 @@ export default function HomePage({
       </section>
 
       {/* 05 · CREATIVITY BECAME REAL IMPACT — AFT × WWF (light) */}
-      <section id="donation" className="bg-white py-24 md:py-32">
+      <section id="donation" className="bg-white section">
         <div className="container-aft flex flex-col gap-12 lg:flex-row lg:gap-16">
           {/* LEFT — headline + amount + watch */}
           <div className="text-center lg:w-[30%] lg:shrink-0 lg:text-left">
@@ -294,7 +294,7 @@ export default function HomePage({
       </section>
 
       {/* 06 · THIS IS ONLY THE BEGINNING → FROM SEOUL TO THE WORLD */}
-      <section id="global" className="bg-surface py-24 md:py-32">
+      <section id="global" className="bg-surface section">
         <div className="container-aft">
           <h2 className="whitespace-normal lg:whitespace-pre-line text-center text-2xl font-extrabold uppercase tracking-tight text-ink sm:text-3xl lg:text-left">
             {t("beginning.title")}
@@ -318,7 +318,7 @@ export default function HomePage({
       </section>
 
       {/* 07 · JOIN THE GLOBAL COMMUNITY — overlay photo cards */}
-      <section id="join-global" className="bg-white py-24 md:py-32">
+      <section id="join-global" className="bg-white section">
         <div className="container-aft">
           <SectionHeading
             eyebrow={t("joinGlobal.eyebrow")}

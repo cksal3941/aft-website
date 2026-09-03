@@ -9,6 +9,7 @@ import { Link } from "@/i18n/navigation";
 import { routes } from "@/config/nav";
 import { track } from "@/lib/analytics";
 import { makeRef } from "./fields";
+import { CheckIcon } from "@/components/ui/CheckIcon";
 
 const ROLES = ["artist", "author", "designer", "planner", "leader"] as const;
 const MODES = ["online", "offline", "either"] as const;
@@ -145,8 +146,8 @@ export function YouthApplicationForm() {
   if (submitted) {
     return (
       <div className="mx-auto max-w-xl rounded-sm border border-line bg-white p-10 text-center shadow-sm">
-        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-accent-soft text-2xl">
-          ✓
+        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-accent-soft text-accent">
+          <CheckIcon className="h-7 w-7" />
         </div>
         <h2 className="mt-5 text-2xl font-bold text-ink">{t("done.title")}</h2>
         <p className="mt-3 text-muted">{t("done.body")}</p>

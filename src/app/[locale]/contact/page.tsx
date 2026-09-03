@@ -44,11 +44,11 @@ export default function ContactPage({
       <Breadcrumb />
 
       {/* FORM + INFO */}
-      <section className="bg-surface py-24 md:py-32">
+      <section className="bg-surface section">
         <div className="container-aft grid gap-10 lg:grid-cols-[1.6fr_1fr]">
           <ContactForm />
 
-          <aside className="rounded-sm border border-line bg-white p-6 shadow-sm">
+          <aside className="card">
             <h2 className="text-lg font-bold text-ink">{t("info.title")}</h2>
             <dl className="mt-5 space-y-5 text-sm">
               <div>

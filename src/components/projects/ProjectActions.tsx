@@ -18,7 +18,7 @@ export function ProjectActions({
   const base = `${routes.projects}/${slug}`;
 
   return (
-    <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+    <div className="mt-8 flex flex-wrap justify-center gap-3">
       {status === "open" && (
         <>
           <Link
@@ -28,7 +28,7 @@ export function ProjectActions({
           >
             {t("apply")}
           </Link>
-          <Link href={routes.contact} className="btn-secondary">
+          <Link href={routes.contact} className="btn-secondary-dark">
             {t("ask")}
           </Link>
           <ShareButton />
@@ -43,7 +43,7 @@ export function ProjectActions({
           <Link
             href={routes.support}
             onClick={() => track("donate_start", { slug, type: "sponsor" })}
-            className="btn-secondary"
+            className="btn-secondary-dark"
           >
             {t("sponsor")}
           </Link>
@@ -59,11 +59,11 @@ export function ProjectActions({
           <button
             type="button"
             onClick={() => track("report_download", { slug })}
-            className="btn-secondary"
+            className="btn-secondary-dark"
           >
             {t("downloadReport")}
           </button>
-          <Link href={`${base}#related`} className="btn-secondary">
+          <Link href={`${base}#related`} className="btn-secondary-dark">
             {t("related")}
           </Link>
         </>
@@ -87,7 +87,7 @@ function ShareButton() {
     }
   }
   return (
-    <button type="button" onClick={share} className="btn-secondary">
+    <button type="button" onClick={share} className="btn-secondary-dark">
       {t("share")}
     </button>
   );

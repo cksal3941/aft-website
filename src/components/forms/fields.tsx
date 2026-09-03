@@ -7,6 +7,7 @@ import {
   type ReactNode,
   type ReactElement,
 } from "react";
+import { CheckIcon } from "@/components/ui/CheckIcon";
 
 // Generate a submission reference like "PTR-123456". Kept at module scope
 // (not inside a component) so React Compiler's purity rule doesn't flag the
@@ -90,7 +91,7 @@ export function FormSection({
   return (
     <section className="border-b border-line pb-8 last:border-0 last:pb-0">
       <div className="mb-5 flex items-center gap-3">
-        <span className="flex h-7 w-7 flex-none items-center justify-center rounded-full bg-accent text-xs font-bold text-ink">
+        <span className="flex h-7 w-7 flex-none items-center justify-center rounded-full bg-accent text-xs font-bold text-white">
           {step}
         </span>
         <h2 className="text-lg font-bold text-ink">{title}</h2>
@@ -119,8 +120,8 @@ export function SubmittedCard({
 }) {
   return (
     <div className="mx-auto max-w-xl rounded-sm border border-line bg-white p-10 text-center shadow-sm">
-      <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-accent-soft text-2xl">
-        ✓
+      <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-accent-soft text-accent">
+        <CheckIcon className="h-7 w-7" />
       </div>
       <h2 className="mt-5 text-2xl font-bold text-ink">{title}</h2>
       <p className="mt-3 text-muted">{body}</p>

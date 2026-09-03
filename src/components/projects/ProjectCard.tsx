@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { AftImage } from "@/components/ui/AftImage";
@@ -13,8 +14,22 @@ export function ProjectCard({ project }: { project: LocalizedProject }) {
   const t = useTranslations("projects.card");
   const href = `${routes.projects}/${project.slug}`;
 
+  // Open projects show a live D-day over the image instead of the "모집 중"
+  // label. Computed on the client so it reflects the visitor's current date
+  // (not the build/SSR time). Until mounted we fall back to the status badge,
+  // so SSR and the first client render match — no hydration mismatch.
+  const [dday, setDday] = useState<string | null>(null);
+  useEffect(() => {
+    if (project.status !== "open" || !project.deadline) return;
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const end = new Date(`${project.deadline}T00:00:00`);
+    const days = Math.round((end.getTime() - today.getTime()) / 86_400_000);
+    setDday(days > 0 ? `D-${days}` : days === 0 ? t("dday") : t("closed"));
+  }, [project.status, project.deadline, t]);
+
   return (
-    <article className="group flex flex-col overflow-hidden rounded-sm border border-line bg-white shadow-sm transition-shadow hover:shadow-md">
+    <article className="card !p-0 group relative flex flex-col overflow-hidden">
       <Link
         href={href}
         className="relative block"
@@ -25,61 +40,46 @@ export function ProjectCard({ project }: { project: LocalizedProject }) {
           alt={project.title}
           label={project.title}
           tone={project.coverTone}
+          zoomOnGroupHover
           className="aspect-[16/10] w-full rounded-none"
         />
         <div className="absolute left-3 top-3">
-          <StatusBadge status={project.status} />
+          {dday ? (
+            <span className="inline-block rounded-full bg-accent px-2.5 py-1 text-xs font-bold text-white">
+              {dday}
+            </span>
+          ) : (
+            <StatusBadge status={project.status} />
+          )}
         </div>
       </Link>
 
       <div className="flex flex-1 flex-col p-5">
-        <p className="text-xs font-semibold uppercase tracking-wide text-accent-hover">
+        {/* Field label styled as a pill like the D-day badge: very light gray
+            fill, soft-black text. Small explicit size (text-xs is raised to 16px
+            project-wide) + medium weight, with a ~10px gap below. */}
+        <span className="mb-2.5 self-start rounded-full bg-slate-100 px-2.5 py-1 text-[11px] font-medium text-slate-600">
           {project.field}
-        </p>
-        <h3 className="mt-1 text-lg font-bold text-ink">
-          <Link href={href} onClick={() => track("project_view", { slug: project.slug })}>
+        </span>
+        <h3 className="text-lg font-bold text-ink">
+          {/* Stretched link: the ::before overlay makes the whole card a click
+              target to the detail page. Interactive elements below (CTAs) sit
+              above it via `relative z-10`. */}
+          <Link
+            href={href}
+            onClick={() => track("project_view", { slug: project.slug })}
+            className="transition-colors before:absolute before:inset-0 before:content-[''] group-hover:text-accent-hover"
+          >
             {project.title}
           </Link>
         </h3>
-        <p className="mt-2 line-clamp-2 text-sm text-muted">{project.oneLiner}</p>
-
-        <dl className="mt-4 grid grid-cols-2 gap-x-4 gap-y-1.5 text-xs text-muted">
-          <div>
-            <dt className="font-semibold text-ink/70">{t("age")}</dt>
-            <dd>{project.ageRange}</dd>
-          </div>
-          <div>
-            <dt className="font-semibold text-ink/70">{t("cost")}</dt>
-            <dd>{project.cost ?? t("free")}</dd>
-          </div>
-          {project.deadline && (
-            <div className="col-span-2">
-              <dt className="font-semibold text-ink/70">{t("deadline")}</dt>
-              <dd>{project.deadline}</dd>
-            </div>
-          )}
-        </dl>
-
-        <div className="mt-5 flex items-center gap-3 pt-1">
-          {project.status === "open" && (
-            <Link
-              href={`${routes.projects}/${project.slug}#apply`}
-              onClick={() => track("apply_start", { slug: project.slug })}
-              className="btn-primary px-4 py-2"
-            >
-              {t("applyNow")}
-            </Link>
-          )}
-          {project.status === "completed" ? (
-            <Link href={`${href}#impact`} className="btn-text">
-              {t("viewResults")} <span className="cta-arrow" aria-hidden>→</span>
-            </Link>
-          ) : (
-            <Link href={href} className="btn-text">
-              {t("viewProject")} <span className="cta-arrow" aria-hidden>→</span>
-            </Link>
-          )}
-        </div>
+        {/* Card stays light — the detailed facts (age, cost, deadline) live on
+            the detail page's facts bar, reached by clicking the card. */}
+        {/* No CTA buttons — the whole card links to the detail page, where
+            Apply / View Results live. Keeps the card minimal. */}
+        <p className="mt-2 line-clamp-2 text-sm text-muted transition-colors group-hover:text-accent-hover">
+          {project.oneLiner}
+        </p>
       </div>
     </article>
   );
