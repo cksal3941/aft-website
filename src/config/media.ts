@@ -88,7 +88,6 @@ export const media = {
   wwfFollow3: { src: "/images/wwf-follow-3.jpg", alt: "Cheonggyecheon eco walk" },
   // Dotted world map (Pixabay Content License — GDJ; free, no attribution required).
   // Leave src null to fall back to the built-in dot-grid motif.
-  worldMap: { src: "/images/world-map-nopoles.png", alt: "Dotted world map" },
   homeSupport: { src: "/images/support-earth-2.jpg", alt: "A hand holding a green planet Earth" },
   news1: { src: null, alt: "News thumbnail" },
   news2: { src: null, alt: "News thumbnail" },

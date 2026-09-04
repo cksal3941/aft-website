@@ -4,16 +4,24 @@ export function SectionHeading({
   eyebrow,
   title,
   centered = false,
+  centerOnMobile = false,
   onDark = false,
 }: {
   eyebrow?: string;
   title: ReactNode;
   centered?: boolean;
+  /** Center on mobile, left-align from md up. Ignored when `centered` is set. */
+  centerOnMobile?: boolean;
   /** Use on dark (navy) sections: white title + a lighter eyebrow for contrast. */
   onDark?: boolean;
 }) {
+  const align = centered
+    ? "text-center"
+    : centerOnMobile
+      ? "text-center md:text-left"
+      : undefined;
   return (
-    <div className={centered ? "text-center" : undefined}>
+    <div className={align}>
       {eyebrow && (
         <p
           className={
@@ -26,7 +34,7 @@ export function SectionHeading({
         </p>
       )}
       <h2
-        className={`mt-3 text-3xl font-bold leading-[1.15] tracking-tight sm:text-4xl ${
+        className={`mt-3 text-2xl font-bold leading-tight tracking-tight sm:text-4xl ${
           onDark ? "text-white" : "text-ink"
         }`}
       >

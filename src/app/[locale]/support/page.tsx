@@ -78,6 +78,7 @@ export default function SupportPage({
           <SectionHeading
             eyebrow={t("transparency.eyebrow")}
             title={t("transparency.title")}
+            centerOnMobile
           />
           <p className="mt-4 text-muted">{t("transparency.body")}</p>
         </div>

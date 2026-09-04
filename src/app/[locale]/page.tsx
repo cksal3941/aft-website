@@ -10,7 +10,7 @@ import { CountUp } from "@/components/ui/CountUp";
 import { media, homeDonationVideo } from "@/config/media";
 import { HeroVideo } from "@/components/home/HeroVideo";
 import { DonationWatchButton } from "@/components/home/DonationWatchButton";
-import { DottedWorldMap } from "@/components/home/DottedWorldMap";
+import { WorldMap } from "@/components/home/WorldMap";
 import { StoryCarousel } from "@/components/home/StoryCarousel";
 
 export default function HomePage({
@@ -226,7 +226,7 @@ export default function HomePage({
             <h2 className="whitespace-normal lg:whitespace-pre-line text-center text-2xl font-extrabold uppercase leading-[1.1] tracking-tight text-ink sm:text-3xl lg:text-left">
               {t("donation.title")}
             </h2>
-            <div className="mt-6 text-4xl font-extrabold text-teal sm:text-5xl">
+            <div className="mt-6 text-3xl font-extrabold text-teal sm:text-4xl md:text-5xl">
               <CountUp value={t("donation.amount")} />
             </div>
             <p className="mt-2.5 text-2xl font-semibold uppercase tracking-wide text-teal">
@@ -299,20 +299,16 @@ export default function HomePage({
           <h2 className="whitespace-normal lg:whitespace-pre-line text-center text-2xl font-extrabold uppercase tracking-tight text-ink sm:text-3xl lg:text-left">
             {t("beginning.title")}
           </h2>
-          <div className="mt-4 grid items-start gap-10 lg:grid-cols-[0.85fr_2.3fr_0.85fr]">
-            <p className="whitespace-pre-line text-center text-muted lg:max-w-[320px] lg:whitespace-normal lg:text-left">{t("global.body")}</p>
-            <DottedWorldMap seoulLabel={t("global.seoul")} />
+          <div className="mt-4 grid items-start gap-10 lg:grid-cols-[1fr_2.4fr]">
             <div className="text-center lg:text-left">
-              <h3 className="whitespace-normal lg:whitespace-pre-line text-center text-2xl font-extrabold uppercase leading-tight tracking-tight text-ink sm:text-3xl lg:text-left">
-                {t("global.title")}
-              </h3>
-              <p className="mt-4 text-muted">{t("global.body2")}</p>
-              <div className="mt-6">
+              <p className="whitespace-pre-line text-muted lg:whitespace-normal">{t("global.body")}</p>
+              <div className="mt-8">
                 <CtaLink href={routes.globalNetwork} variant="primary">
                   {t("global.cta")} <span className="cta-arrow" aria-hidden>→</span>
                 </CtaLink>
               </div>
             </div>
+            <WorldMap seoulLabel={t("global.seoul")} />
           </div>
         </div>
       </section>

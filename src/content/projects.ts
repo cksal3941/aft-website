@@ -118,6 +118,24 @@ export const projects: Project[] = [
     // Temporary placeholder from Unsplash (LA at dusk) until a real project photo
     // is available. Photo: unsplash.com/photos/QTdjjOGEDMA
     cover: "/images/project-city-heat-island-app.jpg",
+    overview: {
+      en: "City Heat Island App is a youth-led project that uses data and design to reveal where our cities get dangerously hot — and why. Summer heat is not spread evenly: asphalt, glass towers and missing shade turn some streets into heat islands that hit the most vulnerable hardest.\nTeams map these hotspots in their own neighborhood and turn what they find into an app concept that helps people see the heat and stay safe. There is no single right answer — a clear idea that makes an invisible problem visible is what matters. Strong concepts grow into working prototypes and are shared through AFT's exhibitions and campaigns.",
+      ko: "도시 열섬 앱은 청소년이 데이터와 디자인으로 '도시가 어디에서, 왜 위험하게 뜨거워지는가'를 드러내는 프로젝트입니다. 여름 더위는 고르게 퍼지지 않습니다. 아스팔트와 유리 건물, 그늘 없는 거리가 어떤 골목을 열섬으로 만들고, 그 피해는 가장 취약한 사람들에게 먼저 닿습니다.\n팀은 우리 동네의 열섬 지점을 직접 지도로 만들고, 그 결과를 사람들이 더위를 눈으로 보고 안전하게 대비하도록 돕는 앱 아이디어로 발전시킵니다. 정답은 없습니다. 보이지 않던 문제를 또렷하게 보여주는 아이디어면 충분합니다. 좋은 아이디어는 실제 프로토타입으로 발전하고, AFT 전시와 캠페인을 통해 소개됩니다.",
+    },
+    howToApply: [
+      {
+        en: "Sign up to take part and form a small team (or join solo).",
+        ko: "참여 신청을 하고 소규모 팀을 꾸리거나 개인으로 합류합니다.",
+      },
+      {
+        en: "Map the heat islands in your neighborhood and note who they affect and why.",
+        ko: "우리 동네의 열섬 지점을 조사해 지도로 만들고, 누구에게 왜 영향을 주는지 기록합니다.",
+      },
+      {
+        en: "Turn your findings into an app concept and develop it into a prototype for the exhibition.",
+        ko: "조사 결과를 앱 아이디어로 정리하고, 전시로 이어질 프로토타입으로 발전시킵니다.",
+      },
+    ],
   },
 ];
 
@@ -240,7 +258,7 @@ const details: Record<string, ProjectDetail> = {
     ],
     impactSummary: {
       en: "Youth art became real products, and product sales became a real donation: ₩1,434,000 raised, with ₩1,000,000 donated to WWF.",
-      ko: "청소년의 예술이 실제 제품이 되고, 제품 판매가 실제 기부로 이어졌습니다. 총 1,434,000원을 조성하고 WWF에 1,000,000원을 기부했습니다.",
+      ko: "청소년의 예술이 실제 제품이 되었고, 그 판매 수익 1,434,000원 중 1,000,000원을 WWF에 기부했습니다.",
     },
     impactStats: [
       {
@@ -248,7 +266,7 @@ const details: Record<string, ProjectDetail> = {
         value: "28",
       },
       {
-        label: { en: "Raised through art", ko: "예술로 조성한 모금액" },
+        label: { en: "Raised through art", ko: "예술 굿즈 판매 수익" },
         value: "₩1,434,000",
         note: {
           en: "Eco-bags ₩1,152,000 + badges ₩282,000",

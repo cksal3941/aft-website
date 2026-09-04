@@ -51,16 +51,18 @@ export default function GlobalNetworkPage({
       <Breadcrumb />
 
       {/* Open network map */}
-      <section className="bg-white section-sm">
+      <section className="bg-surface section">
         <div className="container-aft">
-          <WorldMap seoulLabel={t("mapLabel")} />
+          <div className="mx-auto max-w-5xl">
+            <WorldMap seoulLabel={t("mapLabel")} />
+          </div>
         </div>
       </section>
 
       {/* The network so far — real nodes only */}
-      <section className="bg-surface section">
+      <section className="bg-white section-sm">
         <div className="container-aft">
-          <h2 className="text-2xl font-bold tracking-tight text-ink sm:text-3xl">
+          <h2 className="text-center text-2xl font-bold tracking-tight text-ink sm:text-left sm:text-3xl">
             {t("table.title")}
           </h2>
           <div className="mt-8 overflow-x-auto rounded-sm border border-line bg-white">
@@ -69,9 +71,9 @@ export default function GlobalNetworkPage({
                 <tr className="border-b border-line text-xs font-bold uppercase tracking-wide text-muted">
                   <th className="px-5 py-4">{t("table.country")}</th>
                   <th className="px-5 py-4">{t("table.city")}</th>
-                  <th className="px-5 py-4 text-right">{t("table.members")}</th>
-                  <th className="px-5 py-4 text-right">{t("table.projects")}</th>
-                  <th className="px-5 py-4 text-right">{t("table.partners")}</th>
+                  <th className="px-5 py-4 text-center">{t("table.members")}</th>
+                  <th className="px-5 py-4 text-center">{t("table.projects")}</th>
+                  <th className="px-5 py-4 text-center">{t("table.partners")}</th>
                   <th className="px-5 py-4" />
                 </tr>
               </thead>
@@ -92,14 +94,14 @@ export default function GlobalNetworkPage({
                         </span>
                       )}
                     </td>
-                    <td className="px-5 py-4 text-right tabular-nums text-ink">
-                      {n.youthMembers}
+                    <td className="px-5 py-4 text-center tabular-nums text-ink">
+                      {n.youthMembers ?? "—"}
                     </td>
-                    <td className="px-5 py-4 text-right tabular-nums text-ink">
-                      {n.projects}
+                    <td className="px-5 py-4 text-center tabular-nums text-ink">
+                      {n.projects ?? "—"}
                     </td>
-                    <td className="px-5 py-4 text-right tabular-nums text-ink">
-                      {n.partners}
+                    <td className="px-5 py-4 text-center tabular-nums text-ink">
+                      {n.partners ?? "—"}
                     </td>
                     <td className="px-5 py-4">
                       <span
@@ -117,7 +119,7 @@ export default function GlobalNetworkPage({
               </tbody>
             </table>
           </div>
-          <p className="mt-6 max-w-2xl text-sm text-muted">{t("openNote")}</p>
+          <p className="mt-6 text-sm text-muted">{t("openNote")}</p>
         </div>
       </section>
     </>

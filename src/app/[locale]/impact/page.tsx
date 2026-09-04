@@ -70,7 +70,7 @@ export default function ImpactPage({
                 key={k}
                 className="card text-center"
               >
-                <div className="text-4xl font-extrabold text-accent">
+                <div className="text-3xl font-extrabold text-accent sm:text-4xl">
                   {t(`numbers.items.${k}.value`)}
                 </div>
                 <div className="mt-2 text-sm font-semibold text-ink">
@@ -89,14 +89,14 @@ export default function ImpactPage({
       <section className="bg-surface section">
         <div className="container-aft grid items-center gap-10 lg:grid-cols-2">
           <AftImage
-            {...media.impactFeatured}
+            {...media.impactHomeImg}
             label="Our Ocean, Our Tomorrow"
             className="aspect-[16/10] w-full"
           />
           <div>
-            <SectionHeading eyebrow={t("featured.eyebrow")} title={t("featured.title")} />
+            <SectionHeading eyebrow={t("featured.eyebrow")} title={t("featured.title")} centerOnMobile />
             <p className="mt-4 text-muted">{t("featured.body")}</p>
-            <div className="mt-6">
+            <div className="mt-6 text-center sm:text-left">
               <CtaLink
                 href={`${routes.projects}/our-ocean-our-tomorrow`}
                 variant="primary"
@@ -129,8 +129,8 @@ export default function ImpactPage({
       {/* DONATION OUTCOMES */}
       <section className="bg-surface section">
         <div className="container-aft max-w-2xl">
-          <SectionHeading eyebrow={t("donation.eyebrow")} title={t("donation.title")} />
-          <p className="mt-2 text-sm text-muted">{t("donation.note")}</p>
+          <SectionHeading eyebrow={t("donation.eyebrow")} title={t("donation.title")} centered />
+          <p className="mt-2 whitespace-pre-line text-center text-sm text-muted">{t("donation.note")}</p>
           <dl className="mt-6 overflow-hidden rounded-sm border border-line bg-white">
             {donationRows.map((r) => {
               const emphasize = r === "total" || r === "donated";
@@ -158,20 +158,18 @@ export default function ImpactPage({
         </div>
       </section>
 
-      {/* TRANSPARENCY */}
-      <section className="bg-white section">
-        <div className="container-aft max-w-3xl">
-          <SectionHeading
-            eyebrow={t("transparency.eyebrow")}
-            title={t("transparency.title")}
-          />
-          <p className="mt-4 text-muted">{t("transparency.body")}</p>
-        </div>
-      </section>
-
-      {/* FINAL CTA */}
-      <section className="bg-navy section text-white">
-        <div className="container-aft flex flex-col items-center gap-6 text-center">
+      {/* FINAL CTA — background photo + black overlay (mirrors PageHero) so it
+          reads clearly apart from the navy footer below. */}
+      <section className="relative isolate overflow-hidden section text-white">
+        <AftImage
+          src="/images/GILL1152.jpg"
+          alt=""
+          objectPosition="center 40%"
+          sizes="100vw"
+          className="absolute inset-0 h-full w-full rounded-none"
+        />
+        <div className="absolute inset-0 bg-black/60" aria-hidden />
+        <div className="relative z-10 container-aft flex flex-col items-center gap-6 text-center">
           <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">{t("finalCta.title")}</h2>
           <CtaLink href={routes.support} variant="primary" event="donate_start">
             {t("finalCta.cta")}

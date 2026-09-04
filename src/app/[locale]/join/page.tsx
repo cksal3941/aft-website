@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { use } from "react";
 import { useTranslations } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -116,34 +117,61 @@ export default function JoinPage({
 
       {/* BENEFITS + SAFETY */}
       <section className="bg-white section">
-        <div className="container-aft grid gap-12 lg:grid-cols-2">
-          <div>
-            <SectionHeading
-              eyebrow={t("benefits.eyebrow")}
-              title={t("benefits.title")}
+        <div className="container-aft grid gap-6 lg:grid-cols-2 lg:items-stretch">
+          <div className="card flex flex-col items-center gap-6 !p-8 text-center sm:flex-row sm:items-center sm:gap-8 sm:text-left">
+            <div className="sm:flex-1">
+              <SectionHeading
+                eyebrow={t("benefits.eyebrow")}
+                title={t("benefits.title")}
+                centerOnMobile
+              />
+              <ul className="mt-6 space-y-3">
+                {benefitKeys.map((k) => (
+                  <li key={k} className="flex gap-3 text-muted">
+                    <CheckIcon className="mt-1 h-4 w-4 flex-none text-accent" />
+                    {t(`benefits.items.${k}`)}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <Image
+              src="/images/icon-trophy.webp"
+              alt=""
+              width={128}
+              height={128}
+              className="order-first h-28 w-28 flex-none sm:order-last sm:h-32 sm:w-32"
             />
-            <ul className="mt-6 space-y-3">
-              {benefitKeys.map((k) => (
-                <li key={k} className="flex gap-3 text-muted">
-                  <CheckIcon className="mt-1 h-4 w-4 flex-none text-accent" />
-                  {t(`benefits.items.${k}`)}
-                </li>
-              ))}
-            </ul>
           </div>
-          <div className="card !p-8">
-            <SectionHeading
-              eyebrow={t("safety.eyebrow")}
-              title={t("safety.title")}
+          <div className="card flex flex-col items-center gap-6 !p-8 text-center sm:flex-row sm:items-center sm:gap-8 sm:text-left">
+            <div className="sm:flex-1">
+              <SectionHeading
+                eyebrow={t("safety.eyebrow")}
+                title={t("safety.title")}
+                centerOnMobile
+              />
+              <p className="mt-4 text-muted">{t("safety.body")}</p>
+            </div>
+            <Image
+              src="/images/icon-shield.webp"
+              alt=""
+              width={128}
+              height={128}
+              className="order-first h-28 w-28 flex-none sm:order-last sm:h-32 sm:w-32"
             />
-            <p className="mt-4 text-muted">{t("safety.body")}</p>
           </div>
         </div>
       </section>
 
-      {/* FINAL CTA */}
-      <section className="bg-navy section text-white">
-        <div className="container-aft flex flex-col items-center gap-6 text-center">
+      {/* FINAL CTA — background photo + black overlay */}
+      <section className="relative isolate overflow-hidden section text-white">
+        <AftImage
+          src="/images/GILL1035.jpg"
+          alt=""
+          sizes="100vw"
+          className="absolute inset-0 h-full w-full rounded-none"
+        />
+        <div className="absolute inset-0 bg-black/60" aria-hidden />
+        <div className="relative z-10 container-aft flex flex-col items-center gap-6 text-center">
           <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">{t("hero.title")}</h2>
           <CtaLink href={routes.apply} variant="primary" event="join_start">
             {t("hero.ctaStart")}

@@ -60,8 +60,8 @@ export default function AboutPage({
       <section className="section bg-white">
         <div className="container-aft flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-16">
           <div className="lg:flex-1">
-            <SectionHeading eyebrow={t("mission.eyebrow")} title={t("mission.title")} />
-            <p className="mt-4 text-lg text-muted">
+            <SectionHeading eyebrow={t("mission.eyebrow")} title={t("mission.title")} centerOnMobile />
+            <p className="mt-4 text-base text-muted sm:text-lg">
               {/* Korean desktop only: force the \n breaks with a desktop-only <br>.
                   Mobile + English keep their natural wrap (no whitespace-pre-line). */}
               {t("mission.body")

@@ -77,7 +77,7 @@ export function PageHero({
           {eyebrow && title && (
             <p
               data-hero
-              className="mt-4 text-lg font-light leading-snug text-white/85"
+              className="mt-4 text-base font-light leading-snug text-white/85 sm:text-lg"
             >
               {title}
             </p>
@@ -85,7 +85,7 @@ export function PageHero({
           {children && (
             <div
               data-hero
-              className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
+              className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center"
             >
               {children}
             </div>

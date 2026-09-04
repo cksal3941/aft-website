@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { AftImage } from "@/components/ui/AftImage";
+import { CountUp } from "@/components/ui/CountUp";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { StatusBadge } from "@/components/projects/StatusBadge";
 import { ProjectActions } from "@/components/projects/ProjectActions";
@@ -83,7 +84,7 @@ function DetailView({
             <h1 className="text-3xl font-extrabold leading-tight tracking-tight text-ink sm:text-4xl">
               {project.title}
             </h1>
-            <p className="mt-4 text-lg font-light leading-snug text-muted">
+            <p className="mt-4 text-base font-light leading-snug text-muted sm:text-lg">
               {project.oneLiner}
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -114,7 +115,7 @@ function DetailView({
         <section className="bg-white section">
           <div className="container-aft">
             <SectionHeading title={t("sections.overview")} centered />
-            <div className="mx-auto mt-6 max-w-3xl space-y-4 text-center text-lg leading-relaxed text-muted">
+            <div className="mx-auto mt-6 max-w-3xl space-y-4 text-center text-base leading-relaxed text-muted sm:text-lg">
               {project.overview.split("\n").map((para, i) => (
                 <p key={i}>{para}</p>
               ))}
@@ -131,7 +132,7 @@ function DetailView({
                       <span className="flex h-11 w-11 items-center justify-center rounded-full bg-accent text-lg font-bold text-white">
                         {i + 1}
                       </span>
-                      <p className="mt-4 text-lg leading-relaxed text-muted">{step}</p>
+                      <p className="mt-4 text-base leading-relaxed text-muted sm:text-lg">{step}</p>
                     </li>
                   ))}
                 </ol>
@@ -149,25 +150,43 @@ function DetailView({
 
       {detail && (
         <>
-          {/* THE CHALLENGE */}
+          {/* THE CHALLENGE — two-column editorial layout (heading left, body
+              right) so the block fills the full width and stays balanced with
+              the wider sections below, instead of a narrow left-aligned column. */}
           <section className="bg-white section">
-            <div className="container-aft max-w-3xl">
-              <SectionHeading eyebrow="01" title={t("sections.challenge")} />
-              <p className="mt-4 text-lg text-muted">{detail.challenge}</p>
+            <div className="container-aft grid gap-8 md:grid-cols-12 md:gap-12">
+              <div className="md:col-span-4">
+                <SectionHeading
+                  eyebrow="01"
+                  title={t("sections.challenge")}
+                  centerOnMobile
+                />
+              </div>
+              <div className="md:col-span-8">
+                <p className="text-base leading-relaxed text-muted md:text-xl">
+                  {detail.challenge}
+                </p>
+              </div>
             </div>
           </section>
 
           {/* YOUNG IDEAS */}
           <section className="bg-surface section">
-            <div className="container-aft max-w-3xl">
-              <SectionHeading eyebrow="02" title={t("sections.youngIdeas")} />
-              <ul className="mt-6 space-y-3">
+            <div className="container-aft grid gap-8 md:grid-cols-12 md:gap-12">
+              <div className="md:col-span-4">
+                <SectionHeading
+                  eyebrow="02"
+                  title={t("sections.youngIdeas")}
+                  centerOnMobile
+                />
+              </div>
+              <ul className="space-y-4 md:col-span-8">
                 {detail.youngIdeas.map((idea, i) => (
                   <li key={i} className="flex gap-3">
                     <span className="mt-1 flex h-6 w-6 flex-none items-center justify-center rounded-full bg-accent text-xs font-bold text-white">
                       {i + 1}
                     </span>
-                    <span className="text-muted">{idea}</span>
+                    <span className="text-base text-muted md:text-lg">{idea}</span>
                   </li>
                 ))}
               </ul>
@@ -177,7 +196,11 @@ function DetailView({
           {/* CREATIVE ACTION */}
           <section className="bg-white section">
             <div className="container-aft">
-              <SectionHeading eyebrow="03" title={t("sections.creativeAction")} />
+              <SectionHeading
+                eyebrow="03"
+                title={t("sections.creativeAction")}
+                centerOnMobile
+              />
               <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
                 {detail.creativeAction.map((item, i) => (
                   <div
@@ -197,8 +220,12 @@ function DetailView({
           {/* GALLERY */}
           <section className="bg-surface section">
             <div className="container-aft">
-              <SectionHeading eyebrow="04" title={t("sections.gallery")} />
-              <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              <SectionHeading
+                eyebrow="04"
+                title={t("sections.gallery")}
+                centerOnMobile
+              />
+              <div className="mt-8 grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-3">
                 {detail.gallery.length > 0
                   ? detail.gallery.map((g, i) => (
                       <figure
@@ -225,21 +252,28 @@ function DetailView({
           </section>
 
           {/* THE IMPACT */}
-          <section id="impact" className="scroll-mt-20 bg-navy section text-white">
+          <section id="impact" className="scroll-mt-20 bg-white section">
             <div className="container-aft">
-              <SectionHeading eyebrow="05" title={t("sections.impact")} onDark />
-              <p className="mt-4 max-w-2xl text-white/80">{detail.impactSummary}</p>
+              <SectionHeading
+                eyebrow="05"
+                title={t("sections.impact")}
+                centerOnMobile
+              />
+              <p className="mt-4 text-center text-base text-muted sm:text-left sm:text-[20px]">
+                {detail.impactSummary}
+              </p>
               <div className="mt-10 grid gap-8 sm:grid-cols-3">
                 {detail.impactStats.map((s, i) => (
-                  <div key={i}>
-                    <div className="text-4xl font-extrabold text-emerald-300">
-                      {s.value}
-                    </div>
-                    <div className="mt-1 text-sm font-semibold uppercase tracking-wide text-white/80">
+                  <div key={i} className="text-center">
+                    <CountUp
+                      value={s.value}
+                      className="text-3xl font-extrabold text-teal sm:text-4xl"
+                    />
+                    <div className="mt-1 text-sm font-semibold uppercase tracking-wide text-teal">
                       {s.label}
                     </div>
                     {s.note && (
-                      <div className="mt-1 text-xs text-white/70">{s.note}</div>
+                      <div className="mt-1 text-xs text-slate-500">{s.note}</div>
                     )}
                   </div>
                 ))}
@@ -255,7 +289,7 @@ function DetailView({
       {related.length > 0 && (
         <section id="related" className="scroll-mt-20 bg-white section-sm">
           <div className="container-aft">
-            <h2 className="text-xl font-bold tracking-tight text-ink sm:text-2xl">
+            <h2 className="text-center text-xl font-bold tracking-tight text-ink sm:text-left sm:text-2xl">
               {t("sections.related")}
             </h2>
             <div className="mt-6 grid max-w-3xl gap-6 sm:grid-cols-2">

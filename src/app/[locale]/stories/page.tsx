@@ -38,7 +38,7 @@ export default function StoriesPage({
     <>
       {/* HERO */}
       <PageHero
-        image={media.storyShot1}
+        image={{ src: "/images/GILL1414.jpg", alt: "AFT 청소년 작가들의 단체 사진" }}
         eyebrow={t("hero.eyebrow")}
         title={t("hero.title")}
         subtitle={t("hero.subtitle")}
@@ -73,7 +73,7 @@ export default function StoriesPage({
                 <p className="mt-4 text-xs font-bold uppercase tracking-wide text-accent">
                   {t("quoteLabel")}
                 </p>
-                <blockquote className="mt-2 border-l-4 border-accent pl-4 text-xl font-semibold leading-snug text-ink">
+                <blockquote className="mt-2 border-l-4 border-accent pl-4 text-lg font-semibold leading-snug text-ink sm:text-xl">
                   “{s.quote}”
                 </blockquote>
                 <p className="mt-4 text-muted">{s.body}</p>
@@ -84,17 +84,23 @@ export default function StoriesPage({
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="bg-surface section">
-        <div className="container-aft flex flex-col items-center gap-5 text-center">
-          <h2 className="text-2xl font-bold tracking-tight text-ink sm:text-3xl">
+      {/* CTA — background photo + black overlay */}
+      <section className="relative isolate overflow-hidden section text-white">
+        <AftImage
+          {...media.joinHero}
+          sizes="100vw"
+          className="absolute inset-0 h-full w-full rounded-none"
+        />
+        <div className="absolute inset-0 bg-black/60" aria-hidden />
+        <div className="relative z-10 container-aft flex flex-col items-center gap-5 text-center">
+          <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
             {t("hero.title")}
           </h2>
           <div className="flex flex-col gap-3 sm:flex-row">
             <CtaLink href={routes.join} variant="primary" event="join_click">
               {t("cta")}
             </CtaLink>
-            <CtaLink href={routes.support} variant="secondary-dark" event="donate_start">
+            <CtaLink href={routes.support} variant="secondary" event="donate_start">
               {t("ctaSupport")}
             </CtaLink>
           </div>

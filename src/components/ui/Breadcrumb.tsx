@@ -60,7 +60,7 @@ export function Breadcrumb({ className = "" }: { className?: string }) {
           const isLast = i === trail.length - 1;
           return (
             <li key={item.href} className="flex items-center gap-x-2">
-              <span aria-hidden className="text-line">
+              <span aria-hidden className="text-slate-400">
                 ›
               </span>
               {isLast ? (

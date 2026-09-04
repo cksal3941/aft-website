@@ -1,67 +1,114 @@
-import { AftImage } from "@/components/ui/AftImage";
-import { media } from "@/config/media";
+"use client";
+
+import {
+  ComposableMap,
+  Geographies,
+  Geography,
+  Marker,
+} from "react-simple-maps";
+import { networkNodes } from "@/content/globalNetwork";
 
 // 09 · FROM SEOUL TO THE WORLD.
-// Honest "open network" motif — Seoul is the one real, highlighted node.
-// The other dots are intentionally UNLABELED: they signal an open world, not
-// claimed AFT branches. Drop a real map into media.worldMap to replace this.
+// Vector world map (react-simple-maps). Markers are driven by `networkNodes`
+// (the same source as the network table), so every real node's lng/lat places
+// its marker — no hand-tuned pixels. The topojson is bundled locally
+// (public/data), so there's no map API or runtime key.
+const GEO_URL = "/data/countries-110m.json";
+
 export function WorldMap({ seoulLabel }: { seoulLabel: string }) {
-  if (media.worldMap.src) {
-    return (
-      <AftImage
-        src={media.worldMap.src}
-        alt={media.worldMap.alt}
-        sizes="100vw"
-        className="aspect-[16/7] w-full rounded-sm"
-        noZoom
-      />
-    );
-  }
-
-  // viewBox is 100 (x) × 44 (y) to match the 16:7 container.
-  const seoul = { x: 74, y: 22 };
-  const nodes = [
-    { x: 14, y: 16 },
-    { x: 26, y: 30 },
-    { x: 40, y: 12 },
-    { x: 52, y: 26 },
-    { x: 60, y: 34 },
-    { x: 86, y: 30 },
-    { x: 66, y: 19 },
-    { x: 20, y: 38 },
-  ];
-
   return (
-    <div className="relative aspect-[16/7] w-full overflow-hidden rounded-sm bg-white ring-1 ring-line">
-      <svg
-        viewBox="0 0 100 44"
-        preserveAspectRatio="none"
-        className="absolute inset-0 h-full w-full"
-        aria-hidden
+    <div
+      className="w-full overflow-hidden rounded-sm"
+      style={{ aspectRatio: "800 / 340" }}
+    >
+      <ComposableMap
+        projection="geoEquirectangular"
+        projectionConfig={{ scale: 160, center: [14, 0] }}
+        width={800}
+        height={350}
+        style={{ width: "100%", height: "auto", display: "block" }}
       >
-        {nodes.map((n, i) => (
-          <line
-            key={`l${i}`}
-            x1={seoul.x}
-            y1={seoul.y}
-            x2={n.x}
-            y2={n.y}
-            className="stroke-navy/15"
-            strokeWidth="0.2"
-          />
+        <Geographies geography={GEO_URL}>
+          {({ geographies }) =>
+            geographies.map((geo) => (
+              <Geography
+                key={geo.rsmKey}
+                geography={geo}
+                style={{
+                  default: {
+                    fill: "#96a3b8",
+                    stroke: "#ffffff",
+                    strokeWidth: 0.4,
+                    outline: "none",
+                  },
+                  hover: {
+                    fill: "#96a3b8",
+                    stroke: "#ffffff",
+                    strokeWidth: 0.4,
+                    outline: "none",
+                  },
+                  pressed: { fill: "#96a3b8", outline: "none" },
+                }}
+              />
+            ))
+          }
+        </Geographies>
+        {networkNodes.map((node) => (
+          <Marker
+            key={`${node.country}-${node.city}`}
+            coordinates={[node.lng, node.lat]}
+          >
+            {/* two staggered pulsing rings for a clearly visible radar ping */}
+            <circle
+              r={7}
+              className="animate-ping"
+              style={{
+                fill: "var(--color-accent)",
+                opacity: 0.55,
+                transformBox: "fill-box",
+                transformOrigin: "center",
+                animationDuration: "1.8s",
+              }}
+            />
+            <circle
+              r={7}
+              className="animate-ping"
+              style={{
+                fill: "var(--color-accent)",
+                opacity: 0.55,
+                transformBox: "fill-box",
+                transformOrigin: "center",
+                animationDuration: "1.8s",
+                animationDelay: "0.9s",
+              }}
+            />
+            <circle
+              r={5}
+              style={{
+                fill: "var(--color-accent)",
+                stroke: "#ffffff",
+                strokeWidth: 1.6,
+              }}
+            />
+            <text
+              y={30}
+              textAnchor="middle"
+              style={{
+                fill: "var(--color-accent-hover)",
+                fontSize: 16,
+                fontWeight: 800,
+                letterSpacing: "0.02em",
+                paintOrder: "stroke",
+                stroke: "#ffffff",
+                strokeWidth: 3,
+                strokeLinejoin: "round",
+              }}
+            >
+              {node.founded ? seoulLabel : node.country}
+            </text>
+          </Marker>
         ))}
-        {nodes.map((n, i) => (
-          <circle key={`n${i}`} cx={n.x} cy={n.y} r="0.7" className="fill-navy/30" />
-        ))}
-        <circle cx={seoul.x} cy={seoul.y} r="2.6" className="fill-accent/25" />
-        <circle cx={seoul.x} cy={seoul.y} r="1.1" className="fill-accent" />
-      </svg>
-      <span
-        className="absolute -translate-x-1/2 text-[11px] font-bold uppercase tracking-wide text-accent"
-        style={{ left: "74%", top: "58%" }}
-      >
-        {seoulLabel}
-      </span>
+      </ComposableMap>
     </div>
   );
 }
