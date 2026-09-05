@@ -3,7 +3,7 @@ import type { Locale } from "@/i18n/routing";
 // Local content source for projects (기획서: 콘텐츠는 로컬 파일로 시작).
 // Swap for a headless CMS later without changing the component layer.
 
-export type ProjectStatus = "open" | "ongoing" | "completed";
+export type ProjectStatus = "coming-soon" | "open" | "ongoing" | "completed";
 export type ProjectMode = "online" | "offline" | "hybrid";
 
 type LocalizedText = Record<Locale, string>;
@@ -59,83 +59,65 @@ export const projects: Project[] = [
     cover: "/images/project-our-ocean-our-tomorrow.jpg",
   },
   {
-    slug: "plastic-free-plates",
-    status: "open",
+    slug: "hyangwoljae-gallery-2025",
+    status: "completed",
     title: {
-      en: "Plastic-Free Plates",
-      ko: "플라스틱 프리 식판",
+      en: "Hyangwoljae Gallery Exhibition",
+      ko: "향월재 갤러리 전시",
     },
     oneLiner: {
-      en: "Design a children's plate that makes daily plastic use visible.",
-      ko: "일상 속 플라스틱 사용량을 눈으로 보여주는 어린이 식판을 디자인합니다.",
+      en: "AFT youth members' 2025 group exhibition at Hyangwoljae Gallery.",
+      ko: "AFT 청소년 회원들이 2025년 향월재 갤러리에서 연 단체 전시.",
     },
-    field: { en: "Product Design", ko: "제품디자인" },
-    country: "KR",
-    city: { en: "Online", ko: "온라인" },
-    mode: "online",
-    ageRange: "14–18",
-    language: "KR",
-    deadline: "2026-10-15",
-    cost: null,
-    cover: "/images/project-plastic-free-plates.jpg",
-    overview: {
-      en: "Plastic-Free Plates is an online competition where young people use the power of design to spotlight an everyday environmental problem. Design a children's plate that makes the amount of plastic we use — and throw away — every day something you can actually see and feel.\nThere is no single right answer. What matters is a clear idea and a design that helps others notice the problem. Standout entries grow into real product concepts and are featured in AFT's exhibitions and campaigns.",
-      ko: "플라스틱 프리 식판은 청소년이 디자인의 힘으로 일상 속 환경 문제를 알리는 온라인 공모전입니다. 우리가 매일 쓰고 버리는 플라스틱의 양을 눈으로 보고 체감할 수 있는 '어린이 식판'을 직접 디자인해 보세요.\n정답은 없습니다. 문제를 또렷하게 드러내는 아이디어와 디자인이면 충분합니다. 우수작은 실제 제품 시안으로 발전하고, AFT 전시와 캠페인을 통해 소개됩니다.",
-    },
-    howToApply: [
-      {
-        en: "Click Apply and fill out the short entry form.",
-        ko: "‘지원하기’를 눌러 간단한 참가 신청서를 작성합니다.",
-      },
-      {
-        en: "Submit your plate idea as a sketch with a short note on how it visualizes plastic use.",
-        ko: "플라스틱 사용량을 시각화하는 식판 아이디어를 스케치와 짧은 설명으로 제출합니다.",
-      },
-      {
-        en: "Selected entries move on to product prototyping and are shown in the exhibition.",
-        ko: "심사를 거쳐 선정된 작품은 제품 시안 제작과 전시로 이어집니다.",
-      },
-    ],
-  },
-  {
-    slug: "city-heat-island-app",
-    status: "ongoing",
-    title: {
-      en: "City Heat Island App",
-      ko: "도시 열섬 앱",
-    },
-    oneLiner: {
-      en: "Youth-led app concept that maps and communicates urban heat islands.",
-      ko: "도시 열섬 문제를 지도화하고 알리는 청소년 주도 앱 아이디어.",
-    },
-    field: { en: "Public Design", ko: "공공디자인" },
+    field: { en: "Exhibition", ko: "전시" },
     country: "KR",
     city: { en: "Seoul", ko: "서울" },
-    mode: "hybrid",
-    ageRange: "15–19",
-    language: "KR / EN",
+    mode: "offline",
+    // 초등 1학년(만 6세)부터. 상한 미정이라 우선 개방형(6+)으로 표기.
+    ageRange: "6+",
+    language: "KR",
     cost: null,
-    // Temporary placeholder from Unsplash (LA at dusk) until a real project photo
-    // is available. Photo: unsplash.com/photos/QTdjjOGEDMA
-    cover: "/images/project-city-heat-island-app.jpg",
-    overview: {
-      en: "City Heat Island App is a youth-led project that uses data and design to reveal where our cities get dangerously hot — and why. Summer heat is not spread evenly: asphalt, glass towers and missing shade turn some streets into heat islands that hit the most vulnerable hardest.\nTeams map these hotspots in their own neighborhood and turn what they find into an app concept that helps people see the heat and stay safe. There is no single right answer — a clear idea that makes an invisible problem visible is what matters. Strong concepts grow into working prototypes and are shared through AFT's exhibitions and campaigns.",
-      ko: "도시 열섬 앱은 청소년이 데이터와 디자인으로 '도시가 어디에서, 왜 위험하게 뜨거워지는가'를 드러내는 프로젝트입니다. 여름 더위는 고르게 퍼지지 않습니다. 아스팔트와 유리 건물, 그늘 없는 거리가 어떤 골목을 열섬으로 만들고, 그 피해는 가장 취약한 사람들에게 먼저 닿습니다.\n팀은 우리 동네의 열섬 지점을 직접 지도로 만들고, 그 결과를 사람들이 더위를 눈으로 보고 안전하게 대비하도록 돕는 앱 아이디어로 발전시킵니다. 정답은 없습니다. 보이지 않던 문제를 또렷하게 보여주는 아이디어면 충분합니다. 좋은 아이디어는 실제 프로토타입으로 발전하고, AFT 전시와 캠페인을 통해 소개됩니다.",
+    // 전시 사진은 추후 추가 예정 (사진 들어오면 cover + details.gallery 채우기).
+    cover: null,
+  },
+  {
+    slug: "aft-membership-2025",
+    status: "completed",
+    title: {
+      en: "AFT Membership Recruitment",
+      ko: "AFT 회원 모집",
     },
-    howToApply: [
-      {
-        en: "Sign up to take part and form a small team (or join solo).",
-        ko: "참여 신청을 하고 소규모 팀을 꾸리거나 개인으로 합류합니다.",
-      },
-      {
-        en: "Map the heat islands in your neighborhood and note who they affect and why.",
-        ko: "우리 동네의 열섬 지점을 조사해 지도로 만들고, 누구에게 왜 영향을 주는지 기록합니다.",
-      },
-      {
-        en: "Turn your findings into an app concept and develop it into a prototype for the exhibition.",
-        ko: "조사 결과를 앱 아이디어로 정리하고, 전시로 이어질 프로토타입으로 발전시킵니다.",
-      },
-    ],
+    oneLiner: {
+      en: "The 2025 open call that gathered AFT's first youth members.",
+      ko: "2025년, AFT의 첫 청소년 회원을 모집한 프로젝트.",
+    },
+    field: { en: "Membership", ko: "회원 모집" },
+    country: "KR",
+    city: { en: "Seoul", ko: "서울" },
+    mode: "offline",
+    ageRange: "6+",
+    language: "KR",
+    cost: null,
+    cover: null,
+  },
+  {
+    // Placeholder teaser — not a real project. Rendered as a "Coming Soon" card
+    // (no image) via ProjectCard's coming-soon branch.
+    slug: "coming-soon",
+    status: "coming-soon",
+    title: { en: "Coming Soon", ko: "공개 예정" },
+    oneLiner: {
+      en: "New youth projects are on the way.",
+      ko: "새로운 청소년 프로젝트가\n곧 공개됩니다.",
+    },
+    field: { en: "—", ko: "—" },
+    country: "KR",
+    city: { en: "—", ko: "—" },
+    mode: "online",
+    ageRange: "—",
+    language: "—",
+    cost: null,
+    cover: null,
   },
 ];
 
@@ -364,6 +346,8 @@ export function getProjectDetail(
   };
 }
 
+// Coming-soon projects are teasers with no detail page, so they're excluded
+// from static generation (their detail route 404s).
 export function getProjectSlugs(): string[] {
-  return projects.map((p) => p.slug);
+  return projects.filter((p) => p.status !== "coming-soon").map((p) => p.slug);
 }

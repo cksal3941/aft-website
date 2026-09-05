@@ -42,6 +42,11 @@ export async function generateMetadata({
       template: `%s · AFT`,
     },
     description: t("tagline"),
+    // Suppress Chrome/Edge's "translate this page?" prompt — the site already
+    // serves fully-localized KO/EN, so browser translation only double-translates.
+    other: {
+      google: "notranslate",
+    },
     openGraph: {
       type: "website",
       siteName: t("siteName"),
@@ -75,7 +80,16 @@ export default async function LocaleLayout({
   const typekitId = process.env.NEXT_PUBLIC_TYPEKIT_ID;
 
   return (
-    <html lang={locale} className={`${inter.variable} h-full antialiased`}>
+    // `lang` stays per-locale for SEO/a11y, but `translate="no"` (inherited by
+    // every descendant, incl. dynamic client-rendered text) opts the whole
+    // document out of Chrome/Edge/Safari auto-translation. The site's own KO/EN
+    // toggle is unaffected. Paired with <meta name="google" content="notranslate">
+    // (in generateMetadata) to suppress Chrome's translate prompt entirely.
+    <html
+      lang={locale}
+      translate="no"
+      className={`${inter.variable} notranslate h-full antialiased`}
+    >
       {typekitId && (
         <>
           <link rel="preconnect" href="https://use.typekit.net" crossOrigin="" />

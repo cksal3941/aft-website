@@ -11,6 +11,7 @@ import { Link, usePathname } from "@/i18n/navigation";
 // the trail degrades gracefully to whatever parents ARE known.
 const PATH_KEY: Record<string, string> = {
   "/about": "about",
+  "/about/team": "orgChart",
   "/projects": "projects",
   "/impact": "impact",
   "/stories": "stories",

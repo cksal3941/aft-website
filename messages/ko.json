@@ -29,7 +29,8 @@
     "inkind": "현물 지원",
     "expert": "전문 봉사",
     "support": "서포트",
-    "contact": "문의"
+    "contact": "문의",
+    "orgChart": "조직도"
   },
   "nav": {
     "about": "소개",
@@ -63,7 +64,8 @@
       "sponsor": "챌린지 후원",
       "venue": "공간 제공",
       "inkind": "현물 지원",
-      "expert": "전문 봉사"
+      "expert": "전문 봉사",
+      "orgChart": "조직도"
     }
   },
   "home": {
@@ -313,9 +315,10 @@
       "empty": "조건에 맞는 프로젝트가 아직 없습니다."
     },
     "status": {
+      "coming-soon": "공개 예정",
       "open": "모집 중",
       "ongoing": "진행 중",
-      "completed": "완료"
+      "completed": "마감"
     },
     "mode": {
       "online": "온라인",
@@ -327,6 +330,7 @@
       "dday": "D-DAY"
     },
     "groups": {
+      "coming-soon": "공개 예정 프로젝트",
       "open": "모집 중 프로젝트",
       "ongoing": "진행 중 프로젝트",
       "completed": "지난 프로젝트"
@@ -635,7 +639,7 @@
     "info": {
       "title": "다른 문의 방법",
       "emailLabel": "이메일",
-      "email": "hello@aft.org",
+      "email": "gmy8999@gmail.com",
       "joinLabel": "청소년 회원",
       "join": "청소년 지원 시작하기",
       "partnerLabel": "협력",
@@ -702,7 +706,8 @@
           "title": "청소년 진행자·발표자",
           "body": "행사 사회를 맡고 작품의 의미를 관람객에게 설명."
         }
-      }
+      },
+      "cta": "조직도 보기"
     },
     "beyond": {
       "eyebrow": "회화를 넘어",
@@ -763,6 +768,12 @@
           "제품·공공예술로 확장 가능한 협력 구조"
         ]
       }
+    },
+    "team": {
+      "eyebrow": "조직도",
+      "title": "AFT를 만드는 청소년들",
+      "repsTitle": "학생 대표",
+      "deptsTitle": "부서"
     }
   },
   "impact": {
@@ -1203,7 +1214,7 @@
     "explore": "둘러보기",
     "getInvolved": "참여하기",
     "emailLabel": "이메일",
-    "email": "hello@aft.org",
+    "email": "gmy8999@gmail.com",
     "privacy": "개인정보처리방침",
     "terms": "이용약관",
     "rights": "AFT — Arts For Tomorrow. 모든 권리 보유.",
@@ -1238,7 +1249,7 @@
       },
       "contact": {
         "title": "문의",
-        "body": "개인정보 관련 문의는 hello@aft.org 로 연락해 주세요."
+        "body": "개인정보 관련 문의는 gmy8999@gmail.com 로 연락해 주세요."
       }
     }
   },
@@ -1275,7 +1286,7 @@
       },
       "contact": {
         "title": "문의",
-        "body": "약관 관련 문의는 hello@aft.org 로 연락해 주세요."
+        "body": "약관 관련 문의는 gmy8999@gmail.com 로 연락해 주세요."
       }
     }
   },
@@ -1299,5 +1310,9 @@
     },
     "openNote": "실제 청소년·학교·파트너가 참여한 도시만 지도에 표시됩니다. 지도는 이 여정과 함께 넓어집니다.",
     "mapLabel": "Seoul · 2026 시작"
+  },
+  "globalYouth": {
+    "eyebrow": "글로벌 커뮤니티",
+    "title": "{count}개국 청소년이 함께 만듭니다"
   }
 }

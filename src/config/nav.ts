@@ -14,6 +14,7 @@ export const mainNav: NavItem[] = [
     href: "/about",
     children: [
       { key: "aboutAft", href: "/about" },
+      { key: "orgChart", href: "/about/team" },
       { key: "ourStory", href: "/#story" },
     ],
   },
@@ -73,6 +74,7 @@ export const mobileNav: NavItem[] = [
 export const routes = {
   home: "/",
   about: "/about",
+  orgChart: "/about/team",
   projects: "/projects",
   join: "/join",
   apply: "/join/apply",

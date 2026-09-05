@@ -109,6 +109,11 @@ export default function AboutPage({
               </div>
             ))}
           </div>
+          <div className="mt-10 text-center">
+            <CtaLink href={routes.orgChart} variant="text">
+              {t("teams.cta")}
+            </CtaLink>
+          </div>
         </div>
       </section>
 

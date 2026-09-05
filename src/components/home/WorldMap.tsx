@@ -9,13 +9,42 @@ import {
 import { networkNodes } from "@/content/globalNetwork";
 
 // 09 · FROM SEOUL TO THE WORLD.
-// Vector world map (react-simple-maps). Markers are driven by `networkNodes`
-// (the same source as the network table), so every real node's lng/lat places
-// its marker — no hand-tuned pixels. The topojson is bundled locally
+// Vector world map (react-simple-maps). The topojson is bundled locally
 // (public/data), so there's no map API or runtime key.
+//
+// Two marker modes:
+//   • `countries` given → a pulsing flag pinned at each country's lng/lat
+//     (used to show the global youth community across many countries).
+//   • otherwise → the founding-node radar pings driven by `networkNodes`.
 const GEO_URL = "/data/countries-110m.json";
 
-export function WorldMap({ seoulLabel }: { seoulLabel: string }) {
+type FlagMarker = { flag: string; name: string; lng: number; lat: number };
+
+// Reusable radar-ping rings drawn behind a marker.
+function PingRings({ r = 10 }: { r?: number }) {
+  const base = {
+    r,
+    fill: "var(--color-accent)",
+    opacity: 0.4,
+    transformBox: "fill-box" as const,
+    transformOrigin: "center",
+    animationDuration: "1.8s",
+  };
+  return (
+    <>
+      <circle className="animate-ping" style={base} />
+      <circle className="animate-ping" style={{ ...base, animationDelay: "0.9s" }} />
+    </>
+  );
+}
+
+export function WorldMap({
+  seoulLabel,
+  countries,
+}: {
+  seoulLabel: string;
+  countries?: FlagMarker[];
+}) {
   return (
     <div
       className="w-full overflow-hidden rounded-sm"
@@ -53,49 +82,25 @@ export function WorldMap({ seoulLabel }: { seoulLabel: string }) {
             ))
           }
         </Geographies>
-        {networkNodes.map((node) => (
-          <Marker
-            key={`${node.country}-${node.city}`}
-            coordinates={[node.lng, node.lat]}
-          >
-            {/* two staggered pulsing rings for a clearly visible radar ping */}
-            <circle
-              r={7}
-              className="animate-ping"
-              style={{
-                fill: "var(--color-accent)",
-                opacity: 0.55,
-                transformBox: "fill-box",
-                transformOrigin: "center",
-                animationDuration: "1.8s",
-              }}
-            />
-            <circle
-              r={7}
-              className="animate-ping"
-              style={{
-                fill: "var(--color-accent)",
-                opacity: 0.55,
-                transformBox: "fill-box",
-                transformOrigin: "center",
-                animationDuration: "1.8s",
-                animationDelay: "0.9s",
-              }}
-            />
-            <circle
-              r={5}
-              style={{
-                fill: "var(--color-accent)",
-                stroke: "#ffffff",
-                strokeWidth: 1.6,
-              }}
+
+        {/* Flag pins — one per origin country, pulsing on its coordinate. */}
+        {countries?.map((c) => (
+          <Marker key={c.flag} coordinates={[c.lng, c.lat]}>
+            <PingRings r={11} />
+            <image
+              href={`/images/flags/${c.flag}.svg`}
+              x={-12}
+              y={-8}
+              width={24}
+              height={16}
+              preserveAspectRatio="xMidYMid slice"
             />
             <text
               y={30}
               textAnchor="middle"
               style={{
                 fill: "var(--color-accent-hover)",
-                fontSize: 16,
+                fontSize: 15,
                 fontWeight: 800,
                 letterSpacing: "0.02em",
                 paintOrder: "stroke",
@@ -104,10 +109,45 @@ export function WorldMap({ seoulLabel }: { seoulLabel: string }) {
                 strokeLinejoin: "round",
               }}
             >
-              {node.founded ? seoulLabel : node.country}
+              {c.name}
             </text>
           </Marker>
         ))}
+
+        {/* Founding-node pings (only when no country flags are supplied). */}
+        {!countries &&
+          networkNodes.map((node) => (
+            <Marker
+              key={`${node.country}-${node.city}`}
+              coordinates={[node.lng, node.lat]}
+            >
+              <PingRings r={7} />
+              <circle
+                r={5}
+                style={{
+                  fill: "var(--color-accent)",
+                  stroke: "#ffffff",
+                  strokeWidth: 1.6,
+                }}
+              />
+              <text
+                y={30}
+                textAnchor="middle"
+                style={{
+                  fill: "var(--color-accent-hover)",
+                  fontSize: 16,
+                  fontWeight: 800,
+                  letterSpacing: "0.02em",
+                  paintOrder: "stroke",
+                  stroke: "#ffffff",
+                  strokeWidth: 3,
+                  strokeLinejoin: "round",
+                }}
+              >
+                {node.founded ? seoulLabel : node.country}
+              </text>
+            </Marker>
+          ))}
       </ComposableMap>
     </div>
   );

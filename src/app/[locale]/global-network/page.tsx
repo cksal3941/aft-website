@@ -10,6 +10,8 @@ import { WorldMap } from "@/components/home/WorldMap";
 import { media } from "@/config/media";
 import { routes } from "@/config/nav";
 import { networkNodes } from "@/content/globalNetwork";
+import { getOriginCountries } from "@/content/globalYouth";
+import type { Locale } from "@/i18n/routing";
 
 export async function generateMetadata({
   params,
@@ -55,7 +57,10 @@ export default function GlobalNetworkPage({
       <section className="bg-surface section">
         <div className="container-aft">
           <div className="mx-auto max-w-5xl">
-            <WorldMap seoulLabel={t("mapLabel")} />
+            <WorldMap
+              seoulLabel={t("mapLabel")}
+              countries={getOriginCountries(locale as Locale)}
+            />
           </div>
         </div>
       </section>

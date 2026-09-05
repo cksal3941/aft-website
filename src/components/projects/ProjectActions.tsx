@@ -19,6 +19,15 @@ export function ProjectActions({
 
   return (
     <div className="mt-8 flex flex-wrap justify-center gap-3">
+      {status === "coming-soon" && (
+        <>
+          <Link href={routes.contact} className="btn-primary">
+            {t("ask")}
+          </Link>
+          <ShareButton />
+        </>
+      )}
+
       {status === "open" && (
         <>
           <Link

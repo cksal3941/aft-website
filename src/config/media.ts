@@ -11,6 +11,8 @@ export type MediaSlot = {
   src: string | null;
   alt: string;
   tone?: "default" | "ocean";
+  /** CSS object-position for the image within its box (e.g. "center 30%"). */
+  objectPosition?: string;
 };
 
 // HERO background video. `src` is the landscape (16:9) clip for tablet/desktop;
@@ -96,6 +98,10 @@ export const media = {
   news3: { src: null, alt: "News thumbnail" },
 
   aboutHero: { src: "/images/about-hero.jpg", alt: "AFT youth presenting their work" },
+  aboutTeamHero: {
+    src: "/images/aft-1.jpg",
+    alt: "AFT youth exhibition event",
+  },
   aboutBook1: { src: "/images/about-book-1.jpg", alt: "Youth picture book cover" },
   aboutBook2: { src: "/images/about-book-2.jpg", alt: "Youth picture book cover" },
   aboutBook3: { src: "/images/about-book-3.jpg", alt: "Youth picture book cover" },

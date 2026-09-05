@@ -33,7 +33,8 @@ export default function ProjectDetailPage({
   const loc = locale as Locale;
 
   const project = getProject(slug, loc);
-  if (!project) notFound();
+  // Coming-soon projects are teasers only — no detail page.
+  if (!project || project.status === "coming-soon") notFound();
 
   const detail = getProjectDetail(slug, loc);
   const related = getProjects(loc).filter((p) => p.slug !== slug);

@@ -12,6 +12,8 @@ import { media, homeDonationVideo } from "@/config/media";
 import { HeroVideo } from "@/components/home/HeroVideo";
 import { DonationWatchButton } from "@/components/home/DonationWatchButton";
 import { WorldMap } from "@/components/home/WorldMap";
+import { getOriginCountries } from "@/content/globalYouth";
+import type { Locale } from "@/i18n/routing";
 import { StoryCarousel } from "@/components/home/StoryCarousel";
 
 export default function HomePage({
@@ -309,7 +311,10 @@ export default function HomePage({
                 </CtaLink>
               </div>
             </div>
-            <WorldMap seoulLabel={t("global.seoul")} />
+            <WorldMap
+              seoulLabel={t("global.seoul")}
+              countries={getOriginCountries(locale as Locale)}
+            />
           </div>
         </div>
       </section>

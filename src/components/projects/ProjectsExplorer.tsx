@@ -17,7 +17,12 @@ type Filters = {
 };
 
 const EMPTY: Filters = { field: "", country: "", mode: "", status: "" };
-const GROUP_ORDER: ProjectStatus[] = ["open", "ongoing", "completed"];
+const GROUP_ORDER: ProjectStatus[] = [
+  "coming-soon",
+  "open",
+  "ongoing",
+  "completed",
+];
 
 export function ProjectsExplorer({ items }: { items: LocalizedProject[] }) {
   const t = useTranslations("projects");
@@ -26,10 +31,14 @@ export function ProjectsExplorer({ items }: { items: LocalizedProject[] }) {
   // Filter options derived from the data (기획서 §4: 분야·국가·형식·상태).
   const options = useMemo(() => {
     const uniq = (vals: string[]) => Array.from(new Set(vals));
+    // Coming-soon teasers carry no real field/country/mode, so derive those
+    // options from real projects only (keeps "—" out of the dropdowns). The
+    // status filter still includes coming-soon so users can filter to it.
+    const real = items.filter((p) => p.status !== "coming-soon");
     return {
-      field: uniq(items.map((p) => p.field)),
-      country: uniq(items.map((p) => p.country)),
-      mode: uniq(items.map((p) => p.mode)),
+      field: uniq(real.map((p) => p.field)),
+      country: uniq(real.map((p) => p.country)),
+      mode: uniq(real.map((p) => p.mode)),
       status: uniq(items.map((p) => p.status)),
     };
   }, [items]);
@@ -63,8 +72,8 @@ export function ProjectsExplorer({ items }: { items: LocalizedProject[] }) {
 
   return (
     <div>
-      {/* FILTER BAR */}
-      <div className="flex flex-wrap items-end gap-4 rounded-sm border border-line bg-surface p-4">
+      {/* FILTER BAR — no background/border (sits directly on the page) */}
+      <div className="flex flex-wrap items-end gap-4">
         <Select
           label={t("filter.field")}
           value={filters.field}
@@ -157,7 +166,7 @@ function Select({
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="min-w-[9rem] rounded-md border border-line bg-white px-3 py-2 text-sm font-normal text-ink focus:border-accent focus:outline-none"
+        className="min-w-[9rem] appearance-none rounded-md border border-slate-400 bg-white bg-no-repeat py-2 pl-3 pr-10 text-sm font-normal text-ink [background-position:right_0.85rem_center] [background-size:1rem] focus:border-accent focus:outline-none bg-[url('data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20fill=%22none%22%20viewBox=%220%200%2024%2024%22%20stroke=%22%2364748b%22%20stroke-width=%222%22%3E%3Cpath%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22%20d=%22m6%209%206%206%206-6%22/%3E%3C/svg%3E')]"
       >
         <option value="">{allLabel}</option>
         {options.map((o) => (

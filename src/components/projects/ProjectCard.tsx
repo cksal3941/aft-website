@@ -28,6 +28,23 @@ export function ProjectCard({ project }: { project: LocalizedProject }) {
     setDday(days > 0 ? `D-${days}` : days === 0 ? t("dday") : t("closed"));
   }, [project.status, project.deadline, t]);
 
+  // Coming-soon is a teaser placeholder — no image, no detail link. Just a
+  // centered "Coming Soon" message.
+  if (project.status === "coming-soon") {
+    return (
+      <article className="card flex min-h-[300px] flex-col items-center justify-center gap-3 border-dashed text-center">
+        <span className="text-2xl font-extrabold tracking-tight text-teal sm:text-3xl">
+          Coming Soon
+        </span>
+        {project.oneLiner && (
+          <p className="max-w-[18rem] whitespace-pre-line text-sm text-muted">
+            {project.oneLiner}
+          </p>
+        )}
+      </article>
+    );
+  }
+
   return (
     <article className="card !p-0 group relative flex flex-col overflow-hidden">
       <Link
@@ -63,8 +80,7 @@ export function ProjectCard({ project }: { project: LocalizedProject }) {
         </span>
         <h3 className="text-lg font-bold text-ink">
           {/* Stretched link: the ::before overlay makes the whole card a click
-              target to the detail page. Interactive elements below (CTAs) sit
-              above it via `relative z-10`. */}
+              target to the detail page. */}
           <Link
             href={href}
             onClick={() => track("project_view", { slug: project.slug })}
@@ -73,10 +89,6 @@ export function ProjectCard({ project }: { project: LocalizedProject }) {
             {project.title}
           </Link>
         </h3>
-        {/* Card stays light — the detailed facts (age, cost, deadline) live on
-            the detail page's facts bar, reached by clicking the card. */}
-        {/* No CTA buttons — the whole card links to the detail page, where
-            Apply / View Results live. Keeps the card minimal. */}
         <p className="mt-2 line-clamp-2 text-sm text-muted transition-colors group-hover:text-accent-hover">
           {project.oneLiner}
         </p>

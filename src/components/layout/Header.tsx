@@ -37,7 +37,9 @@ export function Header() {
       className={`fixed inset-x-0 top-0 z-50 text-white transition-colors duration-300 ${
         transparent
           ? "bg-gradient-to-b from-black/45 to-transparent"
-          : "bg-navy shadow-sm"
+          : open
+            ? "bg-navy shadow-sm"
+            : "bg-navy/70 shadow-sm backdrop-blur-lg supports-[backdrop-filter]:bg-navy/55"
       }`}
     >
       <div className="mx-auto flex h-20 w-full items-center justify-between gap-4 px-5 sm:px-6 lg:px-8">

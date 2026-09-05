@@ -29,7 +29,8 @@
     "inkind": "In-kind Support",
     "expert": "Expert Volunteer",
     "support": "Support",
-    "contact": "Contact"
+    "contact": "Contact",
+    "orgChart": "Our Team"
   },
   "nav": {
     "about": "About",
@@ -63,7 +64,8 @@
       "sponsor": "Sponsor a Challenge",
       "venue": "Offer a Venue",
       "inkind": "In-kind Support",
-      "expert": "Expert Volunteer"
+      "expert": "Expert Volunteer",
+      "orgChart": "Our Team"
     }
   },
   "home": {
@@ -313,9 +315,10 @@
       "empty": "No projects match these filters yet."
     },
     "status": {
+      "coming-soon": "Coming Soon",
       "open": "Open",
       "ongoing": "Ongoing",
-      "completed": "Completed"
+      "completed": "Closed"
     },
     "mode": {
       "online": "Online",
@@ -327,6 +330,7 @@
       "dday": "D-DAY"
     },
     "groups": {
+      "coming-soon": "Coming Soon",
       "open": "Open Projects",
       "ongoing": "Ongoing Projects",
       "completed": "Past Projects"
@@ -635,7 +639,7 @@
     "info": {
       "title": "Other ways to reach us",
       "emailLabel": "Email",
-      "email": "hello@aft.org",
+      "email": "gmy8999@gmail.com",
       "joinLabel": "Youth membership",
       "join": "Start a youth application",
       "partnerLabel": "Partnership",
@@ -702,7 +706,8 @@
           "title": "Youth Hosts & Speakers",
           "body": "MC events and present the meaning of the work to visitors."
         }
-      }
+      },
+      "cta": "Meet our team"
     },
     "beyond": {
       "eyebrow": "Beyond the Canvas",
@@ -763,6 +768,12 @@
           "A structure that scales into products and public art"
         ]
       }
+    },
+    "team": {
+      "eyebrow": "Our Team",
+      "title": "The youth behind AFT.",
+      "repsTitle": "Student Representatives",
+      "deptsTitle": "Teams"
     }
   },
   "impact": {
@@ -1203,7 +1214,7 @@
     "explore": "Explore",
     "getInvolved": "Get Involved",
     "emailLabel": "Email",
-    "email": "hello@aft.org",
+    "email": "gmy8999@gmail.com",
     "privacy": "Privacy Policy",
     "terms": "Terms of Use",
     "rights": "AFT — Arts For Tomorrow. All rights reserved.",
@@ -1238,7 +1249,7 @@
       },
       "contact": {
         "title": "Contact",
-        "body": "For privacy-related questions, please contact hello@aft.org."
+        "body": "For privacy-related questions, please contact gmy8999@gmail.com."
       }
     }
   },
@@ -1275,7 +1286,7 @@
       },
       "contact": {
         "title": "Contact",
-        "body": "For questions about these terms, please contact hello@aft.org."
+        "body": "For questions about these terms, please contact gmy8999@gmail.com."
       }
     }
   },
@@ -1299,5 +1310,9 @@
     },
     "openNote": "New cities appear here only when real youth, schools and partners join — the map grows with the movement, not before it.",
     "mapLabel": "Seoul · Founded 2026"
+  },
+  "globalYouth": {
+    "eyebrow": "Global Community",
+    "title": "Youth from {count} countries, creating together"
   }
 }

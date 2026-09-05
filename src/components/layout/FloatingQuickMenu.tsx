@@ -4,7 +4,7 @@
 import { useState } from "react";
 
 const ICON_BASE = "/fq/";
-const EMAIL = "hello@aft.org";
+const EMAIL = "gmy8999@gmail.com";
 
 // TODO: replace with real AFT links once confirmed.
 const SNS_LINKS = {
