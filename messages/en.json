@@ -4,7 +4,8 @@
     "tagline": "A global nonprofit youth arts organization"
   },
   "forms": {
-    "submitting": "Submitting…"
+    "submitting": "Submitting…",
+    "selectCountry": "Select country"
   },
   "carousel": {
     "pause": "Pause slideshow",
@@ -22,10 +23,11 @@
     "advisor": "Become an Advisor",
     "globalNetwork": "Global Network",
     "partners": "Partners",
-    "venue": "Venue",
-    "sponsor": "Sponsor a Project",
+    "venue": "Offer a Venue",
+    "inquiry": "Become a Partner",
+    "sponsor": "Sponsor a Challenge",
     "inkind": "In-kind Support",
-    "expert": "Experts & Mentors",
+    "expert": "Expert Volunteer",
     "support": "Support",
     "contact": "Contact"
   },
@@ -57,11 +59,11 @@
       "ecoAction": "Donation & Eco Action",
       "globalNetwork": "Global Network",
       "seoulWorld": "From Seoul to the World",
-      "partnerWith": "Partner With Us",
-      "sponsor": "Sponsor a Project",
+      "partnerWith": "Become a Partner",
+      "sponsor": "Sponsor a Challenge",
       "venue": "Offer a Venue",
-      "inkind": "In-Kind Support",
-      "expert": "Expert & Mentor"
+      "inkind": "In-kind Support",
+      "expert": "Expert Volunteer"
     }
   },
   "home": {
@@ -346,6 +348,7 @@
       "orgName": "Organization name",
       "contactName": "Contact person",
       "contactEmail": "Contact email",
+      "phone": "Phone (optional)",
       "country": "Country",
       "partnershipType": "Partnership type",
       "timeline": "Preferred timeline",
@@ -366,7 +369,7 @@
       "over20m": "Over ₩20M",
       "flexible": "Flexible / to discuss"
     },
-    "submit": "Submit Inquiry",
+    "submit": "Submit",
     "validation": {
       "required": "This field is required.",
       "email": "Enter a valid email.",
@@ -395,6 +398,7 @@
       "orgName": "Organization name",
       "contactName": "Contact person",
       "contactEmail": "Contact email",
+      "phone": "Phone (optional)",
       "issue": "Social issue to address",
       "budget": "Sponsorship budget",
       "period": "Sponsorship period",
@@ -408,7 +412,7 @@
       "over20m": "Over ₩20M",
       "flexible": "Flexible / to discuss"
     },
-    "submit": "Submit Sponsorship Inquiry",
+    "submit": "Submit",
     "validation": {
       "required": "This field is required.",
       "email": "Enter a valid email.",
@@ -449,7 +453,7 @@
       "lodging": "Lodging",
       "media": "Media / promotion"
     },
-    "submit": "Submit In-kind Offer",
+    "submit": "Submit",
     "validation": {
       "required": "This field is required.",
       "email": "Enter a valid email.",
@@ -491,7 +495,7 @@
       "education": "Education",
       "other": "Other"
     },
-    "submit": "Submit Application",
+    "submit": "Submit",
     "validation": {
       "required": "This field is required.",
       "email": "Enter a valid email.",
@@ -532,7 +536,7 @@
       "creativeLeader": "Creative Leader",
       "other": "Other"
     },
-    "submit": "Submit Application",
+    "submit": "Submit",
     "validation": {
       "required": "This field is required.",
       "email": "Enter a valid email.",
@@ -564,6 +568,7 @@
       "orgName": "Organization / venue name",
       "contactName": "Contact person",
       "contactEmail": "Contact email",
+      "phone": "Phone (optional)",
       "country": "Country",
       "address": "Address",
       "city": "City",
@@ -597,7 +602,7 @@
       "discounted": "Discounted",
       "partnership": "As a paid partnership"
     },
-    "submit": "Submit Venue Offer",
+    "submit": "Submit",
     "validation": {
       "required": "This field is required.",
       "email": "Enter a valid email.",
@@ -1142,7 +1147,7 @@
     "nav": {
       "back": "Back",
       "saveContinue": "Save & Continue",
-      "submit": "Submit Application"
+      "submit": "Submit"
     },
     "review": {
       "title": "Review your application",

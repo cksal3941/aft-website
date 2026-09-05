@@ -3,6 +3,7 @@ import { use } from "react";
 import { useTranslations } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { CtaLink } from "@/components/ui/CtaLink";
+import { CtaArrow } from "@/components/ui/CtaArrow";
 import { PageHero } from "@/components/ui/PageHero";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { WorldMap } from "@/components/home/WorldMap";
@@ -44,7 +45,7 @@ export default function GlobalNetworkPage({
         subtitle={t("body")}
       >
         <CtaLink href={routes.join} variant="primary" event="join_click">
-          {t("cta")} <span className="cta-arrow" aria-hidden>→</span>
+          {t("cta")} <CtaArrow />
         </CtaLink>
       </PageHero>
 

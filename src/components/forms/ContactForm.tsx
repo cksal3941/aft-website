@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useTranslations } from "next-intl";
-import { Field, inputClass } from "./fields";
+import { Field, inputClass, selectClass } from "./fields";
 import { CheckIcon } from "@/components/ui/CheckIcon";
 
 const TYPES = [
@@ -90,7 +90,7 @@ export function ContactForm() {
       className="space-y-5 rounded-sm border border-line bg-white p-6 shadow-sm sm:p-8"
     >
       <Field label={t("form.type")}>
-        <select className={inputClass} {...register("type")}>
+        <select className={selectClass} {...register("type")}>
           {TYPES.map((ty) => (
             <option key={ty} value={ty}>
               {t(`form.types.${ty}`)}
@@ -122,14 +122,16 @@ export function ContactForm() {
         <textarea rows={5} className={inputClass} {...register("message")} />
       </Field>
 
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        aria-busy={isSubmitting}
-        className="btn-primary w-full disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
-      >
-        {isSubmitting ? t("form.submitting") : t("form.submit")}
-      </button>
+      <div className="flex justify-end">
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          aria-busy={isSubmitting}
+          className="btn-primary w-full disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+        >
+          {isSubmitting ? t("form.submitting") : t("form.submit")}
+        </button>
+      </div>
     </form>
   );
 }

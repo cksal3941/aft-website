@@ -4,6 +4,7 @@ import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { routes } from "@/config/nav";
 import { CtaLink } from "@/components/ui/CtaLink";
+import { CtaArrow } from "@/components/ui/CtaArrow";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { AftImage } from "@/components/ui/AftImage";
 import { CountUp } from "@/components/ui/CountUp";
@@ -304,7 +305,7 @@ export default function HomePage({
               <p className="whitespace-pre-line text-muted lg:whitespace-normal">{t("global.body")}</p>
               <div className="mt-8">
                 <CtaLink href={routes.globalNetwork} variant="primary">
-                  {t("global.cta")} <span className="cta-arrow" aria-hidden>→</span>
+                  {t("global.cta")} <CtaArrow />
                 </CtaLink>
               </div>
             </div>
@@ -350,7 +351,7 @@ export default function HomePage({
                   </p>
                   <div className="mt-5">
                     <CtaLink href={href} variant="secondary" event={event}>
-                      {t(`joinGlobal.cards.${key}.cta`)} <span className="cta-arrow" aria-hidden>→</span>
+                      {t(`joinGlobal.cards.${key}.cta`)} <CtaArrow />
                     </CtaLink>
                   </div>
                 </div>
@@ -432,7 +433,7 @@ export default function HomePage({
                 href={routes.support}
                 className="inline-flex items-center gap-2 rounded-sm bg-accent px-5 py-2.5 text-sm font-bold uppercase tracking-wide text-white shadow-lg transition-colors hover:bg-accent-hover lg:px-8 lg:py-4 lg:text-base"
               >
-                {t("support.ctaDonate")} <span className="cta-arrow" aria-hidden>→</span>
+                {t("support.ctaDonate")} <CtaArrow />
               </Link>
             </div>
           </div>

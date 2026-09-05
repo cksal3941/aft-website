@@ -5,6 +5,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { CtaLink } from "@/components/ui/CtaLink";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { CtaArrow } from "@/components/ui/CtaArrow";
 import { PageHero } from "@/components/ui/PageHero";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { media } from "@/config/media";
@@ -73,7 +74,14 @@ export default function PartnersPage({
           <SectionHeading eyebrow={t("why.eyebrow")} title={t("why.title")} centered />
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {whyKeys.map((k) => (
-              <div key={k} className="card">
+              <div
+                key={k}
+                data-reveal
+                className="card flex flex-col items-center text-center"
+              >
+                <span className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-full bg-teal/10 text-teal">
+                  <WhyIcon name={k} />
+                </span>
                 <h3 className="text-lg font-bold text-ink">
                   {t(`why.items.${k}.title`)}
                 </h3>
@@ -94,7 +102,14 @@ export default function PartnersPage({
           />
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {modelKeys.map((k) => (
-              <div key={k} className="card">
+              <div
+                key={k}
+                data-reveal
+                className="card flex flex-col items-center text-center"
+              >
+                <span className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-full bg-teal/10 text-teal">
+                  <ModelIcon name={k} />
+                </span>
                 <h3 className="font-bold text-ink">{t(`models.items.${k}.title`)}</h3>
                 <p className="mt-2 text-sm text-muted">
                   {t(`models.items.${k}.body`)}
@@ -108,12 +123,7 @@ export default function PartnersPage({
       {/* HOW IT WORKS — 5-step process infographic */}
       <section className="bg-white section">
         <div className="container-aft">
-          <div className="text-center">
-            <p className="eyebrow">{t("how.eyebrow")}</p>
-            <h2 className="mx-auto mt-3 max-w-3xl text-2xl font-bold tracking-tight text-ink sm:text-3xl">
-              {t("how.title")}
-            </h2>
-          </div>
+          <SectionHeading eyebrow={t("how.eyebrow")} title={t("how.title")} centered />
           <ol className="mt-14 flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-0">
             {howSteps.map((k, i) => (
               <li
@@ -149,34 +159,125 @@ export default function PartnersPage({
       {/* PARTNERSHIP TYPES → forms (§7.1) */}
       <section className="bg-white section">
         <div className="container-aft">
-          <p className="eyebrow">{t("types.eyebrow")}</p>
-          <h2 className="mt-3 text-2xl font-bold tracking-tight text-ink sm:text-3xl">{t("types.title")}</h2>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {typeKeys.map((k) => (
-              <Link
-                key={k}
-                href={typeHref[k]}
-                className="card group flex flex-col hover:border-accent"
-              >
-                <div className="flex items-center justify-between gap-3">
-                  <h3 className="font-bold text-ink">{t(`types.items.${k}.title`)}</h3>
-                  <span
-                    className="cta-arrow shrink-0 text-lg font-semibold text-accent"
-                    aria-hidden
-                  >
-                    →
+          <SectionHeading eyebrow={t("types.eyebrow")} title={t("types.title")} centered />
+          <ul className="mx-auto mt-10 max-w-2xl divide-y divide-line overflow-hidden rounded-lg border border-line">
+            {typeKeys.map((k, i) => (
+              <li key={k}>
+                <Link
+                  href={typeHref[k]}
+                  className="group flex items-center gap-5 px-5 py-6 transition-colors hover:bg-surface sm:px-8"
+                >
+                  <span className="w-8 shrink-0 text-lg font-bold tabular-nums text-accent/50 transition-colors group-hover:text-accent sm:w-10">
+                    {String(i + 1).padStart(2, "0")}
                   </span>
-                </div>
-                <p className="mt-2 text-sm text-muted">
-                  {t(`types.items.${k}.body`)}
-                </p>
-              </Link>
+                  <div className="min-w-0 flex-1">
+                    <h3 className="font-bold text-ink">
+                      {t(`types.items.${k}.title`)}
+                    </h3>
+                    <p className="mt-1 text-sm text-muted">
+                      {t(`types.items.${k}.body`)}
+                    </p>
+                  </div>
+                  <CtaArrow className="size-6 text-muted transition-colors group-hover:text-accent" />
+                </Link>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
     </>
   );
+}
+
+// Icons for the "WHY PARTNER" cards — same badge treatment as the About page's
+// youth-led-teams section. Simple 24×24 line icons (stroke = currentColor) so
+// they inherit the teal badge color.
+function WhyIcon({ name }: { name: string }) {
+  const common = {
+    viewBox: "0 0 24 24",
+    width: 26,
+    height: 26,
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 1.8,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+    "aria-hidden": true,
+  };
+  switch (name) {
+    case "youth": // 청소년 성장·잠재력 — sparkles
+      return (
+        <svg {...common}>
+          <path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9z" />
+          <path d="M19 14.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z" />
+        </svg>
+      );
+    case "society": // 사회적 가치·영향 — globe
+      return (
+        <svg {...common}>
+          <circle cx="12" cy="12" r="9" />
+          <path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" />
+        </svg>
+      );
+    case "org": // 기관·브랜드 성장 — building
+      return (
+        <svg {...common}>
+          <rect x="4" y="3" width="16" height="18" rx="1" />
+          <path d="M9 8h.01M15 8h.01M9 12h.01M15 12h.01M9 16h6" />
+        </svg>
+      );
+    default:
+      return null;
+  }
+}
+
+// Icons for the "협력 모델" (partnership models) cards — same teal badge
+// treatment as the WHY cards above. Simple 24×24 line icons.
+function ModelIcon({ name }: { name: string }) {
+  const common = {
+    viewBox: "0 0 24 24",
+    width: 26,
+    height: 26,
+    fill: "none",
+    stroke: "currentColor",
+    strokeWidth: 1.8,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+    "aria-hidden": true,
+  };
+  switch (name) {
+    case "corporate": // 기업 협력 — briefcase
+      return (
+        <svg {...common}>
+          <rect x="3" y="7" width="18" height="13" rx="2" />
+          <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18" />
+        </svg>
+      );
+    case "public": // 공공·기관 — landmark
+      return (
+        <svg {...common}>
+          <path d="M3 9l9-6 9 6" />
+          <path d="M5 9v9M10 9v9M14 9v9M19 9v9M3 21h18" />
+        </svg>
+      );
+    case "venue": // 공간 제공 — location pin
+      return (
+        <svg {...common}>
+          <path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11z" />
+          <circle cx="12" cy="10" r="2.5" />
+        </svg>
+      );
+    case "inkind": // 물품·현물 후원 — gift box
+      return (
+        <svg {...common}>
+          <path d="M20 12v8a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-8" />
+          <rect x="2" y="7" width="20" height="5" rx="1" />
+          <path d="M12 21V7M12 7S11 3 8.5 3 6 5 6 5s0 2 3 2M12 7s1-4 3.5-4S18 5 18 5s0 2-3 2" />
+        </svg>
+      );
+    default:
+      return null;
+  }
 }
 
 // Step icons for the "협력 절차" process infographic. Simple 24×24 line icons

@@ -2,6 +2,7 @@
 
 import type { ReactNode } from "react";
 import { Link } from "@/i18n/navigation";
+import { CtaArrow } from "@/components/ui/CtaArrow";
 import { track, type AftEvent } from "@/lib/analytics";
 
 type Variant = "primary" | "secondary" | "secondary-dark" | "text";
@@ -32,7 +33,7 @@ export function CtaLink({
       onClick={event ? () => track(event, { source: "cta" }) : undefined}
     >
       {children}
-      {variant === "text" && <span className="cta-arrow" aria-hidden>→</span>}
+      {variant === "text" && <CtaArrow />}
     </Link>
   );
 }

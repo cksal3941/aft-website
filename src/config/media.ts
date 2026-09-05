@@ -2,7 +2,7 @@
 //
 // HOW TO ADD REAL YOUTH ARTWORK PHOTOS:
 //   1. Drop the file into `public/images/` (see public/images/README.md for names).
-//   2. Set `src` below to `/images/<filename>` (e.g. "/images/home-hero.jpg").
+//   2. Set `src` below to `/images/<filename>` (e.g. "/images/home-featured.jpg").
 //   3. That's it — the slot swaps from the gradient placeholder to the photo.
 //
 // Leave `src: null` for any slot you don't have a photo for yet.
@@ -20,10 +20,12 @@ export const homeHeroVideo: {
   src: string | null;
   srcMobile?: string | null;
   poster: string | null;
+  posterMobile?: string | null;
 } = {
   src: "/videos/hongik-hero-16x9.mp4",
   srcMobile: "/videos/hongik-hero-9x16.mp4",
-  poster: "/images/about-hero.jpg",
+  poster: "/images/hero-poster-16x9.jpg",
+  posterMobile: "/images/hero-poster-9x16.jpg",
 };
 
 // AFT × WWF donation-ceremony clip (07 · DONATION & ECO ACTION). Same pattern

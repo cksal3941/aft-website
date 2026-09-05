@@ -26,7 +26,7 @@ export type Project = {
   /** featured on HOME / IMPACT */
   featured?: boolean;
   coverTone?: "ocean" | "default";
-  /** path to a real cover photo, e.g. "/images/project-our-ocean.jpg"; null = placeholder */
+  /** path to a real cover photo, e.g. "/images/project-our-ocean-our-tomorrow.jpg"; null = placeholder */
   cover?: string | null;
   /** Description shown on the detail page for open calls / competitions
       (공모전 소개). Use "\n" to split paragraphs. */

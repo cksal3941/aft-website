@@ -13,7 +13,7 @@ export type Story = {
   quote: LocalizedText;
   body: LocalizedText;
   coverTone?: "ocean" | "default";
-  /** path to a real photo, e.g. "/images/story-marine.jpg"; null = placeholder */
+  /** path to a real photo, e.g. "/images/story-from-drawing-to-donation.jpg"; null = placeholder */
   cover?: string | null;
 };
 

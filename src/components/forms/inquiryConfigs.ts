@@ -9,6 +9,8 @@ import type { AftEvent } from "@/lib/analytics";
 export type FieldType =
   | "text"
   | "email"
+  | "tel"
+  | "country"
   | "textarea"
   | "number"
   | "date"
@@ -54,7 +56,8 @@ export const partnershipConfig: InquiryConfig = {
         { name: "orgName", type: "text", required: true },
         { name: "contactName", type: "text", required: true, half: true },
         { name: "contactEmail", type: "email", half: true },
-        { name: "country", type: "text", half: true },
+        { name: "phone", type: "tel", half: true },
+        { name: "country", type: "country", half: true },
       ],
     },
     {
@@ -93,6 +96,7 @@ export const sponsorConfig: InquiryConfig = {
         { name: "orgName", type: "text", required: true },
         { name: "contactName", type: "text", required: true, half: true },
         { name: "contactEmail", type: "email", half: true },
+        { name: "phone", type: "tel", half: true },
       ],
     },
     {
@@ -154,7 +158,7 @@ export const expertConfig: InquiryConfig = {
       fields: [
         { name: "name", type: "text", required: true },
         { name: "email", type: "email", half: true },
-        { name: "country", type: "text", half: true },
+        { name: "country", type: "country", half: true },
       ],
     },
     {
@@ -185,7 +189,7 @@ export const advisorConfig: InquiryConfig = {
       fields: [
         { name: "name", type: "text", required: true },
         { name: "email", type: "email", half: true },
-        { name: "country", type: "text", half: true },
+        { name: "country", type: "country", half: true },
       ],
     },
     {

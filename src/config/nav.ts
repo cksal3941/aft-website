@@ -54,7 +54,7 @@ export const mainNav: NavItem[] = [
     key: "partners",
     href: "/partners",
     children: [
-      { key: "partnerWith", href: "/partners" },
+      { key: "partnerWith", href: "/partners/inquiry" },
       { key: "sponsor", href: "/partners/sponsor" },
       { key: "venue", href: "/partners/venue" },
       { key: "inkind", href: "/partners/in-kind" },

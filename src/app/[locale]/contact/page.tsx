@@ -5,6 +5,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { PageHero } from "@/components/ui/PageHero";
+import { CtaArrow } from "@/components/ui/CtaArrow";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { media } from "@/config/media";
 import { routes } from "@/config/nav";
@@ -44,7 +45,7 @@ export default function ContactPage({
       <Breadcrumb />
 
       {/* FORM + INFO */}
-      <section className="bg-surface section">
+      <section className="bg-white section">
         <div className="container-aft grid gap-10 lg:grid-cols-[1.6fr_1fr]">
           <ContactForm />
 
@@ -70,7 +71,7 @@ export default function ContactPage({
                 </dt>
                 <dd className="mt-1">
                   <Link href={routes.apply} className="btn-text">
-                    {t("info.join")} <span className="cta-arrow" aria-hidden>→</span>
+                    {t("info.join")} <CtaArrow />
                   </Link>
                 </dd>
               </div>
@@ -80,7 +81,7 @@ export default function ContactPage({
                 </dt>
                 <dd className="mt-1">
                   <Link href={routes.partners} className="btn-text">
-                    {t("info.partner")} <span className="cta-arrow" aria-hidden>→</span>
+                    {t("info.partner")} <CtaArrow />
                   </Link>
                 </dd>
               </div>

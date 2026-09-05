@@ -190,7 +190,7 @@ export function YouthApplicationForm() {
               {ROLES.map((r) => (
                 <label
                   key={r}
-                  className="flex cursor-pointer items-start gap-3 rounded-md border border-line p-4 hover:border-accent has-[:checked]:border-accent has-[:checked]:bg-accent-soft"
+                  className="flex cursor-pointer items-start gap-3 rounded-md border border-slate-400 p-4 hover:border-accent has-[:checked]:border-accent has-[:checked]:bg-accent-soft"
                 >
                   <input
                     type="radio"
@@ -254,7 +254,7 @@ export function YouthApplicationForm() {
                 {INTERESTS.map((i) => (
                   <label
                     key={i}
-                    className="flex cursor-pointer items-center gap-3 rounded-md border border-line p-3 hover:border-accent has-[:checked]:border-accent has-[:checked]:bg-accent-soft"
+                    className="flex cursor-pointer items-center gap-3 rounded-md border border-slate-400 p-3 hover:border-accent has-[:checked]:border-accent has-[:checked]:bg-accent-soft"
                   >
                     <input
                       type="checkbox"
@@ -275,7 +275,7 @@ export function YouthApplicationForm() {
                 {MODES.map((m) => (
                   <label
                     key={m}
-                    className="flex cursor-pointer items-center gap-2 rounded-md border border-line px-4 py-2 hover:border-accent has-[:checked]:border-accent has-[:checked]:bg-accent-soft"
+                    className="flex cursor-pointer items-center gap-2 rounded-md border border-slate-400 px-4 py-2 hover:border-accent has-[:checked]:border-accent has-[:checked]:bg-accent-soft"
                   >
                     <input
                       type="radio"
@@ -319,7 +319,7 @@ export function YouthApplicationForm() {
                 />
               </Field>
             </div>
-            <div className="space-y-3 rounded-md border border-line bg-surface p-4">
+            <div className="space-y-3">
               <label className="flex items-start gap-3 text-sm text-ink">
                 <input
                   type="checkbox"
@@ -402,7 +402,7 @@ export function YouthApplicationForm() {
 }
 
 const inputClass =
-  "w-full rounded-md border border-line bg-white px-3 py-2.5 text-sm text-ink focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent";
+  "w-full rounded-md border border-slate-400 bg-white px-3 py-2.5 text-sm text-ink placeholder:text-slate-400 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent";
 
 function Field({
   label,

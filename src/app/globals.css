@@ -163,6 +163,14 @@ button:hover .cta-arrow,
   }
 }
 
+/* While the full-screen mobile nav is open: lock scroll + hide the quick menu */
+body.nav-open {
+  overflow: hidden;
+}
+body.nav-open .footer-quick {
+  display: none;
+}
+
 /* ── Floating quick menu (contact · phone · SNS · TOP), ported from CnA ── */
 .footer-quick {
   position: fixed;

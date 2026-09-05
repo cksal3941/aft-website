@@ -6,7 +6,15 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useTranslations } from "next-intl";
 import { track } from "@/lib/analytics";
-import { Field, FormSection, SubmittedCard, inputClass, makeRef } from "./fields";
+import {
+  Field,
+  FormSection,
+  SubmittedCard,
+  CountrySelect,
+  inputClass,
+  selectClass,
+  makeRef,
+} from "./fields";
 
 const SPACE_TYPES = ["gallery", "hall", "outdoor", "other"] as const;
 const EQUIPMENT = ["projector", "sound", "lighting", "wifi", "seating"] as const;
@@ -23,6 +31,7 @@ export function VenueSupportForm() {
         orgName: z.string().min(1, t("validation.required")),
         contactName: z.string().min(1, t("validation.required")),
         contactEmail: z.string().email(t("validation.email")),
+        phone: z.string().optional().default(""),
         country: z.string().optional().default(""),
         address: z.string().min(1, t("validation.required")),
         city: z.string().optional().default(""),
@@ -55,6 +64,7 @@ export function VenueSupportForm() {
       orgName: "",
       contactName: "",
       contactEmail: "",
+      phone: "",
       country: "",
       address: "",
       city: "",
@@ -113,8 +123,20 @@ export function VenueSupportForm() {
           <Field label={t("fields.contactEmail")} error={errors.contactEmail?.message}>
             <input className={inputClass} type="email" {...register("contactEmail")} />
           </Field>
+          <Field label={t("fields.phone")}>
+            <input
+              className={inputClass}
+              type="tel"
+              inputMode="tel"
+              placeholder="+82 10-0000-0000"
+              {...register("phone")}
+            />
+          </Field>
           <Field label={t("fields.country")}>
-            <input className={inputClass} {...register("country")} />
+            <CountrySelect
+              field={register("country")}
+              placeholder={tForms("selectCountry")}
+            />
           </Field>
         </div>
       </FormSection>
@@ -129,7 +151,7 @@ export function VenueSupportForm() {
             <input className={inputClass} {...register("city")} />
           </Field>
           <Field label={t("fields.spaceType")}>
-            <select className={inputClass} {...register("spaceType")}>
+            <select className={selectClass} {...register("spaceType")}>
               {SPACE_TYPES.map((s) => (
                 <option key={s} value={s}>
                   {t(`spaceTypes.${s}`)}
@@ -156,7 +178,7 @@ export function VenueSupportForm() {
             {EQUIPMENT.map((e) => (
               <label
                 key={e}
-                className="flex cursor-pointer items-center gap-3 rounded-md border border-line p-3 hover:border-accent has-[:checked]:border-accent has-[:checked]:bg-accent-soft"
+                className="flex cursor-pointer items-center gap-3 rounded-md border border-slate-400 p-3 hover:border-accent has-[:checked]:border-accent has-[:checked]:bg-accent-soft"
               >
                 <input
                   type="checkbox"
@@ -195,7 +217,7 @@ export function VenueSupportForm() {
       </FormSection>
 
       {/* 5. SUPPORT SCOPE */}
-      <FormSection step="5" title={t("sections.scope")}>
+      <FormSection step="5" title={t("sections.scope")} last>
         <fieldset>
           <legend className="mb-2 text-sm font-semibold text-ink">
             {t("fields.supportType")}
@@ -204,7 +226,7 @@ export function VenueSupportForm() {
             {SUPPORT_TYPES.map((s) => (
               <label
                 key={s}
-                className="flex cursor-pointer items-center gap-2 rounded-md border border-line px-4 py-2 hover:border-accent has-[:checked]:border-accent has-[:checked]:bg-accent-soft"
+                className="flex cursor-pointer items-center gap-2 rounded-md border border-slate-400 px-4 py-2 hover:border-accent has-[:checked]:border-accent has-[:checked]:bg-accent-soft"
               >
                 <input
                   type="radio"
@@ -220,7 +242,7 @@ export function VenueSupportForm() {
         <Field label={t("fields.message")}>
           <textarea rows={3} className={inputClass} {...register("message")} />
         </Field>
-        <div className="rounded-md border border-line bg-surface p-4">
+        <div>
           <label className="flex items-start gap-3 text-sm text-ink">
             <input
               type="checkbox"
@@ -238,14 +260,16 @@ export function VenueSupportForm() {
         </div>
       </FormSection>
 
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        aria-busy={isSubmitting}
-        className="btn-primary w-full sm:w-auto disabled:cursor-not-allowed disabled:opacity-60"
-      >
-        {isSubmitting ? tForms("submitting") : t("submit")}
-      </button>
+      <div className="flex justify-end">
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          aria-busy={isSubmitting}
+          className="btn-primary w-full sm:w-auto disabled:cursor-not-allowed disabled:opacity-60"
+        >
+          {isSubmitting ? tForms("submitting") : t("submit")}
+        </button>
+      </div>
     </form>
   );
 }

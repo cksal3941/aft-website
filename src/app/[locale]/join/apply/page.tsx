@@ -42,7 +42,7 @@ export default function YouthApplyPage({
 
       <Breadcrumb />
 
-      <section className="bg-surface section-sm">
+      <section className="bg-white section-sm">
         <div className="container-aft">
           <YouthApplicationForm />
         </div>

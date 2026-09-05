@@ -15,7 +15,7 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "venueForm" });
   return {
-    title: t("hero.eyebrow"),
+    title: t("hero.title"),
     description: t("hero.subtitle"),
   };
 }
@@ -31,18 +31,11 @@ export default function VenuePage({
 
   return (
     <>
-      <PageHero
-        image={media.joinPartners}
-        eyebrow={t("hero.eyebrow")}
-        title={t("hero.title")}
-        subtitle={t("hero.subtitle")}
-      >
-        <p className="text-sm text-white/60">{t("hero.time")}</p>
-      </PageHero>
+      <PageHero image={media.joinPartners} eyebrow={t("hero.title")} animate={false} />
 
       <Breadcrumb />
 
-      <section className="bg-surface section-sm">
+      <section className="bg-white section-sm">
         <div className="container-aft">
           <VenueSupportForm />
         </div>

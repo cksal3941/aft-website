@@ -5,8 +5,7 @@ import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { Logo } from "@/components/ui/Logo";
 import { LanguageSwitcher } from "./LanguageSwitcher";
-import { mainNav, mobileNav, routes } from "@/config/nav";
-import { track } from "@/lib/analytics";
+import { mainNav, mobileNav } from "@/config/nav";
 
 export function Header() {
   const t = useTranslations("nav");
@@ -23,6 +22,13 @@ export function Header() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, [pathname]);
+
+  // While the full-screen mobile menu is open, lock body scroll and hide the
+  // floating quick menu (handled in globals.css via the `nav-open` class).
+  useEffect(() => {
+    document.body.classList.toggle("nav-open", open);
+    return () => document.body.classList.remove("nav-open");
+  }, [open]);
 
   const transparent = !scrolled && !open;
 
@@ -84,15 +90,6 @@ export function Header() {
             <LanguageSwitcher tone="light" />
           </div>
 
-          {/* JOIN AFT — flat black @ 70% opacity, no border, no radius */}
-          <Link
-            href={routes.join}
-            onClick={() => track("join_click", { source: "header" })}
-            className="hidden rounded-sm bg-black/70 px-6 py-2.5 text-sm font-semibold uppercase tracking-wide text-white transition-colors duration-200 hover:bg-white hover:text-ink sm:inline-flex"
-          >
-            {t("join")}
-          </Link>
-
           {/* Hamburger */}
           <button
             type="button"
@@ -122,14 +119,14 @@ export function Header() {
         </div>
       </div>
 
-      {/* Mobile menu — slides open/closed; accordion sections inside */}
+      {/* Mobile menu — full-screen overlay below the header; accordion inside */}
       <div
-        className={`grid overflow-hidden bg-navy transition-all duration-300 ease-out lg:hidden ${
-          open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+        className={`fixed inset-x-0 bottom-0 top-20 z-40 bg-navy transition-opacity duration-300 ease-out lg:hidden ${
+          open ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
-        <div className="min-h-0 overflow-hidden">
-          <div className="max-h-[calc(100vh-5rem)] overflow-y-auto border-t border-white/10">
+        <div className="h-full overflow-hidden">
+          <div className="h-full overflow-y-auto border-t border-white/10">
             <nav className="container-aft flex flex-col py-2">
             {mobileNav.map((item) => {
               const isOpen = openKey === item.key;

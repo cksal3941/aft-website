@@ -6,7 +6,15 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { useTranslations } from "next-intl";
 import { track } from "@/lib/analytics";
-import { Field, FormSection, SubmittedCard, inputClass, makeRef } from "./fields";
+import {
+  Field,
+  FormSection,
+  SubmittedCard,
+  CountrySelect,
+  inputClass,
+  selectClass,
+  makeRef,
+} from "./fields";
 import type { InquiryConfig, FieldConfig } from "./inquiryConfigs";
 
 // One engine renders every inquiry form from its config (기획서 §7.1, §9 폼 공통 구조).
@@ -103,6 +111,7 @@ export function InquiryForm({ config }: { config: InquiryConfig }) {
           key={section.key}
           step={String(i + 1)}
           title={t(`sections.${section.key}`)}
+          last={i === config.sections.length - 1}
         >
           <div className="grid gap-5 sm:grid-cols-2">
             {section.fields.map((f) => (
@@ -110,6 +119,7 @@ export function InquiryForm({ config }: { config: InquiryConfig }) {
                 key={f.name}
                 field={f}
                 t={t}
+                tForms={tForms}
                 register={register}
                 error={errors[f.name]?.message as string | undefined}
               />
@@ -118,14 +128,16 @@ export function InquiryForm({ config }: { config: InquiryConfig }) {
         </FormSection>
       ))}
 
-      <button
-        type="submit"
-        disabled={isSubmitting}
-        aria-busy={isSubmitting}
-        className="btn-primary w-full sm:w-auto disabled:cursor-not-allowed disabled:opacity-60"
-      >
-        {isSubmitting ? tForms("submitting") : t("submit")}
-      </button>
+      <div className="flex justify-end">
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          aria-busy={isSubmitting}
+          className="btn-primary w-full sm:w-auto disabled:cursor-not-allowed disabled:opacity-60"
+        >
+          {isSubmitting ? tForms("submitting") : t("submit")}
+        </button>
+      </div>
     </form>
   );
 }
@@ -136,11 +148,13 @@ type T = ReturnType<typeof useTranslations>;
 function FieldRenderer({
   field: f,
   t,
+  tForms,
   register,
   error,
 }: {
   field: FieldConfig;
   t: T;
+  tForms: T;
   register: Register;
   error?: string;
 }) {
@@ -152,20 +166,18 @@ function FieldRenderer({
   if (f.type === "consent") {
     return (
       <div className={colClass}>
-        <div className="rounded-md border border-line bg-surface p-4">
-          <label className="flex items-start gap-3 text-sm text-ink">
-            <input
-              type="checkbox"
-              {...register(f.name)}
-              className="mt-1 accent-[var(--color-accent)]"
-            />
-            <span>
-              {label}
-              <span className="text-accent-hover"> *</span>
-            </span>
-          </label>
-          {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
-        </div>
+        <label className="flex items-start gap-3 text-sm text-ink">
+          <input
+            type="checkbox"
+            {...register(f.name)}
+            className="mt-1 accent-[var(--color-accent)]"
+          />
+          <span>
+            {label}
+            <span className="text-accent-hover"> *</span>
+          </span>
+        </label>
+        {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
       </div>
     );
   }
@@ -178,7 +190,7 @@ function FieldRenderer({
           {f.options?.map((opt) => (
             <label
               key={opt}
-              className="flex cursor-pointer items-center gap-3 rounded-md border border-line p-3 hover:border-accent has-[:checked]:border-accent has-[:checked]:bg-accent-soft"
+              className="flex cursor-pointer items-center gap-3 rounded-md border border-slate-400 p-3 hover:border-accent has-[:checked]:border-accent has-[:checked]:bg-accent-soft"
             >
               <input
                 type="checkbox"
@@ -204,7 +216,7 @@ function FieldRenderer({
           {f.options?.map((opt) => (
             <label
               key={opt}
-              className="flex cursor-pointer items-center gap-2 rounded-md border border-line px-4 py-2 hover:border-accent has-[:checked]:border-accent has-[:checked]:bg-accent-soft"
+              className="flex cursor-pointer items-center gap-2 rounded-md border border-slate-400 px-4 py-2 hover:border-accent has-[:checked]:border-accent has-[:checked]:bg-accent-soft"
             >
               <input
                 type="radio"
@@ -229,18 +241,38 @@ function FieldRenderer({
         {f.type === "textarea" ? (
           <textarea rows={4} className={inputClass} {...register(f.name)} />
         ) : f.type === "select" ? (
-          <select className={inputClass} {...register(f.name)}>
+          <select className={selectClass} {...register(f.name)}>
             {f.options?.map((opt) => (
               <option key={opt} value={opt}>
                 {t(`${f.optionsKey}.${opt}`)}
               </option>
             ))}
           </select>
+        ) : f.type === "country" ? (
+          <CountrySelect
+            field={register(f.name)}
+            placeholder={tForms("selectCountry")}
+          />
         ) : (
           <input
             className={inputClass}
-            type={f.type === "email" ? "email" : f.type === "date" ? "date" : "text"}
-            inputMode={f.type === "number" ? "numeric" : undefined}
+            type={
+              f.type === "email"
+                ? "email"
+                : f.type === "tel"
+                  ? "tel"
+                  : f.type === "date"
+                    ? "date"
+                    : "text"
+            }
+            inputMode={
+              f.type === "number"
+                ? "numeric"
+                : f.type === "tel"
+                  ? "tel"
+                  : undefined
+            }
+            placeholder={f.type === "tel" ? "+82 10-0000-0000" : undefined}
             {...register(f.name)}
           />
         )}

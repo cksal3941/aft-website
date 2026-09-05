@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-// Drop-in image slot. When `src` points to a real file (e.g. /images/home-hero.jpg)
+// Drop-in image slot. When `src` points to a real file (e.g. /images/home-featured.jpg)
 // it renders an optimized next/image; otherwise it shows the gradient placeholder,
 // so screens look intact until real youth artwork photos are added.
 export function AftImage({

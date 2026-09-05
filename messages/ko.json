@@ -4,7 +4,8 @@
     "tagline": "글로벌 비영리 청소년 예술단체"
   },
   "forms": {
-    "submitting": "제출 중…"
+    "submitting": "제출 중…",
+    "selectCountry": "국가 선택"
   },
   "carousel": {
     "pause": "슬라이드 자동재생 정지",
@@ -23,9 +24,10 @@
     "globalNetwork": "글로벌 네트워크",
     "partners": "파트너",
     "venue": "공간 제공",
-    "sponsor": "프로젝트 후원",
-    "inkind": "물품·현물 후원",
-    "expert": "전문가·멘토 참여",
+    "inquiry": "파트너 되기",
+    "sponsor": "챌린지 후원",
+    "inkind": "현물 지원",
+    "expert": "전문 봉사",
     "support": "서포트",
     "contact": "문의"
   },
@@ -58,10 +60,10 @@
       "globalNetwork": "글로벌 네트워크",
       "seoulWorld": "서울에서 세계로",
       "partnerWith": "파트너 되기",
-      "sponsor": "프로젝트 후원",
+      "sponsor": "챌린지 후원",
       "venue": "공간 제공",
-      "inkind": "물품·현물 후원",
-      "expert": "전문가·멘토 참여"
+      "inkind": "현물 지원",
+      "expert": "전문 봉사"
     }
   },
   "home": {
@@ -346,6 +348,7 @@
       "orgName": "기관명",
       "contactName": "담당자",
       "contactEmail": "담당자 이메일",
+      "phone": "전화번호 (선택)",
       "country": "국가",
       "partnershipType": "협력 유형",
       "timeline": "희망 일정",
@@ -366,7 +369,7 @@
       "over20m": "2,000만원 이상",
       "flexible": "협의 / 유동적"
     },
-    "submit": "문의 제출",
+    "submit": "제출",
     "validation": {
       "required": "필수 입력 항목입니다.",
       "email": "올바른 이메일을 입력하세요.",
@@ -395,6 +398,7 @@
       "orgName": "기관명",
       "contactName": "담당자",
       "contactEmail": "담당자 이메일",
+      "phone": "전화번호 (선택)",
       "issue": "다루고자 하는 사회문제",
       "budget": "후원 예산",
       "period": "후원 기간",
@@ -408,7 +412,7 @@
       "over20m": "2,000만원 이상",
       "flexible": "협의 / 유동적"
     },
-    "submit": "후원 문의 제출",
+    "submit": "제출",
     "validation": {
       "required": "필수 입력 항목입니다.",
       "email": "올바른 이메일을 입력하세요.",
@@ -449,7 +453,7 @@
       "lodging": "숙박",
       "media": "미디어 / 홍보"
     },
-    "submit": "현물 지원 제출",
+    "submit": "제출",
     "validation": {
       "required": "필수 입력 항목입니다.",
       "email": "올바른 이메일을 입력하세요.",
@@ -491,7 +495,7 @@
       "education": "교육",
       "other": "기타"
     },
-    "submit": "지원서 제출",
+    "submit": "제출",
     "validation": {
       "required": "필수 입력 항목입니다.",
       "email": "올바른 이메일을 입력하세요.",
@@ -532,7 +536,7 @@
       "creativeLeader": "크리에이티브 리더",
       "other": "기타"
     },
-    "submit": "신청서 제출",
+    "submit": "제출",
     "validation": {
       "required": "필수 입력 항목입니다.",
       "email": "올바른 이메일을 입력하세요.",
@@ -564,6 +568,7 @@
       "orgName": "기관 / 공간명",
       "contactName": "담당자",
       "contactEmail": "담당자 이메일",
+      "phone": "전화번호 (선택)",
       "country": "국가",
       "address": "주소",
       "city": "도시",
@@ -597,7 +602,7 @@
       "discounted": "할인 제공",
       "partnership": "유료 파트너십"
     },
-    "submit": "공간 제공 제출",
+    "submit": "제출",
     "validation": {
       "required": "필수 입력 항목입니다.",
       "email": "올바른 이메일을 입력하세요.",
@@ -1142,7 +1147,7 @@
     "nav": {
       "back": "이전",
       "saveContinue": "저장 후 계속",
-      "submit": "지원서 제출"
+      "submit": "제출"
     },
     "review": {
       "title": "지원 내용 확인",

@@ -19,6 +19,7 @@ const PATH_KEY: Record<string, string> = {
   "/join/advisor": "advisor",
   "/global-network": "globalNetwork",
   "/partners": "partners",
+  "/partners/inquiry": "inquiry",
   "/partners/venue": "venue",
   "/partners/sponsor": "sponsor",
   "/partners/in-kind": "inkind",

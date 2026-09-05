@@ -16,16 +16,20 @@ export function PageHero({
   title,
   image,
   children,
+  animate = true,
 }: {
   eyebrow?: string;
-  title: ReactNode;
+  title?: ReactNode;
   subtitle?: ReactNode;
   image?: MediaSlot;
   children?: ReactNode;
+  /** Set false to render the hero statically (no staggered entrance). */
+  animate?: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (!animate) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const el = ref.current;
     if (!el) return;
@@ -46,10 +50,10 @@ export function PageHero({
       tween.kill();
       gsap.set(targets, { clearProps: "opacity,transform" });
     };
-  }, []);
+  }, [animate]);
 
   return (
-    <section className="relative isolate -mt-20 overflow-hidden bg-navy text-white">
+    <section className="relative isolate -mt-20 flex min-h-[360px] items-center overflow-hidden bg-navy text-white md:min-h-[440px]">
       {image?.src && (
         <AftImage
           {...image}
@@ -60,10 +64,12 @@ export function PageHero({
       )}
       {/* Black transparent overlay for legibility over the photo */}
       <div className="absolute inset-0 bg-black/60" aria-hidden />
-      {/* Top padding clears the fixed 80px header the image sits behind */}
+      {/* Fixed min-height + vertical centering keeps every sub-page hero the same
+          size regardless of how much copy it holds. The top padding offsets the
+          fixed 80px header the hero sits behind. */}
       <div
         ref={ref}
-        className="relative z-10 container-aft pt-36 pb-16 md:pt-44 md:pb-24"
+        className="relative z-10 w-full container-aft pt-20 pb-8"
       >
         <div className="mx-auto max-w-3xl text-center">
           {/* Page name = the title */}
