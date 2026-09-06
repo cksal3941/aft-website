@@ -59,3 +59,7 @@ public/images/KakaoTalk_*
 !public/images/GILL1194.jpg
 !public/images/GILL1357.jpg
 !public/images/GILL1414.jpg
+
+# Original 275MB exhibition catalog PDF — kept locally only. The web-optimized
+# 7.7MB version (public/images/hyangwoljae-gallery-2025-catalog.pdf) is served.
+/catalog-source/

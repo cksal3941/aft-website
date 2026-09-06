@@ -1179,14 +1179,19 @@
   "projectDetail": {
     "sections": {
       "facts": "Project Facts",
-      "overview": "About the Competition",
+      "overview": "About AFT",
       "howToApply": "How to Take Part",
       "challenge": "The Challenge",
       "youngIdeas": "Young Ideas",
       "creativeAction": "Creative Action",
       "gallery": "Gallery",
+      "video": "Exhibition Films",
       "impact": "The Impact",
       "related": "Related Projects"
+    },
+    "catalog": {
+      "title": "Exhibition Catalog",
+      "view": "View catalog (PDF)"
     },
     "facts": {
       "duration": "Duration",

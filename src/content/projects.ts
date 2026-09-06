@@ -28,6 +28,9 @@ export type Project = {
   coverTone?: "ocean" | "default";
   /** path to a real cover photo, e.g. "/images/project-our-ocean-our-tomorrow.jpg"; null = placeholder */
   cover?: string | null;
+  /** CSS object-position for the hero crop (e.g. "center 70%") when the default
+      centre crop cuts the subject. */
+  coverPosition?: string;
   /** Description shown on the detail page for open calls / competitions
       (공모전 소개). Use "\n" to split paragraphs. */
   overview?: LocalizedText;
@@ -62,12 +65,12 @@ export const projects: Project[] = [
     slug: "hyangwoljae-gallery-2025",
     status: "completed",
     title: {
-      en: "Hyangwoljae Gallery Exhibition",
-      ko: "향월재 갤러리 전시",
+      en: "Hyangwoljae",
+      ko: "향월재",
     },
     oneLiner: {
-      en: "AFT youth members' 2025 group exhibition at Hyangwoljae Gallery.",
-      ko: "AFT 청소년 회원들이 2025년 향월재 갤러리에서 연 단체 전시.",
+      en: "'Hyangwoljae' — AFT youth members' 2025 group exhibition.",
+      ko: "AFT 청소년 회원들이 2025년에 연 단체 전시 '향월재'.",
     },
     field: { en: "Exhibition", ko: "전시" },
     country: "KR",
@@ -77,8 +80,7 @@ export const projects: Project[] = [
     ageRange: "6+",
     language: "KR",
     cost: null,
-    // 전시 사진은 추후 추가 예정 (사진 들어오면 cover + details.gallery 채우기).
-    cover: null,
+    cover: "/images/aft-3.jpg",
   },
   {
     slug: "aft-membership-2025",
@@ -98,7 +100,13 @@ export const projects: Project[] = [
     ageRange: "6+",
     language: "KR",
     cost: null,
-    cover: null,
+    cover: "/images/aft-18.jpg",
+    // Group photo sits low in the frame — anchor the crop lower so faces aren't cut.
+    coverPosition: "center 72%",
+    overview: {
+      en: "AFT (Arts For Tomorrow) is a global non-profit arts organization that helps young people turn creativity into real action. Through painting, music, writing and film, we stand beside young artists so their work can grow into exhibitions, projects and social change — in Korea and around the world.\nNow we are looking for the first youth members to begin that journey with us. Age, hometown and favourite medium don't matter. If you want to show the world what you've made — to find your voice through art — there is a place for you here.\nAs a member you won't simply take classes. You'll create your own work and hang it in a real exhibition, write your own artist statement, stand in front of an audience, and connect with fellow young creators across the globe. Reach out any time — AFT will help you prepare your very first stage.",
+      ko: "AFT(Arts For Tomorrow)는 예술을 통해 청소년의 창의성을 실제 행동으로 이어가는 글로벌 비영리 예술단체입니다. 그림·음악·글·영상 등 저마다의 언어로 세상을 표현하고, 그 표현이 전시와 프로젝트, 나아가 사회적 변화로 이어지도록 청소년 곁에서 함께합니다.\nAFT는 그 여정을 함께 시작할 첫 청소년 회원을 찾습니다. 나이도, 사는 곳도, 좋아하는 표현 방식도 상관없습니다. '내가 만든 것을 세상에 보여주고 싶다', '예술로 나의 목소리를 내고 싶다'는 마음이 있다면 누구나 함께할 수 있습니다.\n회원이 되면 단순히 배우는 데 그치지 않습니다. 직접 작품을 만들어 전시를 열고, 작가노트를 쓰고, 관객 앞에 서며, 국내를 넘어 전 세계 또래 창작자들과 연결됩니다. 함께하고 싶다면 언제든 문의해 주세요 — 당신의 첫 무대를 AFT가 함께 준비하겠습니다.",
+    },
   },
   {
     // Placeholder teaser — not a real project. Rendered as a "Coming Soon" card
@@ -137,6 +145,7 @@ export type LocalizedProject = {
   featured?: boolean;
   coverTone?: "ocean" | "default";
   cover?: string | null;
+  coverPosition?: string;
   overview?: string;
   howToApply?: string[];
 };
@@ -158,6 +167,7 @@ export function localizeProject(p: Project, locale: Locale): LocalizedProject {
     featured: p.featured,
     coverTone: p.coverTone,
     cover: p.cover ?? null,
+    coverPosition: p.coverPosition,
     overview: p.overview?.[locale],
     howToApply: p.howToApply?.map((x) => x[locale]),
   };
@@ -185,6 +195,21 @@ export type Stat = {
   note?: LocalizedText;
 };
 
+export type VideoClip = {
+  src: string;
+  /** Poster frame shown before playback. */
+  poster?: string;
+  caption: LocalizedText;
+};
+
+export type Catalog = {
+  /** Path to the downloadable PDF under /public. */
+  src: string;
+  /** Rendered page images for the in-browser preview, in order. */
+  pages?: string[];
+  note?: LocalizedText;
+};
+
 export type ProjectDetail = {
   facts: {
     duration: LocalizedText;
@@ -200,6 +225,10 @@ export type ProjectDetail = {
   /** Real exhibition photos. When present, the detail page renders these
       instead of the `galleryCount` placeholder tiles. */
   gallery?: { src: string; alt: LocalizedText }[];
+  /** Exhibition films, rendered as a video grid when present. */
+  videos?: VideoClip[];
+  /** Printed catalog (도록): download + optional page preview. */
+  catalog?: Catalog;
 };
 
 const details: Record<string, ProjectDetail> = {
@@ -260,7 +289,7 @@ const details: Record<string, ProjectDetail> = {
         value: "₩1,000,000",
       },
     ],
-    galleryCount: 6,
+    galleryCount: 9,
     gallery: [
       {
         src: "/images/GILL1409.jpg",
@@ -304,11 +333,229 @@ const details: Record<string, ProjectDetail> = {
           ko: "전시 개막식 현장",
         },
       },
+      {
+        src: "/images/GILL1414.jpg",
+        alt: {
+          en: "All the young artists together on stage",
+          ko: "무대에 함께 오른 참여 청소년 작가 전원",
+        },
+      },
+      {
+        src: "/images/GIL00345.jpg",
+        alt: {
+          en: "A young artist reading her statement aloud",
+          ko: "자신의 작가노트를 발표하는 청소년 작가",
+        },
+      },
+      {
+        src: "/images/GILL1152.jpg",
+        alt: {
+          en: "A young artist presenting his picture book",
+          ko: "자신의 그림책을 소개하는 청소년 작가",
+        },
+      },
     ],
+    videos: [
+      {
+        src: "/videos/ocean-1.mp4",
+        poster: "/images/video-ocean-1-poster.jpg",
+        caption: {
+          en: "A walk through the ocean exhibition",
+          ko: "전시장 둘러보기",
+        },
+      },
+      {
+        src: "/videos/ocean-2.mp4",
+        poster: "/images/video-ocean-2-poster.jpg",
+        caption: {
+          en: "Introducing the young artists",
+          ko: "참여 작가 소개 발표회",
+        },
+      },
+      {
+        src: "/videos/ocean-3.mp4",
+        poster: "/images/video-ocean-3-poster.jpg",
+        caption: {
+          en: "The opening string ensemble",
+          ko: "오프닝 현악 앙상블 공연",
+        },
+      },
+      {
+        src: "/videos/ocean-4.mp4",
+        poster: "/images/video-ocean-4-poster.jpg",
+        caption: {
+          en: "Welcoming visitors at the reception",
+          ko: "행사장 리셉션과 관람객",
+        },
+      },
+    ],
+  },
+
+  "hyangwoljae-gallery-2025": {
+    facts: {
+      duration: { en: "10–17 Jul 2025", ko: "2025.7.10 – 7.17" },
+      location: {
+        en: "Seoul",
+        ko: "서울",
+      },
+      audience: {
+        en: "AFT young artists (ages 6+)",
+        ko: "AFT 청소년 작가 (만 6세 이상)",
+      },
+    },
+    challenge: {
+      en: "Everyone draws, but very few young people ever show their work to the world under their own name. How could AFT's youth members hold their first real exhibition — not as a school assignment, but as artists?",
+      ko: "누구나 그림을 그리지만, 자신의 이름을 걸고 작품을 세상에 내보이는 청소년은 많지 않습니다. AFT 청소년 회원들이 숙제가 아니라 '작가'로서 여는 첫 전시를 어떻게 만들 수 있을까요?",
+    },
+    youngIdeas: [
+      {
+        en: "Look at the world through their own eyes and turn it into a painting — 'The Wonderful World of Me'.",
+        ko: "자신만의 시선으로 세상을 바라보고 회화로 완성하기 — 'The Wonderful World of Me'.",
+      },
+      {
+        en: "Write their own artist statement and caption for every work.",
+        ko: "작품마다 작가노트와 설명을 직접 쓰기.",
+      },
+      {
+        en: "Co-plan the exhibition and present their work to a live audience.",
+        ko: "전시를 함께 기획하고, 관객 앞에서 자신의 작품을 소개하기.",
+      },
+    ],
+    creativeAction: [
+      { en: "Exhibition planning & installation", ko: "전시 기획과 작품 설치" },
+      { en: "Artist notes & printed catalog", ko: "작가노트와 작품 도록" },
+      { en: "Artwork presentation & artist talk", ko: "작품 발표와 아티스트 토크" },
+      { en: "On-site film & documentation", ko: "전시 현장 영상 기록" },
+      { en: "Opening string ensemble", ko: "오프닝 현악 앙상블 공연" },
+    ],
+    impactSummary: {
+      en: "For a week in July 2025, AFT's young members became artists for the first time. 21 young artists hung their own paintings, 6 young musicians played the opening concert, and the whole exhibition — 'Hyangwoljae' — was planned by four of the students themselves. A whole world, made and run by young hands.",
+      ko: "2025년 7월의 일주일 동안, AFT 청소년 회원들은 처음으로 '작가'가 되었습니다. 21명의 청소년 작가가 직접 그린 작품을 걸고, 6명의 청소년 음악가가 오프닝 공연을 열었으며, 전시 '향월재'는 4명의 청소년이 직접 기획했습니다. 청소년의 손으로 만들고 운영한 하나의 세계였습니다.",
+    },
+    impactStats: [
+      {
+        label: { en: "Young artists", ko: "참여 청소년 작가" },
+        value: "21",
+      },
+      {
+        label: { en: "Young musicians", ko: "참여 청소년 음악가" },
+        value: "6",
+      },
+      {
+        label: { en: "Youth curators", ko: "청소년 기획자" },
+        value: "4",
+      },
+    ],
+    galleryCount: 9,
+    gallery: [
+      {
+        src: "/images/aft-1.jpg",
+        alt: {
+          en: "The exhibition opening, with the gallery full of visitors",
+          ko: "관람객으로 가득 찬 전시 오프닝 현장",
+        },
+      },
+      {
+        src: "/images/aft-5.jpg",
+        alt: {
+          en: "Youth paintings hanging on the gallery wall",
+          ko: "전시장 벽에 걸린 청소년 작가들의 회화 작품",
+        },
+      },
+      {
+        src: "/images/aft-6.jpg",
+        alt: {
+          en: "Paintings of the city, the sea and everyday life",
+          ko: "도시·바다·일상을 담은 청소년 작품들",
+        },
+      },
+      {
+        src: "/images/aft-4.jpg",
+        alt: {
+          en: "Artworks lit by natural light in the gallery space",
+          ko: "자연광이 드는 전시 공간의 작품들",
+        },
+      },
+      {
+        src: "/images/aft-17.jpg",
+        alt: {
+          en: "A young artist presenting her work with a microphone",
+          ko: "마이크를 들고 자신의 작품을 소개하는 청소년 작가",
+        },
+      },
+      {
+        src: "/images/aft-19.jpg",
+        alt: {
+          en: "The opening string ensemble performance",
+          ko: "오프닝 현악 앙상블 공연",
+        },
+      },
+      {
+        src: "/images/aft-10.jpg",
+        alt: {
+          en: "A cello duet at the opening reception",
+          ko: "오프닝 리셉션의 첼로 이중주",
+        },
+      },
+      {
+        src: "/images/aft-12.jpg",
+        alt: {
+          en: "Guests gathered at the opening reception",
+          ko: "개막 리셉션에 모인 관람객들",
+        },
+      },
+      {
+        src: "/images/aft-18.jpg",
+        alt: {
+          en: "The young artists together after the exhibition",
+          ko: "전시를 마친 청소년 작가들의 단체 사진",
+        },
+      },
+    ],
+    videos: [
+      {
+        src: "/videos/aft-3.mp4",
+        poster: "/images/video-aft-3-poster.jpg",
+        caption: { en: "A walk through the exhibition", ko: "전시장 둘러보기" },
+      },
+      {
+        src: "/videos/aft-4.mp4",
+        poster: "/images/video-aft-4-poster.jpg",
+        caption: {
+          en: "The opening string ensemble",
+          ko: "오프닝 현악 앙상블 공연",
+        },
+      },
+      {
+        src: "/videos/aft-9.mp4",
+        poster: "/images/video-aft-9-poster.jpg",
+        caption: {
+          en: "A young artist introduces her work",
+          ko: "자신의 작품을 소개하는 청소년 작가",
+        },
+      },
+      {
+        src: "/videos/aft-2.mp4",
+        poster: "/images/video-aft-2-poster.jpg",
+        caption: {
+          en: "The youth members' opening presentation",
+          ko: "청소년들의 오프닝 발표",
+        },
+      },
+    ],
+    catalog: {
+      src: "/images/hyangwoljae-gallery-2025-catalog.pdf",
+      note: {
+        en: "The Wonderful World of Me — every young artist and their work.",
+        ko: "The Wonderful World of Me — 청소년 작가 전원과 작품을 담은 전시 도록.",
+      },
+    },
   },
 };
 
 export type LocalizedStat = { label: string; value: string; note?: string };
+export type LocalizedVideo = { src: string; poster?: string; caption: string };
+export type LocalizedCatalog = { src: string; pages: string[]; note?: string };
 export type LocalizedDetail = {
   facts: { duration: string; location: string; audience: string };
   challenge: string;
@@ -318,6 +565,8 @@ export type LocalizedDetail = {
   impactStats: LocalizedStat[];
   galleryCount: number;
   gallery: { src: string; alt: string }[];
+  videos: LocalizedVideo[];
+  catalog?: LocalizedCatalog;
 };
 
 export function getProjectDetail(
@@ -343,6 +592,18 @@ export function getProjectDetail(
     })),
     galleryCount: d.galleryCount,
     gallery: (d.gallery ?? []).map((g) => ({ src: g.src, alt: g.alt[locale] })),
+    videos: (d.videos ?? []).map((v) => ({
+      src: v.src,
+      poster: v.poster,
+      caption: v.caption[locale],
+    })),
+    catalog: d.catalog
+      ? {
+          src: d.catalog.src,
+          pages: d.catalog.pages ?? [],
+          note: d.catalog.note?.[locale],
+        }
+      : undefined,
   };
 }
 

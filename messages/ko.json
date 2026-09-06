@@ -1179,14 +1179,19 @@
   "projectDetail": {
     "sections": {
       "facts": "프로젝트 개요",
-      "overview": "공모전 소개",
+      "overview": "AFT 소개",
       "howToApply": "참여 방법",
       "challenge": "도전 과제",
       "youngIdeas": "청소년의 아이디어",
       "creativeAction": "창작 활동",
       "gallery": "갤러리",
+      "video": "전시 영상",
       "impact": "우리가 만든 성과",
       "related": "관련 프로젝트"
+    },
+    "catalog": {
+      "title": "전시 도록",
+      "view": "도록 보기 (PDF)"
     },
     "facts": {
       "duration": "기간",

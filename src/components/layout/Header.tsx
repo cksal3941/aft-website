@@ -39,7 +39,7 @@ export function Header() {
           ? "bg-gradient-to-b from-black/45 to-transparent"
           : open
             ? "bg-navy shadow-sm"
-            : "bg-navy/70 shadow-sm backdrop-blur-lg supports-[backdrop-filter]:bg-navy/55"
+            : "bg-navy/95 shadow-sm"
       }`}
     >
       <div className="mx-auto flex h-20 w-full items-center justify-between gap-4 px-5 sm:px-6 lg:px-8">

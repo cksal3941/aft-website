@@ -37,7 +37,10 @@ export default function ProjectDetailPage({
   if (!project || project.status === "coming-soon") notFound();
 
   const detail = getProjectDetail(slug, loc);
-  const related = getProjects(loc).filter((p) => p.slug !== slug);
+  // Related shows real projects only — the coming-soon teaser is excluded.
+  const related = getProjects(loc).filter(
+    (p) => p.slug !== slug && p.status !== "coming-soon"
+  );
 
   return <DetailView project={project} detail={detail} related={related} />;
 }
@@ -56,41 +59,35 @@ function DetailView({
 
   return (
     <>
-      {/* HERO BANNER — clean cover image, sitting behind the transparent header
-          (kept separate from the title) */}
-      <section className="relative -mt-20 bg-navy">
+      {/* HERO — same treatment and size as the other sub-page heroes
+          (full-bleed cover + dark overlay, centred title over the image),
+          so project detail pages match the rest of the site. */}
+      <section className="relative isolate -mt-20 flex min-h-[360px] items-center overflow-hidden bg-navy text-white md:min-h-[440px]">
         <AftImage
           src={project.cover}
           alt={project.title}
           tone={project.coverTone}
+          objectPosition={project.coverPosition}
           priority
           sizes="100vw"
-          className="h-[46vh] min-h-[360px] w-full rounded-none md:h-[56vh]"
+          className="absolute inset-0 h-full w-full rounded-none"
         />
-        {/* Top gradient keeps the transparent header legible over the photo */}
-        <div
-          className="pointer-events-none absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/55 to-transparent"
-          aria-hidden
-        />
-      </section>
-
-      {/* TITLE — separate block, same centered type scale as the other sub-page heroes */}
-      <section className="bg-white">
-        <div className="container-aft py-14 md:py-20">
+        {/* Black transparent overlay for legibility over the photo */}
+        <div className="absolute inset-0 bg-black/60" aria-hidden />
+        {/* Fixed min-height + vertical centering matches PageHero; the top
+            padding offsets the fixed 80px header the hero sits behind. */}
+        <div className="relative z-10 w-full container-aft pt-20 pb-8">
           <div className="mx-auto max-w-3xl text-center">
             {/* Status label sits above the title */}
             <div className="mb-4">
               <StatusBadge status={project.status} />
             </div>
-            <h1 className="text-3xl font-extrabold leading-tight tracking-tight text-ink sm:text-4xl">
+            <h1 className="text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl">
               {project.title}
             </h1>
-            <p className="mt-4 text-base font-light leading-snug text-muted sm:text-lg">
+            <p className="mt-4 text-base font-light leading-snug text-white/85 sm:text-lg">
               {project.oneLiner}
             </p>
-            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <ProjectActions status={project.status} slug={project.slug} />
-            </div>
           </div>
         </div>
       </section>
@@ -109,14 +106,13 @@ function DetailView({
         </div>
       </section>
 
-      {/* COMPETITION OVERVIEW — centered to echo the hero/facts rhythm above:
-          centered heading + a centered lead intro, then the steps as a 3-column
-          process row (mirrors the 3-column facts bar). */}
+      {/* OVERVIEW — centered heading + centered body. Generous line-height and
+          paragraph spacing keep the longer copy easy to read. */}
       {project.overview && (
         <section className="bg-white section">
           <div className="container-aft">
             <SectionHeading title={t("sections.overview")} centered />
-            <div className="mx-auto mt-6 max-w-3xl space-y-4 text-center text-base leading-relaxed text-muted sm:text-lg">
+            <div className="mx-auto mt-8 max-w-3xl space-y-6 text-center text-base leading-loose text-muted sm:text-lg">
               {project.overview.split("\n").map((para, i) => (
                 <p key={i}>{para}</p>
               ))}
@@ -249,20 +245,88 @@ function DetailView({
                       />
                     ))}
               </div>
+
+              {/* CATALOG (도록) — download callout tucked under the gallery,
+                  since the catalog collects the same works shown above. */}
+              {detail.catalog && (
+                <div className="mt-10 flex flex-col items-center gap-4 rounded-xl bg-white p-6 text-center shadow-sm ring-1 ring-line sm:flex-row sm:justify-between sm:gap-6 sm:p-8 sm:text-left">
+                  <div className="flex flex-col items-center gap-3 sm:flex-row sm:gap-4">
+                    <span className="flex h-12 w-12 flex-none items-center justify-center rounded-full bg-teal/10 text-teal">
+                      <CatalogIcon />
+                    </span>
+                    <div>
+                      <h3 className="text-lg font-bold text-ink">
+                        {t("catalog.title")}
+                      </h3>
+                      {detail.catalog.note && (
+                        <p className="mt-1 text-sm text-muted">
+                          {detail.catalog.note}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                  <a
+                    href={detail.catalog.src}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary flex-none"
+                  >
+                    {t("catalog.view")}
+                  </a>
+                </div>
+              )}
             </div>
           </section>
 
-          {/* THE IMPACT */}
-          <section id="impact" className="scroll-mt-20 bg-white section">
+          {/* EXHIBITION FILMS */}
+          {detail.videos.length > 0 && (
+            <section className="bg-white section">
+              <div className="container-aft">
+                <SectionHeading
+                  eyebrow="05"
+                  title={t("sections.video")}
+                  centerOnMobile
+                />
+                <div className="mt-8 grid gap-5 sm:grid-cols-2">
+                  {detail.videos.map((v, i) => (
+                    <figure key={i} className="card !p-0 overflow-hidden">
+                      <video
+                        controls
+                        preload="metadata"
+                        playsInline
+                        poster={v.poster}
+                        className="aspect-video w-full bg-navy"
+                      >
+                        <source src={v.src} type="video/mp4" />
+                      </video>
+                      <figcaption className="px-4 py-3 text-sm font-medium text-ink">
+                        {v.caption}
+                      </figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </div>
+            </section>
+          )}
+
+          {/* THE IMPACT — background alternates so it never repeats the band
+              directly above it (gallery=surface, video=white). */}
+          <section
+            id="impact"
+            className={`scroll-mt-20 section ${
+              detail.videos.length > 0 ? "bg-surface" : "bg-white"
+            }`}
+          >
             <div className="container-aft">
               <SectionHeading
-                eyebrow="05"
+                eyebrow={detail.videos.length > 0 ? "06" : "05"}
                 title={t("sections.impact")}
                 centerOnMobile
               />
               <p className="mt-4 text-center text-base text-muted sm:text-left sm:text-[20px]">
                 {detail.impactSummary}
               </p>
+              {detail.impactStats.length > 0 && (
               <div className="mt-10 grid gap-8 sm:grid-cols-3">
                 {detail.impactStats.map((s, i) => (
                   <div key={i} className="text-center">
@@ -270,7 +334,7 @@ function DetailView({
                       value={s.value}
                       className="text-3xl font-extrabold text-teal sm:text-4xl"
                     />
-                    <div className="mt-1 text-sm font-semibold uppercase tracking-wide text-teal">
+                    <div className="mt-2 text-base font-semibold tracking-wide text-teal sm:text-lg">
                       {s.label}
                     </div>
                     {s.note && (
@@ -279,6 +343,7 @@ function DetailView({
                   </div>
                 ))}
               </div>
+              )}
             </div>
           </section>
         </>
@@ -390,6 +455,26 @@ function FactIcon({ name }: { name: string }) {
     default:
       return null;
   }
+}
+
+// Catalog (도록) icon for the download callout — an open book / document.
+function CatalogIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width={24}
+      height={24}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.8}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+      <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+    </svg>
+  );
 }
 
 // Line icons for the Creative Action cards. Keyed by position to match the
