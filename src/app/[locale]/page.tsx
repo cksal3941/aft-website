@@ -417,8 +417,10 @@ export default function HomePage({
           </div>
 
           {/* RIGHT — full-bleed image with DONATE overlay, right-aligned
-              (caption on top, button below) */}
-          <div className="relative lg:flex-1 lg:mr-[calc(50%-50vw)]">
+              (caption on top, button below). On mobile it breaks out of the
+              container padding to span the full viewport width (no side gap);
+              on desktop only the right edge bleeds so it meets the text column. */}
+          <div className="relative mx-[calc(50%-50vw)] lg:mx-0 lg:flex-1 lg:mr-[calc(50%-50vw)]">
             <AftImage
               {...media.homeSupport}
               className="aspect-[5/2] w-full"
