@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { use } from "react";
 import { notFound } from "next/navigation";
 import { useTranslations } from "next-intl";
@@ -21,6 +22,22 @@ export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
     getProjectSlugs().map((slug) => ({ locale, slug }))
   );
+}
+
+// Per-project tab title + description (the project's own name/one-liner), so
+// each detail page reads distinctly in browser tabs and search results.
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
+}): Promise<Metadata> {
+  const { locale, slug } = await params;
+  const project = getProject(slug, locale as Locale);
+  if (!project) return {};
+  return {
+    title: project.title,
+    description: project.oneLiner,
+  };
 }
 
 export default function ProjectDetailPage({

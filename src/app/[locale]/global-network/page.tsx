@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { use } from "react";
 import { useTranslations } from "next-intl";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
+import { pageMeta } from "@/lib/pageMeta";
 import { CtaLink } from "@/components/ui/CtaLink";
 import { CtaArrow } from "@/components/ui/CtaArrow";
 import { PageHero } from "@/components/ui/PageHero";
@@ -19,11 +20,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "globalNetwork" });
-  return {
-    title: t("eyebrow"),
-    description: t("body"),
-  };
+  return pageMeta(locale, "nav.globalNetwork", "globalNetwork.body");
 }
 
 // GLOBAL NETWORK — expandable structure (Country · City · Youth Members ·

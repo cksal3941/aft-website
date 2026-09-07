@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { use } from "react";
 import { useTranslations } from "next-intl";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
+import { pageMeta } from "@/lib/pageMeta";
 import { YouthApplicationForm } from "@/components/forms/YouthApplicationForm";
 import { PageHero } from "@/components/ui/PageHero";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
@@ -13,11 +14,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "apply" });
-  return {
-    title: t("title"),
-    description: t("intro"),
-  };
+  return pageMeta(locale, "nav.sub.youthApply", "apply.intro");
 }
 
 export default function YouthApplyPage({
@@ -33,6 +30,7 @@ export default function YouthApplyPage({
     <>
       <PageHero
         image={media.joinYouth}
+        imageObjectPosition="center 30%"
         eyebrow="Join AFT"
         title={t("title")}
         subtitle={t("intro")}

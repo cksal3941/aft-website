@@ -1,7 +1,18 @@
+import type { Metadata } from "next";
 import { use } from "react";
 import { useTranslations } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { PageStub } from "@/components/ui/PageStub";
+import { pageMeta } from "@/lib/pageMeta";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return pageMeta(locale, "terms.title", "terms.subtitle");
+}
 
 // Sections rendered in order; each key maps to messages `terms.sections.*`.
 const SECTION_KEYS = [

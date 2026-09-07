@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { use } from "react";
 import { useTranslations } from "next-intl";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
+import { pageMeta } from "@/lib/pageMeta";
 import { CtaLink } from "@/components/ui/CtaLink";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { AftImage } from "@/components/ui/AftImage";
@@ -18,11 +19,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "join" });
-  return {
-    title: t("hero.eyebrow"),
-    description: t("hero.subtitle"),
-  };
+  return pageMeta(locale, "join.metaTitle", "join.hero.subtitle");
 }
 
 export default function JoinPage({

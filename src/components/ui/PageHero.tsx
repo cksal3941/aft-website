@@ -15,6 +15,7 @@ export function PageHero({
   eyebrow,
   title,
   image,
+  imageObjectPosition,
   children,
   animate = true,
 }: {
@@ -22,6 +23,9 @@ export function PageHero({
   title?: ReactNode;
   subtitle?: ReactNode;
   image?: MediaSlot;
+  /** Override the hero photo's focal point (CSS object-position), e.g. to nudge
+      the subject down. Only affects this hero, not the shared media slot. */
+  imageObjectPosition?: string;
   children?: ReactNode;
   /** Set false to render the hero statically (no staggered entrance). */
   animate?: boolean;
@@ -59,6 +63,7 @@ export function PageHero({
           {...image}
           priority
           sizes="100vw"
+          objectPosition={imageObjectPosition ?? image.objectPosition}
           className="absolute inset-0 h-full w-full rounded-none"
         />
       )}

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { use } from "react";
 import { useTranslations } from "next-intl";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
+import { pageMeta } from "@/lib/pageMeta";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { PageHero } from "@/components/ui/PageHero";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
@@ -14,11 +15,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "support" });
-  return {
-    title: t("hero.eyebrow"),
-    description: t("hero.subtitle"),
-  };
+  return pageMeta(locale, "nav.support", "support.hero.subtitle");
 }
 
 export default function SupportPage({

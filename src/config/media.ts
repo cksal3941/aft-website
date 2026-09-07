@@ -54,7 +54,7 @@ export const media = {
   // Home "2026 주요 성과" right-side bleed image (home only — impact page keeps impactImg1).
   impactHomeImg: { src: "/images/GILL1409.jpg", alt: "AFT young artists group photo at the exhibition" },
   impactImg2: { src: "/images/impact-img-2.jpg", alt: "Exhibition reception" },
-  impactImg3: { src: "/images/impact-img-3.jpg", alt: "Gallery of youth ocean artworks" },
+  impactImg3: { src: "/images/impact-featured.jpg", alt: "Gallery of youth ocean artworks" },
   homeFeatured: {
     src: "/images/home-featured.jpg",
     alt: "Our Ocean, Our Tomorrow project artwork",
@@ -112,7 +112,7 @@ export const media = {
     tone: "ocean",
   },
 
-  joinHero: { src: "/images/join-hero.jpg", alt: "Young creators at an AFT workshop" },
+  joinHero: { src: "/images/home-community.jpg", alt: "Young creators at an AFT workshop" },
 } satisfies Record<string, MediaSlot>;
 
 export type MediaKey = keyof typeof media;

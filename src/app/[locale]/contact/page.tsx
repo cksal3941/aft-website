@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { use } from "react";
 import { useTranslations } from "next-intl";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
+import { pageMeta } from "@/lib/pageMeta";
 import { Link } from "@/i18n/navigation";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { PageHero } from "@/components/ui/PageHero";
@@ -16,11 +17,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "contact" });
-  return {
-    title: t("hero.eyebrow"),
-    description: t("hero.subtitle"),
-  };
+  return pageMeta(locale, "nav.contact", "contact.hero.subtitle");
 }
 
 export default function ContactPage({

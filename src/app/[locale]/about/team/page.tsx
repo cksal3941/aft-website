@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { use } from "react";
 import { useTranslations } from "next-intl";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
+import { pageMeta } from "@/lib/pageMeta";
 import { PageHero } from "@/components/ui/PageHero";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { GlobalYouthBand } from "@/components/ui/GlobalYouthBand";
@@ -16,11 +17,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "about" });
-  return {
-    title: t("team.eyebrow"),
-    description: t("team.title"),
-  };
+  return pageMeta(locale, "nav.sub.orgChart", "about.team.title");
 }
 
 export default function AboutTeamPage({

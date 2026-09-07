@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
+import { siteUrl } from "@/lib/site";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { FloatingQuickMenu } from "@/components/layout/FloatingQuickMenu";
@@ -27,21 +28,53 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "meta" });
+  // Search-engine ownership codes. Set these in the environment (Vercel → env, or
+  // .env.local) to verify the site in Google Search Console and Naver Search
+  // Advisor (also covers the Whale browser, which searches via Naver):
+  //   GOOGLE_SITE_VERIFICATION=... / NAVER_SITE_VERIFICATION=...
+  const googleVerification = process.env.GOOGLE_SITE_VERIFICATION;
+  const naverVerification = process.env.NAVER_SITE_VERIFICATION;
   return {
-    // Resolve OG image / relative URLs to absolute. Uses the Vercel production
-    // domain automatically (falls back to localhost in dev). If a custom domain
-    // is added later, set NEXT_PUBLIC_SITE_URL to override.
-    metadataBase: new URL(
-      process.env.NEXT_PUBLIC_SITE_URL ??
-        (process.env.VERCEL_PROJECT_PRODUCTION_URL
-          ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-          : "http://localhost:3000")
-    ),
+    // Resolve OG image / relative URLs to absolute against the official domain
+    // (src/lib/site.ts; override with NEXT_PUBLIC_SITE_URL).
+    metadataBase: new URL(siteUrl()),
     title: {
       default: t("siteName"),
       template: `%s · AFT`,
     },
     description: t("tagline"),
+    applicationName: t("siteName"),
+    keywords: [
+      "AFT",
+      "Arts For Tomorrow",
+      "youth arts",
+      "youth nonprofit",
+      "global youth network",
+      "youth creators",
+      "청소년 예술",
+      "비영리 단체",
+      "청소년 예술단체",
+      "글로벌 청소년",
+    ],
+    // Explicitly allow indexing everywhere (Google, Naver, Bing, etc.) with rich
+    // previews, so search engines surface the site with images and full snippets.
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
+      },
+    },
+    verification: {
+      ...(googleVerification ? { google: googleVerification } : {}),
+      ...(naverVerification
+        ? { other: { "naver-site-verification": naverVerification } }
+        : {}),
+    },
     // Suppress Chrome/Edge's "translate this page?" prompt — the site already
     // serves fully-localized KO/EN, so browser translation only double-translates.
     other: {
