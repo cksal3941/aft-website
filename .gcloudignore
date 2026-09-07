@@ -1,0 +1,28 @@
+# Cloud Build로 업로드할 때 제외할 것들.
+# (기본값은 .gitignore를 따라가지만, 명시해 두는 편이 예측 가능하다)
+.git
+.gitignore
+node_modules
+.next
+out
+.vercel
+.media
+coverage
+catalog-source
+.DS_Store
+*.tsbuildinfo
+
+# 사용하지 않는 원본 사진(수 GB) — .gitignore / .vercelignore와 동일하게 유지.
+public/images/GIL00*
+public/images/GILL0*
+public/images/GILL1*
+public/images/KakaoTalk_*
+!public/images/GILL1409.jpg
+!public/images/GILL1502.jpg
+!public/images/GIL00345.jpg
+!public/images/GILL0864.jpg
+!public/images/GILL1035.jpg
+!public/images/GILL1152.jpg
+!public/images/GILL1194.jpg
+!public/images/GILL1357.jpg
+!public/images/GILL1414.jpg
