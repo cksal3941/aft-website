@@ -24,6 +24,11 @@ ENV NEXT_PUBLIC_SITE_URL=$NEXT_PUBLIC_SITE_URL
 ENV NEXT_PUBLIC_TYPEKIT_ID=$NEXT_PUBLIC_TYPEKIT_ID
 ENV NEXT_TELEMETRY_DISABLED=1
 
+# 검색엔진 소유확인 코드(비밀값 아님). 정적 프리렌더 시 generateMetadata가
+# 빌드 시점에 읽으므로 builder에 넣고, 런타임 렌더 대비 runner에도 넣는다.
+ARG NAVER_SITE_VERIFICATION=7a2b8bc72c0f6fbe03608f49e435e7000d59f223
+ENV NAVER_SITE_VERIFICATION=$NAVER_SITE_VERIFICATION
+
 RUN npm run build
 
 # --- runner: 실제로 배포되는 최소 이미지 ---
@@ -31,6 +36,10 @@ FROM base AS runner
 WORKDIR /app
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
+
+# 런타임 렌더 시 generateMetadata가 읽는 소유확인 코드(비밀값 아님)
+ARG NAVER_SITE_VERIFICATION=7a2b8bc72c0f6fbe03608f49e435e7000d59f223
+ENV NAVER_SITE_VERIFICATION=$NAVER_SITE_VERIFICATION
 
 RUN addgroup --system --gid 1001 nodejs \
  && adduser --system --uid 1001 nextjs
