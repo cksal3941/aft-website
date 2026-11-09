@@ -56,6 +56,7 @@ export const departments: Department[] = [
       { en: "Eunwoo Kim", ko: "김은우" },
       { en: "Jiwoo Lee", ko: "이지우" },
       { en: "Jueun Lee", ko: "이주은" },
+      { en: "Leah Kim", ko: "김레아" },
     ],
   },
 ];
